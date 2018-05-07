@@ -1,0 +1,12 @@
+.hero-body {
+	padding: 10px;
+}
+
+.section {
+	padding: 8px;
+}
+
+.profileNav {
+	display: flex;
+	justify-content: space-around;
+}

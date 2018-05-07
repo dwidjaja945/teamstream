@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./styles.css";
 import athletePic from "./images/athlete.jpg";
 
 class AthleteProfile extends Component {
@@ -17,13 +18,20 @@ class AthleteProfile extends Component {
 	render() {
 		return (
 			<div>
-				<section className="hero is-light">
-					<div className="hero-body">
-						<div className="container">
-							<h1 className="title is-1 has-text-centered">Athlete Profile</h1>
-						</div>
+				<nav className="navbar" role="navigation" aria-label="main navigation">
+					<div className="profileNav">
+						<a className="button is-primary">Back</a>
+						<span>Team Stream</span>
+						<a className="button is-primary">Done</a>
 					</div>
-				</section>
+					<section className="hero is-light">
+						<div className="hero-body">
+							<div className="container">
+								<h1 className="title is-1 has-text-centered">Athlete Profile</h1>
+							</div>
+						</div>
+					</section>
+				</nav>
 				<section className="section">
 					<div className="container">
 						<figure className="image is-3by2">

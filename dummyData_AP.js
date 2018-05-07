@@ -1,4 +1,4 @@
-var dummyData = [
+var dummyData_AP = [
     {
         firstName: 'Dylan',
         lastName: 'Widjaja',

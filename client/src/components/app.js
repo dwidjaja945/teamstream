@@ -1,10 +1,10 @@
 import React from "react";
-import AtheleteProfile from "./athelete_profile";
+import AthleteProfile from "./athlete_profile";
 
 function App() {
 	return (
 		<div className="container">
-			<AtheleteProfile />
+			<AthleteProfile />
 		</div>
 	);
 }

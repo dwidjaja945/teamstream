@@ -1,0 +1,22 @@
+{
+  "name": "teamstream",
+  "version": "1.0.0",
+  "description": "### members - Dylan - Keith - Daniel - Christina",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwidjaja945/c318_teamstream.git"
+  },
+  "author": "Dylan Widjaja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dwidjaja945/c318_teamstream/issues"
+  },
+  "homepage": "https://github.com/dwidjaja945/c318_teamstream#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

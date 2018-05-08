@@ -2,14 +2,13 @@ var dummyData_BB = [
     {
         firstName: 'Daniel',
         lastName: 'Donjuan',
-        postBody:
-            {
-                bodyText: 'When is practice?',
-            },
+        postBody: {
+            bodyText: 'When is practice?',
+        },
         timeStamp: '2016-06-19T07:00:00.000Z',
         photo: '',
         colorTag: 'green',
-        pinned: false
+        pinned: false,
     },
     {
         firstName:'Keith',
@@ -54,10 +53,10 @@ var dummyData_BB = [
         timeStamp: '2015-08-19T19:00:00.000Z',
         photo: '',
         colorTag: 'red',
-        pinned: true
+        pinned: false,
     },
     {
-        firstname: 'Christina',
+        firstName: 'Christina',
         lastName: 'So',
         postBody: {
             bodyText:'Team, I won\'t be able to make it to practice tomorrow. I have a thing'
@@ -65,7 +64,7 @@ var dummyData_BB = [
         timeStamp: '2014-06-19T09:35:00.000Z',
         photo: '',
         colorTag: 'blue',
-        pinned: false
+        pinned: false,
     },
     {
         firstName: 'Keith',
@@ -76,6 +75,6 @@ var dummyData_BB = [
         timeStamp: '2008-09-19T10:00:00.000Z',
         photo: '',
         colorTag: 'green',
-        pinned: false
+        pinned: false,
     },
 ]

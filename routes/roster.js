@@ -1,8 +1,9 @@
 
-modules.export = function (webserver) {
+module.export = function (webserver) {
     webserver.post('/roster', function (req, res) {
+        let teamID;
         if (req.body && req.body.id) {
-            let teamID = req.body.id;
+            teamID = req.body.id;
         }
         let query = 'SELECT * FROM ?? WHERE ?? = ?';
         let inserts = ['athlete_profile', 'id', teamID];
@@ -24,5 +25,5 @@ modules.export = function (webserver) {
             }
             res.json(output);
         });
-    })
+    });
 }

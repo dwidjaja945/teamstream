@@ -2,8 +2,8 @@ const express = require('express');
 const mysql = require('mysql');
 const webserver = express();
 
-const credentials = require('./mysqlcredentials.js');
-const database = mysql.createConnection(credentials);
+const credentials = require('./config/mysqlcredentials.js');
+const dataBase = mysql.createConnection(credentials);
 
 const bodyParser = require('body-parser');
 
@@ -13,8 +13,8 @@ webserver.use(bodyParser.json());
 webserver.use(express.static(__dirname + '/' + 'client'));
 
 dataBase.connect(error => {
-    if (error) throw error;
-    console.log("Created connection to database");
+  if (error) throw error;
+  console.log("Created connection to database");
 });
 
 

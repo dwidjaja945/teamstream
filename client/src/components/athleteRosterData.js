@@ -1,5 +1,16 @@
 export default [
     {
+        id: '#256',
+        coach: true,
+        firstName: 'KeithC',
+        lastName: 'SilcockC',
+        age: 45,
+        height: '92',
+        weight: '100'
+    },
+    {
+        id: '#256',
+        coach: false,
         firstName: 'Keith',
         lastName: 'Silcock',
         age: 27,
@@ -7,6 +18,8 @@ export default [
         weight: '90'
     },
     {
+        id: '#256',
+        coach: false,
         firstName: 'Keith1',
         lastName: 'Silcock1',
         age: 22,
@@ -14,6 +27,8 @@ export default [
         weight: '91'
     },
     {
+        id: '#256',
+        coach: false,
         firstName: 'Keith2',
         lastName: 'Silcock2',
         age: 23,
@@ -21,6 +36,8 @@ export default [
         weight: '75'
     },
     {
+        id: '#256',
+        coach: false,
         firstName: 'Keith3',
         lastName: 'Silcock3',
         age: 29,
@@ -28,6 +45,8 @@ export default [
         weight: '99'
     },
     {
+        id: '#152',
+        coach: true,
         firstName: 'Keith4',
         lastName: 'Silcock4',
         age: 29,

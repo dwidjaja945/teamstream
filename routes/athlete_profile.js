@@ -1,5 +1,5 @@
 
-module.export = function (webserver) {
+module.exports = function (webserver) {
     webserver.get('/athlete_profile', function (req , res ) {
         let athleteID;
         if (req.body && req.body.id) {
@@ -21,7 +21,7 @@ module.export = function (webserver) {
                 output.success = true;
                 output.user = data;
             } else {
-                output.errors = errors;
+                output.errors = error;
             }
             res.json(output);
         });

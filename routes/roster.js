@@ -1,5 +1,5 @@
 
-module.export = function (webserver) {
+module.exports = function (webserver) {
     webserver.post('/roster', function (req, res) {
         let teamID;
         if (req.body && req.body.id) {

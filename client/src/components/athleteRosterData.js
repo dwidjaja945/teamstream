@@ -1,56 +1,38 @@
 export default [
     {
-        id: '#256',
-        coach: true,
+        id: 256,
+        userLevel: 0,
         firstName: 'KeithC',
         lastName: 'SilcockC',
-        age: 45,
-        height: '92',
-        weight: '100'
     },
     {
-        id: '#256',
-        coach: false,
+        id: 256,
+        userLevel: 0,
         firstName: 'Keith',
-        lastName: 'Silcock',
-        age: 27,
-        height: '78',
-        weight: '90'
+        lastName: 'Silcock'
     },
     {
-        id: '#256',
-        coach: false,
+        id: 256,
+        userLevel: 1,
         firstName: 'Keith1',
-        lastName: 'Silcock1',
-        age: 22,
-        height: '79',
-        weight: '91'
+        lastName: 'Silcock1'
     },
     {
-        id: '#256',
-        coach: false,
+        id: 256,
+        userLevel: 0,
         firstName: 'Keith2',
-        lastName: 'Silcock2',
-        age: 23,
-        height: '70',
-        weight: '75'
+        lastName: 'Silcock2'
     },
     {
-        id: '#256',
-        coach: false,
+        id: 256,
+        userLevel: 0,
         firstName: 'Keith3',
-        lastName: 'Silcock3',
-        age: 29,
-        height: '87',
-        weight: '99'
+        lastName: 'Silcock3'
     },
     {
-        id: '#152',
-        coach: true,
+        id: 256,
+        userLevel: 0,
         firstName: 'Keith4',
-        lastName: 'Silcock4',
-        age: 29,
-        height: '87',
-        weight: '99'
+        lastName: 'Silcock4'
     }
 ]

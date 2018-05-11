@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Test Ajax Call for Endpoints</title>
+</head>
+
+<body>
+    <h1>Test Ajax Call for endpoints</h1>
+    <button class='bulletinBoardGet'> Bulletin Board Get</button>
+    <br>
+    <div>
+        <label>Post_text</label>
+        <input id='postText' type="text">
+        <label>Athlete ID</label>
+        <input id='athleteID' type="text">
+        <label>Team ID</label>
+        <input id='teamID' type="text">
+        <button class='bulletinBoardPost'> Bulletin Board Post</button>
+    </div>
+
+
+    <script>
+        $('.bulletinBoardGet').click( () => {
+            $.ajax({
+                method: 'get',
+                url: 'http://localhost:3000/api/bulletin_board',
+                dataType: 'json',
+                success: (data) => {
+                    console.log("success: data: " , data)
+                },
+                error: (errors) => {
+                    console.log("error: data: ", errors);
+                }
+            });
+        });
+
+
+        $(".bulletinBoardPost").click(() => {
+            $.ajax({
+                method: 'post',
+                url: 'http://localhost:3000/api/bulletin_board',
+                dataType: 'json',
+                data: {
+                    post_text: $('#postText').val(),
+                    athlete_id: $('#athleteID').val(),
+                    team_id: $('#teamID').val()
+                },
+                success: (data) => {
+                    console.log(data);
+                },
+            })
+        });
+
+
+    </script>
+</body>
+
+</html>

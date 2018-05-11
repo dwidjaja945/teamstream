@@ -20,12 +20,12 @@ class AthleteProfile extends Component {
 	render() {
 		return (
 			<div className="profileContainer">
-				<div className="profile profileNav">
-					<div className="profileBackArrow">
+				<div className="backNav">
+					<div className="backArrow">
 						<img className="backArrowImg" src={blueLeftArrow} />
 					</div>
-					<div className="profileTsLogo">
-						<span className="profileNavTitle">Team Stream</span>
+					<div className="backTsLogo">
+						<span className="backNavTitle">Team Stream</span>
 					</div>
 				</div>
 				<div className="profile profileTitleContent">

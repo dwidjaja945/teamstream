@@ -4,7 +4,7 @@
   "description": "### members - Dylan - Keith - Daniel - Christina",
   "main": "webserver.js",
   "scripts": {
-    "server": "nodemon webserver.js",
+    "dev:server": "nodemon webserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

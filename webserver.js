@@ -18,11 +18,10 @@ dataBase.connect(error => {
 });
 
 
-// endpoint for athlete profile
-// require('./routes/athlete_profile')(webserver);
+// require('./routes/athlete_profile')(webserver, dataBase, mysql);
 
 // endpoint for roster
-// require('./routes/roster')(webserver);
+// require('./routes/roster')(webserver, dataBase, mysql);
 
 // endpoint for bulletin board
 require('./routes/bulletin_board')(webserver, dataBase, mysql);

@@ -24,7 +24,7 @@
         <input id='pinned' type="text">
         <button class='bulletinBoardPost'> Bulletin Board Post</button>
     </div>
-    <div>
+      <div>
         <label>Post_id</label>
         <input id='post_id' type="text">
         <label>Athlete ID</label>
@@ -32,6 +32,50 @@
         <button id='bulletinBoardDelete'>Bulletin Board Delete</button>
     </div>
 
+    <div class="spacer">
+        <p> | </p>
+        <p> | </p>
+        <p> | </p>
+    </div>
+    <div class="row">
+        <label>Athlete ID</label>
+        <input id="athleteInfoID" type="text">
+        <button class='athleteProfile'> athlete profile get</button>
+    </div>
+    <div class="row">
+        <!--`img_url`, `user_id`-->
+        <label>First Name</label>
+        <input id='first_name' type="text">
+        <label>Last Name</label>
+        <input id='last_name' type="text">
+        <label>Height</label>
+        <input id='height' type="text">
+        <label>Weight</label>
+        <input id='weight' type="text">
+        <!--<label>Athlete Image URL</label>-->
+        <!--<input id='imgURL' type="text">-->
+        <label>Age</label>
+        <input id='age' type="text">
+        <label>User ID</label>
+        <input id='userID' type="text">
+
+        <label>Team ID</label>
+        <input id='teamID2' type="text">
+        <label>User Level</label>
+        <input id='userLevel' type="text">
+
+        <div class="spacer">
+            <p> | </p>
+        </div>
+
+        <label>Stat Name</label>
+        <input id='statName' type="text">
+        <label>Stat Value</label>
+        <input id='statValue' type="text">
+
+        <button class='athleteProfilePost'> athlete profile post</button>
+
+    </div>
 
     <script>
 
@@ -86,8 +130,8 @@
                 }
             })
         });
-
-        $("#bulletinBoardDelete").click( () => {
+      
+              $("#bulletinBoardDelete").click( () => {
             console.log($("#athlete_id").val());
             $.ajax({
                 method: 'delete',
@@ -106,6 +150,54 @@
             })
         })
 
+    </script>
+  
+    <script>
+        $('.athleteProfile').click( () => {
+            let dataInput = $('#athleteProfileID').val();
+            $.ajax({
+                method: 'get',
+                url: 'http://localhost:3000/api/athlete_profile' + `?athleteId=${dataInput}`,
+                dataType: 'json',
+                success: (data) => {
+                    console.log("success: data: " , data)
+                },
+                error: (errors) => {
+                    console.log("error: data: ", errors);
+                }
+            });
+        });
+
+        $('.athleteProfilePost').click( () => {
+            let athleteInfoId = $('#athleteInfoID').val();
+            let firstName = $('#first_name').val();
+            let lastName = $('#last_name').val();
+            let height = $('#height').val();
+            let weight = $('#weight').val();
+            let age = $('#age').val();
+            let userID = $('#userID').val();
+            let teamID = $('#teamID2').val();
+            let userLevel = $('#userLevel').val();
+
+            let statName = $('#statName').val();
+            let statValue = $('#statValue').val();
+
+            let dataToSend = {athleteInfoId, firstName, lastName, height, weight, age,
+                userLevel, userID, teamID, statName, statValue};
+
+            $.ajax({
+                method: 'post',
+                url: 'http://localhost:3000/api/athlete_profile',
+                data:dataToSend,
+                dataType: 'json',
+                success: (data) => {
+                    console.log("success: data: " , data)
+                },
+                error: (errors) => {
+                    console.log("error: data: ", errors);
+                }
+            });
+        });
 
     </script>
 </body>

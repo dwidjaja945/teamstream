@@ -58,4 +58,39 @@ module.exports = function (webserver, dataBase, mysql) {
             res.json(output);
         });
     });
+
+    webserver.post('/athlete_profile', function (req , res ) {
+        let athleteID;
+        if (req.body && req.body.id) {
+            athleteID = req.body.id;
+        }
+
+        let athleteInfoQuery = "INSERT INTO `athlete_info` (`athlete_info_id`, `first_name`, `last_name`, `height`, " +
+            "`weight`, `img_url`, `age`, `user_id`) VALUES (NULL, 'Karth', 'Silman', '194', '400', '', '32', '4');";
+
+        let statsQuery = "INSERT INTO `stats` (`stat_id`, `stat_name`, `stat_value`, `athlete_id`)" +
+            " VALUES (NULL, 'Stuff and things', 'all the goods', '');";
+
+
+        // let sqlQuery = mysql.format(query, inserts);
+        // console.log(sqlQuery)
+
+        const output = {
+            success: false,
+            user: null,
+            errors: []
+        };
+
+        dataBase.query(sqlQuery, function (error, data, fields) {
+            if (!error) {
+                output.success = true;
+                output.user = data;
+            } else {
+                output.errors = error;
+            }
+            console.log(JSON.stringify(output));
+            res.json(output);
+        });
+    });
+
 };

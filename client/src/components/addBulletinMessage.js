@@ -4,9 +4,11 @@ class Bulletin extends Component{
 
     render(){
         return(
-            <div className="bulletinContainer">
+            <form className="bulletinContainer">
                 <h1>This is going to be the bulletin section</h1>
-            </div>
+                <input type="text"/>
+                <button>Send</button>
+            </form>
         )
     }
 }

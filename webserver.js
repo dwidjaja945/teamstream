@@ -28,6 +28,8 @@ dataBase.connect(error => {
 require('./routes/bulletin_board')(webserver, dataBase, mysql);
 
 
-webserver.listen(3000, function() {
+webserver.listen(3000, () => {
     console.log("Server listening on 3000");
+}).on('error', (error) => {
+  console.log('Server Error: ' , error.message);
 })

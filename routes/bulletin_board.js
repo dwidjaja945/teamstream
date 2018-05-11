@@ -33,12 +33,13 @@ module.exports = function(webserver, dataBase, mysql) {
       } else {
         output.errors = error;
       }
-      console.log(output);
       res.json(output);
     });
   });
 
   webserver.post("/api/bulletin_board", (req, res) => {
+    res.send('request successful. Data: ', req);
+    return;
     const output = {
       success: false,
       data: [],
@@ -70,8 +71,9 @@ module.exports = function(webserver, dataBase, mysql) {
       }
     }
 
-      let query = "INSERT INTO "+
-      "`bulletin` (`post_id`, `post_text`, `athlete_id`, `timestamp`, `team_id`, `pinned`)"+
+    let query =
+      "INSERT INTO " +
+      "`bulletin` (`post_id`, `post_text`, `athlete_id`, `timestamp`, `team_id`, `pinned`)" +
       "VALUES (NULL, 'Hope everything is ok!', '3', NOW(), '1', '0')";
 
     let inserts = [""];
@@ -86,7 +88,6 @@ module.exports = function(webserver, dataBase, mysql) {
       } else {
         output.errors = error;
       }
-      console.log(output);
       res.json(output);
     });
   });

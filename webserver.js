@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const cors = require('cors');
 const webserver = express();
 
 const credentials = require('./config/mysqlcredentials.js');
@@ -9,6 +10,8 @@ const bodyParser = require('body-parser');
 
 webserver.use(bodyParser.urlencoded({ extended: false }));
 webserver.use(bodyParser.json());
+
+webserver.use(cors());
 
 webserver.use(express.static(__dirname + '/' + 'client'));
 

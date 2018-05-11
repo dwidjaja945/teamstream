@@ -34,6 +34,24 @@
 
 
     <script>
+
+        function makeAjaxCall(url, method, data) {
+            $.ajax({
+                url: url,
+                method: method,
+                data: data,
+                dataType: 'json',
+                success: (data) => {
+                    console.log("success data: ", data)
+                    return data;
+                },
+                error: (errors) => {
+                    console.log('errors data: ', errors)
+                    return errors;
+                }
+            })
+        }
+
         $('.bulletinBoardGet').click( () => {
             $.ajax({
                 method: 'get',

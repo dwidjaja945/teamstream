@@ -1,3 +1,4 @@
 node_modules/
 config/mysqlCredentials.js
 mysqlCredentials.js
+.vscode/

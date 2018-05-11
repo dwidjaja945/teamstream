@@ -38,50 +38,87 @@ module.exports = function(webserver, dataBase, mysql) {
   });
 
   webserver.post("/api/bulletin_board", (req, res) => {
-    res.send('request successful. Data: ', req);
-    return;
     const output = {
       success: false,
       data: [],
       errors: []
     };
-    let team_id = 1;
-    let post_text = "test text post post post here here";
-    let first_name = "bob";
-    let last_name = "smith";
-    let timestamp = "3:00";
+
     if (req.body) {
-      if (req.body.id) {
+      if (req.body.athlete_id) {
+        var athlete_id = req.body.athlete_id;
         // will need to rework to pull ID from sessions
       }
       if (req.body.post_text) {
+        var post_text = req.body.post_text;
         // assign bulletin post here
       }
-      if (req.body.first_name) {
-        // assign first name here
-      }
-      if (req.body.last_name) {
-        // assign last name here
-      }
-      if (req.body.timestamp) {
-        // assign timestamp here
-      }
-      if (req.body.team_name) {
+      if (req.body.team_id) {
+        var team_id = req.body.team_id;
         // assign team name here
       }
+      if (req.body.pinned) {
+        var pinned = req.body.pinned;
+        console.log(pinned);
+      }
+    } else {
+      res.send("Missing Proper query items");
     }
 
     let query =
       "INSERT INTO " +
-      "`bulletin` (`post_id`, `post_text`, `athlete_id`, `timestamp`, `team_id`, `pinned`)" +
-      "VALUES (NULL, 'Hope everything is ok!', '3', NOW(), '1', '0')";
+      "`bulletin` (`post_id`, ??, ??, `timestamp`, ??, ??) " +
+      "VALUES (NULL, ?, ?, NOW(), ?, ?)";
 
-    let inserts = [""];
-    // will be inserting post_text, athlete_id, team_id
+    let inserts = [
+      "post_text",
+      "athlete_id",
+      "team_id",
+      "pinned",
+      post_text,
+      athlete_id,
+      team_id,
+      pinned
+    ];
+    // will be inserting post_text, athlete_id, team_id, pinned
 
     let sqlQuery = mysql.format(query, inserts);
 
     dataBase.query(sqlQuery, function(error, data, fields) {
+      if (!error) {
+        output.success = true;
+        output.data = data;
+      } else {
+        output.errors = error;
+      }
+      res.json(output);
+    });
+  });
+
+  webserver.delete("/api/bulletin_board", (req, res) => {
+    const output = {
+      success: false,
+      data: [],
+      errors: []
+    };
+
+    if (req.body) {
+      if (req.body.post_id) {
+        var post_id = req.body.post_id;
+      }
+      if (req.body.athlete_id) {
+        var athlete_id = req.body.athlete_id;
+      }
+    }
+
+    let query =
+      "DELETE FROM `bulletin` WHERE `bulletin`.`post_id` = ? AND `bulletin`.`athlete_id` = ?";
+    let inserts = [post_id, athlete_id];
+    // insert post_id and athlete_id
+
+    let sqlQuery = mysql.format(query, inserts);
+
+    dataBase.query(sqlQuery, (error, data, fields) => {
       if (!error) {
         output.success = true;
         output.data = data;

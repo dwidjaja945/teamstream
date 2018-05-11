@@ -1,5 +1,5 @@
 
-module.export = function (webserver) {
+module.exports = function (webserver, dataBase, mysql) {
     webserver.get('/athlete_profile', function (req , res ) {
         let athleteID;
         if (req.body && req.body.id) {
@@ -11,21 +11,35 @@ module.export = function (webserver) {
         // let s = 'stats';
         // let query = 'SELECT ??.??'
 
+        // let query1 = "SELECT `ai`.`first_name`, `ai`.`last_name`, `ai`.`height`, " +
+        //     "`ai`.`weight`, `ai`.`img_url`,`ai`.`age`, " +
+        //     "`s`.`stat_name`, `s`.`stat_value` " +
+        //     "FROM `athlete_info` AS ai " +
+        //     "JOIN `athletes` AS a " +
+        //     "ON `ai`.`athlete_info_id` = `a`.`athlete_info_id` " +
+        //     "JOIN `stats` as s " +
+        //     "ON `a`.`athlete_id` = `s`.`athlete_id` " +
+        //     "WHERE `ai`.`user_id` = '4' ";
 
-        // let query = 'SELECT * FROM ?? WHERE ?? = ?';
-        // let inserts = ['athlete_profile', 'id', athleteID];
+        let ai = 'athlete_info';
+        let s = 'stats';
 
-        let query =    "SELECT `ai`.`first_name`, `ai`.`last_name`, `ai`.`height`," +
-            "`ai`.`weight`, `ai`.`img_url`,`ai`.`age`," +
-            "`s`.`stat_name`, `s`.`stat_value`" +
-            "FROM `athlete_info` AS ai" +
-            "JOIN `athletes` AS a" +
-            "ON `ai`.`athlete_info_id` = `a`.`athlete_info_id`" +
-            "JOIN `stats` as s" +
-            "ON `a`.`athlete_id` = `s`.`athlete_id`" +
-            "WHERE `ai`.`user_id` = '4'";
 
-        // let sqlQuery = mysql.format(query, inserts);
+        let query = "SELECT ??.??, ??.??, ??.??, " +
+            "??.??, ??.??, ??.??, " +
+            "??.??, ??.?? " +
+            "FROM ?? " +
+            "JOIN ??" +
+            "ON ??.?? = ??.?? " +
+            "JOIN ?? " +
+            "ON ??.?? = ??.?? " +
+            "WHERE ??.?? = '4' ";
+        let inserts = [ai, 'first_name', ai, 'last_name', ai, 'height', ai, 'weight', ai, 'img_url', ai, 'age',
+        s, 'stat_name', s, 'stat_value', ai, 'athletes', ai, 'athlete_info_id', 'athletes', 'athlete_info_id',
+        s, 'athletes', 'athlete_id', s, 'athlete_id', ai, 'user_id'];
+
+        let sqlQuery = mysql.format(query, inserts);
+        console.log(sqlQuery)
 
         const output = {
             success: false,
@@ -33,13 +47,14 @@ module.export = function (webserver) {
             errors: []
         };
 
-        dataBase.query(query, function (error, data, fields) {
+        dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {
                 output.success = true;
                 output.user = data;
             } else {
-                output.errors = errors;
+                output.errors = error;
             }
+            console.log(JSON.stringify(output));
             res.json(output);
         });
     });

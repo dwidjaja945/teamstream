@@ -19,10 +19,10 @@ dataBase.connect(error => {
 
 
 // endpoint for athlete profile
-require('./routes/athlete_profile')(webserver);
+// require('./routes/athlete_profile')(webserver, dataBase, mysql);
 
 // endpoint for roster
-require('./routes/roster')(webserver);
+require('./routes/roster')(webserver, dataBase, mysql);
 
 
 webserver.listen(3000, function() {

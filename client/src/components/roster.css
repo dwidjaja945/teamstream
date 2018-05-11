@@ -1,35 +1,34 @@
-.container{
-    border: 1px solid black;
-    height: 95vh;
-    background-image: url('https://thumbs.dreamstime.com/b/wistful-blue-background-10670933.jpg');
+.rosterContainer {
+	border: 1px solid black;
+	height: 95vh;
+	background-image: url("https://thumbs.dreamstime.com/b/wistful-blue-background-10670933.jpg");
 }
-.name{
-    position: relative;
-    border-radius: 5%;
-    border: 5px solid rgba(192,192,192,0.4);
-    width: 80%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    font-size:1.3em;
-    color: white;
-    left: 5%;
+.name {
+	position: relative;
+	border-radius: 5%;
+	border: 5px solid rgba(192, 192, 192, 0.4);
+	width: 80%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-size: 1.3em;
+	color: white;
+	left: 5%;
 }
-.rosterHeader{
-    position: relative;
-    left: 36%;
+.rosterHeader {
+	position: relative;
+	left: 36%;
 }
-.namesContainer{
-    border: 1px solid black;
-    height: 80vh;
-    width: 85vw;
-    margin-left: 17px;
+.namesContainer {
+	border: 1px solid black;
+	height: 80vh;
+	width: 85vw;
+	margin-left: 17px;
 }
-.coach{
-    border-bottom: 2px solid black;
-    font-size: 1.5em;
-    border-radius: 5%;
-    position: relative;
-    right: 9%;
-    display: inline;
-
+.coach {
+	border-bottom: 2px solid black;
+	font-size: 1.5em;
+	border-radius: 5%;
+	position: relative;
+	right: 9%;
+	display: inline;
 }

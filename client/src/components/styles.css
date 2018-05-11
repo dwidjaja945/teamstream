@@ -18,6 +18,101 @@ body {
 	box-sizing: border-box;
 }
 
+/***********Login***************/
+.loginContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.loginLogoContent {
+	height: 50%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+.loginTeamLogo {
+	width: 98%;
+}
+
+.loginButtonContent {
+	height: 50%;
+	width: 100%;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.loginButtons {
+	height: 14%;
+	width: 40%;
+	margin: 10px;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	color: white;
+}
+
+.loginButtons:hover {
+	background-color: #dadada;
+	color: #000000;
+}
+
+.btnLog {
+	font-size: 20px;
+}
+
+/**********fork Nav************/
+
+.forkContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.forkButtonContent {
+	height: 25%;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.forkButtons {
+	height: 27%;
+	width: 100%;
+	margin: 22px;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	color: white;
+}
+
+.forkButtons:hover {
+	background-color: #dadada;
+	color: #000000;
+}
+
+.btnFork {
+	font-size: 20px;
+}
+
 /********User Profile**********/
 .profileContainer {
 	height: 100vh;
@@ -200,5 +295,3 @@ body {
 	background-color: #dadada;
 	color: #000000;
 }
-
-/***************************************/

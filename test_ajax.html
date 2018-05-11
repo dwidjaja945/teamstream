@@ -20,7 +20,16 @@
         <input id='athleteID' type="text">
         <label>Team ID</label>
         <input id='teamID' type="text">
+        <label>Pinned? (false, true)</label>
+        <input id='pinned' type="text">
         <button class='bulletinBoardPost'> Bulletin Board Post</button>
+    </div>
+    <div>
+        <label>Post_id</label>
+        <input id='post_id' type="text">
+        <label>Athlete ID</label>
+        <input id='athlete_id' type="text">
+        <button id='bulletinBoardDelete'>Bulletin Board Delete</button>
     </div>
 
 
@@ -48,13 +57,36 @@
                 data: {
                     post_text: $('#postText').val(),
                     athlete_id: $('#athleteID').val(),
-                    team_id: $('#teamID').val()
+                    team_id: $('#teamID').val(),
+                    pinned: $("#pinned").val()
                 },
                 success: (data) => {
-                    console.log(data);
+                    console.log('data: ' ,data);
                 },
+                error: (errors) => {
+                    console.log('errors: ' , errors);
+                }
             })
         });
+
+        $("#bulletinBoardDelete").click( () => {
+            console.log($("#athlete_id").val());
+            $.ajax({
+                method: 'delete',
+                url: 'http://localhost:3000/api/bulletin_board',
+                dataType: 'json',
+                data: {
+                    athlete_id: parseInt($("#athlete_id").val()),
+                    post_id: parseInt($('#post_id').val())
+                },
+                success: (data) => {
+                    console.log('data: ', data);
+                },
+                error: (error) => {
+                    console.log('errors: ', error);
+                }
+            })
+        })
 
 
     </script>

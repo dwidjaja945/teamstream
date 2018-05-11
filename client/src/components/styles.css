@@ -1,4 +1,4 @@
-.hero-body {
+/* .hero-body {
 	padding: 10px;
 }
 
@@ -9,4 +9,289 @@
 .profileNav {
 	display: flex;
 	justify-content: space-around;
+} */
+body {
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/***********Login***************/
+.loginContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.loginLogoContent {
+	height: 50%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+.loginTeamLogo {
+	width: 98%;
+}
+
+.loginButtonContent {
+	height: 50%;
+	width: 100%;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.loginButtons {
+	height: 14%;
+	width: 40%;
+	margin: 10px;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	color: white;
+}
+
+.loginButtons:hover {
+	background-color: #dadada;
+	color: #000000;
+}
+
+.btnLog {
+	font-size: 20px;
+}
+
+/**********fork Nav************/
+
+.forkContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.forkButtonContent {
+	height: 25%;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.forkButtons {
+	height: 27%;
+	width: 100%;
+	margin: 22px;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	color: white;
+}
+
+.forkButtons:hover {
+	background-color: #dadada;
+	color: #000000;
+}
+
+.btnFork {
+	font-size: 20px;
+}
+
+/********User Profile**********/
+.profileContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.profile {
+	width: 100%;
+	margin: 0;
+}
+
+.profileNav {
+	height: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	/* border-radius: 2px; */
+}
+
+.profileBackArrow {
+	height: 100%;
+	width: 10%;
+	background-color: #000000;
+	border: solid 2px #dadada;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+
+.profileBackArrow:hover {
+	background-color: #dadada;
+}
+
+.backArrowImg {
+	height: 80%;
+}
+
+.profileTsLogo {
+	height: 100%;
+	width: 90%;
+	position: relative;
+}
+
+.profileNavTitle {
+	position: absolute;
+	color: white;
+	font-size: 20px;
+	left: 98px;
+	top: 6px;
+}
+
+.profileTitleContent {
+	height: 10%;
+	position: relative;
+	background-color: #dadada;
+	border: solid 2px #000000;
+	border-radius: 5px;
+}
+
+.profileTitleHeader {
+	position: absolute;
+	left: 66px;
+	top: 13px;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.profilePic {
+	height: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.athPic {
+	margin: 0;
+	height: 80%;
+}
+
+.profileInfo {
+	height: 40%;
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.profileName {
+	height: 10%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	border-radius: 2px;
+}
+
+.athleteName {
+	font-size: 24px;
+	color: white;
+}
+
+.profileBio {
+	height: 30%;
+	width: 100%;
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.bioTitleContainer {
+	height: 30%;
+	width: 100%;
+	background-color: #dadada;
+	border: solid 2px #000000;
+	border-radius: 5px;
+	position: relative;
+}
+
+.profileBioTitle {
+	font-weight: bold;
+	font-size: 22px;
+	position: absolute;
+	left: 5px;
+}
+
+.profileBioInfo {
+	height: 70%;
+	width: 100%;
+}
+
+.profileStats {
+	height: 60%;
+	width: 100%;
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.statsTitleContainer {
+	height: 15%;
+	width: 100%;
+	background-color: #dadada;
+	border: solid 2px #000000;
+	border-radius: 5px;
+	position: relative;
+}
+
+.profileStatsTitle {
+	font-weight: bold;
+	font-size: 22px;
+	position: absolute;
+	left: 5px;
+}
+
+.profileStatsInfo {
+	height: 25%;
+	width: 100%;
+}
+
+.profileFooter {
+	height: 5%;
+	position: relative;
+}
+
+.profileSubmit {
+	position: absolute;
+	padding: 7px;
+	left: 153px;
+	border-radius: 10px;
+	top: 2px;
+	background-color: #1056ab;
+	color: white;
+}
+
+.profileSubmit:hover {
+	/* background-color: #3373e7; */
+	background-color: #dadada;
+	color: #000000;
 }

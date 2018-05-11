@@ -1,5 +1,5 @@
-
 module.exports = function (webserver, dataBase, mysql) {
+
     webserver.get('/athlete_profile', function (req , res ) {
         let athleteID;
         if (req.body && req.body.id) {

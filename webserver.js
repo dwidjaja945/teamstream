@@ -18,13 +18,17 @@ dataBase.connect(error => {
 });
 
 
-// endpoint for athlete profile
 // require('./routes/athlete_profile')(webserver, dataBase, mysql);
 
 // endpoint for roster
-require('./routes/roster')(webserver, dataBase, mysql);
+// require('./routes/roster')(webserver, dataBase, mysql);
+
+// endpoint for bulletin board
+require('./routes/bulletin_board')(webserver, dataBase, mysql);
 
 
-webserver.listen(3000, function() {
+webserver.listen(3000, () => {
     console.log("Server listening on 3000");
+}).on('error', (error) => {
+  console.log('Server Error: ' , error.message);
 })

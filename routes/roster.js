@@ -1,6 +1,6 @@
-
 module.exports = function (webserver, dataBase, mysql) {
     webserver.get('/roster', function (req, res) {
+
         let teamID;
         if (req.body && req.body.id) {
             teamID = req.body.id;

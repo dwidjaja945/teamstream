@@ -4,7 +4,7 @@ export default [
         firstName: 'Afro',
         lastName: 'Jack',
         userLevel: 0,
-        message: "Hey, can anyone give me a ride to practice?"
+        message: "Hey, can anyone give me a ride to practice?",
     },
     {
         athleteID: 32,

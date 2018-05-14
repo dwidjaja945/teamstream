@@ -24,7 +24,7 @@
         <input id='pinned' type="text">
         <button class='bulletinBoardPost'> Bulletin Board Post</button>
     </div>
-      <div>
+    <div>
         <label>Post_id</label>
         <input id='post_id' type="text">
         <label>Athlete ID</label>
@@ -77,6 +77,28 @@
 
     </div>
 
+    <br>
+    <br>
+
+    <div class="login">
+        <h2>Log in Sessions</h2>
+        <input id='username' type="text" placeholder="username">
+        <input id='password' type="password" placeholder="password">
+        <button id='login'>Log In</button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="signup">
+        <h2>Sign Up</h2>
+        <input id='sign-up-email' placeholder='email' type="text">
+        <input id="sign-up-username" type='text' placeholder='username'>
+        <input id='sign-up-password' type='password' placeholder='password'>
+        <button id='signup'>Sign Up</button>
+    </div>
+
     <script>
 
         function makeAjaxCall(url, method, data) {
@@ -96,13 +118,30 @@
             })
         }
 
-        $('.bulletinBoardGet').click( () => {
+        $("#signup").click(() => {
+            let dataToSend = {
+                username: $("#sign-up-username").val(),
+                password: $("#sign-up-password").val(),
+                email: $("#sign-up-email").val()
+            }
+            makeAjaxCall('http://localhost:3000/api/signup', 'post', dataToSend);
+        })
+
+        $("#login").click(() => {
+            let dataToSend = {
+                username: $("#username").val(),
+                password: $("#password").val()
+            }
+            makeAjaxCall('http://localhost:3000/api/login', 'post', dataToSend);
+        })
+
+        $('.bulletinBoardGet').click(() => {
             $.ajax({
                 method: 'get',
                 url: 'http://localhost:3000/api/bulletin_board',
                 dataType: 'json',
                 success: (data) => {
-                    console.log("success: data: " , data)
+                    console.log("success: data: ", data)
                 },
                 error: (errors) => {
                     console.log("error: data: ", errors);
@@ -123,15 +162,15 @@
                     pinned: $("#pinned").val()
                 },
                 success: (data) => {
-                    console.log('data: ' ,data);
+                    console.log('data: ', data);
                 },
                 error: (errors) => {
-                    console.log('errors: ' , errors);
+                    console.log('errors: ', errors);
                 }
             })
         });
-      
-              $("#bulletinBoardDelete").click( () => {
+
+        $("#bulletinBoardDelete").click(() => {
             console.log($("#athlete_id").val());
             $.ajax({
                 method: 'delete',
@@ -151,16 +190,16 @@
         })
 
     </script>
-  
+
     <script>
-        $('.athleteProfile').click( () => {
+        $('.athleteProfile').click(() => {
             let dataInput = $('#athleteProfileID').val();
             $.ajax({
                 method: 'get',
                 url: 'http://localhost:3000/api/athlete_profile' + `?athleteId=${dataInput}`,
                 dataType: 'json',
                 success: (data) => {
-                    console.log("success: data: " , data)
+                    console.log("success: data: ", data)
                 },
                 error: (errors) => {
                     console.log("error: data: ", errors);
@@ -168,7 +207,7 @@
             });
         });
 
-        $('.athleteProfilePost').click( () => {
+        $('.athleteProfilePost').click(() => {
             let athleteInfoId = $('#athleteInfoID').val();
             let firstName = $('#first_name').val();
             let lastName = $('#last_name').val();
@@ -182,16 +221,18 @@
             let statName = $('#statName').val();
             let statValue = $('#statValue').val();
 
-            let dataToSend = {athleteInfoId, firstName, lastName, height, weight, age,
-                userLevel, userID, teamID, statName, statValue};
+            let dataToSend = {
+                athleteInfoId, firstName, lastName, height, weight, age,
+                userLevel, userID, teamID, statName, statValue
+            };
 
             $.ajax({
                 method: 'post',
                 url: 'http://localhost:3000/api/athlete_profile',
-                data:dataToSend,
+                data: dataToSend,
                 dataType: 'json',
                 success: (data) => {
-                    console.log("success: data: " , data)
+                    console.log("success: data: ", data)
                 },
                 error: (errors) => {
                     console.log("error: data: ", errors);

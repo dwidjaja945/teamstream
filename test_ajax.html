@@ -82,8 +82,8 @@
 
     <div class="login">
         <h2>Log in Sessions</h2>
-        <input id='username' type="text" placeholder="username">
-        <input id='password' type="password" placeholder="password">
+        <input id='login-username' type="text" placeholder="username">
+        <input id='login-password' type="password" placeholder="password">
         <button id='login'>Log In</button>
     </div>
 
@@ -129,11 +129,16 @@
 
         $("#login").click(() => {
             let dataToSend = {
-                username: $("#username").val(),
-                password: $("#password").val()
+                username: $("#login-username").val(),
+                password: $("#login-password").val()
             }
-            makeAjaxCall('http://localhost:3000/api/login', 'post', dataToSend);
+            return makeAjaxCall('http://localhost:3000/api/login', 'post', dataToSend);
         })
+
+        // $('.bulletinBoardGet').click( () => {
+        //     let dataToSend = {};
+        //     makeAjaxCall('http://localhost:3000/api/bulletin_board', 'get', dataToSend);
+        // })
 
         $('.bulletinBoardGet').click(() => {
             $.ajax({

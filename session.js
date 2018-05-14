@@ -12,20 +12,10 @@ module.exports = function(webserver, dataBase, mysql, session) {
       errors: []
     };
 
-    let query = "SELECT \`user_id\` FROM \`users\` WHERE \`username\` = '??' AND \`password\` = '??'";
-    let inserts = [username, password];
+    let query = 'SELECT `user_id` FROM `users` '+
+    'WHERE `username` = ? AND `password` = ?'
 
-    let sqlQuery = mysql.format(query, inserts);
-
-    dataBase.query(sqlQuery, (error, data, fields) => {
-        if(!error){
-            output.success = true;
-            output.data = data;
-        } else {
-            output.errors = error;
-        };
-        res.json(output);
-    });
+    
 
   });
 };

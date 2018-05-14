@@ -59,7 +59,6 @@ module.exports = function(webserver, dataBase, mysql) {
       }
       if (req.body.pinned) {
         var pinned = req.body.pinned;
-        console.log(pinned);
       }
     } else {
       res.send("Missing Proper query items");

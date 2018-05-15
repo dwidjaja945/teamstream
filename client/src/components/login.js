@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import teamLogo from "./images/teamLogo.jpg";
+import teamLogo from "./images/dylansRowing.jpg";
 
 export default props => (
 	<div className="loginContainer">

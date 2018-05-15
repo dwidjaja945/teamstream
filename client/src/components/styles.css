@@ -62,6 +62,56 @@ body {
 	top: 6px;
 }
 
+/**************Nav Bar***************/
+.menuBtn {
+	height: 35px;
+	width: 40px;
+	border: 2px solid #dadada;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.menuBtn span {
+	height: 3px;
+	width: 27px;
+	margin: 2px;
+	background-color: #dadada;
+}
+
+.mainNavBar {
+	height: 5vh;
+	width: 100vw;
+	display: flex;
+	justify-content: space-around;
+	background-color: #1056ab;
+}
+
+.homeBtn {
+	height: 100%;
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.homeBtnImg {
+	height: 35px;
+}
+
+.mainTsLogo {
+	height: 100%;
+	width: 60%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hamburgerBtn {
+	height: 100%;
+	width: 20%;
+}
 /***********Login***************/
 .loginContainer {
 	height: 100vh;
@@ -99,7 +149,7 @@ body {
 	height: 14%;
 	width: 40%;
 	margin: 10px;
-	border-radius: 50px;
+	border-radius: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -135,7 +185,7 @@ body {
 	height: 10%;
 	position: relative;
 	background-color: #dadada;
-	border: solid 2px #000000;
+	/* border: solid 2px #000000; */
 	border-radius: 5px;
 }
 
@@ -191,7 +241,7 @@ body {
 	height: 30%;
 	width: 100%;
 	background-color: #dadada;
-	border: solid 2px #000000;
+	/* border: solid 2px #000000; */
 	border-radius: 5px;
 	position: relative;
 }
@@ -219,7 +269,7 @@ body {
 	height: 15%;
 	width: 100%;
 	background-color: #dadada;
-	border: solid 2px #000000;
+	/* border: solid 2px #000000; */
 	border-radius: 5px;
 	position: relative;
 }
@@ -279,7 +329,7 @@ body {
 	height: 7%;
 	width: 100%;
 	margin: 22px;
-	border-radius: 30px;
+	border-radius: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -307,6 +357,15 @@ body {
 	flex-flow: column wrap;
 }
 
+.cTCodeGenerator {
+	height: 95%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
 .createTeamName {
 	height: 40%;
 	width: 100%;
@@ -323,34 +382,9 @@ body {
 	border-radius: 5px;
 }
 
-.cTCodeGenerator {
-	height: 35%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
-}
-
-.cGTitleContainer {
-	height: 35%;
-	width: 60%;
-	border: 2px solid grey;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 30px;
-	background-color: #dadada;
-	border-radius: 5px;
-}
-
-.cGTitle {
-	font-size: 20px;
-}
-
 .cGNumberContainer {
-	height: 10%;
-	width: 40%;
+	height: 7%;
+	width: 50%;
 	border: 2px solid grey;
 	display: flex;
 	justify-content: center;
@@ -358,16 +392,8 @@ body {
 	margin: 10px;
 }
 
-.cGDoneBtnContainer {
-	height: 20%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .cGbtnContent {
-	height: 30%;
+	height: 6%;
 	width: 30%;
 	display: flex;
 	justify-content: center;
@@ -375,6 +401,7 @@ body {
 	background-color: #1056ab;
 	color: white;
 	border-radius: 10px;
+	margin: 95px;
 }
 
 .cGDoneBtn {
@@ -411,7 +438,7 @@ body {
 }
 
 .jTteamCode {
-	height: 13%;
+	height: 11%;
 	width: 65%;
 	border-radius: 5px;
 	background-color: #1056ab;
@@ -442,7 +469,7 @@ body {
 	width: 30%;
 	background-color: #1056ab;
 	color: white;
-	border-radius: 21px;
+	border-radius: 15px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

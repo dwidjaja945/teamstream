@@ -37,11 +37,11 @@ class App extends Component{
 			<NavBar />
 			{/* <Login /> */}
 			{/* <AthleteProfile /> */}
-			<BulletinBoard   />
+			{/* <BulletinBoard   /> */}
 			{/* <ForkNav /> */}
 			{/* <CreateTeam /> */}
 			{/* <JoinTeam /> */}
-			{/* <Roster /> */}
+			<Roster />
 
 		</div>
 	);

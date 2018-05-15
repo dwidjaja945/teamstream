@@ -11,18 +11,13 @@ export default props => (
 				<span className="backNavTitle">Team Stream</span>
 			</div>
 		</div>
-		<div className="createTeamName">
-			<span className="teamName">Team Name</span>
-		</div>
 		<div className="cTCodeGenerator">
-			<div className="cGTitleContainer">
-				<span className="cGTitle">Team Code Generator</span>
+			<div className="createTeamName">
+				<span className="teamName">Team Name</span>
 			</div>
 			<div className="cGNumberContainer">
 				<span className="cGNumber">Code for Team</span>
 			</div>
-		</div>
-		<div className="cGDoneBtnContainer">
 			<div className="cGbtnContent">
 				<span className="cGDoneBtn">Done</span>
 			</div>

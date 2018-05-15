@@ -1,7 +1,9 @@
+
 .rosterContainer {
 	border: 1px solid black;
 	height: 95vh;
 	background-image: url("https://thumbs.dreamstime.com/b/wistful-blue-background-10670933.jpg");
+
 }
 .name {
 	position: relative;

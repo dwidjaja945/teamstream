@@ -1,6 +1,7 @@
-import React from 'react';
-import athleteRosterData from './athleteRosterData';
-import './roster.css';
+import React from "react";
+import athleteRosterData from "./athleteRosterData";
+import "./roster.css";
+
 
 export default props=>{
     console.log("This is dummy data", athleteRosterData);
@@ -35,3 +36,4 @@ export default props=>{
         </div>
     )
 }
+

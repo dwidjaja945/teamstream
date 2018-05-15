@@ -18,6 +18,154 @@ body {
 	box-sizing: border-box;
 }
 
+/**********Nav Bar with Back Btn****************/
+
+.backNav {
+	height: 5%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+}
+
+.backArrow {
+	height: 100%;
+	width: 10%;
+	background-color: #000000;
+	border: solid 2px #dadada;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+
+.backArrow:hover {
+	background-color: #dadada;
+}
+
+.backArrowImg {
+	height: 80%;
+}
+
+.backTsLogo {
+	height: 100%;
+	width: 90%;
+	position: relative;
+}
+
+.backNavTitle {
+	position: absolute;
+	color: white;
+	font-size: 20px;
+	left: 98px;
+	top: 6px;
+}
+
+/**************Nav Bar***************/
+.menuBtn {
+	height: 35px;
+	width: 40px;
+	border: 2px solid #dadada;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.menuBtn span {
+	height: 3px;
+	width: 27px;
+	margin: 2px;
+	background-color: #dadada;
+}
+
+.mainNavBar {
+	height: 5vh;
+	width: 100vw;
+	display: flex;
+	justify-content: space-around;
+	background-color: #1056ab;
+}
+
+.homeBtn {
+	height: 100%;
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.homeBtnImg {
+	height: 35px;
+}
+
+.mainTsLogo {
+	height: 100%;
+	width: 60%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hamburgerBtn {
+	height: 100%;
+	width: 20%;
+}
+/***********Login***************/
+.loginContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.loginLogoContent {
+	height: 50%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+.loginTeamLogo {
+	width: 98%;
+}
+
+.loginButtonContent {
+	height: 50%;
+	width: 100%;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.loginButtons {
+	height: 14%;
+	width: 40%;
+	margin: 10px;
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	color: white;
+}
+
+.loginButtons:hover {
+	background-color: #dadada;
+	color: #000000;
+}
+
+.btnLog {
+	font-size: 20px;
+}
+
 /********User Profile**********/
 .profileContainer {
 	height: 100vh;
@@ -33,53 +181,11 @@ body {
 	margin: 0;
 }
 
-.profileNav {
-	height: 5%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #1056ab;
-	/* border-radius: 2px; */
-}
-
-.profileBackArrow {
-	height: 100%;
-	width: 10%;
-	background-color: #000000;
-	border: solid 2px #dadada;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 5px;
-}
-
-.profileBackArrow:hover {
-	background-color: #dadada;
-}
-
-.backArrowImg {
-	height: 80%;
-}
-
-.profileTsLogo {
-	height: 100%;
-	width: 90%;
-	position: relative;
-}
-
-.profileNavTitle {
-	position: absolute;
-	color: white;
-	font-size: 20px;
-	left: 98px;
-	top: 6px;
-}
-
 .profileTitleContent {
 	height: 10%;
 	position: relative;
 	background-color: #dadada;
-	border: solid 2px #000000;
+	/* border: solid 2px #000000; */
 	border-radius: 5px;
 }
 
@@ -135,7 +241,7 @@ body {
 	height: 30%;
 	width: 100%;
 	background-color: #dadada;
-	border: solid 2px #000000;
+	/* border: solid 2px #000000; */
 	border-radius: 5px;
 	position: relative;
 }
@@ -163,7 +269,7 @@ body {
 	height: 15%;
 	width: 100%;
 	background-color: #dadada;
-	border: solid 2px #000000;
+	/* border: solid 2px #000000; */
 	border-radius: 5px;
 	position: relative;
 }
@@ -196,9 +302,187 @@ body {
 }
 
 .profileSubmit:hover {
-	/* background-color: #3373e7; */
 	background-color: #dadada;
 	color: #000000;
 }
 
-/***************************************/
+/**********fork Nav************/
+.forkContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.forkButtonContent {
+	height: 95%;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.forkButtons {
+	height: 7%;
+	width: 100%;
+	margin: 22px;
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	color: white;
+}
+
+.forkButtons:hover {
+	background-color: #dadada;
+	color: #000000;
+}
+
+.btnFork {
+	font-size: 20px;
+}
+
+/***********Create Team***********/
+
+.createTeamContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.cTCodeGenerator {
+	height: 95%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.createTeamName {
+	height: 40%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.teamName {
+	font-size: 50px;
+	padding: 15px;
+	background-color: #1056ab;
+	color: white;
+	border-radius: 5px;
+}
+
+.cGNumberContainer {
+	height: 7%;
+	width: 50%;
+	border: 2px solid grey;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+}
+
+.cGbtnContent {
+	height: 6%;
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1056ab;
+	color: white;
+	border-radius: 10px;
+	margin: 95px;
+}
+
+.cGDoneBtn {
+	font-size: 20px;
+}
+
+.cGbtnContent:hover {
+	color: #000000;
+	background-color: #dadada;
+}
+
+/**********Join Team*************/
+
+.joinTeamPage {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.navBackArrow {
+	height: 5%;
+}
+
+.joinTeamContainer {
+	height: 95%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.jTteamCode {
+	height: 11%;
+	width: 65%;
+	border-radius: 5px;
+	background-color: #1056ab;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 60px;
+}
+
+.teamCodeTitle {
+	font-size: 40px;
+}
+
+.jTcodeNum {
+	height: 5%;
+	width: 37%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid grey;
+	border-radius: 5px;
+	margin: 60px;
+}
+
+.jTcodeBtn {
+	height: 5%;
+	width: 30%;
+	background-color: #1056ab;
+	color: white;
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 60px;
+}
+
+.jTcodeBtn:hover {
+	color: #000000;
+	background-color: #dadada;
+}
+
+.codeBtn {
+	font-size: 20px;
+}
+
+/******************************/

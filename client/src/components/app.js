@@ -1,9 +1,16 @@
+
 import React, {Component} from "react";
-import AthleteProfile from "./athlete_profile";
-import Roster from './roster';
 import AddBulletinMessages from './addBulletinMessage';
 import BulletinBoard from './bulletinBoard';
 import bulletinDummyData from './bulletinDummyData';
+import Login from "./login";
+import ForkNav from "./forkNav";
+import CreateTeam from "./create_team";
+import JoinTeam from "./join_team";
+import AthleteProfile from "./athlete_profile";
+import Roster from "./roster";
+import NavBar from "./navBar";
+
 
 
 
@@ -27,9 +34,15 @@ class App extends Component{
 	render(){
 	return (
 		<div className="container">
+			<NavBar />
+			{/* <Login /> */}
 			{/* <AthleteProfile /> */}
-			{/* <Roster/> */}
 			<BulletinBoard   />
+			{/* <ForkNav /> */}
+			{/* <CreateTeam /> */}
+			{/* <JoinTeam /> */}
+			{/* <Roster /> */}
+
 		</div>
 	);
 }

@@ -6,26 +6,22 @@ import BulletinBoard from './bulletinBoard';
 import bulletinDummyData from './bulletinDummyData';
 
 
+
 class App extends Component{
 	constructor(props){
 		super(props);
 		this.state = ({
 			bulletinDummyData: [],
-			messageToPin: []
 		});
 	}
 	componentDidMount(){
 		this.getRosterData();
 	}
-	addMessage(message){
-		this.setState({
-			bulletinDummyData: [message, ...this.state.bulletinDummyData ]
-		});
-	}
+
 	getRosterData(){
 		this.setState({
 			bulletinDummyData
-		})
+		});
 	}
 
 	render(){
@@ -33,8 +29,7 @@ class App extends Component{
 		<div className="container">
 			{/* <AthleteProfile /> */}
 			{/* <Roster/> */}
-			<BulletinBoard   data={this.state.bulletinDummyData}/>
-			<AddBulletinMessages add={this.addMessage.bind(this)}/>
+			<BulletinBoard   />
 		</div>
 	);
 }

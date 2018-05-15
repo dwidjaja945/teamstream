@@ -27,9 +27,9 @@ export default props=>{
         <div className="container">
             <h1 className="rosterHeader">Roster</h1>
             <div className="namesContainer">
-            <ul className="list-group">
-                {listElements}
-            </ul>
+                <ul className="list-group">
+                    {listElements}
+                </ul>
             </div>
             
         </div>

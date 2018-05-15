@@ -30,3 +30,6 @@ button{
     height: 20px;
     display: inline;
 }
+.pinDiv{
+    background-color: rgba(255,0,0,.4);
+}

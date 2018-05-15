@@ -1,17 +1,25 @@
 module.exports = function(webserver, dataBase, mysql) {
   webserver.get("/api/bulletin_board", function(req, res) {
+    let user_id;
     const output = {
       success: false,
       data: [],
       errors: []
     };
 
-    let teamID = 1;
+    let teamID = null;
+    if (req.session !== undefined) {
+      user_id = req.session.user_id;
+      console.log("user_id: " , user_id);
+    } else {
+      res.redirect("/login");
+    }
+    teamID = 1;
     if (req.body && req.body.id) {
       //   teamID = req.body.id;
       // will need to rework to pull ID from sessions
     }
-    let query = `SELECT athlete_info.first_name, athlete_info.last_name, inner_table.post_text, inner_table.timestamp
+    let athlete_info_id_query = `SELECT athlete_info.first_name, athlete_info.last_name, inner_table.post_text, inner_table.timestamp
             FROM (SELECT post_text, bulletin.athlete_id AS b_a_id, bulletin.timestamp, bulletin.team_id
             FROM bulletin
             JOIN athletes

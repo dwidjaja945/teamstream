@@ -107,6 +107,10 @@
                 method: method,
                 data: data,
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log("success data: ", data)
                     return data;
@@ -145,6 +149,10 @@
                 method: 'get',
                 url: 'http://localhost:3000/api/bulletin_board',
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log("success: data: ", data)
                 },
@@ -166,6 +174,10 @@
                     team_id: $('#teamID').val(),
                     pinned: $("#pinned").val()
                 },
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log('data: ', data);
                 },
@@ -185,6 +197,10 @@
                     athlete_id: parseInt($("#athlete_id").val()),
                     post_id: parseInt($('#post_id').val())
                 },
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log('data: ', data);
                 },
@@ -203,6 +219,10 @@
                 method: 'get',
                 url: 'http://localhost:3000/api/athlete_profile' + `?athleteId=${dataInput}`,
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log("success: data: ", data)
                 },
@@ -236,6 +256,10 @@
                 url: 'http://localhost:3000/api/athlete_profile',
                 data: dataToSend,
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log("success: data: ", data)
                 },

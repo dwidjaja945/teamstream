@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import blueLeftArrow from "./images/blue-chevron-left.png";
 
 export default props => (
@@ -18,9 +19,9 @@ export default props => (
 			<div className="jTcodeNum">
 				<span className="codeNum">Code Number Here</span>
 			</div>
-			<div className="jTcodeBtn">
+			<Link to="/bulletin_board" className="jTcodeBtn">
 				<span className="codeBtn">Join!</span>
-			</div>
+			</Link>
 		</div>
 	</div>
 );

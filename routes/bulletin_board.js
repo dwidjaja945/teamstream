@@ -1,9 +1,9 @@
 module.exports = function(webserver, dataBase, mysql) {
   webserver.get("/api/bulletin_board", function(req, res) {
-    user_id = req.session.user_id;
-    team_id = req.session.team_id;
-    athlete_id = req.session.athlete_id;
-    athlete_info_id = req.session.athlete_info_id;
+    let user_id = req.session.user_id;
+    let team_id = req.session.team_id;
+    let athlete_id = req.session.athlete_id;
+    let athlete_info_id = req.session.athlete_info_id;
     const output = {
       success: false,
       data: [],
@@ -12,7 +12,6 @@ module.exports = function(webserver, dataBase, mysql) {
 
     console.log('req.session: ', req.session);
     
-    let teamID = null;
     if (req.session.user_id === undefined) {
       res.redirect("/login");
     }
@@ -21,18 +20,38 @@ module.exports = function(webserver, dataBase, mysql) {
     // first will need to pull bulletin posts etc
     // then second query to pull athlete names etc
     // then push all that data into output.data
-    let athlete_info_id_query = `SELECT athlete_info_id
-      FROM athlete_info
-      WHERE user_id = ?`
+    let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
+        \`athlete_info\`.\`last_name\`, 
+        \`bulletin\`.\`athlete_id\`, 
+        \`post_text\`, 
+        \`timestamp\`, 
+        \`pinned\`, 
+        \`teams\`.\`team_name\`
+      FROM \`bulletin\`
+      JOIN \`teams\`
+        ON \`bulletin\`.\`team_id\` = \`teams\`.\`team_id\`
+      JOIN \`athletes\`
+      	ON \`bulletin\`.\`athlete_id\` = \`athletes\`.\`athlete_id\`
+      JOIN \`athlete_info\`
+      	ON \`athletes\`.\`athlete_info_id\` = \`athlete_info\`.\`athlete_info_id\`
+      WHERE \`bulletin\`.\`team_id\` = ?`;
 
-    let athlete_info_id_inserts = [user_id];
+    let athlete_info_id_inserts = [team_id];
 
     let athlete_info_id_sqlQuery = mysql.format(athlete_info_id_query, athlete_info_id_inserts);
 
     //Get the team_id(s) from user_id
     dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
-
       
+      if(!error) {
+        output.success = true;
+        output.data = data;
+      } else {
+        output.errors = error;
+      }
+      console.log(output);
+      res.json(output);
+
     });
 
   });

@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const session = require("express-session");
+const cookieParser = require('cookie-parser');
 const webserver = express();
 
 const credentials = require('./config/mysqlcredentials.js');
@@ -11,6 +12,7 @@ const bodyParser = require('body-parser');
 
 webserver.use(bodyParser.urlencoded({ extended: false }));
 webserver.use(bodyParser.json());
+webserver.use(cookieParser());
 
 webserver.use(cors());
 
@@ -23,6 +25,10 @@ webserver.use(express.static(__dirname + '/' + 'client'));
 dataBase.connect(error => {
   if (error) throw error;
   console.log("Created connection to database");
+});
+
+webserver.get('/test', (req, res) => {
+  res.sendFile(__dirname + '/test_ajax.html');
 });
 
 require("./session.js")(webserver, dataBase, mysql, session);

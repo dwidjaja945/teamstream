@@ -61,12 +61,12 @@ body {
 	left: 98px;
 	top: 6px;
 }
+/*************Hamburger Menu***************/
 
-/**************Nav Bar***************/
 .menuBtn {
-	height: 35px;
+	height: 33px;
 	width: 40px;
-	border: 2px solid #dadada;
+	border: 2px solid #a3a3a3;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -77,8 +77,23 @@ body {
 	height: 3px;
 	width: 27px;
 	margin: 2px;
-	background-color: #dadada;
+	background-color: #a3a3a3;
 }
+
+.hamburgerBtn {
+	position: relative;
+}
+
+.hamburgerBullets {
+	width: 40vw;
+	padding: 35px;
+	position: absolute;
+	top: 40px;
+	right: 0px;
+	background-color: grey;
+}
+
+/**************Nav Bar***************/
 
 .mainNavBar {
 	height: 5vh;
@@ -97,7 +112,7 @@ body {
 }
 
 .homeBtnImg {
-	height: 35px;
+	height: 37px;
 }
 
 .mainTsLogo {
@@ -108,9 +123,17 @@ body {
 	align-items: center;
 }
 
-.hamburgerBtn {
+.mainNavTitle {
+	color: white;
+	font-size: 20px;
+}
+
+.burgerMenu {
 	height: 100%;
 	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 /***********Login***************/
 .loginContainer {

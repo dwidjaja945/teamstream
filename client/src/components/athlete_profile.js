@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
 import athletePic from "./images/athlete.jpg";
-import leftArrow from "./images/chevron-left.png";
 import blueLeftArrow from "./images/blue-chevron-left.png";
 import {Link} from 'react-router-dom';
 

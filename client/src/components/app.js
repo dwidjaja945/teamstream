@@ -1,4 +1,3 @@
-
 import React, {Component} from "react";
 import {Route} from 'react-router-dom';
 import AddBulletinMessages from './addBulletinMessage';
@@ -12,21 +11,18 @@ import AthleteProfile from "./athlete_profile";
 import Roster from "./roster";
 import NavBar from "./navBar";
 
-
-
-
-class App extends Component{
-	constructor(props){
+class App extends Component {
+	constructor(props) {
 		super(props);
-		this.state = ({
-			bulletinDummyData: [],
-		});
+		this.state = {
+			bulletinDummyData: []
+		};
 	}
-	componentDidMount(){
+	componentDidMount() {
 		this.getRosterData();
 	}
 
-	getRosterData(){
+	getRosterData() {
 		this.setState({
 			bulletinDummyData
 		});

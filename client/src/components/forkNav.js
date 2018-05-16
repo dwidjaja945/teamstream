@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import blueLeftArrow from "./images/blue-chevron-left.png";
 import "./styles.css";
 
@@ -13,12 +14,12 @@ export default props => (
 			</div>
 		</div>
 		<div className="forkButtonContent">
-			<div className="forkButtons">
+			<Link to="/create_team" className="forkButtons">
 				<span className="btnFork">Create Team</span>
-			</div>
-			<div className="forkButtons">
+			</Link>
+			<Link to="/join_team" className="forkButtons">
 				<span className="btnFork">Join Team</span>
-			</div>
+			</Link>
 		</div>
 	</div>
 );

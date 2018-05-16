@@ -155,6 +155,7 @@ body {
 	align-items: center;
 	background-color: #1056ab;
 	color: white;
+	text-decoration: none;
 }
 
 .loginButtons:hover {

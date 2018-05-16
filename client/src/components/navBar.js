@@ -36,13 +36,13 @@ class NavBar extends Component {
 						{button}
 						<ul>
 							<li>
-								<Link to="/">Bulletin</Link>
-							</li>
-							{/* <li>
-								<Link to="">Roster</Link>
+								<Link to="/bulletin_board">Bulletin</Link>
 							</li>
 							<li>
-								<Link to="">Profile</Link>
+								<Link to="/roster">Roster</Link>
+							</li>
+							<li>
+								<Link to="/athlete_profile">Profile</Link>
 							</li>
 							<li>
 								<Link to="">Athlete/Admin Account</Link>
@@ -58,7 +58,7 @@ class NavBar extends Component {
 							</li>
 							<li>
 								<Link to="">Log Out</Link>
-							</li> */}
+							</li>
 						</ul>
 					</div>
 				</div>

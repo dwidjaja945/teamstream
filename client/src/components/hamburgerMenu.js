@@ -28,29 +28,29 @@ class hamburgerMenu extends Component {
 					{button}
 					<ul className="hamburgerBullets">
 						<li>
-							<Link to="/">Bulletin</Link>
+							<Link to="/bulletin_board">Bulletin</Link>
 						</li>
-						{/* <li>
-								<Link to="">Roster</Link>
-							</li>
-							<li>
-								<Link to="">Profile</Link>
-							</li>
-							<li>
-								<Link to="">Athlete/Admin Account</Link>
-							</li>
-							<li>v
-								<Link to="">Calendar</Link>
-							</li>
-							<li>
-								<Link to="">Messaging</Link>
-							</li>
-							<li>
-								<Link to="">Other Team Accounts</Link>
-							</li>
-							<li>
-								<Link to="">Log Out</Link>
-							</li> */}
+						<li>
+							<Link to="/roster">Roster</Link>
+						</li>
+						<li>
+							<Link to="/athlete_profile">Profile</Link>
+						</li>
+						<li>
+							<Link to="">Athlete/Admin Account</Link>
+						</li>
+						<li>
+							<Link to="">Calendar</Link>
+						</li>
+						<li>
+							<Link to="">Messaging</Link>
+						</li>
+						<li>
+							<Link to="">Other Team Accounts</Link>
+						</li>
+						<li>
+							<Link to="">Log Out</Link>
+						</li>
 					</ul>
 				</div>
 			);

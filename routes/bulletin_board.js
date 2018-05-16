@@ -16,10 +16,6 @@ module.exports = function(webserver, dataBase, mysql) {
       res.redirect("/login");
     }
 
-    // Get bulletin data from sessions
-    // first will need to pull bulletin posts etc
-    // then second query to pull athlete names etc
-    // then push all that data into output.data
     let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
         \`athlete_info\`.\`last_name\`, 
         \`bulletin\`.\`athlete_id\`, 
@@ -40,7 +36,6 @@ module.exports = function(webserver, dataBase, mysql) {
 
     let athlete_info_id_sqlQuery = mysql.format(athlete_info_id_query, athlete_info_id_inserts);
 
-    //Get the team_id(s) from user_id
     dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
       
       if(!error) {

@@ -16,6 +16,7 @@ module.exports = function(webserver, dataBase, mysql) {
     
     if (req.session.user_id === undefined) {
       res.redirect("/login");
+      return;
     }
 
     let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
@@ -67,7 +68,7 @@ module.exports = function(webserver, dataBase, mysql) {
       }
       if (req.body.post_text) {
         var post_text = req.body.post_text;
-        // assign bulletin post here
+        // assign bulletin post here`
       }
       if (req.body.team_id) {
         var team_id = req.body.team_id;

@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import AddBulletinMessages from "./addBulletinMessage";
-import BulletinBoard from "./bulletinBoard";
-import bulletinDummyData from "./bulletinDummyData";
+import React, {Component} from "react";
+import {Route} from 'react-router-dom';
+import AddBulletinMessages from './addBulletinMessage';
+import BulletinBoard from './bulletinBoard';
+import bulletinDummyData from './bulletinDummyData';
 import Login from "./login";
 import ForkNav from "./forkNav";
 import CreateTeam from "./create_team";
@@ -27,20 +28,33 @@ class App extends Component {
 		});
 	}
 
-	render() {
-		return (
-			<div className="container">
-				<NavBar />
-				{/* <Login /> */}
-				{/* <AthleteProfile /> */}
-				{/* <BulletinBoard /> */}
-				{/* <ForkNav /> */}
-				{/* <CreateTeam /> */}
-				{/* <JoinTeam /> */}
-				{/* <Roster /> */}
-			</div>
-		);
-	}
+	render(){
+	return (
+		<div className="container">
+			<NavBar />
+			<Route exact path="/" component={Login}/>
+			<Route path="/bulletin_board" component={BulletinBoard}/>
+			<Route path="/athlete_profile" component={AthleteProfile}/>
+			<Route path="/roster" component={Roster}/>
+			<Route path="/fork_nav" component={ForkNav}/>
+			<Route path="/create_team" component={CreateTeam}/>
+			<Route path="/join_team" component={JoinTeam}/>
+
+
+
+
+
+			{/* <Login /> */}
+			{/* <AthleteProfile /> */}
+			{/* <BulletinBoard   /> */}
+			{/* <ForkNav /> */}
+			{/* <CreateTeam /> */}
+			{/* <JoinTeam /> */}
+			{/* <Roster /> */}
+
+		</div>
+	);
+}
 }
 
 export default App;

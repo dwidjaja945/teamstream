@@ -11,6 +11,7 @@
 
 <body>
     <h1>Test Ajax Call for endpoints</h1>
+    <input value="1" type="text">
     <button class='bulletinBoardGet'> Bulletin Board Get</button>
     <br>
     <div>
@@ -82,8 +83,8 @@
 
     <div class="login">
         <h2>Log in Sessions</h2>
-        <input id='username' type="text" placeholder="username">
-        <input id='password' type="password" placeholder="password">
+        <input id='login-username' type="text" placeholder="username">
+        <input id='login-password' type="password" placeholder="password">
         <button id='login'>Log In</button>
     </div>
 
@@ -107,6 +108,10 @@
                 method: method,
                 data: data,
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log("success data: ", data)
                     return data;
@@ -129,17 +134,26 @@
 
         $("#login").click(() => {
             let dataToSend = {
-                username: $("#username").val(),
-                password: $("#password").val()
+                username: $("#login-username").val(),
+                password: $("#login-password").val()
             }
-            makeAjaxCall('http://localhost:3000/api/login', 'post', dataToSend);
+            return makeAjaxCall('http://localhost:3000/api/login', 'post', dataToSend);
         })
+
+        // $('.bulletinBoardGet').click( () => {
+        //     let dataToSend = {};
+        //     makeAjaxCall('http://localhost:3000/api/bulletin_board', 'get', dataToSend);
+        // })
 
         $('.bulletinBoardGet').click(() => {
             $.ajax({
                 method: 'get',
                 url: 'http://localhost:3000/api/bulletin_board',
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log("success: data: ", data)
                 },
@@ -161,6 +175,10 @@
                     team_id: $('#teamID').val(),
                     pinned: $("#pinned").val()
                 },
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log('data: ', data);
                 },
@@ -180,6 +198,10 @@
                     athlete_id: parseInt($("#athlete_id").val()),
                     post_id: parseInt($('#post_id').val())
                 },
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log('data: ', data);
                 },
@@ -198,6 +220,10 @@
                 method: 'get',
                 url: 'http://localhost:3000/api/athlete_profile' + `?athleteId=${dataInput}`,
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log("success: data: ", data)
                 },
@@ -231,6 +257,10 @@
                 url: 'http://localhost:3000/api/athlete_profile',
                 data: dataToSend,
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 success: (data) => {
                     console.log("success: data: ", data)
                 },

@@ -1,40 +1,40 @@
 module.exports = function(webserver, dataBase, mysql) {
   webserver.get("/api/bulletin_board", function(req, res) {
+    user_id = req.session.user_id;
+    team_id = req.session.team_id;
+    athlete_id = req.session.athlete_id;
+    athlete_info_id = req.session.athlete_info_id;
     const output = {
       success: false,
       data: [],
       errors: []
     };
 
-    let teamID = 1;
-    if (req.body && req.body.id) {
-      //   teamID = req.body.id;
-      // will need to rework to pull ID from sessions
+    console.log('req.session: ', req.session);
+    
+    let teamID = null;
+    if (req.session.user_id === undefined) {
+      res.redirect("/login");
     }
-    let query = `SELECT athlete_info.first_name, athlete_info.last_name, inner_table.post_text, inner_table.timestamp
-            FROM (SELECT post_text, bulletin.athlete_id AS b_a_id, bulletin.timestamp, bulletin.team_id
-            FROM bulletin
-            JOIN athletes
-                ON bulletin.athlete_id = athletes.athlete_id) AS inner_table
-            JOIN athlete_info
-                ON athlete_info.athlete_info_id = inner_table.b_a_id
-            WHERE team_id = ${teamID}
-            ORDER BY timestamp ASC`;
 
-    let inserts = [""];
-    // Will be inserting team_id
+    // Get bulletin data from sessions
+    // first will need to pull bulletin posts etc
+    // then second query to pull athlete names etc
+    // then push all that data into output.data
+    let athlete_info_id_query = `SELECT athlete_info_id
+      FROM athlete_info
+      WHERE user_id = ?`
 
-    let sqlQuery = mysql.format(query, inserts);
+    let athlete_info_id_inserts = [user_id];
 
-    dataBase.query(sqlQuery, function(error, data, fields) {
-      if (!error) {
-        output.success = true;
-        output.data = data;
-      } else {
-        output.errors = error;
-      }
-      res.json(output);
+    let athlete_info_id_sqlQuery = mysql.format(athlete_info_id_query, athlete_info_id_inserts);
+
+    //Get the team_id(s) from user_id
+    dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
+
+      
     });
+
   });
 
   webserver.post("/api/bulletin_board", (req, res) => {

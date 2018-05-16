@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import teamLogo from "./images/dylansRowing.jpg";
+import {Link} from 'react-router-dom';
 
 export default props => (
 	<div className="loginContainer">
@@ -8,12 +9,12 @@ export default props => (
 			<img className="loginTeamLogo" src={teamLogo} />
 		</div>
 		<div className="loginButtonContent">
-			<div className="loginButtons">
-				<span className="btnLog">login</span>
-			</div>
-			<div className="loginButtons">
+			<Link to={`/bulletin_board`} className="loginButtons">
+				<span className="btnLog">Login</span>
+			</Link>
+			<Link to={`/athlete_profile`} className="loginButtons">
 				<span className="btnLog">Sign Up</span>
-			</div>
+			</Link>
 		</div>
 	</div>
 );

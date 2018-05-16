@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./styles.css";
 import athletePic from "./images/athlete.jpg";
 import blueLeftArrow from "./images/blue-chevron-left.png";
+import {Link} from 'react-router-dom';
 
 class AthleteProfile extends Component {
 	constructor(props) {
@@ -56,7 +57,7 @@ class AthleteProfile extends Component {
 					</div>
 				</div>
 				<div className="profile profileFooter">
-					<div className="profileSubmit">Submit</div>
+					<Link to="/fork_nav" className="profileSubmit">Submit</Link>
 				</div>
 			</div>
 		);

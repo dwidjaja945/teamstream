@@ -1,6 +1,8 @@
 module.exports = function(webserver, dataBase, mysql) {
   webserver.get("/api/bulletin_board", function(req, res) {
     let user_id = req.session.user_id;
+    // team_id will need to be provided from front end in axios call.
+    // let team_id = req.body.team_id;
     let team_id = req.session.team_id;
     let athlete_id = req.session.athlete_id;
     let athlete_info_id = req.session.athlete_info_id;

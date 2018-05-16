@@ -1,5 +1,6 @@
 
 import React, {Component} from "react";
+import {Route} from 'react-router-dom';
 import AddBulletinMessages from './addBulletinMessage';
 import BulletinBoard from './bulletinBoard';
 import bulletinDummyData from './bulletinDummyData';
@@ -35,13 +36,22 @@ class App extends Component{
 	return (
 		<div className="container">
 			<NavBar />
+			<Route exact path="/" component={Login}/>
+			<Route path="/bulletin_board" component={BulletinBoard}/>
+			<Route path="/athlete_profile" component={AthleteProfile}/>
+			<Route path="/roster" component={Roster}/>
+			<Route path="/fork_nav" component={ForkNav}/>
+			<Route path="/create_team" component={CreateTeam}/>
+			<Route path="/join_team" component={JoinTeam}/>
+
+
 			{/* <Login /> */}
 			{/* <AthleteProfile /> */}
 			{/* <BulletinBoard   /> */}
 			{/* <ForkNav /> */}
 			{/* <CreateTeam /> */}
 			{/* <JoinTeam /> */}
-			<Roster />
+			{/* <Roster /> */}
 
 		</div>
 	);

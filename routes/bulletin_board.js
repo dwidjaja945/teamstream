@@ -17,7 +17,10 @@ module.exports = function(webserver, dataBase, mysql) {
       res.redirect("/login");
     }
 
-    // Get athlete_id from user_id
+    // Get bulletin data from sessions
+    // first will need to pull bulletin posts etc
+    // then second query to pull athlete names etc
+    // then push all that data into output.data
     let athlete_info_id_query = `SELECT athlete_info_id
       FROM athlete_info
       WHERE user_id = ?`
@@ -28,29 +31,7 @@ module.exports = function(webserver, dataBase, mysql) {
 
     //Get the team_id(s) from user_id
     dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
-      if (!error) {
-        // let athlete_info_id = data[0].athlete_info_id;
-        // req.session.athlete_info_id = athlete_info_id;
 
-        let team_id_query = `SELECT athletes.team_id
-          FROM athletes
-          WHERE athlete_info_id = ?`
-
-        let team_id_inserts = [athlete_info_id];
-
-        let team_id_sqlQuery = mysql.format(team_id_query, team_id_inserts);
-
-        // Get bulletinBoard information from team_id
-        dataBase.query(team_id_sqlQuery, ( error, data, fields) => {
-          if (!error) {
-            output.data = data;
-            console.log("output data: " , output.data);
-            let bulletinBoardQuery = ``;
-          }
-        })
-      } else {
-        output.errors = error;
-      }
       
     });
 

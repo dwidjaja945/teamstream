@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
+    "dev": "npm run dev --prefix ..",
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,7 @@
     "url": "https://github.com/Learning-Fuze/react_starter.git"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bulma-start": "0.0.2",
     "react": "^16.2.0",

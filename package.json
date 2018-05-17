@@ -4,6 +4,8 @@
   "description": "### members - Dylan - Keith - Daniel - Christina",
   "main": "webserver.js",
   "scripts": {
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:client": "npm start --prefix client",
     "dev:server": "nodemon webserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +28,7 @@
     "mysql": "^2.15.0"
   },
   "devDependencies": {
-    "nodemon": "^1.17.4"
+    "nodemon": "^1.17.4",
+    "npm-run-all": "^4.1.3"
   }
 }

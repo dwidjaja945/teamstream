@@ -1,17 +1,12 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-import blueLeftArrow from "./images/blue-chevron-left.png";
+import { Link } from "react-router-dom";
+import backArrow from "./images/blue-chevron-left.png";
+import Navbar from "./navbar";
+import hamburgerMenu from "./hamburger_menu";
 
 export default props => (
 	<div className="createTeamContainer">
-		<div className="backNav">
-			<div className="backArrow">
-				<img className="backArrowImg" src={blueLeftArrow} />
-			</div>
-			<div className="backTsLogo">
-				<span className="backNavTitle">Team Stream</span>
-			</div>
-		</div>
+		<Navbar icon={backArrow} hamburgerMenu={false} />
 		<div className="cTCodeGenerator">
 			<div className="createTeamName">
 				<span className="teamName">Team Name</span>

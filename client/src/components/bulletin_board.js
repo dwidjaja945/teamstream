@@ -4,7 +4,7 @@ import BulletinBoardMessages from "./bulletin_board_message";
 import bulletinDummyData from "./bulletin_dummy_data";
 import AddBulletinMessages from "./add_bulletin_message";
 import Navbar from "./navbar";
-import homeBtn from "./images/homeBtn.png";
+import dropDown from "./images/double-down.png;
 import hamburgerMenu from "./hamburger_menu";
 
 class BulletinBoard extends Component {
@@ -51,7 +51,7 @@ class BulletinBoard extends Component {
 		const { messageArray } = this.state;
 		return (
 			<div>
-				<Navbar icon={homeBtn} hamburgerMenu={true} />
+				<Navbar icon={dropDown} hamburgerMenu={true} />
 				<div className="pinnedMessage" />
 				<div className="messageContainer">
 					<BulletinBoardMessages pinCallBack={this.pinMessage} data={messageArray} />

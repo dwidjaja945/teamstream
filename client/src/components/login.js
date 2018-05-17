@@ -12,7 +12,7 @@ export default props => (
 			<Link to={`/bulletin_board`} className="loginButtons">
 				<span className="btnLog">Login</span>
 			</Link>
-			<Link to={`/athlete_profile`} className="loginButtons">
+			<Link to={`/create_profile`} className="loginButtons">
 				<span className="btnLog">Sign Up</span>
 			</Link>
 		</div>

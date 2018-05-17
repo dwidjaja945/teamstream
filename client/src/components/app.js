@@ -10,6 +10,7 @@ import JoinTeam from "./join_team";
 import AthleteProfile from "./athlete_profile";
 import Roster from "./roster";
 import NavBar from "./navbar";
+import CreateProfile from './create_profile';
 
 class App extends Component {
 	constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
 				<Route path="/fork_nav" component={ForkNav} />
 				<Route path="/create_team" component={CreateTeam} />
 				<Route path="/join_team" component={JoinTeam} />
+				<Route path="/create_profile" component={CreateProfile}/>
 			</div>
 		);
 	}

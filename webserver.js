@@ -44,7 +44,7 @@ require('./routes/athlete_profile')(webserver, dataBase, mysql);
 require('./routes/bulletin_board')(webserver, dataBase, mysql);
 
 
-webserver.listen(3000, () => {
+webserver.listen(9000, () => {
     console.log("Server listening on 9000");
 }).on('error', (error) => {
   console.log('Server Error: ' , error.message);

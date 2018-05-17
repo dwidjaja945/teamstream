@@ -9,7 +9,7 @@ export default props => (
 			<img className="loginTeamLogo" src={teamLogo} />
 		</div>
 		<div className="loginButtonContent">
-			<Link to={`/bulletin_board`} className="loginButtons">
+			<Link to={`/login_page`} className="loginButtons">
 				<span className="btnLog">Login</span>
 			</Link>
 			<Link to={`/athlete_profile`} className="loginButtons">

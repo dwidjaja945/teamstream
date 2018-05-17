@@ -10,6 +10,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
       username = req.body.username;
       password = req.body.password;
     }
+    console.log('here1')
 
     const output = {
       success: false,
@@ -35,6 +36,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
     let inserts = [username, password];
 
     let sqlQuery = mysql.format(query, inserts);
+    console.log(sqlQuery)
 
     dataBase.query(sqlQuery, (error, data, fields) => {
       if (!error) {

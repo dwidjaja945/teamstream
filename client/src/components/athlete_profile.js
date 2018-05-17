@@ -4,7 +4,7 @@ import athletePic from "./images/athlete.jpg";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import hamburgerMenu from "./hamburger_menu";
-import backArrow from "./images/blue-chevron-left.png";
+import homeBtn from "./images/homeBtn.png";
 
 class AthleteProfile extends Component {
 	constructor(props) {
@@ -22,7 +22,7 @@ class AthleteProfile extends Component {
 	render() {
 		return (
 			<div className="profileContainer">
-				<Navbar icon={backArrow} hamburgerMenu={false} />
+				<Navbar icon={homeBtn} hamburgerMenu={true} />
 				<div className="profile profileTitleContent">
 					<span className="profileTitleHeader">Athlete Profile</span>
 				</div>

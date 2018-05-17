@@ -4,6 +4,7 @@ import AddBulletinMessages from "./add_bulletin_message";
 import BulletinBoard from "./bulletin_board";
 import bulletinDummyData from "./bulletin_dummy_data";
 import Login from "./login";
+import Login_Page from'./login_page';
 import ForkNav from "./fork_nav";
 import CreateTeam from "./create_team";
 import JoinTeam from "./join_team";
@@ -32,6 +33,7 @@ class App extends Component {
 		return (
 			<div className="container">
 				<Route exact path="/" component={Login} />
+				<Route exact path="/login_page" component={Login_Page} />
 				<Route path="/bulletin_board" component={BulletinBoard} />
 				<Route path="/athlete_profile" component={AthleteProfile} />
 				<Route path="/roster" component={Roster} />

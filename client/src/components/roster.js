@@ -1,7 +1,8 @@
 import React from "react";
-import athleteRosterData from "./athleteRosterData";
+import athleteRosterData from "./athlete_roster_data";
+import homeBtn from "./images/homeBtn.png";
+import Navbar from "./navbar";
 import "./roster.css";
-
 
 export default props => {
 	console.log("This is dummy data", athleteRosterData);
@@ -30,6 +31,7 @@ export default props => {
 	});
 	return (
 		<div className="rosterContainer">
+			<Navbar icon={homeBtn} hamburgerMenu={true} />
 			<h1 className="rosterHeader">Roster</h1>
 			<div className="namesContainer">
 				<ul className="list-group">{listElements}</ul>
@@ -37,4 +39,3 @@ export default props => {
 		</div>
 	);
 };
-

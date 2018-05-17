@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./styles.css";
 import athletePic from "./images/athlete.jpg";
-import blueLeftArrow from "./images/blue-chevron-left.png";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Navbar from "./navbar";
+import hamburgerMenu from "./hamburger_menu";
+import backArrow from "./images/blue-chevron-left.png";
 
 class AthleteProfile extends Component {
 	constructor(props) {
@@ -20,14 +22,7 @@ class AthleteProfile extends Component {
 	render() {
 		return (
 			<div className="profileContainer">
-				<div className="backNav">
-					<div className="backArrow">
-						<img className="backArrowImg" src={blueLeftArrow} />
-					</div>
-					<div className="backTsLogo">
-						<span className="backNavTitle">Team Stream</span>
-					</div>
-				</div>
+				<Navbar icon={backArrow} hamburgerMenu={false} />
 				<div className="profile profileTitleContent">
 					<span className="profileTitleHeader">Athlete Profile</span>
 				</div>
@@ -57,7 +52,9 @@ class AthleteProfile extends Component {
 					</div>
 				</div>
 				<div className="profile profileFooter">
-					<Link to="/fork_nav" className="profileSubmit">Submit</Link>
+					<Link to="/fork_nav" className="profileSubmit">
+						Submit
+					</Link>
 				</div>
 			</div>
 		);

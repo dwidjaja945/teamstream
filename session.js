@@ -41,11 +41,17 @@ module.exports = function(webserver, dataBase, mysql, session) {
         console.log("req.session: ", req.session);
         output.success = true;
         output.data = data;
-        console.log(data);
+        console.log("data: " , data);
+        if(data.length === 0 ) {
+          res.redirect('/login');
+          res.end();
+          return;
+        }
         req.session.user_id = data[0].user_id;
         req.session.team_id = data[0].team_id;
         req.session.athlete_id = data[0].athlete_id;
         req.session.athlete_info_id = data[0].athlete_info_id;
+        console.log(req.session);
         // res.redirect('/bulletin_board');
         // send back json data about path they should go to (bulletinboard) => browser history
       } else {

@@ -4,7 +4,7 @@ import AddBulletinMessages from "./add_bulletin_message";
 import BulletinBoard from "./bulletin_board";
 import bulletinDummyData from "./bulletin_dummy_data";
 import Login from "./login";
-import ForkNav from "./forkNav";
+import ForkNav from "./fork_nav";
 import CreateTeam from "./create_team";
 import JoinTeam from "./join_team";
 import AthleteProfile from "./athlete_profile";

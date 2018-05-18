@@ -8,8 +8,6 @@ module.exports = function(webserver, dataBase, mysql) {
     } else {
       team_id = req.session.team_id
     }
-    let team_id = req.body.team_id;
-    let team_id = req.session.team_id;
     let athlete_id = req.session.athlete_id;
     let athlete_info_id = req.session.athlete_info_id;
     const output = {

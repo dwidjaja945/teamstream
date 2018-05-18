@@ -38,11 +38,12 @@ require("./routes/signup")(webserver, dataBase, mysql, session);
 require('./routes/athlete_profile')(webserver, dataBase, mysql);
 
 // endpoint for roster
-// require('./routes/roster')(webserver, dataBase, mysql);
+require('./routes/roster')(webserver, dataBase, mysql);
 
 // endpoint for bulletin board
 require('./routes/bulletin_board')(webserver, dataBase, mysql);
 
+require('./routes/logout')(webserver, dataBase, mysql);
 
 webserver.listen(9000, () => {
     console.log("Server listening on 9000");

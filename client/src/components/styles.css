@@ -1,65 +1,9 @@
-/* .hero-body {
-	padding: 10px;
-}
-
-.section {
-	padding: 8px;
-}
-
-.profileNav {
-	display: flex;
-	justify-content: space-around;
-} */
 body {
 	margin: 0;
 }
 
 * {
 	box-sizing: border-box;
-}
-
-/**********Nav Bar with Back Btn****************/
-
-.backNav {
-	height: 5%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #1056ab;
-}
-
-.backArrow {
-	height: 100%;
-	width: 10%;
-	background-color: #000000;
-	border: solid 2px #dadada;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 5px;
-}
-
-.backArrow:hover {
-	background-color: #dadada;
-}
-
-.backArrowImg {
-	height: 80%;
-}
-
-.backTsLogo {
-	height: 100%;
-	width: 90%;
-	position: relative;
-}
-
-.backNavTitle {
-	position: absolute;
-	color: white;
-	font-size: 20px;
-	left: 98px;
-	top: 6px;
 }
 /*************Hamburger Menu***************/
 
@@ -88,6 +32,7 @@ body {
 	width: 40vw;
 	padding: 35px;
 	position: absolute;
+	z-index: 1;
 	top: 40px;
 	right: 0px;
 	background-color: grey;
@@ -103,7 +48,7 @@ body {
 	background-color: #1056ab;
 }
 
-.homeBtn {
+.mainBtn {
 	height: 100%;
 	width: 20%;
 	display: flex;
@@ -111,7 +56,7 @@ body {
 	align-items: center;
 }
 
-.homeBtnImg {
+.mainBtnImg {
 	height: 37px;
 }
 
@@ -128,6 +73,7 @@ body {
 	font-size: 20px;
 }
 
+.burgerMenuContainer,
 .burgerMenu {
 	height: 100%;
 	width: 20%;
@@ -209,7 +155,6 @@ body {
 	height: 10%;
 	position: relative;
 	background-color: #dadada;
-	/* border: solid 2px #000000; */
 	border-radius: 5px;
 }
 
@@ -265,7 +210,6 @@ body {
 	height: 30%;
 	width: 100%;
 	background-color: #dadada;
-	/* border: solid 2px #000000; */
 	border-radius: 5px;
 	position: relative;
 }
@@ -293,7 +237,6 @@ body {
 	height: 15%;
 	width: 100%;
 	background-color: #dadada;
-	/* border: solid 2px #000000; */
 	border-radius: 5px;
 	position: relative;
 }
@@ -509,4 +452,61 @@ body {
 	font-size: 20px;
 }
 
-/******************************/
+/***********login_page***********/
+.loginInfoContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.teamLogoImg {
+	height: 40%;
+	width: 100%;
+}
+
+.loginForm {
+	height: 30%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.userNameLine,
+.passwordLine {
+	font-size: 20px;
+	color: grey;
+}
+
+.loginBtnContainer {
+	height: 55%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loginBtn {
+	height: 35%;
+	width: 100%;
+	padding: 13px;
+	border-radius: 7px;
+	color: #dadada;
+	background-color: #1056ab;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.loginBtn:hover {
+	color: #000000;
+	background-color: #dadada;
+}
+
+.loginForm input {
+	border: 0;
+	border-bottom: 1px solid grey;
+	outline: 0;
+}

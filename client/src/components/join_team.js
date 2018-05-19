@@ -6,7 +6,7 @@ import hamburgerMenu from "./hamburger_menu";
 
 export default props => (
 	<div className="joinTeamPage">
-		<Navbar icon={backArrow} hamburgerMenu={false} />
+		<Navbar icon={backArrow} hamburgerMenu={false} url="/fork_nav" />
 		<div className="joinTeamContainer">
 			<div className="jTteamCode">
 				<span className="teamCodeTitle">Team Code</span>

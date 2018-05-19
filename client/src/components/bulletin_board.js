@@ -60,7 +60,7 @@ class BulletinBoard extends Component {
 		const { messageArray } = this.state;
 		return (
 			<div>
-				<Navbar icon={dropDown} hamburgerMenu={true} />
+				<Navbar icon={dropDown} hamburgerMenu={true} url="/bulletin_board" />
 				<div className="pinnedMessage" />
 				<div className="messageContainer">
 					<BulletinBoardMessages pinCallBack={this.pinMessage} data={messageArray} />

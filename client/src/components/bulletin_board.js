@@ -5,28 +5,31 @@ import bulletinDummyData from "./bulletin_dummy_data";
 import AddBulletinMessages from "./add_bulletin_message";
 import Navbar from "./navbar";
 import dropDown from "./images/double-down.png";
-// import axios from 'axios';
+import axios from 'axios';
 import hamburgerMenu from "./hamburger_menu";
 
 class BulletinBoard extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			messageArray: bulletinDummyData,
-			hasPinned: false
+			messageArray: [],
+			hasPinned: false,
+			dataReceived: this.props.history.location.state,
 		};
 
-		console.log("Dummy Bulletin Data: ", bulletinDummyData);
+		this.getDataFromServer();
+
 		this.pinMessage = this.pinMessage.bind(this);
 	}
 
-	// getDataFromServer(path){
-	// 	path='/api/bulletin_board';
-	// 	axios.get('http://localhost:9000' + path)
-	// 		.then( resp => {
-	// 			console.log(resp);
-	// 		})
-	// }
+	getDataFromServer(path){
+		path='/api/bulletin_board';
+		axios.get('http://localhost:9000' + path)
+			.then( resp => {
+				console.log(resp);
+			})
+	}
 
 	addMessage(message) {
 		const { hasPinned, messageArray } = this.state;

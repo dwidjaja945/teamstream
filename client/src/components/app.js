@@ -13,36 +13,60 @@ import Roster from "./roster";
 import NavBar from "./navbar";
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			bulletinDummyData: []
-		};
-	}
-	componentDidMount() {
-		this.getRosterData();
-	}
+    constructor(props) {
+        super(props);
+        this.state = {
+            bulletinDummyData: []
+        };
+    }
+    componentDidMount() {
+        this.getRosterData();
+    }
 
-	getRosterData() {
-		this.setState({
-			bulletinDummyData
-		});
-	}
+    getRosterData() {
+        this.setState({
+            bulletinDummyData
+        });
+    }
+    getDataCallback(dataToGet, pathToGoTo, historyPush){
+        const historyObj = {
+            pathname: pathToGoTo,
+            state: dataToGet,
+        };
+        historyPush(historyObj)
+    }
 
-	render() {
-		return (
-			<div className="container">
-				<Route exact path="/" component={Login} />
-				<Route path="/login_page" component={Login_Page} />
-				<Route path="/bulletin_board" component={BulletinBoard} />
-				<Route path="/athlete_profile" component={AthleteProfile} />
-				<Route path="/roster" component={Roster} />
-				<Route path="/fork_nav" component={ForkNav} />
-				<Route path="/create_team" component={CreateTeam} />
-				<Route path="/join_team" component={JoinTeam} />
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div className="container">
+                <Route exact path="/"
+                       component={Login} />
+
+                {/*<Route path="/login_page" dataPassCallback={this.getDataCallback.bind(this)}*/}
+                {/*component={Login_Page} />*/}
+                <Route path='/login_page' render={routeProps =>
+					<Login_Page {...routeProps} dataPassCallback={this.getDataCallback.bind(this)}/>} />
+
+                <Route path="/bulletin_board"
+                       component={BulletinBoard} />
+
+                <Route path="/athlete_profile"
+                       component={AthleteProfile} />
+
+                <Route path="/roster"
+                       component={Roster} />
+
+                <Route path="/fork_nav"
+                       component={ForkNav} />
+
+                <Route path="/create_team"
+                       component={CreateTeam} />
+
+                <Route path="/join_team"
+                       component={JoinTeam} />
+            </div>
+        );
+    }
 }
 
 export default App;

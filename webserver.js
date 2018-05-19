@@ -45,9 +45,9 @@ require('./routes/bulletin_board')(webserver, dataBase, mysql);
 
 require('./routes/logout')(webserver, dataBase, mysql);
 
-webserver.get('*', (req, res) => {
-  res.sendFile(__dirname + "/client" + "/dist" + "/index.html");
-});
+// webserver.get('*', (req, res) => {
+//   res.sendFile(__dirname + "/client" + "/dist" + "/index.html");
+// });
 
 webserver.listen(9000, () => {
     console.log("Server listening on 9000");

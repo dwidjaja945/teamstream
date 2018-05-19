@@ -3,6 +3,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
     let username;
     let password;
     if (req.body.username === "" || req.body.password === "") {
+      output.redirect("/login")
       res.send("Please provide login credentials");
       res.end();
       return;
@@ -10,12 +11,12 @@ module.exports = function(webserver, dataBase, mysql, session) {
       username = req.body.username;
       password = req.body.password;
     }
-    console.log('here1')
 
     const output = {
       success: false,
       data: [],
-      errors: []
+      errors: [],
+      redirect: ''
     };
 
     let query = `SELECT 
@@ -36,17 +37,18 @@ module.exports = function(webserver, dataBase, mysql, session) {
     let inserts = [username, password];
 
     let sqlQuery = mysql.format(query, inserts);
-    console.log(sqlQuery)
 
     dataBase.query(sqlQuery, (error, data, fields) => {
       if (!error) {
         console.log("req.session: ", req.session);
         output.success = true;
         output.data = data;
+        output.redirect = '/bulletin-board'
         console.log("data: " , data);
         if(data.length === 0 ) {
-          res.redirect('/login');
-          res.end();
+          output.redirect('/login');
+          output.errors = "Invalid Login Credentials";
+          res.json(output);
           return;
         }
         req.session.user_id = data[0].user_id;
@@ -54,7 +56,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
         req.session.athlete_id = data[0].athlete_id;
         req.session.athlete_info_id = data[0].athlete_info_id;
         console.log(req.session);
-        // res.redirect('/bulletin_board');
+        // res.redirect('localhost:9000/bulletin_board');
         // send back json data about path they should go to (bulletinboard) => browser history
       } else {
         output.errors = error;

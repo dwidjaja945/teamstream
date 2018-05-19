@@ -1,5 +1,19 @@
 module.exports = function (webserver, dataBase, mysql) {
     webserver.get('/api/roster', function (req, res) {
+        const output = {
+            success: false,
+            athletes: [],
+            errors: [],
+            redirect: ''
+        };
+
+        if (req.session.user_id === undefined) {
+            output.redirect = '/login';
+            output.errors = 'User not logged in';
+            res.json(output);
+            res.end();
+            return;
+        }
 
         let teamID;
         if (req.body && req.body.id) {
@@ -18,16 +32,11 @@ module.exports = function (webserver, dataBase, mysql) {
 
         let sqlQuery = mysql.format(query, inserts);
 
-        const output = {
-            success: false,
-            athletes: [],
-            errors: []
-        };
-
         dataBase.query(query, function (error, data, fields) {
             if (!error) {
                 output.success = true;
                 output.athletes = data;
+                output.redirect = '/roster';
             } else {
                 output.errors = error
             }

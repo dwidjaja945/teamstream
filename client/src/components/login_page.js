@@ -9,8 +9,8 @@ class LogIn extends React.Component{
             userName:'',
             password:'',
         };
-        this.handleChange = this.handleChange.bind(this)
-        this.handleAddItem = this.handleAddItem.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleAddItem = this.handleAddItem.bind(this);
     }
     handleChange(event){
         const {name,value} = event.target;
@@ -22,7 +22,6 @@ class LogIn extends React.Component{
     handleAddItem(event){
         event.preventDefault();
         // this.props.addItemCallback(this.state);
-        console.log(this.state);
         const {userName, password} = this.state;
         this.performAxiosCall(userName, password);
 

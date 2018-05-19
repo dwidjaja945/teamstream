@@ -405,7 +405,7 @@ body {
 }
 
 .jTteamCode {
-	height: 11%;
+	height: 10%;
 	width: 65%;
 	border-radius: 5px;
 	background-color: #1056ab;
@@ -413,7 +413,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 60px;
+	margin: 30px;
 }
 
 .teamCodeTitle {
@@ -421,22 +421,28 @@ body {
 }
 
 .jTcodeNum {
-	height: 5%;
-	width: 37%;
+	height: 30%;
+	width: 60%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 2px solid grey;
-	border-radius: 5px;
+	flex-flow: column wrap;
 	margin: 60px;
 }
 
+.codeNum {
+	border: 2px solid grey;
+	border-radius: 5px;
+	text-align: center;
+	margin: 15px;
+}
+
 .jTcodeBtn {
-	height: 5%;
-	width: 30%;
+	height: 17%;
+	width: 38%;
 	background-color: #1056ab;
 	color: white;
-	border-radius: 15px;
+	border-radius: 12px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

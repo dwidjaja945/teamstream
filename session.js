@@ -68,13 +68,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
             } else {
                 output.errors = error;
             }
-            req.session.save((err) => {
-                if(!err) {
-                    res.json(output);
-                } else {
-                    res.send(err);
-                }
-            })
+            res.json(output);
         });
     })
 };

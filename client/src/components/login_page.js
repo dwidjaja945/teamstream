@@ -60,22 +60,8 @@ class LogIn extends React.Component {
 		let path = "/api/login";
 		axios.post(`http://localhost:9000${path}`, dataToSend).then(response => {
 			console.log(response);
+			//here is where we redirect
 
-			/*          const listElements = response.data.todos.map( (item, index) => {
-                    const tr = document.createElement('tr');
-                    const number = document.createElement('td');
-                    const title = document.createElement('td');
-                    const completed = document.createElement('td');
-
-                    number.innerText = index + 1;
-                    title.innerText = item.title;
-                    completed.innerText = item.complete;
-
-                    tr.appendChild(number);
-                    tr.appendChild(title);
-                    tr.appendChild(completed);
-                    document.querySelector('.table tbody').appendChild(tr);
-                })*/
 		});
 	}
 

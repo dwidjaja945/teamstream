@@ -33,7 +33,7 @@ class App extends Component {
 		return (
 			<div className="container">
 				<Route exact path="/" component={Login} />
-				<Route exact path="/login_page" component={Login_Page} />
+				<Route path="/login_page" component={Login_Page} />
 				<Route path="/bulletin_board" component={BulletinBoard} />
 				<Route path="/athlete_profile" component={AthleteProfile} />
 				<Route path="/roster" component={Roster} />

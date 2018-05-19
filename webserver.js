@@ -17,18 +17,18 @@ webserver.use(cookieParser());
 webserver.use(cors());
 
 webserver.use(session({
-  secret: 'test_secret'
+    secret: 'test_secret'
 }));
 
 webserver.use(express.static(__dirname + '/' + 'client'));
 
 dataBase.connect(error => {
-  if (error) throw error;
-  console.log("Created connection to database");
+    if (error) throw error;
+    console.log("Created connection to database");
 });
 
 webserver.get('/test', (req, res) => {
-  res.sendFile(__dirname + '/test_ajax.html');
+    res.sendFile(__dirname + '/test_ajax.html');
 });
 
 require("./session.js")(webserver, dataBase, mysql, session);
@@ -52,5 +52,5 @@ require('./routes/logout')(webserver, dataBase, mysql);
 webserver.listen(9000, () => {
     console.log("Server listening on 9000");
 }).on('error', (error) => {
-  console.log('Server Error: ' , error.message);
-})
+    console.log('Server Error: ' , error.message);
+});

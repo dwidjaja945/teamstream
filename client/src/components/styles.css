@@ -466,20 +466,23 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-flow: column wrap;
+	margin: 0px;
 }
 
 .teamLogoImg {
 	height: 40%;
 	width: 100%;
+	margin: 16px;
 }
 
 .loginForm {
-	height: 30%;
+	height: 32%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-flow: column wrap;
+	margin-bottom: 154px;
 }
 
 .userNameLine,
@@ -515,4 +518,46 @@ body {
 	border: 0;
 	border-bottom: 1px solid grey;
 	outline: 0;
+}
+
+/***********Create User ID and PW*************/
+.createLogo {
+	height: 38vh;
+	width: 100vw;
+}
+
+.userSignUpContainer {
+	height: 30vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+	color: grey;
+	font-size: 18px;
+}
+
+.userSignUpContainer input {
+	border: 0;
+	outline: 0;
+	border-bottom: 1px solid grey;
+}
+
+.signUpInput {
+	margin: 5px;
+}
+
+.signUpButton {
+	height: 40px;
+	width: 66px;
+	border-radius: 7px;
+	font-size: 15px;
+	background-color: #1056ab;
+	color: #dadada;
+	margin-top: 25px;
+}
+
+.signUpButton:hover {
+	color: #000000;
+	background-color: #dadada;
 }

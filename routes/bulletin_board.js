@@ -127,11 +127,11 @@ module.exports = function(webserver, dataBase, mysql) {
 
         function providePostID(postText, output) {
             let query = `
-      SELECT bulletin.post_id,
-      bulletin.athlete_id
-      FROM bulletin
-      WHERE post_text = ?
-      `;
+            SELECT bulletin.post_id,
+            bulletin.athlete_id
+            FROM bulletin
+            WHERE post_text = ?
+            `;
 
             let inserts = [postText];
 

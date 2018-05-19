@@ -129,7 +129,7 @@
                 password: $("#sign-up-password").val(),
                 email: $("#sign-up-email").val()
             }
-            makeAjaxCall('http://localhost:3000/api/signup', 'post', dataToSend);
+            makeAjaxCall('/api/signup', 'post', dataToSend);
         })
 
         $("#login").click(() => {

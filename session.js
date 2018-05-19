@@ -1,4 +1,4 @@
-module.exports = function(webserver, dataBase, mysql, session) {
+module.exports = function (webserver, dataBase, mysql, session) {
 
   webserver.post("/api/login", (req, res) => {
     let username;
@@ -20,7 +20,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
       redirect: ''
     };
 
-        let query = `SELECT 
+    let query = `SELECT 
       users.user_id, 
       athlete_info.athlete_info_id, 
       athletes.team_id,
@@ -38,7 +38,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
       WHERE username = ? 
       AND password = ?`;
 
-        let inserts = [username, password];
+    let inserts = [username, password];
 
     let sqlQuery = mysql.format(query, inserts);
 
@@ -60,14 +60,15 @@ module.exports = function(webserver, dataBase, mysql, session) {
         // setting session data
         req.session.user_id = data[0].user_id;
         req.session.team_id = data[0].team_id;
+        req.session.team_code = data[0].team_code;
         req.session.athlete_id = data[0].athlete_id;
         req.session.athlete_info_id = data[0].athlete_info_id;
         req.session.team_code = data[0].team_code;
-        console.log('req.session: ***** ' , req.session);
+        console.log('req.session: ***** ', req.session);
         // send back json data about path they should go to (bulletinboard) => browser history
       } else {
         output.errors = error;
       }
       res.json(output);
     });
-};
+  };

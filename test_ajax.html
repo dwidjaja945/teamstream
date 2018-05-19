@@ -129,7 +129,7 @@
                 password: $("#sign-up-password").val(),
                 email: $("#sign-up-email").val()
             }
-            makeAjaxCall('http://localhost:3000/api/signup', 'post', dataToSend);
+            makeAjaxCall('/api/signup', 'post', dataToSend);
         })
 
         $("#login").click(() => {
@@ -167,7 +167,7 @@
         $(".bulletinBoardPost").click(() => {
             $.ajax({
                 method: 'post',
-                url: 'http://localhost:3000/api/bulletin_board',
+                url: '/api/bulletin_board',
                 dataType: 'json',
                 data: {
                     post_text: $('#postText').val(),

@@ -15,7 +15,8 @@ class CreateProfile extends Component{
             height: '',
             weight: '',
             statInput: '',
-            statValue: ''
+            statValue: '',
+            customInput: [{}]
 
         };
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -25,8 +26,10 @@ class CreateProfile extends Component{
     handleInputChange(event){
 
         const {value, name} = event.target;
+        const {statInput, statValue} = this.state;
         this.setState({
-            [name]: value
+            [name]: value,
+            customInput: [{[statInput]: statValue}]
         });
     }        
 
@@ -34,6 +37,9 @@ class CreateProfile extends Component{
         event.preventDefault();
         console.log('This is the handleSubmit: ', this.state);
         this.props.addAthlete(this.state);
+    }
+    addInput(){
+        
     }
 
     
@@ -50,6 +56,7 @@ class CreateProfile extends Component{
                 <Field name="age" label="Age" type="number" value={age} onChange={this.handleInputChange}/>
                 <Field name="height" label="Height" type="text" value={height} onChange={this.handleInputChange}/>
                 <Field name="weight" label="Weight" type="number" value={weight} onChange={this.handleInputChange}/>
+                <button>Add</button>
                 <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange}/>
                 <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange}/>
                 <Link to={`/athlete_profile`} className="loginButtons">

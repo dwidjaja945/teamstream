@@ -13,7 +13,10 @@ class CreateProfile extends Component{
             lastName: '',
             age: '',
             height: '',
-            weight: ''
+            weight: '',
+            statInput: '',
+            statValue: ''
+
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,7 +39,7 @@ class CreateProfile extends Component{
     
 
     render(){
-        const {firstName, lastName, age, height, weight} = this.state;
+        const {firstName, lastName, age, height, weight, statInput, statValue} = this.state;
 
         return(
             <form onSubmit={this.handleSubmit}>
@@ -44,9 +47,11 @@ class CreateProfile extends Component{
                 <h1>This is where user creates their profile</h1>
                 <Field name="firstName" label="First Name" type="text" value={firstName} onChange={this.handleInputChange}/>
                 <Field name="lastName" label="Last Name" type="text" value={lastName} onChange={this.handleInputChange}/>
-                <Field name="age" label="age" type="text" value={age} onChange={this.handleInputChange}/>
+                <Field name="age" label="Age" type="number" value={age} onChange={this.handleInputChange}/>
                 <Field name="height" label="Height" type="text" value={height} onChange={this.handleInputChange}/>
-                <Field name="weight" label="Weight" type="text" value={weight} onChange={this.handleInputChange}/>
+                <Field name="weight" label="Weight" type="number" value={weight} onChange={this.handleInputChange}/>
+                <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange}/>
+                <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange}/>
                 <Link to={`/athlete_profile`} className="loginButtons">
                     <span className="btnLog">Create Profile</span>
                 </Link>

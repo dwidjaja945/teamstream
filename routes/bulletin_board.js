@@ -17,10 +17,13 @@ module.exports = function(webserver, dataBase, mysql) {
     let user_id = req.session.user_id;
     // team_id will need to be provided from front end in axios call.
     let team_id;
+    let team_code;
     if(req.body.team_id){
-      team_id = req.body.team_id
+      team_id = req.body.team_id;
+      team_code = req.body.team_code;
     } else {
-      team_id = req.session.team_id
+      team_id = req.session.team_id;
+      team_code = req.session.team_code;
     }
     let athlete_id = req.session.athlete_id;
     let athlete_info_id = req.session.athlete_info_id;
@@ -117,8 +120,34 @@ module.exports = function(webserver, dataBase, mysql) {
       } else {
         output.errors = error;
       }
-      res.json(output);
+
+      providePostID(post_text, output);
+
     });
+
+    function providePostID(postText, output) {
+      let query = `
+      SELECT bulletin.post_id,
+      bulletin.athlete_id
+      FROM bulletin
+      WHERE post_text = ?
+      `;
+
+      let inserts = [postText];
+
+      let sqlQuery = mysql.format(query, inserts);
+      dataBase.query(sqlQuery , (error, data, fields) => {
+        if(!error) {
+          console.log(data);
+          output.post_info = data;
+          output.success = true;
+        } else {
+          output.errors = error;
+        }
+      console.log(output);
+      res.json(output);
+      });
+    }
   });
 
   webserver.delete("/api/bulletin_board", (req, res) => {

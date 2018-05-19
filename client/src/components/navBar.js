@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HamburgerMenu from "./hamburger_menu";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 class NavBar extends Component {
@@ -11,7 +12,9 @@ class NavBar extends Component {
 		return (
 			<div className="mainNavBar">
 				<div className="mainBtn">
-					<img className="mainBtnImg" src={this.props.icon} />
+					<Link to={this.props.url}>
+						<img className="mainBtnImg" src={this.props.icon} />
+					</Link>
 				</div>
 				<div className="mainTsLogo">
 					<span className="mainNavTitle">Team Stream</span>

@@ -7,7 +7,7 @@ import ForkNav from "./fork_nav";
 
 export default props => (
 	<div className="createTeamContainer">
-		<Navbar icon={backArrow} hamburgerMenu={false} />
+		<Navbar icon={backArrow} hamburgerMenu={false} url="/fork_nav" />
 		<div className="cTCodeGenerator">
 			<div className="createTeamName">
 				<span className="teamName">Team Name</span>

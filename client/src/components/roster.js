@@ -31,7 +31,7 @@ export default props => {
 	});
 	return (
 		<div className="rosterContainer">
-			<Navbar icon={homeBtn} hamburgerMenu={true} />
+			<Navbar icon={homeBtn} hamburgerMenu={true} url="/bulletin_board" />
 			<h1 className="rosterHeader">Roster</h1>
 			<div className="namesContainer">
 				<ul className="list-group">{listElements}</ul>

@@ -43,4 +43,4 @@ module.exports = function (webserver, dataBase, mysql) {
             res.json(output);
         });
     });
-}
+};

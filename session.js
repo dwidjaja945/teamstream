@@ -1,4 +1,5 @@
 module.exports = function(webserver, dataBase, mysql, session) {
+
   webserver.post("/api/login", (req, res) => {
     let username;
     let password;
@@ -19,7 +20,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
       redirect: ''
     };
 
-    let query = `SELECT 
+        let query = `SELECT 
       users.user_id, 
       athlete_info.athlete_info_id, 
       athletes.team_id,
@@ -37,7 +38,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
       WHERE username = ? 
       AND password = ?`;
 
-    let inserts = [username, password];
+        let inserts = [username, password];
 
     let sqlQuery = mysql.format(query, inserts);
 
@@ -69,5 +70,4 @@ module.exports = function(webserver, dataBase, mysql, session) {
       }
       res.json(output);
     });
-  });
 };

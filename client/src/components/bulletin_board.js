@@ -27,7 +27,7 @@ class BulletinBoard extends Component {
 		path='/api/bulletin_board';
 		axios.get('http://localhost:9000' + path)
 			.then( resp => {
-				console.log(resp);
+				console.log('response: ' , resp);
 			})
 	}
 

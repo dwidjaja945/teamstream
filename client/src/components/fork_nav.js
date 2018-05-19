@@ -7,7 +7,7 @@ import "./styles.css";
 
 export default props => (
 	<div className="forkContainer">
-		<Navbar icon={backArrow} hamburgerMenu={false} />
+		<Navbar icon={backArrow} hamburgerMenu={false} url="/" />
 		<div className="forkButtonContent">
 			<Link to="/create_team" className="forkButtons">
 				<span className="btnFork">Create Team</span>

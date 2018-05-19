@@ -6,6 +6,27 @@ class LogIn extends React.Component {
 	constructor(props) {
 		super(props);
 
+
+//         this.state = {
+//             userName:'',
+//             password:'',
+//         };
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleAddItem = this.handleAddItem.bind(this);
+//     }
+//     handleChange(event){
+//         const {name,value} = event.target;
+
+//         this.setState({
+//             [name]:value,
+//         })
+//     }
+//     handleAddItem(event){
+//         event.preventDefault();
+//         // this.props.addItemCallback(this.state);
+//         const {userName, password} = this.state;
+//         this.performAxiosCall(userName, password);
+
 		this.state = {
 			userName: "",
 			password: ""
@@ -26,6 +47,7 @@ class LogIn extends React.Component {
 		console.log(this.state);
 		const { userName, password } = this.state;
 		this.performAxiosCall(userName, password);
+
 
 		this.setState({
 			userName: "",

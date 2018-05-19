@@ -1,42 +1,37 @@
 module.exports = function(webserver, dataBase, mysql) {
+  webserver.get("/api/bulletin_board", function(req, res) {
+    const output = {
+      success: false,
+      data: [],
+      errors: [],
+      redirect: ''
+    };
+    if (req.session.user_id === undefined) {
+      output.redirect = '/login';
+      output.errors = 'User not logged in';
+      res.json(output);
+      res.end();
+      return;
+    }
 
-    webserver.get("/api/bulletin_board", function(req, res) {
-        const output = {
-            success: false,
-            data: [],
-            errors: [],
-            redirect: ''
-        };
-
-        console.log('req.session: ', req.session);
-        console.log('bulletin_board login: ', req.sessionStore.sessions);
-
-        if (req.session.user_id === undefined) {
-            output.redirect = '/login';
-            output.errors = 'User not logged in';
-            res.json(output);
-            res.end();
-            return;
-        }
-
-        // { cvihi39LwjvwqB7RDx27oeHojYCLpyhy:
-        //     '{"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"user_id":9,"team_id":1,' +
-        //     '"athlete_id":9,"athlete_info_id":7,"team_code":"626THUL0"}' }
+    let user_id = req.session.user_id;
+    // team_id will need to be provided from front end in axios call.
+    let team_id;
+    let team_code;
+    if(req.body.team_id){
+      team_id = req.body.team_id;
+      team_code = req.body.team_code;
+    } else {
+      team_id = req.session.team_id;
+      team_code = req.session.team_code;
+    }
+    let athlete_id = req.session.athlete_id;
+    let athlete_info_id = req.session.athlete_info_id;
 
 
-        let user_id = req.session.user_id;
-        // team_id will need to be provided from front end in axios call.
-        let team_id;
-        if(req.body.team_id){
-            team_id = req.body.team_id
-        } else {
-            team_id = req.session.team_id
-        }
-        let athlete_id = req.session.athlete_id;
-        let athlete_info_id = req.session.athlete_info_id;
-
-        let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
-
+    console.log('req.session: ', req.session);
+    
+    let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
         \`athlete_info\`.\`last_name\`, 
         \`bulletin\`.\`athlete_id\`, 
         \`post_text\`, 

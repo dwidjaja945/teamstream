@@ -6,6 +6,10 @@ export default props => {
 	const timeStamp = new Date().toLocaleTimeString();
 
 	const bulletinMessages = props.data.map((item, index) => {
+
+		console.log(props)
+		console.log(state)
+		debugger
 		return (
 			<div className="userMessages" key={index}>
 				<img className="teamLogo" src={teamLogo} alt="" />

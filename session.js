@@ -55,7 +55,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
                 // providing data if user logged in
                 output.success = true;
                 output.data = data;
-                output.redirect = '/bulletin-board'
+                output.redirect = '/bulletin_board';
 
                 // setting session data
                 req.session.user_id = data[0].user_id;

@@ -3,115 +3,87 @@ import axios from "axios";
 import teamLogo from "./images/tsLogo.png";
 
 class LogIn extends React.Component {
-	constructor(props) {
-		super(props);
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            userName: "",
+            password: ""
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    }
+    handleChange(event) {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value
+        });
+    }
+    handleSubmitForm(event) {
+        event.preventDefault();
+        // this.props.addItemCallback(this.state);
+        // console.log(this.state);
+        const { userName, password } = this.state;
+        this.performAxiosCall(userName, password);
 
 
-//         this.state = {
-//             userName:'',
-//             password:'',
-//         };
-//         this.handleChange = this.handleChange.bind(this);
-//         this.handleAddItem = this.handleAddItem.bind(this);
-//     }
-//     handleChange(event){
-//         const {name,value} = event.target;
+        this.setState({
+            userName: "",
+            password: ""
+        });
+    }
 
-//         this.setState({
-//             [name]:value,
-//         })
-//     }
-//     handleAddItem(event){
-//         event.preventDefault();
-//         // this.props.addItemCallback(this.state);
-//         const {userName, password} = this.state;
-//         this.performAxiosCall(userName, password);
+    performAxiosCall(username, password) {
+        const dataToSend = { username, password };
+        let path = "/api/login";
+        axios.post(`http://localhost:9000${path}`, dataToSend).then(response => {
+            //here is where we redirect
+            if(response.data.success){
+                console.log('data from server response: ', response);
+                console.log('current props at this time: ', this.props);
 
-		this.state = {
-			userName: "",
-			password: ""
-		};
-		this.handleChange = this.handleChange.bind(this);
-		this.handleAddItem = this.handleAddItem.bind(this);
-	}
-	handleChange(event) {
-		const { name, value } = event.target;
+                const {team_id, athlete_id} = response.data.data[0];
+                const newData = {team_id, athlete_id};
 
-		this.setState({
-			[name]: value
-		});
-	}
-	handleAddItem(event) {
-		event.preventDefault();
-		// this.props.addItemCallback(this.state);
-		console.log(this.state);
-		const { userName, password } = this.state;
-		this.performAxiosCall(userName, password);
+                //if success, log them in, take them to bulletin board
+                this.props.dataPassCallback(newData, response.data.redirect, this.props.history.push)
 
+            }else{
+                //ERROR
+                console.log(response.data.errors)
+            }
+        });
+    }
 
-		this.setState({
-			userName: "",
-			password: ""
-		});
-	}
+    render() {
+        const { userName, password } = this.state;
 
-	performAxiosCall(username, password) {
-		const dataToSend = { username, password };
-		let path = "/api/login";
-		axios.post(`http://localhost:9000${path}`, dataToSend).then(response => {
-			console.log(response);
-			//here is where we redirect
+        return (
+            <div className="loginInfoContainer">
+                <img className="teamLogoImg" src={teamLogo} />
+                <form className="loginForm">
+                    <div className="userNameContainer">
+                        <div className="userNameLine">
+                            <label>username</label>
+                            <input value={userName} onChange={this.handleChange} name="userName" type="text" />
+                        </div>
+                    </div>
+                    <div className="passwordContainer">
+                        <div className="passwordLine">
+                            <label>password</label>
+                            <input value={password} onChange={this.handleChange} name="password" type="text" />
+                        </div>
+                    </div>
+                    <div className="loginBtnContainer">
+                        <button type='button' onClick={this.handleSubmitForm} className="loginBtn">Submit</button>
+                    </div>
+                </form>
 
-		});
-	}
-
-	render() {
-		const { userName, password } = this.state;
-
-		console.log(this.state);
-		return (
-			<div className="loginInfoContainer">
-				<img className="teamLogoImg" src={teamLogo} />
-				<form onSubmit={this.handleAddItem} className="loginForm">
-					<div className="userNameContainer">
-						<div className="userNameLine">
-							<label>username</label>
-							<input value={userName} onChange={this.handleChange} name="userName" type="text" />
-						</div>
-					</div>
-					<div className="passwordContainer">
-						<div className="passwordLine">
-							<label>password</label>
-							<input value={password} onChange={this.handleChange} name="password" type="text" />
-						</div>
-					</div>
-					<div className="loginBtnContainer">
-						<button className="loginBtn">Submit</button>
-					</div>
-				</form>
-			</div>
-		);
-	}
+            </div>
+        );
+    }
 }
 
 export default LogIn;
-
-{
-	/* <form onSubmit={this.handleAddItem}>
-    <div className="row">
-        <div className="col s12 m8 offset-m">
-            <label>username</label>
-            <input value={userName} onChange={this.handleChange} name="userName" type="text" />
-        </div>
-    </div>
-    <div className="row">
-        <div className="col s12 m8 offset-m">
-            <label>password</label>
-            <input value={password} onChange={this.handleChange} name="password" type="text" />
-        </div>
-    </div>
-    <div className="right-align">
-        <button className="btn purple darken-2">Submit</button>
-    </div>
-</form> */
-}

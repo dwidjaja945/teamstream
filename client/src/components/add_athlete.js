@@ -8,6 +8,7 @@ class AddAthlete extends Component{
         this.state = {
             profileData: ProfileData
         }
+
         this.addAthleteInput= this.addAthleteInput.bind(this);
     }
 

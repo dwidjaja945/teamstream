@@ -3,7 +3,8 @@ module.exports = (webserver, dataBase, mysql, session) => {
     const output = {
       success: false,
       data: [],
-      errors: []
+      errors: [],
+      redirect: ''
     };
 
     let username = req.body.username;
@@ -28,8 +29,8 @@ module.exports = (webserver, dataBase, mysql, session) => {
                   output.success = true;
                   output.data = data;
                   req.session.user_id = pullUserId(username);
-                console.log(pullUserId(username));
-                  res.redirect("/create_profile");
+                  output.redirect = "/create_profile";
+                  console.log(pullUserId(username));
               } else {
                   output.errors = error;
               }

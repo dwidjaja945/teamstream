@@ -1,5 +1,19 @@
 module.exports = function(webserver, dataBase, mysql) {
   webserver.get("/api/bulletin_board", function(req, res) {
+    const output = {
+      success: false,
+      data: [],
+      errors: [],
+      redirect: ''
+    };
+    if (req.session.user_id === undefined) {
+      output.redirect = '/login';
+      output.errors = 'User not logged in';
+      res.json(output);
+      res.end();
+      return;
+    }
+
     let user_id = req.session.user_id;
     // team_id will need to be provided from front end in axios call.
     let team_id;
@@ -10,19 +24,10 @@ module.exports = function(webserver, dataBase, mysql) {
     }
     let athlete_id = req.session.athlete_id;
     let athlete_info_id = req.session.athlete_info_id;
-    const output = {
-      success: false,
-      data: [],
-      errors: []
-    };
+
 
     console.log('req.session: ', req.session);
     
-    if (req.session.user_id === undefined) {
-      res.redirect("/login");
-      return;
-    }
-
     let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
         \`athlete_info\`.\`last_name\`, 
         \`bulletin\`.\`athlete_id\`, 
@@ -48,6 +53,7 @@ module.exports = function(webserver, dataBase, mysql) {
       if(!error) {
         output.success = true;
         output.data = data;
+        output.redirect = '/bulletin_board';
       } else {
         output.errors = error;
       }

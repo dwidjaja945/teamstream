@@ -13,7 +13,7 @@ class CreateTeam extends Component {
 	codeGenerator() {
 		let newCode = "";
 
-		for (let i = 0; i < 8; i++) {
+		for (let i = 0; i < 6; i++) {
 			let codeChoice = Math.floor(Math.random() * 2 + 1);
 			let code;
 

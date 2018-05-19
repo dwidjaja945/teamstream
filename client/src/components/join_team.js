@@ -10,7 +10,6 @@ class JoinTeam extends Component {
 		super(props);
 
 		this.state = {
-			teamCode: [],
 			code: ""
 		};
 	}

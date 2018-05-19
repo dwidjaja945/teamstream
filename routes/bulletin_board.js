@@ -47,140 +47,140 @@ module.exports = function(webserver, dataBase, mysql) {
       	ON \`athletes\`.\`athlete_info_id\` = \`athlete_info\`.\`athlete_info_id\`
       WHERE \`bulletin\`.\`team_id\` = ?`;
 
-    let athlete_info_id_inserts = [team_id];
+        let athlete_info_id_inserts = [team_id];
 
-    let athlete_info_id_sqlQuery = mysql.format(athlete_info_id_query, athlete_info_id_inserts);
+        let athlete_info_id_sqlQuery = mysql.format(athlete_info_id_query, athlete_info_id_inserts);
 
-    dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
-      
-      if(!error) {
-        output.success = true;
-        output.data = data;
-        output.redirect = '/bulletin_board';
-      } else {
-        output.errors = error;
-      }
-      console.log(output);
-      res.json(output);
+        dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
 
-    });
+            if(!error) {
+                output.success = true;
+                output.data = data;
+                output.redirect = '/bulletin_board';
+            } else {
+                output.errors = error;
+            }
+            console.log(output);
+            res.json(output);
 
-  });
-
-  webserver.post("/api/bulletin_board", (req, res) => {
-    const output = {
-      success: false,
-      data: [],
-      errors: []
-    };
-
-    if (req.body) {
-      if (req.body.athlete_id) {
-        var athlete_id = req.body.athlete_id;
-        // will need to rework to pull ID from sessions
-      }
-      if (req.body.post_text) {
-        var post_text = req.body.post_text;
-        // assign bulletin post here`
-      }
-      if (req.body.team_id) {
-        var team_id = req.body.team_id;
-        // assign team name here
-      }
-      if (req.body.pinned) {
-        var pinned = req.body.pinned;
-      }
-    } else {
-      res.send("Missing Proper query items");
-    }
-
-    let query =
-      "INSERT INTO " +
-      "`bulletin` (`post_id`, ??, ??, `timestamp`, ??, ??) " +
-      "VALUES (NULL, ?, ?, NOW(), ?, ?)";
-
-    let inserts = [
-      "post_text",
-      "athlete_id",
-      "team_id",
-      "pinned",
-      post_text,
-      athlete_id,
-      team_id,
-      pinned
-    ];
-    // will be inserting post_text, athlete_id, team_id, pinned
-
-    let sqlQuery = mysql.format(query, inserts);
-
-    dataBase.query(sqlQuery, function(error, data, fields) {
-      if (!error) {
-        output.success = true;
-        output.data = data;
-      } else {
-        output.errors = error;
-      }
-
-      providePostID(post_text, output);
+        });
 
     });
 
-    function providePostID(postText, output) {
-      let query = `
+    webserver.post("/api/bulletin_board", (req, res) => {
+        const output = {
+            success: false,
+            data: [],
+            errors: []
+        };
+
+        if (req.body) {
+            if (req.body.athlete_id) {
+                var athlete_id = req.body.athlete_id;
+                // will need to rework to pull ID from sessions
+            }
+            if (req.body.post_text) {
+                var post_text = req.body.post_text;
+                // assign bulletin post here`
+            }
+            if (req.body.team_id) {
+                var team_id = req.body.team_id;
+                // assign team name here
+            }
+            if (req.body.pinned) {
+                var pinned = req.body.pinned;
+            }
+        } else {
+            res.send("Missing Proper query items");
+        }
+
+        let query =
+            "INSERT INTO " +
+            "`bulletin` (`post_id`, ??, ??, `timestamp`, ??, ??) " +
+            "VALUES (NULL, ?, ?, NOW(), ?, ?)";
+
+        let inserts = [
+            "post_text",
+            "athlete_id",
+            "team_id",
+            "pinned",
+            post_text,
+            athlete_id,
+            team_id,
+            pinned
+        ];
+        // will be inserting post_text, athlete_id, team_id, pinned
+
+        let sqlQuery = mysql.format(query, inserts);
+
+        dataBase.query(sqlQuery, function(error, data, fields) {
+            if (!error) {
+                output.success = true;
+                output.data = data;
+            } else {
+                output.errors = error;
+            }
+
+            providePostID(post_text, output);
+
+        });
+
+        function providePostID(postText, output) {
+            let query = `
       SELECT bulletin.post_id,
       bulletin.athlete_id
       FROM bulletin
       WHERE post_text = ?
       `;
 
-      let inserts = [postText];
+            let inserts = [postText];
 
-      let sqlQuery = mysql.format(query, inserts);
-      dataBase.query(sqlQuery , (error, data, fields) => {
-        if(!error) {
-          console.log(data);
-          output.post_info = data;
-          output.success = true;
-        } else {
-          output.errors = error;
+            let sqlQuery = mysql.format(query, inserts);
+            dataBase.query(sqlQuery , (error, data, fields) => {
+                if(!error) {
+                    console.log(data);
+                    output.post_info = data;
+                    output.success = true;
+                } else {
+                    output.errors = error;
+                }
+                console.log(output);
+                res.json(output);
+            });
         }
-      console.log(output);
-      res.json(output);
-      });
-    }
-  });
-
-  webserver.delete("/api/bulletin_board", (req, res) => {
-    const output = {
-      success: false,
-      data: [],
-      errors: []
-    };
-
-    if (req.body) {
-      if (req.body.post_id) {
-        var post_id = req.body.post_id;
-      }
-      if (req.body.athlete_id) {
-        var athlete_id = req.body.athlete_id;
-      }
-    }
-
-    let query =
-      "DELETE FROM `bulletin` WHERE `bulletin`.`post_id` = ? AND `bulletin`.`athlete_id` = ?";
-    let inserts = [post_id, athlete_id];
-    // insert post_id and athlete_id
-
-    let sqlQuery = mysql.format(query, inserts);
-
-    dataBase.query(sqlQuery, (error, data, fields) => {
-      if (!error) {
-        output.success = true;
-        output.data = data;
-      } else {
-        output.errors = error;
-      }
-      res.json(output);
     });
-  });
-};
+
+    webserver.delete("/api/bulletin_board", (req, res) => {
+        const output = {
+            success: false,
+            data: [],
+            errors: []
+        };
+
+        if (req.body) {
+            if (req.body.post_id) {
+                var post_id = req.body.post_id;
+            }
+            if (req.body.athlete_id) {
+                var athlete_id = req.body.athlete_id;
+            }
+        }
+
+        let query =
+            "DELETE FROM `bulletin` WHERE `bulletin`.`post_id` = ? AND `bulletin`.`athlete_id` = ?";
+        let inserts = [post_id, athlete_id];
+        // insert post_id and athlete_id
+
+        let sqlQuery = mysql.format(query, inserts);
+
+        dataBase.query(sqlQuery, (error, data, fields) => {
+            if (!error) {
+                output.success = true;
+                output.data = data;
+            } else {
+                output.errors = error;
+            }
+            res.json(output);
+        });
+    });
+}

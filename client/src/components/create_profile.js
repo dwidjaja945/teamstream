@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Field from './profile_fields';
 import ProfileData from './profile_data';
+import AddNewInputs from './add_new_input';
 import "./styles.css";
 
 
@@ -43,23 +44,21 @@ class CreateProfile extends Component {
         console.log('This is the handleSubmit: ', this.state);
         this.props.addAthlete(this.state);
     }
-    addInput() {
 
-    }
-    addNewInput() {
-        const { customInput } = this.state;
-        customInput.push({ name: 'stat' + customInput.length + 1, value: '' })
-        customInput.push({ name: 'value' + customInput.length + 1, value: '' })
+    // addNewInput() {
+    //     const { customInput } = this.state;
+    //     customInput.push({ name: 'stat' + customInput.length + 1, value: '' })
+    //     customInput.push({ name: 'value' + customInput.length + 1, value: '' })
 
-        const newCustomInputArr = customInput.map((item, index) => {
-            return (
-                <Field name={customInput[index].name} type="text" value={customInput[index].value} onChange={this.handleInputChange} />
-            )
+    //     const newCustomInputArr = customInput.map((item, index) => {
+    //         return (
+    //             <Field name={customInput[index].name} type="text" value={customInput[index].value} onChange={this.handleInputChange} />
+    //         )
 
-        })
-        return newCustomInputArr;
+    //     })
+    //     return newCustomInputArr;
 
-    }
+    // }
     // mapThroughValues(customInputArr) {
     //     if (customInputArr.length > 0) {
     //         customInputArr.map((item, index) => {

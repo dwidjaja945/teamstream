@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
+import Field from './profile_fields';
 
 class AddNewInput extends Component{
     constructor(props){
         super(props);
 
+        this.addNewInput = this.addNewInput.bind(this);
     }
-    render(){
-        console.log("this is the props: ", this.props);
+    addNewInput(event) {
+        event.preventDefault();
+        console.log("add button was clicked");
         const { customInput } = this.state;
         customInput.push({ name: 'stat' + customInput.length + 1, value: '' })
         customInput.push({ name: 'value' + customInput.length + 1, value: '' })
@@ -18,6 +21,12 @@ class AddNewInput extends Component{
 
         })
         return newCustomInputArr;
+
+    }
+    render(){
+        return(
+        <button onClick={this.addNewInput}>+</button>
+        )
     }
 }
 export default AddNewInput;

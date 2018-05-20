@@ -45,20 +45,20 @@ class CreateProfile extends Component {
         this.props.addAthlete(this.state);
     }
 
-    // addNewInput() {
-    //     const { customInput } = this.state;
-    //     customInput.push({ name: 'stat' + customInput.length + 1, value: '' })
-    //     customInput.push({ name: 'value' + customInput.length + 1, value: '' })
+    addNewInput() {
+        const { customInput } = this.state;
+        customInput.push({ name: 'stat' + customInput.length + 1, value: '' })
+        customInput.push({ name: 'value' + customInput.length + 1, value: '' })
 
-    //     const newCustomInputArr = customInput.map((item, index) => {
-    //         return (
-    //             <Field name={customInput[index].name} type="text" value={customInput[index].value} onChange={this.handleInputChange} />
-    //         )
+        const newCustomInputArr = customInput.map((item, index) => {
+            return (
+                <Field name={customInput[index].name} type="text" value={customInput[index].value} onChange={this.handleInputChange} />
+            )
 
-    //     })
-    //     return newCustomInputArr;
+        })
+        return newCustomInputArr;
 
-    // }
+    }
     // mapThroughValues(customInputArr) {
     //     if (customInputArr.length > 0) {
     //         customInputArr.map((item, index) => {
@@ -72,7 +72,7 @@ class CreateProfile extends Component {
 
 
     render() {
-        const { firstName, lastName, age, height, weight } = this.state;
+        const { firstName, lastName, age, height, weight, customInput } = this.state;
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -83,8 +83,8 @@ class CreateProfile extends Component {
                     <Field name="age" label="Age" type="number" value={age} onChange={this.handleInputChange} />
                     <Field name="height" label="Height" type="text" value={height} onChange={this.handleInputChange} />
                     <Field name="weight" label="Weight" type="number" value={weight} onChange={this.handleInputChange} />
-                    <button onClick={this.addNewInput.bind(this)}>Add</button>
-
+                    {/* <button onClick={this.addNewInput.bind(this)}>Add</button> */}
+                    <AddNewInputs customData={customInput}/>
                     {/* <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange} />
                     <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange} /> */}
                     <Link to={`/athlete_profile`} className="loginButtons">

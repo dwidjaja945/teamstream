@@ -1,12 +1,12 @@
 import React from "react";
 import "./styles.css";
-import teamLogo from "./images/dyansRowing.jpg";
+// import teamLogo from "./images/dyansRowing.jpg";
 import { Link } from "react-router-dom";
 
 export default props => (
 	<div className="loginContainer">
 		<div className="loginLogoContent">
-			<img className="loginTeamLogo" src={teamLogo} />
+			{/* <img className="loginTeamLogo" src={} /> */}
 		</div>
 		<div className="loginButtonContent">
 			<Link to={`/login_page`} className="loginButtons">

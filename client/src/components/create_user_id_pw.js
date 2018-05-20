@@ -85,7 +85,7 @@ class UserIdPw extends Component {
 						value={password}
 						onChange={this.handleInputChange}
 					/>
-					<Link to="/athlete_profile">
+					<Link to={"/create_profile"}>
 						<button className="signUpButton">Submit</button>
 					</Link>
 				</form>

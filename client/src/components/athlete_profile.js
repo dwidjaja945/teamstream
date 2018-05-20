@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./styles.css";
 import athletePic from "./images/athlete.jpg";
 import { Link } from "react-router-dom";
-import Navbar from "./navbar";
+import NavBar from "./navbar";
 import hamburgerMenu from "./hamburger_menu";
 import backArrow from "./images/blue-chevron-left.png";
 import ProfileData from './profile_data';
@@ -26,7 +26,7 @@ class AthleteProfile extends Component {
 		const dataToAppend = ProfileData.map((item, index) => {
 			return (
 				<div key={index} className="profileContainer">
-					<Navbar icon={backArrow} hamburgerMenu={false} />
+					<NavBar icon={backArrow} hamburgerMenu={false} />
 					<div className="profile profileTitleContent">
 						<span className="profileTitleHeader">Athlete Profile</span>
 
@@ -60,7 +60,7 @@ class AthleteProfile extends Component {
 						</div>
 					</div>
 					<div className="profile profileFooter">
-						<Link to="/fork_nav" className="profileSubmit">
+						<Link to={"/fork_nav"} className="profileSubmit">
 							Submit
 						</Link>
 					</div>

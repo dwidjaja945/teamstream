@@ -44,15 +44,14 @@ class App extends Component {
 			<div className="container">
 				<Route exact path="/" component={Login} />
 
-				{/*<Route path="/login_page" dataPassCallback={this.getDataCallback.bind(this)}*/}
-				{/*component={Login_Page} />*/}
+				<Route path="/login_page" dataPassCallback={this.getDataCallback.bind(this)}
+				component={Login_Page} />
 				<Route
 					path="/login_page"
 					render={routeProps => (
 						<Login_Page {...routeProps} dataPassCallback={this.getDataCallback.bind(this)} />
 					)}
 				/>
-
 				<Route path="/user_id_pw" component={UserIdPw} />
 
 				<Route path="/bulletin_board" component={BulletinBoard} />
@@ -66,7 +65,7 @@ class App extends Component {
 				<Route path="/create_team" component={CreateTeam} />
 
 				<Route path="/join_team" component={JoinTeam} />
-				<Route path="/add_athlete" component={AddAthlete}/>
+				<Route path="/create_profile" component={CreateProfile}/>
 			</div>
 		);
 	}

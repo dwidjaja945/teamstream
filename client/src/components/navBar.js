@@ -12,9 +12,9 @@ class NavBar extends Component {
 		return (
 			<div className="mainNavBar">
 				<div className="mainBtn">
-					<Link to={this.props.url}>
+					{/* <Link to={this.props.url}>
 						<img className="mainBtnImg" src={this.props.icon} />
-					</Link>
+					</Link> */}
 				</div>
 				<div className="mainTsLogo">
 					<span className="mainNavTitle">Team Stream</span>

@@ -231,6 +231,8 @@ body {
 	width: 100%;
 	display: flex;
 	flex-flow: column wrap;
+	overflow: auto;
+
 }
 
 .statsTitleContainer {
@@ -249,7 +251,7 @@ body {
 }
 
 .profileStatsInfo {
-	height: 25%;
+	height: 15%;
 	width: 100%;
 }
 
@@ -457,6 +459,8 @@ body {
 .codeBtn {
 	font-size: 20px;
 }
+
+/******************************/
 
 /***********login_page***********/
 .loginInfoContainer {

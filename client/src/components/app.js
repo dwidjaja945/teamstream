@@ -12,12 +12,14 @@ import AthleteProfile from "./athlete_profile";
 import Roster from "./roster";
 import UserIdPw from "./create_user_id_pw";
 import NavBar from "./navbar";
+import AddAthlete from './add_athlete';
+import CreateProfile from './create_profile';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bulletinDummyData: []
+			bulletinDummyData: [],
 		};
 	}
 	componentDidMount() {
@@ -64,6 +66,7 @@ class App extends Component {
 				<Route path="/create_team" component={CreateTeam} />
 
 				<Route path="/join_team" component={JoinTeam} />
+				<Route path="/add_athlete" component={AddAthlete}/>
 			</div>
 		);
 	}

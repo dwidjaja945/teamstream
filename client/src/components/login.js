@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import teamLogo from "./images/dylansRowing.jpg";
+import teamLogo from "./images/dyansRowing.jpg";
 import { Link } from "react-router-dom";
 
 export default props => (
@@ -12,6 +12,7 @@ export default props => (
 			<Link to={`/login_page`} className="loginButtons">
 				<span className="btnLog">Login</span>
 			</Link>
+
 			<Link to={`/user_id_pw`} className="loginButtons">
 				<span className="btnLog">Sign Up</span>
 			</Link>

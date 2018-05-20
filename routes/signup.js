@@ -3,7 +3,8 @@ module.exports = (webserver, dataBase, mysql, session) => {
     const output = {
       success: false,
       data: [],
-      errors: []
+      errors: [],
+      redirect: ''
     };
 
     let username = req.body.username;
@@ -16,40 +17,43 @@ module.exports = (webserver, dataBase, mysql, session) => {
     let selectSqlQuery = mysql.format(query, inserts);
 
     dataBase.query(selectSqlQuery, (error, data, fields) => {
-      if (data === []) {
-          console.log('data is empty');
-          query = `INSERT INTO users (user_id, email, username, password, google_id, facebook_id, status) VALUES (NULL, ?, ?, ?, '', '', 'active')`;
-          inserts = [email, username, password];
+      if (data.length === 0) {
+        console.log('data is empty');
+        query = `INSERT INTO users (user_id, email, username, password, google_id, facebook_id, status) VALUES (NULL, ?, ?, ?, '', '', 'active')`;
+        inserts = [email, username, password];
 
-          sqlQuery = mysql.format(query, inserts);
+        sqlQuery = mysql.format(query, inserts);
 
-          dataBase.query(sqlQuery, (error, data, fields) => {
-              if (!error) {
-                  output.success = true;
-                  output.data = data;
-                  req.session.user_id = pullUserId(username);
-                console.log(pullUserId(username));
-                  res.redirect("/create_profile");
-              } else {
-                  output.errors = error;
-              }
-              res.json(output);
-          });
+        dataBase.query(sqlQuery, (error, data, fields) => {
+          if (!error) {
+            output.success = true;
+            output.data = data;
+            output.redirect = "/create_profile";
+            pullUserId(username, output, req, res);
+          } else {
+            output.errors = error;
+            res.json(output);
+          }
+        });
       } else {
-          console.log('user already exists');
-          res.send("User already exists");
+        console.log('user already exists');
+        res.send("User already exists");
       }
     });
   });
 
-  function pullUserId(username) {
-    let query = `SELECT user_id FROM users WHERE username = ${username}`;
-    dataBase.query(query, (error, data, fields) => {
+  function pullUserId(username, output, req, res) {
+    let query = `SELECT user_id FROM users WHERE username = ?`;
+    let inserts = [username];
+    let mysqlQuery = mysql.format(query, inserts);
+    dataBase.query(mysqlQuery, (error, data, fields) => {
       if (!error) {
-        return data[0].user_id;
+        console.log(data);
+        req.session.user_id = data[0].user_id;
       } else {
-        return "User doesn't exist";
+        output.error.message = "User doesn't exist";
       }
+      res.json(output);
     });
   }
 };

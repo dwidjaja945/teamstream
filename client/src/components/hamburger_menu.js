@@ -52,7 +52,7 @@ class hamburgerMenu extends Component {
 							<Link to="">Other Team Accounts</Link>
 						</li>
 						<li>
-							<Link to="">Log Out</Link>
+							<Link to="/">Log Out</Link>
 						</li>
 					</ul>
 				</div>

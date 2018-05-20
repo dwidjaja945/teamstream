@@ -17,35 +17,42 @@ webserver.use(cookieParser());
 webserver.use(cors());
 
 webserver.use(session({
-  secret: 'test_secret'
+    secret: 'test_secret'
 }));
 
 webserver.use(express.static(__dirname + '/' + 'client'));
 
 dataBase.connect(error => {
-  if (error) throw error;
-  console.log("Created connection to database");
+    if (error) throw error;
+    console.log("Created connection to database");
 });
 
 webserver.get('/test', (req, res) => {
-  res.sendFile(__dirname + '/test_ajax.html');
+    res.sendFile(__dirname + '/test_ajax.html');
 });
 
-require("./session.js")(webserver, dataBase, mysql, session);
+require("./session.js")(webserver, dataBase, mysql);
 
-require("./routes/signup")(webserver, dataBase, mysql, session);
+require("./routes/signup")(webserver, dataBase, mysql);
+
+require('./routes/create_profile')(webserver, dataBase, mysql);
 
 require('./routes/athlete_profile')(webserver, dataBase, mysql);
 
 // endpoint for roster
-// require('./routes/roster')(webserver, dataBase, mysql);
+require('./routes/roster')(webserver, dataBase, mysql);
 
 // endpoint for bulletin board
 require('./routes/bulletin_board')(webserver, dataBase, mysql);
 
+require('./routes/logout')(webserver, dataBase, mysql);
+
+// webserver.get('*', (req, res) => {
+//   res.sendFile(__dirname + "/client" + "/dist" + "/index.html");
+// });
 
 webserver.listen(9000, () => {
     console.log("Server listening on 9000");
 }).on('error', (error) => {
-  console.log('Server Error: ' , error.message);
-})
+    console.log('Server Error: ' , error.message);
+});

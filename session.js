@@ -1,4 +1,4 @@
-module.exports = function(webserver, dataBase, mysql, session) {
+module.exports = function (webserver, dataBase, mysql, session) {
 
     webserver.post("/api/login", (req, res) => {
         console.log('initial session request: ', req.session);
@@ -76,10 +76,11 @@ module.exports = function(webserver, dataBase, mysql, session) {
 
                 req.session.user_id = data[0].user_id;
                 req.session.team_id = data[0].team_id;
+                req.session.team_code = data[0].team_code;
                 req.session.athlete_id = data[0].athlete_id;
                 req.session.athlete_info_id = data[0].athlete_info_id;
                 req.session.team_code = data[0].team_code;
-                // console.log('req.session: ***** ' , req.session);
+
                 // send back json data about path they should go to (bulletinboard) => browser history
                 res.json(output)
 
@@ -89,3 +90,4 @@ module.exports = function(webserver, dataBase, mysql, session) {
         });
     })
 };
+

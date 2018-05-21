@@ -231,6 +231,8 @@ body {
 	width: 100%;
 	display: flex;
 	flex-flow: column wrap;
+	overflow: auto;
+
 }
 
 .statsTitleContainer {
@@ -249,7 +251,7 @@ body {
 }
 
 .profileStatsInfo {
-	height: 25%;
+	height: 15%;
 	width: 100%;
 }
 
@@ -405,7 +407,7 @@ body {
 }
 
 .jTteamCode {
-	height: 11%;
+	height: 10%;
 	width: 65%;
 	border-radius: 5px;
 	background-color: #1056ab;
@@ -413,7 +415,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 60px;
+	margin: 30px;
 }
 
 .teamCodeTitle {
@@ -421,22 +423,28 @@ body {
 }
 
 .jTcodeNum {
-	height: 5%;
-	width: 37%;
+	height: 30%;
+	width: 60%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 2px solid grey;
-	border-radius: 5px;
+	flex-flow: column wrap;
 	margin: 60px;
 }
 
+.codeNum {
+	border: 2px solid grey;
+	border-radius: 5px;
+	text-align: center;
+	margin: 15px;
+}
+
 .jTcodeBtn {
-	height: 5%;
-	width: 30%;
+	height: 17%;
+	width: 38%;
 	background-color: #1056ab;
 	color: white;
-	border-radius: 15px;
+	border-radius: 12px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -452,6 +460,8 @@ body {
 	font-size: 20px;
 }
 
+/******************************/
+
 /***********login_page***********/
 .loginInfoContainer {
 	height: 100vh;
@@ -460,20 +470,23 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-flow: column wrap;
+	margin: 0px;
 }
 
 .teamLogoImg {
 	height: 40%;
 	width: 100%;
+	margin: 16px;
 }
 
 .loginForm {
-	height: 30%;
+	height: 32%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-flow: column wrap;
+	margin-bottom: 154px;
 }
 
 .userNameLine,
@@ -509,4 +522,46 @@ body {
 	border: 0;
 	border-bottom: 1px solid grey;
 	outline: 0;
+}
+
+/***********Create User ID and PW*************/
+.createLogo {
+	height: 38vh;
+	width: 100vw;
+}
+
+.userSignUpContainer {
+	height: 30vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+	color: grey;
+	font-size: 18px;
+}
+
+.userSignUpContainer input {
+	border: 0;
+	outline: 0;
+	border-bottom: 1px solid grey;
+}
+
+.signUpInput {
+	margin: 5px;
+}
+
+.signUpButton {
+	height: 40px;
+	width: 66px;
+	border-radius: 7px;
+	font-size: 15px;
+	background-color: #1056ab;
+	color: #dadada;
+	margin-top: 25px;
+}
+
+.signUpButton:hover {
+	color: #000000;
+	background-color: #dadada;
 }

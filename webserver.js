@@ -39,9 +39,11 @@ webserver.get('/test', (req, res) => {
     res.sendFile(__dirname + '/test_ajax.html');
 });
 
-require("./session.js")(webserver, dataBase, mysql, session);
+require("./session.js")(webserver, dataBase, mysql);
 
-require("./routes/signup")(webserver, dataBase, mysql, session);
+require("./routes/signup")(webserver, dataBase, mysql);
+
+require('./routes/create_profile')(webserver, dataBase, mysql);
 
 require('./routes/athlete_profile')(webserver, dataBase, mysql);
 

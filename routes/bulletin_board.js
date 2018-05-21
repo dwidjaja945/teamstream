@@ -33,6 +33,7 @@ module.exports = function(webserver, dataBase, mysql) {
 
         let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
 
+
         \`athlete_info\`.\`last_name\`, 
         \`bulletin\`.\`athlete_id\`, 
         \`post_text\`, 
@@ -131,29 +132,6 @@ module.exports = function(webserver, dataBase, mysql) {
 
         });
 
-      //   function providePostID(postText, output) {
-      //       let query = `
-      // SELECT bulletin.post_id,
-      // bulletin.athlete_id
-      // FROM bulletin
-      // WHERE post_text = ?
-      // `;
-      //
-      //       let inserts = [postText];
-      //
-      //       let sqlQuery = mysql.format(query, inserts);
-      //       dataBase.query(sqlQuery , (error, data, fields) => {
-      //           if(!error) {
-      //               console.log(data);
-      //               output.post_info = data;
-      //               output.success = true;
-      //           } else {
-      //               output.errors = error;
-      //           }
-      //           console.log(output);
-      //           res.json(output);
-      //       });
-      //   }
     });
 
     webserver.delete("/api/bulletin_board", (req, res) => {

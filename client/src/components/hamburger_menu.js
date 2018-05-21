@@ -37,6 +37,21 @@ class hamburgerMenu extends Component {
 							<Link to="/athlete_profile">Profile</Link>
 						</li>
 						<li>
+							<Link to="/create_profile">Create Profile</Link>
+						</li>
+						<li>
+							<Link to="">Athlete/Admin Account</Link>
+						</li>
+						<li>
+							<Link to="">Calendar</Link>
+						</li>
+						<li>
+							<Link to="">Messaging</Link>
+						</li>
+						<li>
+							<Link to="">Other Team Accounts</Link>
+						</li>
+						<li>
 							<Link to="/">Log Out</Link>
 						</li>
 					</ul>

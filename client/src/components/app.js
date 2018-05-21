@@ -61,7 +61,8 @@ class App extends Component {
 				<Route path="/create_team" component={CreateTeam} />
 
 				<Route path="/join_team" component={JoinTeam} />
-				<Route path="/create_profile" component={CreateProfile} />
+
+				<Route path="/add_athlete" component={AddAthlete} />
 			</div>
 		);
 	}

@@ -1,31 +1,57 @@
 import React, {Component} from 'react';
-import Field from './profile_fields';
+import CustomInputs from './athlete_profile_custom_inputs';
 
 class AddNewInput extends Component{
     constructor(props){
         super(props);
 
-        this.addNewInput = this.addNewInput.bind(this);
+        // this.state={
+        //     customInputsArray:[],
+        // };
+
+        // this.addNewInput = this.addNewInput.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
-    addNewInput(event) {
-        event.preventDefault();
-        console.log("add button was clicked");
-        const { customInput } = this.state;
-        customInput.push({ name: 'stat' + customInput.length + 1, value: '' })
-        customInput.push({ name: 'value' + customInput.length + 1, value: '' })
 
-        const newCustomInputArr = customInput.map((item, index) => {
-            return (
-                <Field name={customInput[index].name} type="text" value={customInput[index].value} onChange={this.handleInputChange} />
-            )
+    // addNewInput(event) {
+    //     event.preventDefault();
+    //
+    //     const newCustomInput={
+    //         inputName:'inputName',
+    //         nameValue:'',
+    //         valueName:'valueName',
+    //         inputValue:'',
+    //     };
+    //
+    //     const {customInputsArray} = this.state;
+    //
+    //     customInputsArray.push(newCustomInput);
+    //
+    //     this.setState({customInputsArray});
+    // }
 
-        })
-        return newCustomInputArr;
+    handleInputChange(event, index) {
+        const { value, name } = event.target;
+        const {customInputsArray} = this.props;
 
+        if(name==='inputName') {
+            customInputsArray[index]['nameValue'] = value;
+        }else if(name==='valueName'){
+            customInputsArray[index]['inputValue'] = value;
+        }
+
+        this.setState({
+            customInputsArray
+        });
     }
     render(){
+        const {customInputsArray} = this.props;
+
         return(
-        <button onClick={this.addNewInput}>+</button>
+            <div>
+                <button type='button' onClick={this.props.addNewInput}>+</button>
+                <CustomInputs inputChange={this.handleInputChange} customInputsArray={customInputsArray}/>
+            </div>
         )
     }
 }

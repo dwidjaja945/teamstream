@@ -1,6 +1,6 @@
 import React from 'react';
-import teamLogo from './images/team-logo.png';
-import pinIcon from './images/pin-icon.png';
+import teamLogo from '../images/team-logo.png';
+import pinIcon from '../images/pin-icon.png';
 
 export default props =>{
     const timeStamp = new Date().toLocaleTimeString();

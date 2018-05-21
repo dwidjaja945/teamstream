@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "../styles.css";
 // import teamLogo from "./images/dyansRowing.jpg";
 import { Link } from "react-router-dom";
 

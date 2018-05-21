@@ -1,7 +1,7 @@
 import React from "react";
 import athleteRosterData from "./athlete_roster_data";
-import homeBtn from "./images/homeBtn.png";
-import Navbar from "./navbar";
+import homeBtn from "../images/homeBtn.png";
+import Navbar from "../navBar";
 import "./roster.css";
 
 export default props => {

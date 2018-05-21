@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import backArrow from "./images/blue-chevron-left.png";
-import Navbar from "./navbar";
-import hamburgerMenu from "./hamburger_menu";
-import teamLogo from "./images/tsLogo.png";
-import "./styles.css";
+import backArrow from "../images/blue-chevron-left.png";
+import Navbar from "../navBar";
+import hamburgerMenu from "../hamburger_menu";
+import teamLogo from "../images/tsLogo.png";
+import "../styles.css";
 
 class LogIn extends React.Component {
 	constructor(props) {

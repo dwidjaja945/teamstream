@@ -23,22 +23,22 @@ module.exports = function (webserver, dataBase, mysql, session) {
         }
 
         let query = `SELECT 
-      users.user_id, 
-      athlete_info.athlete_info_id, 
-      athletes.team_id,
-      athletes.athlete_id,
-      athlete_info.first_name, 
-      athlete_info.last_name,
-      teams.team_code
-      FROM users
-      JOIN athlete_info
-        ON users.user_id = athlete_info.user_id
-      JOIN athletes
-        ON athlete_info.athlete_info_id = athletes.athlete_info_id
-      JOIN teams
-        ON athletes.team_id = teams.team_id
-      WHERE username = ? 
-      AND password = ?`;
+                users.user_id, 
+                athlete_info.athlete_info_id, 
+                athletes.team_id,
+                athletes.athlete_id,
+                athlete_info.first_name, 
+                athlete_info.last_name,
+                teams.team_code
+            FROM users
+            JOIN athlete_info
+                ON users.user_id = athlete_info.user_id
+            JOIN athletes
+                ON athlete_info.athlete_info_id = athletes.athlete_info_id
+            JOIN teams
+                ON athletes.team_id = teams.team_id
+            WHERE username = ? 
+            AND password = ?`;
 
         let inserts = [username, password];
 
@@ -58,21 +58,7 @@ module.exports = function (webserver, dataBase, mysql, session) {
                 output.success = true;
                 output.data = data;
                 output.redirect = '/bulletin_board';
-                // output.sessionID = req.sessionID;
-
-                // setting session data
-
-                // const sessionData = {
-                //     user_id: data[0].user_id,
-                //     team_id: data[0].team_id,
-                //     athlete_id: data[0].athlete_id,
-                //     athlete_info_id: data[0].athlete_info_id,
-                //     team_code: data[0].team_code,
-                // };
-
-                // req.session['user']=sessionData;
-                // console.log('req.session: ***** ' , req.session);
-                // console.log('session ID', req.sessionID);
+                
 
                 req.session.user_id = data[0].user_id;
                 req.session.team_id = data[0].team_id;

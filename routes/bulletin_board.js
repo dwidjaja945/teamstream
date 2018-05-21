@@ -9,8 +9,7 @@ module.exports = function(webserver, dataBase, mysql) {
         };
 
         console.log('Bulletin Board session: ', req.session);
-        // console.log('bulletinboard session id: ', req.sessionID)
-        // console.log('bulletin_board login: ', req.sessionStore.sessions);
+    
 
         if (req.session.user_id === undefined) {
             output.redirect = '/login';
@@ -32,23 +31,21 @@ module.exports = function(webserver, dataBase, mysql) {
         let athlete_info_id = req.session.athlete_info_id;
 
         let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
-
-
-        \`athlete_info\`.\`last_name\`, 
-        \`bulletin\`.\`athlete_id\`, 
-        \`post_text\`, 
-        \`timestamp\`, 
-        \`pinned\`, 
-        \`teams\`.\`team_name\`
-      FROM \`bulletin\`
-      JOIN \`teams\`
-        ON \`bulletin\`.\`team_id\` = \`teams\`.\`team_id\`
-      JOIN \`athletes\`
-      	ON \`bulletin\`.\`athlete_id\` = \`athletes\`.\`athlete_id\`
-      JOIN \`athlete_info\`
-      	ON \`athletes\`.\`athlete_info_id\` = \`athlete_info\`.\`athlete_info_id\`
-      WHERE \`bulletin\`.\`team_id\` = ? 
-      ORDER BY \`timestamp\` DESC `;
+            \`athlete_info\`.\`last_name\`, 
+            \`bulletin\`.\`athlete_id\`, 
+            \`post_text\`, 
+            \`timestamp\`, 
+            \`pinned\`, 
+            \`teams\`.\`team_name\`
+            FROM \`bulletin\`
+            JOIN \`teams\`
+                ON \`bulletin\`.\`team_id\` = \`teams\`.\`team_id\`
+            JOIN \`athletes\`
+                ON \`bulletin\`.\`athlete_id\` = \`athletes\`.\`athlete_id\`
+            JOIN \`athlete_info\`
+                ON \`athletes\`.\`athlete_info_id\` = \`athlete_info\`.\`athlete_info_id\`
+            WHERE \`bulletin\`.\`team_id\` = ? 
+            ORDER BY \`timestamp\` DESC `;
 
         let athlete_info_id_inserts = [team_id];
 
@@ -76,7 +73,6 @@ module.exports = function(webserver, dataBase, mysql) {
             data: [],
             errors: []
         };
-
 
         if (req.body && req.session) {
             if (req.session.athlete_id) {
@@ -128,10 +124,8 @@ module.exports = function(webserver, dataBase, mysql) {
             console.log('BB insert data: ', data);
 
             res.json(output);
-            // providePostID(post_text, output);
 
         });
-
     });
 
     webserver.delete("/api/bulletin_board", (req, res) => {

@@ -14,8 +14,6 @@ class CreateProfile extends Component {
             age: '',
             height: '',
             weight: '',
-            statInput: '',
-            statValue: '',
             customInputsArray: []
 
         };

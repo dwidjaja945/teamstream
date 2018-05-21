@@ -5,8 +5,7 @@ import pinIcon from "../images/pin-icon.png";
 export default props => {
 
 	const bulletinMessages = props.data.map((item, index) => {
-
-		const {first_name, last_name, post_text, timestamp, team_name, pinned} = item;
+		const {first_name, last_name, post_text, timestamp, team_name, pinned, post_id} = item;
 
 		const pinnedClass= pinned > 0 ? 'userMessages pinned' : 'userMessages';
 
@@ -19,7 +18,7 @@ export default props => {
 				<div
 					className="pin"
 					onClick={() => {
-						props.pinCallBack(index);
+						props.pinCallBack(post_id, pinned);
 					}}
 				>
 					<img className="pin" src={pinIcon} alt="" />

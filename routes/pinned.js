@@ -19,7 +19,7 @@ module.exports = (webserver , dataBase , mysql ) => {
 
         let team_id = req.session.team_id;
         let post_id = req.body.post_id;
-        
+
         let query = `
             UPDATE bulletin
             SET pinned = '0'
@@ -43,11 +43,11 @@ module.exports = (webserver , dataBase , mysql ) => {
 
             let pinQuery = `
                 UPDATE bulletin
-                SET pinned = '1',
+                SET pinned = '1'
                 WHERE post_id = ?
             `;
 
-            let inserts = [post_id, team_id];
+            let inserts = [post_id];
 
             let pinSqlQuery = mysql.format( pinQuery , inserts );
 

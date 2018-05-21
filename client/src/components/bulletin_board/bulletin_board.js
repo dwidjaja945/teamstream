@@ -44,17 +44,6 @@ class BulletinBoard extends Component {
 	}
 
 	addMessage(message) {
-		const { hasPinned, messageArray } = this.state;
-		// if (hasPinned) {
-		// 	const newMessageArray = messageArray.splice(1, 0, message);
-		// 	this.setState({
-		// 		messageArray
-		// 	});
-		// } else {
-		// 	this.setState({
-		// 		messageArray: [message, ...this.state.messageArray]
-		// 	});
-		// }
 		const path = "/api/bulletin_board";
 
 		const dataToSend = {
@@ -69,19 +58,15 @@ class BulletinBoard extends Component {
 		});
 	}
 
-	pinMessage(index) {
-		const { messageArray } = this.state;
-		var { hasPinned } = this.state;
-		var updatedRoster = messageArray.splice(index, 1);
-		messageArray.unshift(updatedRoster[0]);
-		console.log("This is the index: ", index);
+	pinMessage(post_id, pin_level) {
+		const path = pin_level > 0 ? '/api/unpin' : '/api/pinned';
 
-		hasPinned = true;
+        axios.post(path, {post_id}).then(resp => {
+            console.log("BB pinned post response: ", resp);
 
-		this.setState({
-			messageArray,
-			hasPinned
-		});
+            this.getDataFromServer();
+        });
+
 	}
 	render() {
 		const { messageArray } = this.state;

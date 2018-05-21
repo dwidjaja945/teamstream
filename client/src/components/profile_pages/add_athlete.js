@@ -11,7 +11,7 @@ class AddAthlete extends Component{
 
         this.addAthleteInput= this.addAthleteInput.bind(this);
     }
-    
+
     addAthleteInput(input){
         this.setState({
             profileData: {...this.state.profileData, ...input},

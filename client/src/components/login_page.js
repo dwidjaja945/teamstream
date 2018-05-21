@@ -11,10 +11,11 @@ class LogIn extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			userName: "",
-			password: ""
-		};
+        this.state = {
+            userName: "test",
+            password: "test"
+        };
+
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmitForm = this.handleSubmitForm.bind(this);
@@ -22,16 +23,17 @@ class LogIn extends React.Component {
 	handleChange(event) {
 		const { name, value } = event.target;
 
-		this.setState({
-			[name]: value
-		});
-	}
-	handleSubmitForm(event) {
-		event.preventDefault();
-		// this.props.addItemCallback(this.state);
-		// console.log(this.state);
-		const { userName, password } = this.state;
-		this.performAxiosCall(userName, password);
+        this.setState({
+            [name]: value
+        });
+    }
+    handleSubmitForm(event) {
+        event.preventDefault();
+        // this.props.addItemCallback(this.state);
+        // console.log(this.state);
+        const { userName, password } = this.state;
+        this.loginAxiosCall(userName, password);
+
 
 		this.setState({
 			userName: "",
@@ -48,11 +50,19 @@ class LogIn extends React.Component {
 				console.log("data from server response: ", response);
 				console.log("current props at this time: ", this.props);
 
-				const { team_id, athlete_id } = response.data.data[0];
-				const newData = { team_id, athlete_id };
 
-				//if success, log them in, take them to bulletin board
-				this.props.dataPassCallback(newData, response.data.redirect, this.props.history.push);
+    loginAxiosCall(username, password) {
+        const dataToSend = { username, password };
+        let path = "/api/login";
+        axios.post(`${path}`, dataToSend).then(response => {
+            //here is where we redirect
+            if(response.data.success){
+                console.log('data from server response: ', response);
+                console.log('current props at this time: ', this.props);
+
+                //if success, log them in, take them to bulletin board
+				this.props.history.push(response.data.redirect);
+
 			} else {
 				//ERROR
 				console.log(response.data.errors);
@@ -62,6 +72,7 @@ class LogIn extends React.Component {
 
 	render() {
 		const { userName, password } = this.state;
+
 
 		return (
 			<div className="loginInfoContainer">

@@ -1,37 +1,39 @@
 module.exports = function(webserver, dataBase, mysql) {
-  webserver.get("/api/bulletin_board", function(req, res) {
-    const output = {
-      success: false,
-      data: [],
-      errors: [],
-      redirect: ''
-    };
-    if (req.session.user_id === undefined) {
-      output.redirect = '/login';
-      output.errors = 'User not logged in';
-      res.json(output);
-      res.end();
-      return;
-    }
 
-    let user_id = req.session.user_id;
-    // team_id will need to be provided from front end in axios call.
-    let team_id;
-    let team_code;
-    if(req.body.team_id){
-      team_id = req.body.team_id;
-      team_code = req.body.team_code;
-    } else {
-      team_id = req.session.team_id;
-      team_code = req.session.team_code;
-    }
-    let athlete_id = req.session.athlete_id;
-    let athlete_info_id = req.session.athlete_info_id;
+    webserver.get("/api/bulletin_board", function(req, res) {
+        const output = {
+            success: false,
+            data: [],
+            errors: [],
+            redirect: ''
+        };
+
+        console.log('Bulletin Board session: ', req.session);
+        // console.log('bulletinboard session id: ', req.sessionID)
+        // console.log('bulletin_board login: ', req.sessionStore.sessions);
+
+        if (req.session.user_id === undefined) {
+            output.redirect = '/login';
+            output.errors = 'User not logged in';
+            res.json(output);
+            res.end();
+            return;
+        }
+
+        let user_id = req.session.user_id;
+        // team_id will need to be provided from front end in axios call.
+        let team_id;
+        if(req.body.team_id){
+            team_id = req.body.team_id
+        } else {
+            team_id = req.session.team_id
+        }
+        let athlete_id = req.session.athlete_id;
+        let athlete_info_id = req.session.athlete_info_id;
+
+        let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
 
 
-    console.log('req.session: ', req.session);
-    
-    let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
         \`athlete_info\`.\`last_name\`, 
         \`bulletin\`.\`athlete_id\`, 
         \`post_text\`, 
@@ -45,7 +47,8 @@ module.exports = function(webserver, dataBase, mysql) {
       	ON \`bulletin\`.\`athlete_id\` = \`athletes\`.\`athlete_id\`
       JOIN \`athlete_info\`
       	ON \`athletes\`.\`athlete_info_id\` = \`athlete_info\`.\`athlete_info_id\`
-      WHERE \`bulletin\`.\`team_id\` = ?`;
+      WHERE \`bulletin\`.\`team_id\` = ? 
+      ORDER BY \`timestamp\` DESC `;
 
         let athlete_info_id_inserts = [team_id];
 
@@ -60,7 +63,7 @@ module.exports = function(webserver, dataBase, mysql) {
             } else {
                 output.errors = error;
             }
-            console.log(output);
+            // console.log(output);
             res.json(output);
 
         });
@@ -74,80 +77,61 @@ module.exports = function(webserver, dataBase, mysql) {
             errors: []
         };
 
-        if (req.body) {
-            if (req.body.athlete_id) {
-                var athlete_id = req.body.athlete_id;
+
+        if (req.body && req.session) {
+            if (req.session.athlete_id) {
+                var athlete_id = req.session.athlete_id;
                 // will need to rework to pull ID from sessions
             }
             if (req.body.post_text) {
                 var post_text = req.body.post_text;
                 // assign bulletin post here`
             }
-            if (req.body.team_id) {
-                var team_id = req.body.team_id;
+            if (req.session.team_id) {
+                var team_id = req.session.team_id;
                 // assign team name here
             }
-            if (req.body.pinned) {
-                var pinned = req.body.pinned;
-            }
+            // if (req.body.pinned) {
+            //     var pinned = req.body.pinned;
+            // }
         } else {
             res.send("Missing Proper query items");
         }
 
         let query =
             "INSERT INTO " +
-            "`bulletin` (`post_id`, ??, ??, `timestamp`, ??, ??) " +
-            "VALUES (NULL, ?, ?, NOW(), ?, ?)";
+            "`bulletin` (`post_id`, `post_text`, `athlete_id`, `timestamp`, `team_id`, `pinned`) " +
+            "VALUES (?, ?, ?, NOW(), ?, ?)";
 
         let inserts = [
-            "post_text",
-            "athlete_id",
-            "team_id",
-            "pinned",
+            null,
             post_text,
             athlete_id,
             team_id,
-            pinned
+            0,
         ];
         // will be inserting post_text, athlete_id, team_id, pinned
 
         let sqlQuery = mysql.format(query, inserts);
 
+        console.log('sql query', sqlQuery)
+
         dataBase.query(sqlQuery, function(error, data, fields) {
             if (!error) {
                 output.success = true;
                 output.data = data;
+
             } else {
                 output.errors = error;
             }
 
-            providePostID(post_text, output);
+            console.log('BB insert data: ', data);
+
+            res.json(output);
+            // providePostID(post_text, output);
 
         });
 
-        function providePostID(postText, output) {
-            let query = `
-            SELECT bulletin.post_id,
-            bulletin.athlete_id
-            FROM bulletin
-            WHERE post_text = ?
-            `;
-
-            let inserts = [postText];
-
-            let sqlQuery = mysql.format(query, inserts);
-            dataBase.query(sqlQuery , (error, data, fields) => {
-                if(!error) {
-                    console.log(data);
-                    output.post_info = data;
-                    output.success = true;
-                } else {
-                    output.errors = error;
-                }
-                console.log(output);
-                res.json(output);
-            });
-        }
     });
 
     webserver.delete("/api/bulletin_board", (req, res) => {

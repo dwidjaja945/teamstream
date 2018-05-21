@@ -1,13 +1,15 @@
 module.exports = function (webserver, dataBase, mysql, session) {
 
     webserver.post("/api/login", (req, res) => {
+        console.log('initial session request: ', req.session);
         let username;
         let password;
         const output = {
             success: false,
             data: [],
             errors: [],
-            redirect: ''
+            redirect: '',
+            sessionID:null,
         };
 
         if (req.body.username === "" || req.body.password === "") {
@@ -46,7 +48,7 @@ module.exports = function (webserver, dataBase, mysql, session) {
             if (!error) {
                 // tried to go to page without logging in
                 if (data.length === 0) {
-                    output.redirect('/login');
+                    output.redirect = '/login';
                     output.errors = "Invalid Login Credentials";
                     res.json(output);
                     return;
@@ -56,20 +58,36 @@ module.exports = function (webserver, dataBase, mysql, session) {
                 output.success = true;
                 output.data = data;
                 output.redirect = '/bulletin_board';
+                // output.sessionID = req.sessionID;
 
                 // setting session data
+
+                // const sessionData = {
+                //     user_id: data[0].user_id,
+                //     team_id: data[0].team_id,
+                //     athlete_id: data[0].athlete_id,
+                //     athlete_info_id: data[0].athlete_info_id,
+                //     team_code: data[0].team_code,
+                // };
+
+                // req.session['user']=sessionData;
+                // console.log('req.session: ***** ' , req.session);
+                // console.log('session ID', req.sessionID);
+
                 req.session.user_id = data[0].user_id;
                 req.session.team_id = data[0].team_id;
                 req.session.team_code = data[0].team_code;
                 req.session.athlete_id = data[0].athlete_id;
                 req.session.athlete_info_id = data[0].athlete_info_id;
                 req.session.team_code = data[0].team_code;
-                console.log('req.session: ***** ', req.session);
+
                 // send back json data about path they should go to (bulletinboard) => browser history
+                res.json(output)
+
             } else {
                 output.errors = error;
             }
-            res.json(output);
-            });
-        }
-    )}
+        });
+    })
+};
+

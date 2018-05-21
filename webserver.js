@@ -39,6 +39,8 @@ webserver.get('/test', (req, res) => {
     res.sendFile(__dirname + '/test_ajax.html');
 });
 
+// maybe create middleware to check if user is logged in?
+
 require("./session.js")(webserver, dataBase, mysql);
 
 require("./routes/signup")(webserver, dataBase, mysql);

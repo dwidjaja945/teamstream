@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./bulletin_board.css";
 import BulletinBoardMessages from "./bulletin_board_message";
-import bulletinDummyData from "./bulletin_dummy_data";
 import AddBulletinMessages from "./add_bulletin_message";
-import Navbar from "./navbar";
-import dropDown from "./images/double-down.png";
+import Navbar from "../navbar";
+import dropDown from "../images/double-down.png";
 import axios from 'axios';
-import hamburgerMenu from "./hamburger_menu";
+import hamburgerMenu from "../hamburger_menu";
 
 class BulletinBoard extends Component {
     constructor(props) {

@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import Field from './profile_fields';
 import ProfileData from './profile_data';
 import AddNewInputs from './add_new_input';
-import "./styles.css";
-
+import "../styles.css";
 
 class CreateProfile extends Component {
     constructor(props) {

@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import AddBulletinMessages from "./add_bulletin_message";
-import BulletinBoard from "./bulletin_board";
-import bulletinDummyData from "./bulletin_dummy_data";
-import Login from "./login";
-import Login_Page from "./login_page";
+import AddBulletinMessages from "./bulletin_board/add_bulletin_message";
+import BulletinBoard from "./bulletin_board/bulletin_board";
+import bulletinDummyData from "./bulletin_board/bulletin_dummy_data";
+import Login from "./log_in/login";
+import Login_Page from "./log_in/login_page";
 import ForkNav from "./fork_nav";
 import CreateTeam from "./create_team";
 import JoinTeam from "./join_team";
-import AthleteProfile from "./athlete_profile";
-import Roster from "./roster";
+import AthleteProfile from "./profile_pages/athlete_profile";
+import Roster from "./roster/roster";
 import UserIdPw from "./create_user_id_pw";
 import NavBar from "./navbar";
-import AddAthlete from './add_athlete';
-import CreateProfile from './create_profile';
+import AddAthlete from './profile_pages/add_athlete';
+import CreateProfile from './profile_pages/create_profile';
 
 class App extends Component {
 	constructor(props) {

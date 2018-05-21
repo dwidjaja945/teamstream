@@ -27,7 +27,6 @@ class BulletinBoard extends Component {
 			console.log("BB GET response: ", resp);
 
 			const messageArray = this.findPinnedMessage(resp.data.data);
-
 			this.setState({
 				messageArray: messageArray
 			});

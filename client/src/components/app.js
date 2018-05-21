@@ -28,13 +28,13 @@ class App extends Component {
             bulletinDummyData
         });
     }
-    getDataCallback(dataToGet, pathToGoTo, historyPush){
-        const historyObj = {
-            pathname: pathToGoTo,
-            state: dataToGet,
-        };
-        historyPush(historyObj)
-    }
+    // getDataCallback(dataToGet, pathToGoTo, historyPush){
+    //     const historyObj = {
+    //         pathname: pathToGoTo,
+    //         state: dataToGet,
+    //     };
+    //     historyPush(historyObj)
+    // }
 
     render() {
         return (
@@ -42,10 +42,9 @@ class App extends Component {
                 <Route exact path="/"
                        component={Login} />
 
-                {/*<Route path="/login_page" dataPassCallback={this.getDataCallback.bind(this)}*/}
-                {/*component={Login_Page} />*/}
-                <Route path='/login_page' render={routeProps =>
-					<Login_Page {...routeProps} dataPassCallback={this.getDataCallback.bind(this)}/>} />
+                <Route path="/login_page" component={Login_Page} />
+                {/*<Route path='/login_page' render={routeProps =>*/}
+					{/*<Login_Page {...routeProps} dataPassCallback={this.getDataCallback.bind(this)}/>} />*/}
 
                 <Route path="/bulletin_board"
                        component={BulletinBoard} />

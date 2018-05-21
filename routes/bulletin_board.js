@@ -8,8 +8,9 @@ module.exports = function(webserver, dataBase, mysql) {
             redirect: ''
         };
 
-        console.log('req.session: ', req.session);
-        console.log('bulletin_board login: ', req.sessionStore.sessions);
+        console.log('Bulletin Board session: ', req.session);
+        console.log('bulletinboard session id: ', req.sessionID)
+        // console.log('bulletin_board login: ', req.sessionStore.sessions);
 
         if (req.session.user_id === undefined) {
             output.redirect = '/login';
@@ -18,11 +19,6 @@ module.exports = function(webserver, dataBase, mysql) {
             res.end();
             return;
         }
-
-        // { cvihi39LwjvwqB7RDx27oeHojYCLpyhy:
-        //     '{"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"user_id":9,"team_id":1,' +
-        //     '"athlete_id":9,"athlete_info_id":7,"team_code":"626THUL0"}' }
-
 
         let user_id = req.session.user_id;
         // team_id will need to be provided from front end in axios call.
@@ -65,7 +61,7 @@ module.exports = function(webserver, dataBase, mysql) {
             } else {
                 output.errors = error;
             }
-            console.log(output);
+            // console.log(output);
             res.json(output);
 
         });
@@ -79,8 +75,10 @@ module.exports = function(webserver, dataBase, mysql) {
             errors: []
         };
 
-        if (req.body) {
-            if (req.body.athlete_id) {
+        console.log('BB response body: ', req.body)
+
+        if (req.body && req.session) {
+            if (req.session.athlete_id) {
                 var athlete_id = req.body.athlete_id;
                 // will need to rework to pull ID from sessions
             }
@@ -88,13 +86,13 @@ module.exports = function(webserver, dataBase, mysql) {
                 var post_text = req.body.post_text;
                 // assign bulletin post here`
             }
-            if (req.body.team_id) {
+            if (req.session.team_id) {
                 var team_id = req.body.team_id;
                 // assign team name here
             }
-            if (req.body.pinned) {
-                var pinned = req.body.pinned;
-            }
+            // if (req.body.pinned) {
+            //     var pinned = req.body.pinned;
+            // }
         } else {
             res.send("Missing Proper query items");
         }
@@ -112,7 +110,7 @@ module.exports = function(webserver, dataBase, mysql) {
             post_text,
             athlete_id,
             team_id,
-            pinned
+            // pinned
         ];
         // will be inserting post_text, athlete_id, team_id, pinned
 
@@ -122,9 +120,12 @@ module.exports = function(webserver, dataBase, mysql) {
             if (!error) {
                 output.success = true;
                 output.data = data;
+
             } else {
                 output.errors = error;
             }
+
+            console.log('BB insert data: ', data);
 
             providePostID(post_text, output);
 

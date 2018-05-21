@@ -5,17 +5,18 @@ class Bulletin extends Component {
 		super(props);
 
 		this.state = {
-			message: ""
+			message: "new message"
 		};
 		this.handleAddMessage = this.handleAddMessage.bind(this);
 	}
 	handleAddMessage(event) {
 		event.preventDefault();
-		console.log(this.state);
-		this.setState({
+
+        this.props.add(this.state.message);
+
+        this.setState({
 			message: ""
 		});
-		this.props.add(this.state);
 	}
 	render() {
 		const { message } = this.state;

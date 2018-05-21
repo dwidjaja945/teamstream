@@ -15,7 +15,6 @@ class BulletinBoard extends Component {
 		this.state = {
 			messageArray: [],
 			hasPinned: false,
-			dataReceived: this.props.history.location.state,
 		};
 
 		this.getDataFromServer();
@@ -25,24 +24,41 @@ class BulletinBoard extends Component {
 
 	getDataFromServer(path){
 		path='/api/bulletin_board';
-		axios.get('http://localhost:9000' + path)
+		axios.get(path)
 			.then( resp => {
-				console.log('response: ' , resp);
-			})
+				console.log('BB GET response: ' , resp);
+
+				this.setState({
+                    messageArray: resp.data.data,
+				})
+			});
 	}
 
 	addMessage(message) {
 		const { hasPinned, messageArray } = this.state;
-		if (hasPinned) {
-			const newMessageArray = messageArray.splice(1, 0, message);
-			this.setState({
-				messageArray
-			});
-		} else {
-			this.setState({
-				messageArray: [message, ...this.state.messageArray]
-			});
-		}
+		// if (hasPinned) {
+		// 	const newMessageArray = messageArray.splice(1, 0, message);
+		// 	this.setState({
+		// 		messageArray
+		// 	});
+		// } else {
+		// 	this.setState({
+		// 		messageArray: [message, ...this.state.messageArray]
+		// 	});
+		// }
+        const path='/api/bulletin_board';
+
+        const dataToSend = {
+        	post_text:message,
+		};
+
+        axios.post(path, dataToSend)
+            .then( resp => {
+                console.log('BB POST response: ' , resp);
+
+            });
+
+
 	}
 
 	pinMessage(index) {

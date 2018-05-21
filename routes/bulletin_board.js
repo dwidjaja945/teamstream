@@ -1,5 +1,6 @@
 module.exports = function(webserver, dataBase, mysql) {
 
+    // Pulling data from bulletin board for a particular user
     webserver.get("/api/bulletin_board", function(req, res) {
         const output = {
             success: false,
@@ -7,10 +8,7 @@ module.exports = function(webserver, dataBase, mysql) {
             errors: [],
             redirect: ''
         };
-
-        console.log('Bulletin Board session: ', req.session);
     
-
         if (req.session.user_id === undefined) {
             output.redirect = '/login';
             output.errors = 'User not logged in';
@@ -21,16 +19,20 @@ module.exports = function(webserver, dataBase, mysql) {
 
         let user_id = req.session.user_id;
         // team_id will need to be provided from front end in axios call.
+        
         let team_id;
+        // this check is if the user is switching teams.
         if(req.body.team_id){
             team_id = req.body.team_id
         } else {
             team_id = req.session.team_id
         }
+
         let athlete_id = req.session.athlete_id;
         let athlete_info_id = req.session.athlete_info_id;
 
-        let athlete_info_id_query = `SELECT \`athlete_info\`.\`first_name\`, 
+        let athlete_info_id_query = `SELECT 
+            \`athlete_info\`.\`first_name\`, 
             \`athlete_info\`.\`last_name\`, 
             \`bulletin\`.\`athlete_id\`, 
             \`post_text\`, 
@@ -60,11 +62,10 @@ module.exports = function(webserver, dataBase, mysql) {
             } else {
                 output.errors = error;
             }
-            // console.log(output);
+
             res.json(output);
 
         });
-
     });
 
     webserver.post("/api/bulletin_board", (req, res) => {
@@ -144,8 +145,10 @@ module.exports = function(webserver, dataBase, mysql) {
             }
         }
 
-        let query =
-            "DELETE FROM `bulletin` WHERE `bulletin`.`post_id` = ? AND `bulletin`.`athlete_id` = ?";
+        let query = "DELETE " + 
+        "FROM `bulletin` " + 
+        "WHERE `bulletin`.`post_id` = ? " + 
+        "AND `bulletin`.`athlete_id` = ?";
         let inserts = [post_id, athlete_id];
         // insert post_id and athlete_id
 
@@ -158,6 +161,7 @@ module.exports = function(webserver, dataBase, mysql) {
             } else {
                 output.errors = error;
             }
+
             res.json(output);
         });
     });

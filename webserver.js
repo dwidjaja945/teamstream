@@ -53,6 +53,8 @@ require('./routes/roster')(webserver, dataBase, mysql);
 // endpoint for bulletin board
 require('./routes/bulletin_board')(webserver, dataBase, mysql);
 
+require("./routes/pinned")(webserver, dataBase, mysql);
+
 require('./routes/logout')(webserver, dataBase, mysql);
 
 // webserver.get('*', (req, res) => {

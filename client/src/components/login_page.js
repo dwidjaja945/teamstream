@@ -41,16 +41,6 @@ class LogIn extends React.Component {
 		});
 	}
 
-	performAxiosCall(username, password) {
-		const dataToSend = { username, password };
-		let path = "/api/login";
-		axios.post(`http://localhost:9000${path}`, dataToSend).then(response => {
-			//here is where we redirect
-			if (response.data.success) {
-				console.log("data from server response: ", response);
-				console.log("current props at this time: ", this.props);
-
-
     loginAxiosCall(username, password) {
         const dataToSend = { username, password };
         let path = "/api/login";

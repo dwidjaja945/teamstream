@@ -8,7 +8,19 @@ module.exports = function(webserver, dataBase, mysql) {
             errors: [],
             redirect: ''
         };
-    
+
+        // create a function for checking if logged in --> move to webserver.js
+        // function checkIfLoggedIn(reqObj, resObj, outputObj , redirectIfFalse = true) {
+        //     if (reqObj.session.user_id === undefined) {
+        //         outputObj.redirect = redirectIfFalse ? "/login" : "";
+        //         // outputObj.redirect = '/login';
+        //         outputObj.errors = 'User not logged in';
+        //         resObj.json(outputObj);
+        //         resObj.end();
+        //         return;
+        //     }    
+        // };
+
         if (req.session.user_id === undefined) {
             output.redirect = '/login';
             output.errors = 'User not logged in';
@@ -17,19 +29,21 @@ module.exports = function(webserver, dataBase, mysql) {
             return;
         }
 
+        // create checks for each variable - run through loop for each.
         let user_id = req.session.user_id;
+        let athlete_id = req.session.athlete_id;
+        let athlete_info_id = req.session.athlete_info_id;
         // team_id will need to be provided from front end in axios call.
         
         let team_id;
-        // this check is if the user is switching teams.
+        // this check is if the user is switching teams boards.
+        // maybe add check here to see if user is actually on team
         if(req.body.team_id){
             team_id = req.body.team_id
+            req.session.team_id = team_id;
         } else {
             team_id = req.session.team_id
         }
-
-        let athlete_id = req.session.athlete_id;
-        let athlete_info_id = req.session.athlete_info_id;
 
         let athlete_info_id_query = `SELECT 
             \`athlete_info\`.\`first_name\`, 
@@ -50,6 +64,12 @@ module.exports = function(webserver, dataBase, mysql) {
             WHERE \`bulletin\`.\`team_id\` = ? 
             ORDER BY \`timestamp\` DESC `;
 
+            // do a separate request just for the athlete data, use as reference on webserver to tie back to message data.
+
+            // where : ensure that you can only pull data from the teams user is on
+            //ex  "AND team_id IN (2, 5, 7, 12) "
+            // DESCRIBE  - tells what fields query is using
+
         let athlete_info_id_inserts = [team_id];
 
         let athlete_info_id_sqlQuery = mysql.format(athlete_info_id_query, athlete_info_id_inserts);
@@ -62,6 +82,7 @@ module.exports = function(webserver, dataBase, mysql) {
                 output.redirect = '/bulletin_board';
             } else {
                 output.errors = error;
+                // try to include error logging
             }
 
             res.json(output);
@@ -76,6 +97,9 @@ module.exports = function(webserver, dataBase, mysql) {
             errors: []
         };
 
+        // make array of things to check
+        // then iterate through array, see if field is present, if not, throw error
+        // if present, make object with data
         if (req.body && req.session) {
             if (req.session.athlete_id) {
                 var athlete_id = req.session.athlete_id;
@@ -98,11 +122,10 @@ module.exports = function(webserver, dataBase, mysql) {
 
         let query =
             "INSERT INTO " +
-            "`bulletin` (`post_id`, `post_text`, `athlete_id`, `timestamp`, `team_id`, `pinned`) " +
-            "VALUES (?, ?, ?, NOW(), ?, ?)";
+            "`bulletin` (`post_text`, `athlete_id`, `timestamp`, `team_id`, `pinned`) " +
+            "VALUES (?, ?, NOW(), ?, ?)";
 
         let inserts = [
-            null,
             post_text,
             athlete_id,
             team_id,

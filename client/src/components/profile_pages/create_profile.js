@@ -16,11 +16,28 @@ class CreateProfile extends Component {
             weight: '',
             statInput: '',
             statValue: '',
-            customInput: []
+            customInputsArray: []
 
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addNewInput=this.addNewInput.bind(this);
+    }
+    addNewInput(event) {
+        event.preventDefault();
+
+        const newCustomInput={
+            inputName:'inputName',
+            nameValue:'',
+            valueName:'valueName',
+            inputValue:'',
+        };
+
+        const {customInputsArray} = this.state;
+
+        customInputsArray.push(newCustomInput);
+
+        this.setState({customInputsArray});
     }
 
     handleInputChange(event) {
@@ -30,13 +47,6 @@ class CreateProfile extends Component {
             [name]: value,
         });
     }
-    // handleCustomInputChange(){
-    //     const { statInput, statValue, customInput } = this.state;
-    //     customInput.push({ name: statInput, value: statValue });
-    //     this.setState({
-    //         customInput: customInput
-    //     });
-    // }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -44,34 +54,8 @@ class CreateProfile extends Component {
         this.props.addAthlete(this.state);
     }
 
-    addNewInput() {
-        const { customInput } = this.state;
-        customInput.push({ name: 'stat' + customInput.length + 1, value: '' })
-        customInput.push({ name: 'value' + customInput.length + 1, value: '' })
-
-        const newCustomInputArr = customInput.map((item, index) => {
-            return (
-                <Field name={customInput[index].name} type="text" value={customInput[index].value} onChange={this.handleInputChange} />
-            )
-
-        })
-        return newCustomInputArr;
-
-    }
-    // mapThroughValues(customInputArr) {
-    //     if (customInputArr.length > 0) {
-    //         customInputArr.map((item, index) => {
-    //             return (
-    //                 <Field onChange={this.handleInputChange} name={item.name} value={item.value} key={index} />
-    //             )
-    //         })
-    //     }
-    // }
-
-
-
     render() {
-        const { firstName, lastName, age, height, weight, customInput } = this.state;
+        const { firstName, lastName, age, height, weight, customInputsArray } = this.state;
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -83,7 +67,7 @@ class CreateProfile extends Component {
                     <Field name="height" label="Height" type="text" value={height} onChange={this.handleInputChange} />
                     <Field name="weight" label="Weight" type="number" value={weight} onChange={this.handleInputChange} />
                     {/* <button onClick={this.addNewInput.bind(this)}>Add</button> */}
-                    <AddNewInputs customData={customInput}/>
+                    <AddNewInputs addNewInput={this.addNewInput} customInputsArray={customInputsArray}/>
                     {/* <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange} />
                     <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange} /> */}
                     <Link to={`/athlete_profile`} className="loginButtons">

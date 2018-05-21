@@ -22,7 +22,7 @@ module.exports = (webserver, dataBase, mysql, session) => {
         query = `INSERT INTO users (user_id, email, username, password, google_id, facebook_id, status) VALUES (NULL, ?, ?, ?, '', '', 'active')`;
         inserts = [email, username, password];
 
-        sqlQuery = mysql.format(query, inserts);
+        let sqlQuery = mysql.format(query, inserts);
 
         dataBase.query(sqlQuery, (error, data, fields) => {
           if (!error) {

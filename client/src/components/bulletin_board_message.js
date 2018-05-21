@@ -6,10 +6,12 @@ export default props => {
 
 	const bulletinMessages = props.data.map((item, index) => {
 
-		const {first_name, last_name, post_text, timestamp, team_name} = item;
+		const {first_name, last_name, post_text, timestamp, team_name, pinned} = item;
+
+		const pinnedClass= pinned > 0 ? 'userMessages pinned' : 'userMessages';
 
 		return (
-			<div className="userMessages" key={index}>
+			<div className={pinnedClass} key={index}>
 				<img className="teamLogo" src={teamLogo} alt="" />
 				{first_name}
 				{last_name}

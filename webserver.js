@@ -20,14 +20,14 @@ webserver.use(express.static(__dirname + '/' + 'client'));
 
 webserver.use(session({
     secret: 'test_secret',
-    cookie: {
-        path:'/',
-        secure: false,
-        httpOnly: false,
-    },
-    proxy:true,
-    saveUninitialized: true,
-    resave: false,
+    // cookie: {
+    //     path:'/',
+    //     secure: false,
+    //     httpOnly: false,
+    // },
+    // proxy:true,
+    // saveUninitialized: true,
+    // resave: false,
 }));
 
 dataBase.connect(error => {

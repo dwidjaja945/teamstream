@@ -48,7 +48,7 @@ module.exports = function(webserver, dataBase, mysql, session) {
             if (!error) {
                 // tried to go to page without logging in
                 if (data.length === 0) {
-                    output.redirect('/login');
+                    output.redirect = '/login';
                     output.errors = "Invalid Login Credentials";
                     res.json(output);
                     return;
@@ -71,15 +71,15 @@ module.exports = function(webserver, dataBase, mysql, session) {
                 // };
 
                 // req.session['user']=sessionData;
-                console.log('req.session: ***** ' , req.session);
-                console.log('session ID', req.sessionID);
+                // console.log('req.session: ***** ' , req.session);
+                // console.log('session ID', req.sessionID);
 
                 req.session.user_id = data[0].user_id;
                 req.session.team_id = data[0].team_id;
                 req.session.athlete_id = data[0].athlete_id;
                 req.session.athlete_info_id = data[0].athlete_info_id;
                 req.session.team_code = data[0].team_code;
-                console.log('req.session: ***** ' , req.session);
+                // console.log('req.session: ***** ' , req.session);
                 // send back json data about path they should go to (bulletinboard) => browser history
                 res.json(output)
 

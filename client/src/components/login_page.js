@@ -26,7 +26,7 @@ class LogIn extends React.Component {
         // this.props.addItemCallback(this.state);
         // console.log(this.state);
         const { userName, password } = this.state;
-        this.performAxiosCall(userName, password);
+        this.loginAxiosCall(userName, password);
 
 
         this.setState({
@@ -35,7 +35,7 @@ class LogIn extends React.Component {
         });
     }
 
-    performAxiosCall(username, password) {
+    loginAxiosCall(username, password) {
         const dataToSend = { username, password };
         let path = "/api/login";
         axios.post(`${path}`, dataToSend).then(response => {

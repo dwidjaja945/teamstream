@@ -9,7 +9,7 @@ module.exports = function(webserver, dataBase, mysql) {
         };
 
         console.log('Bulletin Board session: ', req.session);
-        console.log('bulletinboard session id: ', req.sessionID)
+        // console.log('bulletinboard session id: ', req.sessionID)
         // console.log('bulletin_board login: ', req.sessionStore.sessions);
 
         if (req.session.user_id === undefined) {
@@ -46,7 +46,8 @@ module.exports = function(webserver, dataBase, mysql) {
       	ON \`bulletin\`.\`athlete_id\` = \`athletes\`.\`athlete_id\`
       JOIN \`athlete_info\`
       	ON \`athletes\`.\`athlete_info_id\` = \`athlete_info\`.\`athlete_info_id\`
-      WHERE \`bulletin\`.\`team_id\` = ?`;
+      WHERE \`bulletin\`.\`team_id\` = ? 
+      ORDER BY \`timestamp\` DESC `;
 
         let athlete_info_id_inserts = [team_id];
 
@@ -75,11 +76,10 @@ module.exports = function(webserver, dataBase, mysql) {
             errors: []
         };
 
-        console.log('BB response body: ', req.body)
 
         if (req.body && req.session) {
             if (req.session.athlete_id) {
-                var athlete_id = req.body.athlete_id;
+                var athlete_id = req.session.athlete_id;
                 // will need to rework to pull ID from sessions
             }
             if (req.body.post_text) {
@@ -87,7 +87,7 @@ module.exports = function(webserver, dataBase, mysql) {
                 // assign bulletin post here`
             }
             if (req.session.team_id) {
-                var team_id = req.body.team_id;
+                var team_id = req.session.team_id;
                 // assign team name here
             }
             // if (req.body.pinned) {
@@ -99,22 +99,21 @@ module.exports = function(webserver, dataBase, mysql) {
 
         let query =
             "INSERT INTO " +
-            "`bulletin` (`post_id`, ??, ??, `timestamp`, ??, ??) " +
-            "VALUES (NULL, ?, ?, NOW(), ?, ?)";
+            "`bulletin` (`post_id`, `post_text`, `athlete_id`, `timestamp`, `team_id`, `pinned`) " +
+            "VALUES (?, ?, ?, NOW(), ?, ?)";
 
         let inserts = [
-            "post_text",
-            "athlete_id",
-            "team_id",
-            "pinned",
+            null,
             post_text,
             athlete_id,
             team_id,
-            // pinned
+            0,
         ];
         // will be inserting post_text, athlete_id, team_id, pinned
 
         let sqlQuery = mysql.format(query, inserts);
+
+        console.log('sql query', sqlQuery)
 
         dataBase.query(sqlQuery, function(error, data, fields) {
             if (!error) {
@@ -127,33 +126,34 @@ module.exports = function(webserver, dataBase, mysql) {
 
             console.log('BB insert data: ', data);
 
-            providePostID(post_text, output);
+            res.json(output);
+            // providePostID(post_text, output);
 
         });
 
-        function providePostID(postText, output) {
-            let query = `
-      SELECT bulletin.post_id,
-      bulletin.athlete_id
-      FROM bulletin
-      WHERE post_text = ?
-      `;
-
-            let inserts = [postText];
-
-            let sqlQuery = mysql.format(query, inserts);
-            dataBase.query(sqlQuery , (error, data, fields) => {
-                if(!error) {
-                    console.log(data);
-                    output.post_info = data;
-                    output.success = true;
-                } else {
-                    output.errors = error;
-                }
-                console.log(output);
-                res.json(output);
-            });
-        }
+      //   function providePostID(postText, output) {
+      //       let query = `
+      // SELECT bulletin.post_id,
+      // bulletin.athlete_id
+      // FROM bulletin
+      // WHERE post_text = ?
+      // `;
+      //
+      //       let inserts = [postText];
+      //
+      //       let sqlQuery = mysql.format(query, inserts);
+      //       dataBase.query(sqlQuery , (error, data, fields) => {
+      //           if(!error) {
+      //               console.log(data);
+      //               output.post_info = data;
+      //               output.success = true;
+      //           } else {
+      //               output.errors = error;
+      //           }
+      //           console.log(output);
+      //           res.json(output);
+      //       });
+      //   }
     });
 
     webserver.delete("/api/bulletin_board", (req, res) => {

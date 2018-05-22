@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Field from './profile_fields';
+import AddNewInputs from './add_new_input';
 import "../styles.css";
 
-class CreateProfile extends Component {
+class EditProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +18,25 @@ class CreateProfile extends Component {
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addNewInput=this.addNewInput.bind(this);
     }
+    addNewInput(event) {
+        event.preventDefault();
+
+        const newCustomInput={
+            inputName:'inputName',
+            nameValue:'',
+            valueName:'valueName',
+            inputValue:'',
+        };
+
+        const {customInputsArray} = this.state;
+
+        customInputsArray.push(newCustomInput);
+
+        this.setState({customInputsArray});
+    }
+
     handleInputChange(event) {
         const { value, name } = event.target;
 
@@ -44,6 +63,10 @@ class CreateProfile extends Component {
                     <Field name="age" label="Age" type="number" value={age} onChange={this.handleInputChange} />
                     <Field name="height" label="Height" type="text" value={height} onChange={this.handleInputChange} />
                     <Field name="weight" label="Weight" type="number" value={weight} onChange={this.handleInputChange} />
+                    {/* <button onClick={this.addNewInput.bind(this)}>Add</button> */}
+                    <AddNewInputs addNewInput={this.addNewInput} customInputsArray={customInputsArray}/>
+                    {/* <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange} />
+                    <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange} /> */}
                     <Link to={`/athlete_profile`} className="loginButtons">
                         <span className="btnLog">Create Profile</span>
                     </Link>
@@ -53,4 +76,4 @@ class CreateProfile extends Component {
         )
     }
 }
-export default CreateProfile;
+export default EditProfile;

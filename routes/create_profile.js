@@ -13,10 +13,10 @@ module.exports = function (webserver, dataBase, mysql) {
             let age = req.body.age;
             let weight = req.body.weight;
             let height = req.body.height;
-            let statInput = req.body.statInput;
-            let statValue = req.body.statValue;
+            let statArray = req.body.statArray;
         };
-        let user_id = req.session.user_id
+
+        let user_id = req.session.user_id;
 
         let query = `INSERT INTO \`athlete_info\` 
         (\`athlete_info_id\`, 
@@ -37,7 +37,7 @@ module.exports = function (webserver, dataBase, mysql) {
             if(!err) {
                 output.success = true;
                 output.data = data;
-                output.redirect = '/bulletin_board';
+                output.redirect = '/create_team';
             } else {
                 output.errors = err;
             };

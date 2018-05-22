@@ -6,15 +6,16 @@ module.exports = function (webserver, dataBase, mysql) {
             data: [],
             errors: [],
             redirect: ''
-        }
+        };
         if (req.body) {
             let firstName = req.body.first_name;
             let lastName = req.body.last_name;
             let age = req.body.age;
             let weight = req.body.weight;
             let height = req.body.height;
-            let statArray = req.body.statArray;
-        };
+        }
+
+        console.log('Create Profile Request Body', req.body);
 
         let user_id = req.session.user_id;
 
@@ -27,7 +28,7 @@ module.exports = function (webserver, dataBase, mysql) {
         \`img_url\`, 
         \`age\`, 
         \`user_id\`) 
-        VALUES (NULL, '?', '?', '?', '?', '', '?', '?')`
+        VALUES (NULL, '?', '?', '?', '?', '', '?', '?')`;
 
         let inserts = [firstName, lastName, height, weight, age, user_id];
 
@@ -40,7 +41,9 @@ module.exports = function (webserver, dataBase, mysql) {
                 output.redirect = '/create_team';
             } else {
                 output.errors = err;
-            };
+            }
+
+            
         })
     })
 };

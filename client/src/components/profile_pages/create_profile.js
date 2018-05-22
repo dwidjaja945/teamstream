@@ -7,12 +7,11 @@ class CreateProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             age: '',
             height: '',
             weight: '',
-            customInputsArray: []
 
         };
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -28,12 +27,11 @@ class CreateProfile extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log('This is the handleSubmit: ', this.state);
         this.props.addAthlete(this.state);
     }
 
     render() {
-        const { firstName, lastName, age, height, weight, customInputsArray } = this.state;
+        const { firstName, lastName, age, height, weight} = this.state;
 
         return (
             <form onSubmit={this.handleSubmit}>

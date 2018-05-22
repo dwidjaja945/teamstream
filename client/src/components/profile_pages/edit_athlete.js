@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import CreateProfile from './create_profile';
-import axios from "axios/index";
+import EditProfile from './edit_profile';
 // import ProfileData from './profile_data';
 
 class AddAthlete extends Component{
@@ -17,20 +16,12 @@ class AddAthlete extends Component{
         this.setState({
             profileData: {...this.state.profileData, ...input},
         });
-
-        const path = '/api/create_profile';
-        axios.post(path, input).then(resp => {
-            console.log("add athlete response from server: ", resp);
-
-            this.getDataFromServer();
-        });
-
     }
     render(){
         console.log('add_Athlete state: ',this.state);
         return(
             <div>
-                <CreateProfile addAthlete={this.addAthleteInput}/>
+                <EditProfile addAthlete={this.addAthleteInput}/>
             </div>
         )
     }

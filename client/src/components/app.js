@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import AddBulletinMessages from "./bulletin_board/add_bulletin_message";
 import BulletinBoard from "./bulletin_board/bulletin_board";
 import bulletinDummyData from "./bulletin_board/bulletin_dummy_data";
 import Login from "./log_in/login";

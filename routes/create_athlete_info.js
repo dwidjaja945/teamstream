@@ -1,6 +1,6 @@
 module.exports = function (webserver, dataBase, mysql) {
 
-    webserver.post('/api/create_profile', function (req , res ) {
+    webserver.post('/api/create_athlete_info', function (req , res ) {
         const output = {
             success: false,
             data: [],

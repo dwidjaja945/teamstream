@@ -16,7 +16,7 @@ webserver.use(cookieParser());
 
 webserver.use(cors());
 
-webserver.use(express.static(__dirname + '/' + 'client'));
+webserver.use(express.static(__dirname + '/' + 'client' + '/dist'));
 
 webserver.use(session({
     secret: 'test_secret',

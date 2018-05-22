@@ -232,7 +232,6 @@ body {
 	display: flex;
 	flex-flow: column wrap;
 	overflow: auto;
-
 }
 
 .statsTitleContainer {
@@ -257,20 +256,22 @@ body {
 
 .profileFooter {
 	height: 5%;
+	width: 100%;
 	position: relative;
 }
 
-.profileSubmit {
+.profileEdit {
 	position: absolute;
-	padding: 7px;
-	left: 153px;
-	border-radius: 10px;
-	top: 2px;
+	padding: 12px;
+	left: 50%;
+	border-radius: 7px;
+	bottom: 40%;
 	background-color: #1056ab;
 	color: white;
+	transform: translate(-50%, 0);
 }
 
-.profileSubmit:hover {
+.profileEdit:hover {
 	background-color: #dadada;
 	color: #000000;
 }

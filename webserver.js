@@ -47,6 +47,8 @@ require("./routes/signup")(webserver, dataBase, mysql);
 
 require("./routes/create_team")(webserver, dataBase, mysql);
 
+require("./routes/join_team")(webserver, dataBase, mysql);
+
 require('./routes/create_athlete_info')(webserver, dataBase, mysql);
 
 require('./routes/athlete_profile')(webserver, dataBase, mysql);

@@ -28,7 +28,8 @@ module.exports = (webserver, dataBase, mysql, session) => {
           if (!error) {
             output.success = true;
             output.data = data;
-            output.redirect = "/create_profile";
+            req.session.user_id = data.data.insertId;
+            output.redirect = "/create_athlete";
             pullUserId(username, output, req, res);
           } else {
             output.errors = error;

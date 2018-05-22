@@ -16,7 +16,7 @@ webserver.use(cookieParser());
 
 webserver.use(cors());
 
-webserver.use(express.static(__dirname + '/' + 'client'));
+webserver.use(express.static(__dirname + '/' + 'client' + '/dist'));
 
 webserver.use(session({
     secret: 'test_secret',
@@ -45,7 +45,7 @@ require("./session.js")(webserver, dataBase, mysql);
 
 require("./routes/signup")(webserver, dataBase, mysql);
 
-require('./routes/create_profile')(webserver, dataBase, mysql);
+require('./routes/create_athlete_info')(webserver, dataBase, mysql);
 
 require('./routes/athlete_profile')(webserver, dataBase, mysql);
 
@@ -59,12 +59,12 @@ require("./routes/pinned")(webserver, dataBase, mysql);
 
 require('./routes/logout')(webserver, dataBase, mysql);
 
-// webserver.get('*', (req, res) => {
-//   res.sendFile(__dirname + "/client" + "/dist" + "/index.html");
-// });
+webserver.get('*', (req, res) => {
+    res.sendFile(__dirname + "/client" + "/dist" + "/index.html");
+});
 
 webserver.listen(9000, () => {
     console.log("Server listening on 9000");
 }).on('error', (error) => {
-    console.log('Server Error: ' , error.message);
+    console.log('Server Error: ', error.message);
 });

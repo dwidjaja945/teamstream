@@ -49,7 +49,9 @@ class LogIn extends React.Component {
 				console.log("current props at this time: ", this.props);
 
 				//if success, log them in, take them to bulletin board
-				this.props.history.push(response.data.redirect);
+				// this.props.history.push(response.data.redirect);
+				this.props.history.push('/roster');
+
 			} else {
 				//ERROR
 				console.log(response.data.errors);

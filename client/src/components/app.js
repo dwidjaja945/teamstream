@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import AddBulletinMessages from "./bulletin_board/add_bulletin_message";
 import BulletinBoard from "./bulletin_board/bulletin_board";
 import bulletinDummyData from "./bulletin_board/bulletin_dummy_data";
 import Login from "./log_in/login";
@@ -13,7 +12,7 @@ import Roster from "./roster/roster";
 import UserIdPw from "./create_user_id_pw";
 import NavBar from "./navbar";
 import AddAthlete from "./profile_pages/add_athlete";
-import EditAthlete from'./profile_pages/edit_profile';
+import EditAthlete from'./profile_pages/edit_athlete';
 
 class App extends Component {
 	constructor(props) {

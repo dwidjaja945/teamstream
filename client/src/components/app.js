@@ -13,7 +13,7 @@ import Roster from "./roster/roster";
 import UserIdPw from "./create_user_id_pw";
 import NavBar from "./navbar";
 import AddAthlete from "./profile_pages/add_athlete";
-import CreateProfile from "./profile_pages/create_profile";
+import EditAthlete from'./profile_pages/edit_profile';
 
 class App extends Component {
 	constructor(props) {
@@ -63,6 +63,8 @@ class App extends Component {
 				<Route path="/join_team" component={JoinTeam} />
 
 				<Route path="/add_athlete" component={AddAthlete} />
+
+				<Route path="/edit_athlete" component={EditAthlete} />
 			</div>
 		);
 	}

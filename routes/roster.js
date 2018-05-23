@@ -19,8 +19,12 @@ module.exports = function (webserver, dataBase, mysql) {
         if (req.body && req.body.id) {
             teamID = req.body.id;
         }
+        else{
+            teamID = req.session.team_id;
+        }
+        console.log('roster team id: ', teamID);
         // let query = 'SELECT * FROM ?? WHERE ?? = ?';
-        let inserts = ['athlete_profile', 'id', teamID];
+        let inserts = [teamID];
 
         let query = "SELECT athlete_info.first_name, athlete_info.last_name, athletes.team_id, athletes.user_level " +
             "FROM athlete_info " +
@@ -28,11 +32,11 @@ module.exports = function (webserver, dataBase, mysql) {
             "ON athlete_info.athlete_info_id = athletes.athlete_info_id " +
             "JOIN teams " +
             "ON teams.team_id = athletes.team_id " +
-            "WHERE teams.team_id = '1'";
+            "WHERE teams.team_id = ?";
 
         let sqlQuery = mysql.format(query, inserts);
 
-        dataBase.query(query, function (error, data, fields) {
+        dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {
                 output.success = true;
                 output.athletes = data;

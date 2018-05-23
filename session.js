@@ -1,7 +1,13 @@
+const { check, validationResult } = require("express-validator/check");
+
+
 module.exports = function (webserver, dataBase, mysql, encrypt) {
-    webserver.post("/api/login", (req, res) => {
-        let username;
-        let password;
+    webserver.post("/api/login", [
+        check('email').isEmail().isEmpty(),
+        check('password').not().isEmpty()
+    ],
+    (req, res) => {
+        const errors = validationResult(req);
         const output = {
             success: false,
             data: [],
@@ -10,23 +16,32 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             sessionID: null
         };
 
-        if (req.body.username === "" || req.body.password === "") {
+        if( !errors.isEmpty() ) {
+            output.errors = errors.array;
+            res.json(output);
+            // return;
+        }
+        
+        let email;
+        let password;
+
+        if (req.body.email === "" || req.body.password === "") {
             output.redirect("/login");
             res.send("Please provide login credentials");
             res.end();
             return;
         } else {
-            username = req.body.username;
+            email = req.body.email;
             password = req.body.password;
         }
 
-        // Pull username data to compare to password
+        // Pull email data to compare to password
 
         let query = `SELECT users.password
             FROM users
-            WHERE username = ?`;
+            WHERE email = ?`;
 
-        let inserts = [username];
+        let inserts = [email];
 
         let mysqlQuery = mysql.format(query, inserts);
 
@@ -49,10 +64,10 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                         ON athlete_info.athlete_info_id = athletes.athlete_info_id
                     JOIN teams
                         ON athletes.team_id = teams.team_id
-                    WHERE username = ? 
+                    WHERE email = ? 
                     AND password = ?`;
 
-                    let inserts = [username, password];
+                    let inserts = [email, password];
 
                     let sqlQuery = mysql.format(query, inserts);
 

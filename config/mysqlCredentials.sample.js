@@ -1,5 +1,6 @@
+const bcrypt = require("bcrypt-nodejs");
 
-const credentials = {
+exports.credentials = {
     host: 'host',
     user: 'user',
     password: 'password',
@@ -7,4 +8,8 @@ const credentials = {
     port: port
 }
 
-module.exports = credentials;
+exports.encrypt = {
+    saltRounds : bcrypt.genSaltSync( # ),
+    hash: bcrypt.hash,
+    compare : bcrypt.compare
+};

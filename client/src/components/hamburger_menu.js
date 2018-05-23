@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
@@ -8,13 +8,12 @@ class hamburgerMenu extends Component {
 		super(props);
 
 		this.state = {
-			show: false,
+			show: false
 		};
 	}
 
-
 	render() {
-		const { show} = this.state;
+		const { show } = this.state;
 
 		const button = (
 			<div className="menuBtn" onClick={() => this.setState({ show: !show })}>
@@ -38,7 +37,7 @@ class hamburgerMenu extends Component {
 						<li>
 							<Link to="/athlete_profile">Profile</Link>
 						</li>
-						<li>
+						{/* <li>
 							<Link to="/create_profile">Create Profile</Link>
 						</li>
 						<li>
@@ -52,9 +51,9 @@ class hamburgerMenu extends Component {
 						</li>
 						<li>
 							<Link to="">Other Team Accounts</Link>
-						</li>
+						</li> */}
 						<li>
-							<Link to='/logout'>Log Out</Link>
+							<Link to="/logout">Log Out</Link>
 						</li>
 					</ul>
 				</div>

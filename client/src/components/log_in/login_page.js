@@ -50,8 +50,7 @@ class LogIn extends React.Component {
 
 				//if success, log them in then take them to bulletin board
 				this.props.history.push(response.data.redirect);
-				// this.props.history.push('/add_athlete');
-
+				// this.props.history.push("/join_team");
 			} else {
 				//ERROR
 				console.log(response.data.errors);

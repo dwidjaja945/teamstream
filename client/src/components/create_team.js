@@ -29,6 +29,8 @@ class CreateTeam extends Component {
 		return newCode;
 	}
 
+	
+
 	render() {
 		return (
 			<div className="createTeamContainer">

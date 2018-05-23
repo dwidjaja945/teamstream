@@ -1,15 +1,14 @@
-module.exports = (webserver, dataBase, mysql, session) => {
-
-    /**
-     * Takes: {
-     *  username
-     *  password
-     *  email
-     * }
-     *
-     * Returns:
-     *  success: true
-     */
+module.exports = (webserver, dataBase, mysql, encrypt, check) => {
+  /**
+   * Takes: {
+   *  username
+   *  password
+   *  email
+   * }
+   *
+   * Returns:
+   *  success: true
+   */
   webserver.post("/api/signup", (req, res) => {
     const output = { success: false, data: [], errors: [], redirect: "" };
 

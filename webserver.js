@@ -3,6 +3,8 @@ const mysql = require('mysql');
 const cors = require('cors');
 const session = require("express-session");
 const cookieParser = require('cookie-parser');
+const { body } = require('express-validator/check');
+
 const webserver = express();
 
 const { credentials, encrypt } = require('./config/mysqlcredentials.js');

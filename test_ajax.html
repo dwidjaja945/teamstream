@@ -157,7 +157,7 @@
 
         $("#login").click(() => {
             let dataToSend = {
-                username: $("#login-username").val(),
+                email: $("#login-username").val(),
                 password: $("#login-password").val()
             }
             return makeAjaxCall('/api/login', 'post', dataToSend);

@@ -1,4 +1,4 @@
-module.exports = function(webserver, dataBase, mysql) {
+module.exports = function (webserver, dataBase, mysql) {
     require("./create_team")(webserver, dataBase, mysql);
 
     require("./join_team")(webserver, dataBase, mysql);

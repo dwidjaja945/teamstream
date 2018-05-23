@@ -33,9 +33,12 @@ body {
 	padding: 35px;
 	position: absolute;
 	z-index: 1;
-	top: 40px;
+	top: 28px;
 	right: 0px;
-	background-color: grey;
+	background-color: #989696;
+	border: 2px solid #dadada;
+	border-radius: 15px;
+	list-style-type: none;
 }
 
 /**************Nav Bar***************/
@@ -115,10 +118,10 @@ body {
 }
 
 .loginButtons {
-	height: 14%;
-	width: 40%;
+	height: 11%;
+	width: 35%;
 	margin: 10px;
-	border-radius: 20px;
+	border-radius: 14px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -133,7 +136,7 @@ body {
 }
 
 .btnLog {
-	font-size: 20px;
+	font-size: 19px;
 }
 
 /********User Profile**********/
@@ -364,14 +367,15 @@ body {
 
 .cGbtnContent {
 	height: 6%;
-	width: 30%;
+	/*width: 30%;*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #1056ab;
 	color: white;
 	border-radius: 10px;
-	margin: 95px;
+	padding:10%;
+	/*margin: 15%;*/
 }
 
 .cGDoneBtn {
@@ -460,8 +464,6 @@ body {
 .codeBtn {
 	font-size: 20px;
 }
-
-/******************************/
 
 /***********login_page***********/
 .loginInfoContainer {

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import backArrow from "./images/blue-chevron-left.png";
 import Navbar from "./navbar";
 import hamburgerMenu from "./hamburger_menu";
@@ -22,16 +23,16 @@ class JoinTeam extends Component {
 		});
 	}
 
-	addCodeInput(input) {
-		this.setState({
-			teamCode: [input]
-		});
-	}
+	// addCodeInput(input) {
+	// 	this.setState({
+	// 		teamCode: [input]
+	// 	});
+	// }
 
 	handleSubmit(event) {
 		event.preventDefault();
 		console.log("handleSubmit: ", this.state);
-		this.addCodeInput(this.state);
+		// this.addCodeInput(this.state);
 
 		this.reset();
 	}
@@ -42,8 +43,24 @@ class JoinTeam extends Component {
 		});
 	}
 
+	joinTeamAxios() {
+		const { code: team_code } = this.state;
+		const dataToSend = { team_code };
+		let path = "/api/join_team";
+
+		axios.post(`${path}`, dataToSend).then(response => {
+			if (response.data.success) {
+				console.log("Join Team Axios: ", response);
+
+				this.props.history.push(response.data.redirect);
+				// this.props.history.push("/login");
+			} else {
+				console.log("Join Team err: ", response.data.errors);
+			}
+		});
+	}
+
 	render() {
-		console.log(this.state);
 		const { code } = this.state;
 
 		return (
@@ -62,7 +79,9 @@ class JoinTeam extends Component {
 							className="codeNum"
 						/>
 						<Link to="/bulletin_board" className="jTcodeBtn">
-							<span className="codeBtn">Join!</span>
+							<span className="codeBtn" onClick={this.joinTeamAxios.bind(this)}>
+								Join!
+							</span>
 						</Link>
 					</form>
 				</div>

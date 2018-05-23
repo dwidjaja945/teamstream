@@ -367,14 +367,15 @@ body {
 
 .cGbtnContent {
 	height: 6%;
-	width: 30%;
+	/*width: 30%;*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #1056ab;
 	color: white;
 	border-radius: 10px;
-	margin: 95px;
+	padding:10%;
+	/*margin: 15%;*/
 }
 
 .cGDoneBtn {

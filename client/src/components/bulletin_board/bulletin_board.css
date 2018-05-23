@@ -37,3 +37,9 @@ button{
 .pinDiv{
     background-color: rgba(255,0,0,.4);
 }
+.deleteBulletinMessage{
+    float: right;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+
+}

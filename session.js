@@ -16,6 +16,11 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             sessionID: null
         };
 
+        console.log('Errors: ', errors)
+        console.log('Errors.array: ', errors.array)
+        console.log('Errors.isEmpty(): ', errors.isEmpty())
+        console.log('body', req.body)
+
         if( !errors.isEmpty() ) {
             output.errors = errors.array;
             res.json(output);
@@ -35,6 +40,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             password = req.body.password;
         }
 
+        console.log('email and pass', email, password)
         // Pull email data to compare to password
 
         let query = `SELECT users.password

@@ -39,8 +39,8 @@ class LogIn extends React.Component {
 		});
 	}
 
-	loginAxiosCall(username, password) {
-		const dataToSend = { username, password };
+	loginAxiosCall(email, password) {
+		const dataToSend = { email, password };
 		let path = "/api/login";
 		axios.post(`${path}`, dataToSend).then(response => {
 			//here is where we redirect
@@ -70,7 +70,7 @@ class LogIn extends React.Component {
 				<form className="loginForm">
 					<div className="userNameContainer">
 						<div className="userNameLine">
-							<label>username</label>
+							<label>email</label>
 							<input value={email} onChange={this.handleChange} name="email" type="text" />
 						</div>
 					</div>

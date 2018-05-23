@@ -5,7 +5,9 @@ module.exports = function ( webserver , dataBase , mysql ) {
     webserver.post('/api/create_athlete_info', [
         check('first_name').isEmpty().matches(/^[a-zA-Z]*$/),
         check('last_name').isEmpty().matches(/^[a-zA-Z]*$/),
-        check('age').matches(/^[0-9]{0, 2}$/)
+        check('age').matches(/^[0-9]{0, 2}$/),
+        check('height').matches(/^[0-9]*$/),
+        check('weight').matches(/^[0-9]*$/)
     ] , (req , res ) => {
         const errors = validationResult(req);
         const output = {

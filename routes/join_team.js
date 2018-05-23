@@ -1,5 +1,14 @@
 module.exports = ( webserver , dataBase , mysql ) => {
 
+    /**
+     * Takes:
+     *      team_code: ####
+     *
+     * Returns:
+     *      success: true
+     *      team_id: ####
+     */
+
     webserver.post( '/api/join_team' , ( req , res ) => {
 
         const output = {
@@ -21,6 +30,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
         };
 
         let team_code = req.body.team_code;
+
         let athlete_info_id = req.session.athlete_info_id;
 
         // select team_id via team_code from teams
@@ -42,7 +52,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
             let team_id;
 
             if(!err) {
-                
+
                 output.success = true;
                 output.data = data;
                 team_id = data[0].team_id;

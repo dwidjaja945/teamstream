@@ -19,7 +19,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         if( !errors.isEmpty() ) {
             output.errors = errors.array;
             res.json(output);
-            // return;
+            return;
         }
         
         let email;

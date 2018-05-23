@@ -1,12 +1,26 @@
+const { check, validationResult } = require("express-validator/check");
+
 module.exports = function ( webserver , dataBase , mysql , check ) {
 
-    webserver.post('/api/create_athlete_info', function (req , res ) {
+    webserver.post('/api/create_athlete_info', [
+        check('first_name').isEmpty().matches(/^[a-zA-Z]*$/),
+        check('last_name').isEmpty().matches(/^[a-zA-Z]*$/),
+        check('age').matches(/^[0-9]{0, 2}$/)
+    ] , (req , res ) => {
+        const errors = validationResult(req);
         const output = {
             success: false,
             data: [],
             errors: [],
             redirect: ''
         };
+
+        if( !errors.isEmpty() ) {
+            output.errors = errors.array;
+            res.json(output);
+            return;
+        }
+        
         if (req.body) {
             var firstName = req.body.first_name;
             var lastName = req.body.last_name;

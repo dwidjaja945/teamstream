@@ -16,6 +16,7 @@ class CreateTeam extends Component {
 
 	}
 
+
 	// codeGenerator() {
 	// 	let newCode = "";
     //
@@ -34,6 +35,7 @@ class CreateTeam extends Component {
 	// 	}
 	// 	return newCode;
 	// }
+
 
 	render() {
 		return (

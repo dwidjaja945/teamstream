@@ -1,5 +1,18 @@
 module.exports = ( webserver , dataBase , mysql ) => {
 
+    /**
+     * Takes:
+     *      team_name: ''
+     *      sport_name: ''
+     *      team_bio: ''
+     *      team_code: ####
+     *
+     *  Returns:
+     *      success: true
+     *      insertID: #
+     *      redirect: ''
+     */
+
     webserver.post( '/api/create_team' , ( req , res ) => {
 
         const output = {

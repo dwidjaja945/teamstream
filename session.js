@@ -71,6 +71,7 @@ module.exports = function (webserver, dataBase, mysql, session) {
                 res.json(output)
 
             } else {
+                console.log('session Errors: ', error);
                 output.errors = error;
             }
         });

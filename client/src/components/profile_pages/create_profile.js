@@ -31,7 +31,9 @@ class CreateProfile extends Component {
     }
 
     render() {
+
         const { first_name, last_name, age, height, weight} = this.state;
+        const numbers = /[0-9]/g
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -41,7 +43,7 @@ class CreateProfile extends Component {
                     <Field name="last_name" label="Last Name" type="text" value={last_name} onChange={this.handleInputChange} />
                     <Field name="age" label="Age" type="number" value={age} onChange={this.handleInputChange} />
                     <Field name="height" label="Height" type="text" value={height} onChange={this.handleInputChange} />
-                    <Field name="weight" label="Weight" type="number" value={weight} onChange={this.handleInputChange} />
+                    <Field name="weight" label="Weight" type={numbers} value={weight} onChange={this.handleInputChange} />
                     <Link to={`/athlete_profile`} className="loginButtons">
                         <span className="btnLog">Create Profile</span>
                     </Link>

@@ -54,7 +54,6 @@ class UserIdPw extends Component {
 
 	render() {
 		const { email, username, password } = this.state;
-		console.log(this.state);
 
 		return (
 			<div className="createCredentialsContainer">

@@ -8,26 +8,34 @@ import ForkNav from "./fork_nav";
 class CreateTeam extends Component {
 	constructor(props) {
 		super(props);
+
+        this.state = {
+            team_name: "",
+
+        };
+
 	}
 
-	codeGenerator() {
-		let newCode = "";
 
-		for (let i = 0; i < 6; i++) {
-			let codeChoice = Math.floor(Math.random() * 2 + 1);
-			let code;
+	// codeGenerator() {
+	// 	let newCode = "";
+    //
+	// 	for (let i = 0; i < 6; i++) {
+	// 		let codeChoice = Math.floor(Math.random() * 2 + 1);
+	// 		let code;
+    //
+	// 		if (codeChoice === 1) {
+	// 			let randomLetters = Math.floor(Math.random() * 26 + 65);
+    //
+	// 			code = String.fromCharCode(randomLetters);
+	// 		} else {
+	// 			code = Math.floor(Math.random() * 9);
+	// 		}
+	// 		newCode += code;
+	// 	}
+	// 	return newCode;
+	// }
 
-			if (codeChoice === 1) {
-				let randomLetters = Math.floor(Math.random() * 26 + 65);
-
-				code = String.fromCharCode(randomLetters);
-			} else {
-				code = Math.floor(Math.random() * 9);
-			}
-			newCode += code;
-		}
-		return newCode;
-	}
 
 	render() {
 		return (
@@ -38,7 +46,7 @@ class CreateTeam extends Component {
 						<span className="teamName">Team Name</span>
 					</div>
 					<div className="cGNumberContainer">
-						<span className="cGNumber">{this.codeGenerator()}</span>
+						<span className="cGNumber">code gen here</span>
 					</div>
 					<Link to="/bulletin_board" className="cGbtnContent">
 						<span className="cGDoneBtn">Done</span>
@@ -50,3 +58,4 @@ class CreateTeam extends Component {
 }
 
 export default CreateTeam;
+

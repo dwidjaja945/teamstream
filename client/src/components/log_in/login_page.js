@@ -52,6 +52,7 @@ class LogIn extends React.Component {
 				this.props.history.push(response.data.redirect);
 				// this.props.history.push('/roster');
 
+
 			} else {
 				//ERROR
 				console.log(response.data.errors);

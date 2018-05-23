@@ -5,7 +5,7 @@ const session = require("express-session");
 const cookieParser = require('cookie-parser');
 const webserver = express();
 
-const credentials = require('./config/mysqlcredentials.js');
+const { credentials, encrypt } = require('./config/mysqlcredentials.js');
 const dataBase = mysql.createConnection(credentials);
 
 const bodyParser = require('body-parser');
@@ -41,27 +41,28 @@ webserver.get('/test', (req, res) => {
 
 // maybe create middleware to check if user is logged in?
 
-require("./session.js")(webserver, dataBase, mysql);
+require("./routes/signup")(webserver, dataBase, mysql, encrypt);
 
-require("./routes/signup")(webserver, dataBase, mysql);
+require("./session.js")(webserver, dataBase, mysql, encrypt);
 
-require("./routes/create_team")(webserver, dataBase, mysql);
+require("./routes")(webserver, dataBase, mysql);
+// require("./routes/create_team")(webserver, dataBase, mysql);
 
-require("./routes/join_team")(webserver, dataBase, mysql);
+// require("./routes/join_team")(webserver, dataBase, mysql);
 
-require('./routes/create_athlete_info')(webserver, dataBase, mysql);
+// require('./routes/create_athlete_info')(webserver, dataBase, mysql);
 
-require('./routes/athlete_profile')(webserver, dataBase, mysql);
+// require('./routes/athlete_profile')(webserver, dataBase, mysql);
 
-// endpoint for roster
-require('./routes/roster')(webserver, dataBase, mysql);
+// // endpoint for roster
+// require('./routes/roster')(webserver, dataBase, mysql);
 
-// endpoint for bulletin board
-require('./routes/bulletin_board')(webserver, dataBase, mysql);
+// // endpoint for bulletin board
+// require('./routes/bulletin_board')(webserver, dataBase, mysql);
 
-require("./routes/pinned")(webserver, dataBase, mysql);
+// require("./routes/pinned")(webserver, dataBase, mysql);
 
-require('./routes/logout')(webserver, dataBase, mysql);
+// require('./routes/logout')(webserver, dataBase, mysql);
 
 webserver.get('*', (req, res) => {
     res.sendFile(__dirname + "/client" + "/dist" + "/index.html");

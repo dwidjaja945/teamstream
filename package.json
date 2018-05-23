@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/dwidjaja945/c318_teamstream#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",

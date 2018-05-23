@@ -57,15 +57,6 @@ console.log("Join team body team code", team_code);
 		dataBase.query(mysqlQuery, (err, data, fields) => {
 			let team_id;
 
-            if(!err) {
-
-                output.success = true;
-                output.data = data;
-                team_id = data[0].team_id;
-                addAthleteToTable( athlete_info_id , team_id , output );
-            } else {
-
-
 			console.log("join team 1st query data: ", data);
 
 			if (!err) {

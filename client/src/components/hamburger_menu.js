@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import "./styles.css";
 
@@ -7,12 +8,13 @@ class hamburgerMenu extends Component {
 		super(props);
 
 		this.state = {
-			show: false
+			show: false,
 		};
 	}
 
+
 	render() {
-		const { show } = this.state;
+		const { show} = this.state;
 
 		const button = (
 			<div className="menuBtn" onClick={() => this.setState({ show: !show })}>
@@ -52,7 +54,7 @@ class hamburgerMenu extends Component {
 							<Link to="">Other Team Accounts</Link>
 						</li>
 						<li>
-							<Link to="/">Log Out</Link>
+							<Link to='/logout'>Log Out</Link>
 						</li>
 					</ul>
 				</div>

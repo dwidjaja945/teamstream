@@ -153,6 +153,15 @@ module.exports = function(webserver, dataBase, mysql) {
         });
     });
 
+    /**
+     * Takes:
+     *      post_id
+     *
+     *  Returns:
+     *      success: true
+     *      removed_id: 0
+     */
+
     webserver.delete("/api/bulletin_board", (req, res) => {
         const output = {
             success: false,
@@ -164,8 +173,8 @@ module.exports = function(webserver, dataBase, mysql) {
             if (req.body.post_id) {
                 var post_id = req.body.post_id;
             }
-            if (req.body.athlete_id) {
-                var athlete_id = req.body.athlete_id;
+            if (req.session.athlete_id) {
+                var athlete_id = req.session.athlete_id;
             }
         }
 

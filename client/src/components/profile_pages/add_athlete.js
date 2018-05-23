@@ -18,11 +18,10 @@ class AddAthlete extends Component{
             profileData: {...this.state.profileData, ...input},
         });
 
-        const path = '/api/create_profile';
+        const path = '/api/create_athlete_info';
         axios.post(path, input).then(resp => {
             console.log("add athlete response from server: ", resp);
-
-            this.getDataFromServer();
+            this.props.history.push(resp.data.redirect);
         });
 
     }

@@ -62,6 +62,11 @@ class CreateTeam extends Component {
             return(
                 <button type='button' className="cGbtnContent cGDoneBtn">Log In</button>
             )
+        }else{
+            return (
+                <button type='button' onClick={this.handleSubmit.bind(this)}
+                    className="cGbtnContent cGDoneBtn">Generate Code</button>
+            )
         }
     }
 
@@ -106,8 +111,6 @@ class CreateTeam extends Component {
                         <span className="cGNumber">{hashCode}</span>
                     </div>
                     <div>
-                        <button type='button' onClick={this.handleSubmit.bind(this)}
-								className="cGbtnContent cGDoneBtn">Generate Code</button>
                         {this.displayLogIn(generatedCode)}
                     </div>
                 </div>

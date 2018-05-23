@@ -12,7 +12,7 @@ class LogIn extends React.Component {
 		super(props);
 
 		this.state = {
-			userName: "test",
+			email: "test",
 			password: "test"
 		};
 
@@ -30,11 +30,11 @@ class LogIn extends React.Component {
 		event.preventDefault();
 		// this.props.addItemCallback(this.state);
 		// console.log(this.state);
-		const { userName, password } = this.state;
-		this.loginAxiosCall(userName, password);
+		const { email, password } = this.state;
+		this.loginAxiosCall(email, password);
 
 		this.setState({
-			userName: "",
+			email: "",
 			password: ""
 		});
 	}
@@ -61,7 +61,7 @@ class LogIn extends React.Component {
 	}
 
 	render() {
-		const { userName, password } = this.state;
+		const { email, password } = this.state;
 
 		return (
 			<div className="loginInfoContainer">
@@ -71,7 +71,7 @@ class LogIn extends React.Component {
 					<div className="userNameContainer">
 						<div className="userNameLine">
 							<label>username</label>
-							<input value={userName} onChange={this.handleChange} name="userName" type="text" />
+							<input value={email} onChange={this.handleChange} name="userName" type="text" />
 						</div>
 					</div>
 					<div className="passwordContainer">

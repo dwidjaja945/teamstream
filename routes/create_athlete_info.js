@@ -1,6 +1,6 @@
 const { check, validationResult } = require("express-validator/check");
 
-module.exports = function ( webserver , dataBase , mysql , check ) {
+module.exports = function ( webserver , dataBase , mysql ) {
 
     webserver.post('/api/create_athlete_info', [
         check('first_name').isEmpty().matches(/^[a-zA-Z]*$/),

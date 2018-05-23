@@ -19,6 +19,7 @@ class BulletinBoard extends Component {
 		this.getDataFromServer();
 
 		this.pinMessage = this.pinMessage.bind(this);
+		this.deleteMessage = this.deleteMessage.bind(this);
 	}
 
 	getDataFromServer(path) {
@@ -68,6 +69,12 @@ class BulletinBoard extends Component {
         });
 
 	}
+	deleteMessage(post_id){
+		const path = '/api/bulletin_board';
+		axios.delete(path, {post_id}).then(resp => {
+			console.log("BB message to delete: ", resp);
+		});
+	}
 	render() {
 		const { messageArray } = this.state;
 		return (
@@ -75,7 +82,7 @@ class BulletinBoard extends Component {
 				<Navbar icon={dropDown} hamburgerMenu={true} url="/bulletin_board" />
 				<div className="pinnedMessage" />
 				<div className="messageContainer">
-					<BulletinBoardMessages pinCallBack={this.pinMessage} data={messageArray} />
+					<BulletinBoardMessages pinCallBack={this.pinMessage} data={messageArray} deleteBulletinPost ={this.deleteMessage} />
 				</div>
 				<AddBulletinMessages add={this.addMessage.bind(this)} />
 			</div>

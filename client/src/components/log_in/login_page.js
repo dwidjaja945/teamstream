@@ -12,7 +12,7 @@ class LogIn extends React.Component {
 		super(props);
 
 		this.state = {
-			email: "test",
+			email: "test@test.com",
 			password: "test"
 		};
 
@@ -71,7 +71,7 @@ class LogIn extends React.Component {
 					<div className="userNameContainer">
 						<div className="userNameLine">
 							<label>username</label>
-							<input value={email} onChange={this.handleChange} name="userName" type="text" />
+							<input value={email} onChange={this.handleChange} name="email" type="text" />
 						</div>
 					</div>
 					<div className="passwordContainer">

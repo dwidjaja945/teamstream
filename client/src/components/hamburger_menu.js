@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import "./styles.css";
 
@@ -7,12 +8,33 @@ class hamburgerMenu extends Component {
 		super(props);
 
 		this.state = {
-			show: false
+			show: false,
+			logoutRedirect:'/',
 		};
 	}
 
+	logoutOnClick(){
+		console.log('clicked loggout');
+
+		const path = '/api/logout';
+		axios.get(path).then( (response) => {
+			console.log('This is the response from logging out: ', response);
+
+			if(response.data.success){
+				//data was properly sent to server.
+				this.setState({
+					logoutRedirect: response.data.redirect,
+				});
+			}else{
+				//data failed, need to handle it
+			}
+
+		})
+
+	}
+
 	render() {
-		const { show } = this.state;
+		const { show, logoutRedirect} = this.state;
 
 		const button = (
 			<div className="menuBtn" onClick={() => this.setState({ show: !show })}>
@@ -52,7 +74,7 @@ class hamburgerMenu extends Component {
 							<Link to="">Other Team Accounts</Link>
 						</li>
 						<li>
-							<Link to="/">Log Out</Link>
+							<Link to={logoutRedirect} onClick={this.logoutOnClick.bind(this)}>Log Out</Link>
 						</li>
 					</ul>
 				</div>

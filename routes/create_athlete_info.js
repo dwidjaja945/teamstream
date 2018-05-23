@@ -8,11 +8,11 @@ module.exports = function (webserver, dataBase, mysql) {
             redirect: ''
         };
         if (req.body) {
-            let firstName = req.body.first_name;
-            let lastName = req.body.last_name;
-            let age = req.body.age;
-            let weight = req.body.weight;
-            let height = req.body.height;
+            var firstName = req.body.first_name;
+            var lastName = req.body.last_name;
+            var age = req.body.age;
+            var weight = req.body.weight;
+            var height = req.body.height;
         }
 
         console.log('Create Profile Request Body', req.body);
@@ -28,7 +28,7 @@ module.exports = function (webserver, dataBase, mysql) {
         \`img_url\`, 
         \`age\`, 
         \`user_id\`) 
-        VALUES (NULL, '?', '?', '?', '?', '', '?', '?')`;
+        VALUES (NULL, ?, ?, ?, ?, '', ?, ?)`;
 
         let inserts = [firstName, lastName, height, weight, age, user_id];
 
@@ -36,14 +36,16 @@ module.exports = function (webserver, dataBase, mysql) {
 
         dataBase.query( mysqlQuery , (err, data, fields) => {
             if(!err) {
+                console.log('create athlete info query data', data);
                 output.success = true;
                 output.data = data;
                 output.redirect = '/create_team';
             } else {
+                console.log('create athlete info error', err)
                 output.errors = err;
             }
 
-            
+            res.json(output);
         })
     })
 };

@@ -1,17 +1,31 @@
 module.exports = (webserver, dataBase, mysql) => {
+
+    /**
+     * Takes:
+     *  null
+     *
+     *  Returns:
+     *  success: true
+     *  redirect: ''
+     *  //
+     *  error: ''
+     */
+
     webserver.get('/api/logout', (req, res) => {
         const output = {
             success: false,
             redirect: '',
-        }
+            error: null,
+        };
         req.session.destroy((err) => {
             if(!err) {
                 output.redirect = '/login';
                 output.success = true;
                 res.json(output);
             } else {
-                res.json(err);
+                output.error = err;
+                res.json(output);
             }
         });
     })
-}
+};

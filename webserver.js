@@ -47,7 +47,7 @@ require("./routes/signup")(webserver, dataBase, mysql);
 
 require('./routes/create_athlete_info')(webserver, dataBase, mysql);
 
-require('./routes/athlete_profile')(webserver, dataBase, mysql);
+require('./routes/athlete_profile.depreciated')(webserver, dataBase, mysql);
 
 // endpoint for roster
 require('./routes/roster')(webserver, dataBase, mysql);

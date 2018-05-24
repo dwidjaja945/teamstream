@@ -50,6 +50,7 @@ module.exports = (webserver, dataBase, mysql, encrypt, check) => {
                             // output.data = data;
                             req.session.user_id = data.insertId;
                             output.redirect = "/add_athlete";
+                            console.log('signup post-session: ', req.session)
                         } else {
                             output.errors = error;
                         }

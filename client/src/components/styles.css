@@ -48,7 +48,7 @@ body {
 	width: 100vw;
 	display: flex;
 	justify-content: space-around;
-	background-color: #1056ab;
+	background-color: #010c48;
 }
 
 .mainBtn {
@@ -60,7 +60,8 @@ body {
 }
 
 .mainBtnImg {
-	height: 37px;
+	height: 35px;
+	padding-top: 4px;
 }
 
 .mainTsLogo {
@@ -72,7 +73,7 @@ body {
 }
 
 .mainNavLogo {
-	height: 75%;
+	height: 65%;
 }
 
 .burgerMenuContainer,
@@ -301,9 +302,9 @@ body {
 
 .forkButtons {
 	height: 7%;
-	width: 100%;
-	margin: 22px;
-	border-radius: 20px;
+	width: 85%;
+	margin: 18px;
+	border-radius: 15px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

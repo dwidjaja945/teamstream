@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HamburgerMenu from "./hamburger_menu";
 import { Link } from "react-router-dom";
+import teamStreamLogo from "./images/team-stream-logo.png";
 import "./styles.css";
 
 class NavBar extends Component {
@@ -9,7 +10,6 @@ class NavBar extends Component {
 	}
 
 	render() {
-		// console.log(this.props);
 		return (
 			<div className="mainNavBar">
 				<div className="mainBtn">
@@ -18,7 +18,7 @@ class NavBar extends Component {
 					</Link>
 				</div>
 				<div className="mainTsLogo">
-					<span className="mainNavTitle">Team Stream</span>
+					<img className="mainNavLogo" src={teamStreamLogo} />
 				</div>
 				<div className="burgerMenuContainer">
 					{this.props.hamburgerMenu ? (

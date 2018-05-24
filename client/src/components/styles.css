@@ -71,9 +71,8 @@ body {
 	align-items: center;
 }
 
-.mainNavTitle {
-	color: white;
-	font-size: 20px;
+.mainNavLogo {
+	height: 75%;
 }
 
 .burgerMenuContainer,
@@ -101,10 +100,11 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin: 0;
+	padding-top: 40%;
 }
 
 .loginTeamLogo {
-	width: 98%;
+	width: 45%;
 }
 
 .loginButtonContent {
@@ -115,10 +115,11 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-flow: column wrap;
+	padding-bottom: 16%;
 }
 
 .loginButtons {
-	height: 11%;
+	height: 14%;
 	width: 35%;
 	margin: 10px;
 	border-radius: 14px;
@@ -374,7 +375,7 @@ body {
 	background-color: #1056ab;
 	color: white;
 	border-radius: 10px;
-	padding:10%;
+	padding: 10%;
 	/*margin: 15%;*/
 }
 
@@ -480,6 +481,13 @@ body {
 	height: 40%;
 	width: 100%;
 	margin: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logoImg {
+	height: 15%;
 }
 
 .loginForm {
@@ -531,6 +539,13 @@ body {
 .createLogo {
 	height: 38vh;
 	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.createLogoImg {
+	height: 15%;
 }
 
 .userSignUpContainer {

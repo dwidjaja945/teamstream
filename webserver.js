@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const session = require("express-session");
+const expressValidator = require("express-validator");
 const cookieParser = require('cookie-parser');
 const { body } = require('express-validator/check');
 
@@ -20,6 +21,7 @@ webserver.use(cors());
 
 webserver.use(express.static(__dirname + '/' + 'client' + '/dist'));
 
+webserver.use(expressValidator());
 webserver.use(session({
     secret: 'test_secret',
     // cookie: {

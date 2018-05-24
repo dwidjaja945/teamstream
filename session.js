@@ -1,13 +1,13 @@
 const { check, validationResult } = require("express-validator/check");
 
-
+// to be included between url and callback function
+// [
+//     check('email').isEmail().isEmpty(),
+//     check('password').not().isEmpty()
+// ],
 module.exports = function (webserver, dataBase, mysql, encrypt) {
-    webserver.post("/api/login", [
-        check('email').isEmail().isEmpty(),
-        check('password').not().isEmpty()
-    ],
-    (req, res) => {
-        const errors = validationResult(req);
+    webserver.post("/api/login", (req, res) => {
+        // const errors = validationResult(req);
         const output = {
             success: false,
             data: [],
@@ -16,16 +16,17 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             sessionID: null
         };
 
-        console.log('Errors: ', errors)
-        console.log('Errors.array: ', errors.array)
-        console.log('Errors.isEmpty(): ', errors.isEmpty())
-        console.log('body', req.body)
+        // console.log('Errors: ', errors)
+        // console.log('Errors.array: ', errors.array)
+        // console.log('Errors.isEmpty(): ', errors.isEmpty())
+        // console.log('body', req.body)
 
-        if( !errors.isEmpty() ) {
-            output.errors = errors.array;
-            res.json(output);
-            return;
-        }
+        // used for data validation. 
+        // if( !errors.isEmpty() ) {
+        //     output.errors = errors.array;
+        //     res.json(output);
+        //     return;
+        // }
         
         let email;
         let password;

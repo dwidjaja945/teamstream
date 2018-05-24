@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HamburgerMenu from "./hamburger_menu";
 import { Link } from "react-router-dom";
-import teamStreamLogo from "./images/team-stream-logo.png";
+import teamStreamLogo from "./images/team-stream-type-name.png";
 import "./styles.css";
 
 class NavBar extends Component {

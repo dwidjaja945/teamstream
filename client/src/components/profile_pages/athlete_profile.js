@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
 import ProfileData from "./profile_data";
-import homeBtn from "../images/homeBtn.png";
+import homeBtn from "../images/team-stream-logo.png";
 
 class AthleteProfile extends Component {
 	constructor(props) {

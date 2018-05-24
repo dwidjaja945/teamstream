@@ -5,7 +5,7 @@ class Bulletin extends Component {
 		super(props);
 
 		this.state = {
-			message: "new message"
+			message: ""
 		};
 		this.handleAddMessage = this.handleAddMessage.bind(this);
 	}
@@ -24,6 +24,7 @@ class Bulletin extends Component {
 			<form onSubmit={this.handleAddMessage}>
 				<div className="inputContainer">
 					<input
+					className="input"
 						value={message}
 						type="text"
 						placeholder="Enter Message"

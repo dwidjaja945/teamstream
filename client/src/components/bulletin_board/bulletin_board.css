@@ -10,6 +10,10 @@
     border: 2px solid black;
     position: relative;
     overflow: auto;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+
 }
 .userMessages{
     background-color: rgba(192, 192, 192, 0.451) ;
@@ -18,9 +22,11 @@
     background-color: rgba(255, 192, 192, 0.451) ;
 
 }
-input{
+.input{
     height: 5vh;
     font-size: 1em;
+    width: 100vw;
+    border-top: 1px solid rgba(192,192,192,.4);
 }
 button{
     height: 3vh;
@@ -41,5 +47,18 @@ button{
     float: right;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
+    width:15px;
 
+}
+.inputContainer{
+    height: 5vh;
+    font-size: 1em;
+    width: 80%;
+}
+.buttonContainer{
+    margin-top: 6%;
+
+}
+.spill{
+    word-wrap:break-word;
 }

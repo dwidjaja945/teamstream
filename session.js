@@ -95,7 +95,6 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                             req.session.team_code = data[0].team_code;
                             req.session.athlete_id = data[0].athlete_id;
                             req.session.athlete_info_id = data[0].athlete_info_id;
-                            req.session.team_code = data[0].team_code;
 
                             // send back json data about path they should go to (bulletinboard) => browser history
                             res.json(output);

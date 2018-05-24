@@ -1,14 +1,15 @@
 const { check, validationResult } = require("express-validator/check");
 
 module.exports = function ( webserver , dataBase , mysql ) {
+    // [
+    //     check('first_name').isEmpty().matches(/^[a-zA-Z]*$/),
+    //     check('last_name').isEmpty().matches(/^[a-zA-Z]*$/),
+    //     check('age').matches(/^[0-9]{0,2}$/),
+    //     check('height').matches(/^[0-9]*$/),
+    //     check('weight').matches(/^[0-9]*$/)
+    // ]
 
-    webserver.post('/api/create_athlete_info', [
-        check('first_name').isEmpty().matches(/^[a-zA-Z]*$/),
-        check('last_name').isEmpty().matches(/^[a-zA-Z]*$/),
-        check('age').matches(/^[0-9]{0,2}$/),
-        check('height').matches(/^[0-9]*$/),
-        check('weight').matches(/^[0-9]*$/)
-    ] , (req , res ) => {
+    webserver.post('/api/create_athlete_info', (req , res ) => {
         const errors = validationResult(req);
         const output = {
             success: false,
@@ -25,7 +26,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
             res.json(output);
             return;
         }
-        
+
         if (req.body) {
             var firstName = req.body.first_name;
             var lastName = req.body.last_name;
@@ -34,7 +35,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
             var height = req.body.height;
         }
 
-        console.log('Create Profile Request Body', req.body);
+        // console.log('Create Profile Request Body', req.body);
 
         let user_id = req.session.user_id;
 
@@ -55,16 +56,42 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
         dataBase.query( mysqlQuery , (err, data, fields) => {
             if(!err) {
-                console.log('create athlete info query data', data);
+                // console.log('create athlete info query data', data);
                 output.success = true;
                 output.data = data;
-                output.redirect = '/create_team';
+                req.session.athlete_info_id = data.insertId;
+                addAthleteToAthletesTable();
             } else {
                 console.log('create athlete info error', err)
                 output.errors = err;
             }
+        });
 
-            res.json(output);
-        })
+        function addAthleteToAthletesTable() {
+            let query = `INSERT INTO \`athletes\` 
+                (\`athlete_info_id\`)
+                VALUES (?)`;
+
+            let inserts = [req.session.athlete_info_id];
+
+            let mysqlQuery = mysql.format(query, inserts);
+
+            dataBase.query( mysqlQuery , (err, data, fields) => {
+                if(!err) {
+                    console.log(`Added athlete_info_id ${req.session.athlete_info_id} to athlete table with id: ${data.insertId}`);
+                    output.success = true;
+                    output.data = data;
+                    req.session.athlete_id = data.insertId;
+                    output.redirect = '/fork_nav';
+                    console.log('create_athlete_info post-session: ', req.session)
+                } else {
+                    console.log('create athlete info error', err)
+                    output.errors = err;
+                }
+
+                res.json(output);
+            })
+        }
+
     })
 };

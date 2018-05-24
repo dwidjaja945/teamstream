@@ -43,11 +43,13 @@ class CreateTeam extends Component {
         const path = '/api/create_team';
         axios.post(`${path}`, dataToSend).then(response => {
 
-            if (response.data.success) {
+            if (!response.data.success) {
                 console.log("Create team data from server response: ", response);
-                this.setState({
-					generatedCode:response.data.team_code
-				})
+                console.log(response.data.errors);
+
+                // this.setState({
+				// 	generatedCode:response.data.team_code
+				// })
 
             } else {
                 //ERROR

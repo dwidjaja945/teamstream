@@ -12,7 +12,7 @@ export default props => {
 		const pinnedClass= pinned > 0 ? 'userMessages pinned' : 'userMessages';
 
 		return (
-			<div className={pinnedClass} key={index}>
+			<div className={pinnedClass} key={index} className="spill">
 				<img className="teamLogo" src={teamLogo} alt="" />
 				{first_name} 
 				{last_name} 

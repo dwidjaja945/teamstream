@@ -4,7 +4,7 @@ import axios from "axios";
 import backArrow from "../images/blue-chevron-left.png";
 import Navbar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
-import teamLogo from "../images/tsLogo.png";
+import teamLogo from "../images/team-stream-type-name.png";
 import "../styles.css";
 
 class LogIn extends React.Component {
@@ -50,9 +50,7 @@ class LogIn extends React.Component {
 
 				//if success, log them in, take them to bulletin board
 				// this.props.history.push(response.data.redirect);
-				this.props.history.push('/create_team');
-
-
+				this.props.history.push("/create_team");
 			} else {
 				//ERROR
 				console.log(response.data.errors);
@@ -66,7 +64,9 @@ class LogIn extends React.Component {
 		return (
 			<div className="loginInfoContainer">
 				<Navbar icon={backArrow} hamburgerMenu={false} url="/" />
-				<img className="teamLogoImg" src={teamLogo} />
+				<div className="teamLogoImg">
+					<img className="logoImg" src={teamLogo} />
+				</div>
 				<form className="loginForm">
 					<div className="userNameContainer">
 						<div className="userNameLine">

@@ -90,8 +90,36 @@ module.exports = ( webserver , dataBase , mysql , check) => {
                     output.team_code = new_team_code;
                     output.redirect = "/bulletin_board";
                     console.log("User created the team: ", team_name);
+                    addCoach(data.insertId);
                 } else {
 
+                    output.errors = err;
+                }
+            });
+        }
+
+        function addCoach(){
+            let query = `
+            INSERT INTO \`coaches\`
+            (
+                \`athlete_id\`
+            )
+            VALUES (
+                ?
+            )`;
+
+            let inserts = [req.session.athlete_id];
+
+            let mysqlQuery = mysql.format(query, inserts);
+
+            dataBase.query(mysqlQuery, (err, data, fields) => {
+                if (!err) {
+                    output.success = true;
+                    output.data = data;
+                    output.redirect = "/bulletin_board";
+                    req.session.team_id = data.insertId
+                    console.log(`Added athlete: ${req.session.athlete_id} as coach to: ${data.insertId} `);
+                } else {
                     output.errors = err;
                 }
 

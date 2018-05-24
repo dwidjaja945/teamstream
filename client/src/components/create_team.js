@@ -9,7 +9,6 @@ import axios from "axios/index";
 class CreateTeam extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             team_name: 'ROWMASTERS',
             sport_name: 'Rowing',
@@ -56,11 +55,14 @@ class CreateTeam extends Component {
             }
         });
     }
+    login(){
+        this.props.history.push('/bulletin_board');
+    }
 
     displayLogIn(generatedCode){
         if(generatedCode){
             return(
-                <button type='button' className="cGbtnContent cGDoneBtn">Log In</button>
+                <button type='button' onClick={this.login.bind(this)} className="cGbtnContent cGDoneBtn">Log In</button>
             )
         }else{
             return (

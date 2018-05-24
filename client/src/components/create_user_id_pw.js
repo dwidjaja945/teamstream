@@ -13,9 +13,9 @@ class UserIdPw extends Component {
 		super(props);
 
 		this.state = {
-			email: "",
-			password: "",
-			passwordCheck: ""
+			email: "testEmail"+Math.random().toFixed(2)*100+"@testEmail.com",
+			password: "Test123",
+			passwordCheck: "Test123"
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,19 +35,19 @@ class UserIdPw extends Component {
 		console.log("this handleSubmit: ", this.state);
 
 		if (this.checkPassword() && this.checkEmail()) {
-			const { email, password } = this.state;
-			const dataToSend = { email, password };
+			const {email, password } = this.state;
+            const dataToSend = { email, password };
 			let path = "/api/signup";
 
 			axios.post(`${path}`, dataToSend).then(response => {
 				//here is where we redirect
 				if (response.data.success) {
-					console.log("data from server response: ", response);
-					console.log("current props at this time: ", this.props);
+					// console.log("data from server response: ", response);
+					// console.log("current props at this time: ", this.props);
 
 					//if success, log them in then take them to bulletin board
-					// this.props.history.push(response.data.redirect);
-					this.props.history.push("/add_athlete");
+					this.props.history.push(response.data.redirect);
+					// this.props.history.push("/add_athlete");
 				} else {
 					//ERROR
 					console.log("Sign-up err: ", response.data.errors);
@@ -66,7 +66,7 @@ class UserIdPw extends Component {
 		//Must have at least one lower -case letter
 		//Must have at least one number
 		//Must start with a letter(lower -case or upper -case)
-		const passwordValidation = /^([a-z]+|[A-Z]+)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,32}$/;
+		const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]+|[A-Z]+)(?=.*\d)[a-zA-Z\d]{6,32}$/;
 
 		if (password === passwordCheck && passwordValidation.test(password)) {
 			console.log("passwords match and password validated!");

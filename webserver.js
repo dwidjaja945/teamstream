@@ -4,6 +4,7 @@ const cors = require('cors');
 const session = require("express-session");
 const expressValidator = require("express-validator");
 const cookieParser = require('cookie-parser');
+const path = require('path');
 const { body } = require('express-validator/check');
 
 const webserver = express();
@@ -19,7 +20,7 @@ webserver.use(cookieParser());
 
 webserver.use(cors());
 
-webserver.use(express.static(__dirname + '/' + 'client' + '/dist'));
+webserver.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 webserver.use(expressValidator());
 webserver.use(session({
@@ -69,7 +70,7 @@ require('./routes/athlete_profile.depreciated')(webserver, dataBase, mysql);
 // require('./routes/logout')(webserver, dataBase, mysql);
 
 webserver.get('*', (req, res) => {
-    res.sendFile(__dirname + "/client" + "/dist" + "/index.html");
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
 webserver.listen(9000, () => {

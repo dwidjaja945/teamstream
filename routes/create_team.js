@@ -117,7 +117,7 @@ module.exports = ( webserver , dataBase , mysql , check) => {
                     output.success = true;
                     output.data = data;
                     output.redirect = "/bulletin_board";
-                    req.session.team_id = data.insertId
+                    req.session.team_id = data.insertId;
                     console.log(`Added athlete: ${req.session.athlete_id} as coach to: ${data.insertId} `);
                 } else {
                     output.errors = err;

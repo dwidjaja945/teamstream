@@ -17,15 +17,6 @@ module.exports = function ( webserver , dataBase , mysql ) {
             errors: [],
             redirect: ''
         };
-
-        if( !errors.isEmpty() ) {
-            console.log('there was an error in create_athlete_info')
-            console.log('errors', errors)
-            console.log('errors array', errors.array)
-            output.errors = errors.array;
-            res.json(output);
-            return;
-        }
         
         if (req.session.user_id === undefined) {
             output.redirect = '/login';
@@ -35,13 +26,17 @@ module.exports = function ( webserver , dataBase , mysql ) {
             return;
         }
 
-        if (req.body) {
-            var firstName = req.body.first_name;
-            var lastName = req.body.last_name;
-            var age = req.body.age;
-            var weight = req.body.weight;
-            var height = req.body.height;
+        if(req.body) {
+            var { firstName , lastName , age , weight , height , athlete_bio } = req.body;
         }
+        // if (req.body) {
+        //     var firstName = req.body.first_name;
+        //     var lastName = req.body.last_name;
+        //     var age = req.body.age;
+        //     var weight = req.body.weight;
+        //     var height = req.body.height;
+        //     var athlete_bio = req.body.athlete_bio;
+        // }
 
         // console.log('Create Profile Request Body', req.body);
 
@@ -55,10 +50,11 @@ module.exports = function ( webserver , dataBase , mysql ) {
         \`weight\`, 
         \`img_url\`, 
         \`age\`, 
+        \`athlete_bio\`
         \`user_id\`) 
-        VALUES (NULL, ?, ?, ?, ?, '', ?, ?)`;
+        VALUES (NULL, ?, ?, ?, ?, '', ?, ?, ?)`;
 
-        let inserts = [firstName, lastName, height, weight, age, user_id];
+        let inserts = [firstName, lastName, height, weight, age, athlete_bio, user_id];
 
         let mysqlQuery = mysql.format(query, inserts);
 

@@ -35,7 +35,8 @@ class JoinTeam extends Component {
 		console.log("handleSubmit: ", this.state);
 		// this.addCodeInput(this.state);
 
-		this.reset();
+		this.joinTeamAxios();
+		// this.reset();
 	}
 
 	reset() {
@@ -79,13 +80,8 @@ class JoinTeam extends Component {
 							type="text"
 							value={code}
 							onChange={this.handleInputChange.bind(this)}
-							className="codeNum"
-						/>
-						<Link to="/bulletin_board" className="jTcodeBtn">
-							<span className="codeBtn" onClick={this.joinTeamAxios.bind(this)}>
-								Join!
-							</span>
-						</Link>
+							className="codeNum"/>
+							<button className="codeBtn jTcodeBtn">Join!</button>
 						<div>{errorHandle}</div>
 					</form>
 				</div>

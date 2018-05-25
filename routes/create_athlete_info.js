@@ -93,7 +93,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
                     output.redirect = '/fork_nav';
                     console.log('create_athlete_info post-session: ', req.session)
                 } else {
-                    console.log('create athlete info error', err)
+                    console.log('create athlete info error', err);
                     output.errors = err;
                 }
 

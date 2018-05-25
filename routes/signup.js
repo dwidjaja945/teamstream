@@ -1,4 +1,4 @@
-module.exports = (webserver, dataBase, mysql, encrypt, check) => {
+module.exports = (webserver, dataBase, mysql, encrypt ) => {
     /**
      * Takes: {
 	 *  username

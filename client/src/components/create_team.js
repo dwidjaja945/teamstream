@@ -5,6 +5,9 @@ import Navbar from "./navbar";
 import hamburgerMenu from "./hamburger_menu";
 import ForkNav from "./fork_nav";
 import axios from "axios/index";
+const style={
+    color: 'red'
+}
 
 class CreateTeam extends Component {
     constructor(props) {
@@ -13,7 +16,8 @@ class CreateTeam extends Component {
             team_name: 'ROWMASTERS',
             sport_name: 'Rowing',
             team_bio: 'A bunch of cool people doing awesome rowing',
-            generatedCode:'',
+            generatedCode: '',
+            errorHandle: ''
         };
 
     }
@@ -36,44 +40,55 @@ class CreateTeam extends Component {
     // 	return newCode;
     // }
 
-    handleSubmit(){
-		//perform axios call to return code, then show login
-        const {team_name, sport_name, team_bio} = this.state;
-        const dataToSend = {team_name, sport_name, team_bio};
+    handleSubmit() {
+        //perform axios call to return code, then show login
+        const { team_name, sport_name, team_bio } = this.state;
+        const dataToSend = { team_name, sport_name, team_bio };
         const path = '/api/create_team';
         axios.post(`${path}`, dataToSend).then(response => {
 
             if (response.data.success) {
                 console.log("Create team data from server response: ", response);
+                console.log("error message to handle: ", response.data.errors)
                 this.setState({
-					generatedCode:response.data.team_code
-				})
+                    generatedCode: response.data.team_code
+                })
 
             } else {
-                //ERROR
-                console.log(response.data.errors);
+                this.setState({
+                    errorHandle: response.data.errors
+                });
+
             }
         });
     }
-    login(){
+    login() {
         this.props.history.push('/bulletin_board');
     }
 
-    displayLogIn(generatedCode){
-        if(generatedCode){
-            return(
+    displayLogIn(generatedCode) {
+        const { errorHandle } = this.state;
+
+        if (generatedCode) {
+            return (
                 <button type='button' onClick={this.login.bind(this)} className="cGbtnContent cGDoneBtn">Log In</button>
             )
-        }else{
+        } else {
+
             return (
-                <button type='button' onClick={this.handleSubmit.bind(this)}
-                    className="cGbtnContent cGDoneBtn">Generate Code</button>
+                <div>
+                    <div style={style}>{errorHandle}</div>
+                    <button type='button' onClick={this.handleSubmit.bind(this)}
+                        className="cGbtnContent cGDoneBtn">Generate Code</button>
+                </div>
+
             )
         }
     }
 
     render() {
-        const {team_name, sport_name, team_bio, generatedCode} = this.state;
+        console.log("Error Message: ", this.state.errorHandle);
+        const { team_name, sport_name, team_bio, generatedCode } = this.state;
 
         const hashCode = generatedCode ? generatedCode : 'Generate your code';
 

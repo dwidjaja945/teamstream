@@ -1,4 +1,4 @@
-module.exports = function ( webserver , dataBase , mysql , check ) {
+module.exports = function ( webserver , dataBase , mysql ) {
 
     // Pulling data from bulletin board for a particular user
     webserver.get("/api/bulletin_board", function(req, res) {

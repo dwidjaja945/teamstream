@@ -54,6 +54,14 @@ module.exports = (webserver, dataBase, mysql) => {
 
 			console.log("join team 1st query data: ", data);
 
+			if(data.length === 0) {
+				output.errors = 'team code does not exist';
+				output.redirect = '/join_team';
+				res.json(output);
+				res.end();
+				return;
+			}
+
 			if (!err) {
 				output.success = true;
 				output.data = data;

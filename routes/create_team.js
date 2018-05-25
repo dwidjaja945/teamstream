@@ -119,14 +119,38 @@ module.exports = ( webserver , dataBase , mysql , check) => {
                     output.redirect = "/bulletin_board";
                     req.session.team_id = data.insertId;
                     console.log(`Added athlete: ${req.session.athlete_id} as coach to: ${data.insertId} `);
+                    addAthleteToAthletesTable();
                 } else {
+                    output.errors = err;
+                }
+            });
+        }
+
+        function addAthleteToAthletesTable() {
+            let query = `UPDATE \`athletes\` 
+                SET \`team_id\`= ?
+                WHERE \`athletes\`.\`athlete_info_id\` = ?`;
+
+            let inserts = [req.session.team_id, req.session.athlete_info_id];
+
+            let mysqlQuery = mysql.format(query, inserts);
+
+            dataBase.query( mysqlQuery , (err, data, fields) => {
+                if(!err) {
+                    console.log(`Added athlete_info_id ${req.session.athlete_info_id} to athlete table with id: ${data.insertId}`);
+                    output.success = true;
+                    output.data = data;
+                    output.redirect = '/fork_nav';
+                    console.log('create_team post-session: ', req.session)
+                } else {
+                    console.log('create athlete info error', err)
                     output.errors = err;
                 }
 
                 res.json(output);
-
-            });
+            })
         }
+
     } );
 
     function codeGenerator() {

@@ -5,6 +5,10 @@ module.exports = function (webserver, dataBase, mysql) {
 
     require("./create_athlete_info")(webserver, dataBase, mysql);
 
+    require('./edit_athlete_stats')(webserver, dataBase, mysql);
+
+    require('./toggle_teams')( webserver , dataBase , mysql );
+
     // require("./athlete_profile")(webserver, dataBase, mysql);
 
     // endpoint for roster

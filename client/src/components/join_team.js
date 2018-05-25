@@ -11,7 +11,8 @@ class JoinTeam extends Component {
 		super(props);
 
 		this.state = {
-			code: ""
+			code: "",
+			errorHandle: ""
 		};
 	}
 
@@ -54,17 +55,18 @@ class JoinTeam extends Component {
 				if (response.data.success) {
 					console.log("Join Team Axios: ", response);
 
-					this.props.history.push(response.data.redirect);
-					// this.props.history.push("/login");
-				} else {
-					console.log("Join Team err: ", response.data.errors);
-				}
-			});
-		}
+				this.props.history.push(response.data.redirect);
+				// this.props.history.push("/login");
+			} else {
+				this.setState({
+					errorHandle: response.data.errors
+				});
+			}
+		});
 	}
 
 	render() {
-		const { code } = this.state;
+		const { code, errorHandle } = this.state;
 
 		return (
 			<div className="joinTeamPage">
@@ -86,6 +88,7 @@ class JoinTeam extends Component {
 								Join!
 							</span>
 						</Link>
+						<div>{errorHandle}</div>
 					</form>
 				</div>
 			</div>

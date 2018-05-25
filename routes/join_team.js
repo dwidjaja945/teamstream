@@ -92,7 +92,8 @@ module.exports = (webserver, dataBase, mysql) => {
                 dataBase.query(mysqlQuery, (err, data, fields) => {
                     if (!err) {
                     	console.log(`Created Athlete: ${data.insertId} in team ${teamId}`)
-                        output.success = true;
+                      req.session.athlete_id = data.insertId;  
+                      output.success = true;
                         output.data = data;
                         output.redirect = "/bulletin_board";
                     } else {
@@ -105,4 +106,5 @@ module.exports = (webserver, dataBase, mysql) => {
             }
         });
     });
+
 };

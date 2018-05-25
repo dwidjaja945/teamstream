@@ -127,7 +127,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	color: white;
 	text-decoration: none;
 }
@@ -195,7 +195,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	border-radius: 2px;
 }
 
@@ -271,7 +271,7 @@ body {
 	left: 50%;
 	border-radius: 7px;
 	bottom: 40%;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	color: white;
 	transform: translate(-50%, 0);
 }
@@ -308,7 +308,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	color: white;
 }
 
@@ -352,7 +352,7 @@ body {
 .teamName {
 	font-size: 50px;
 	padding: 15px;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	color: white;
 	border-radius: 5px;
 }
@@ -373,7 +373,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	color: white;
 	border-radius: 10px;
 	padding: 10%;
@@ -417,8 +417,7 @@ body {
 	height: 10%;
 	width: 65%;
 	border-radius: 5px;
-	background-color: #1056ab;
-	color: white;
+	background-color: #1171bb;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -427,6 +426,7 @@ body {
 
 .teamCodeTitle {
 	font-size: 40px;
+	color: white;
 }
 
 .jTcodeNum {
@@ -444,12 +444,13 @@ body {
 	border-radius: 5px;
 	text-align: center;
 	margin: 15px;
+	padding: 10px;
 }
 
 .jTcodeBtn {
 	height: 17%;
 	width: 38%;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	color: white;
 	border-radius: 12px;
 	display: flex;
@@ -520,7 +521,7 @@ body {
 	padding: 13px;
 	border-radius: 7px;
 	color: #dadada;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	font-size: 15px;
 	font-weight: bold;
 }
@@ -575,7 +576,7 @@ body {
 	width: 66px;
 	border-radius: 7px;
 	font-size: 15px;
-	background-color: #1056ab;
+	background-color: #1171bb;
 	color: #dadada;
 	margin-top: 25px;
 }

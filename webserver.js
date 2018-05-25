@@ -50,7 +50,7 @@ require("./routes/signup")(webserver, dataBase, mysql, encrypt);
 
 require("./session.js")(webserver, dataBase, mysql, encrypt);
 
-require("./routes")(webserver, dataBase, mysql, );
+require("./routes")(webserver, dataBase, mysql );
 // require("./routes/create_team")(webserver, dataBase, mysql);
 
 // require("./routes/join_team")(webserver, dataBase, mysql);

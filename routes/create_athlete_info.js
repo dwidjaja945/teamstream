@@ -26,6 +26,14 @@ module.exports = function ( webserver , dataBase , mysql ) {
             res.json(output);
             return;
         }
+        
+        if (req.session.user_id === undefined) {
+            output.redirect = '/login';
+            output.errors = 'User not logged in';
+            res.json(output);
+            res.end();
+            return;
+        }
 
         if (req.body) {
             var firstName = req.body.first_name;

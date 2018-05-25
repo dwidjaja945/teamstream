@@ -7,6 +7,8 @@ module.exports = function (webserver, dataBase, mysql) {
 
     require('./edit_athlete_stats')(webserver, dataBase, mysql);
 
+    requite('./toggle_teams')( webserver , dataBase , mysql );
+
     // require("./athlete_profile")(webserver, dataBase, mysql);
 
     // endpoint for roster

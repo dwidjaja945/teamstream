@@ -1,5 +1,6 @@
 module.exports = function (webserver, dataBase, mysql, encrypt) {
     webserver.post("/api/login", (req, res) => {
+        console.log("starting log-in process")
         const output = {
             success: false,
             data: [],
@@ -52,6 +53,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         dataBase.query(mysqlQuery, (err, data, fields) => {
             if (!err) {
                 encrypt.compare(password, data[0].password, (err, compareResponse) => {
+                    console.log("comparing password...")
                     password = data[0].password;
                     let query = `SELECT 
                         users.user_id, 
@@ -95,7 +97,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                             req.session.team_code = data[0].team_code;
                             req.session.athlete_id = data[0].athlete_id;
                             req.session.athlete_info_id = data[0].athlete_info_id;
-
+                            console.log("User Logged in and session data has been stored")
                             // send back json data about path they should go to (bulletinboard) => browser history
                             res.json(output);
                         } else {

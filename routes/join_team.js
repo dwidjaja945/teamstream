@@ -100,7 +100,6 @@ module.exports = (webserver, dataBase, mysql) => {
                         output.errors = err;
                     }
 
-                    console.log("join_team.js output object: ", output);
                     res.json(output);
                 });
             }

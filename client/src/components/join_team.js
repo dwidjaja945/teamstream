@@ -46,25 +46,26 @@ class JoinTeam extends Component {
 	}
 
 	joinTeamAxios() {
-		const { code: team_code } = this.state;
-		const dataToSend = { team_code };
-		let path = "/api/join_team";
-		const teamCodeValidation = /^[A-Z0-9]{6}$/;
+        const {code: team_code} = this.state;
+        const dataToSend = {team_code};
+        let path = "/api/join_team";
+        const teamCodeValidation = /^[A-Z0-9]{6}$/;
 
-		if (teamCodeValidation.test(team_code)) {
-			axios.post(`${path}`, dataToSend).then(response => {
-				if (response.data.success) {
-					console.log("Join Team Axios: ", response);
+        if (teamCodeValidation.test(team_code)) {
+            axios.post(`${path}`, dataToSend).then(response => {
+                if (response.data.success) {
+                    console.log("Join Team Axios: ", response);
 
-				this.props.history.push(response.data.redirect);
-				// this.props.history.push("/login");
-			} else {
-				this.setState({
-					errorHandle: response.data.errors
-				});
-			}
-		});
-	}
+                    this.props.history.push(response.data.redirect);
+                    // this.props.history.push("/login");
+                } else {
+                    this.setState({
+                        errorHandle: response.data.errors
+                    });
+                }
+            });
+        }
+    }
 
 	render() {
 		const { code, errorHandle } = this.state;

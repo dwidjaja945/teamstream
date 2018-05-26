@@ -12,7 +12,7 @@ import Roster from "./roster/roster";
 import UserIdPw from "./create_user_id_pw";
 import NavBar from "./navbar";
 import AddAthlete from "./profile_pages/add_athlete";
-import EditAthlete from "./profile_pages/edit_profile";
+import EditAthlete from "./profile_pages/edit_athlete";
 import Logout from './log_in/logout';
 
 class App extends Component {

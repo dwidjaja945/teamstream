@@ -8,6 +8,7 @@ import axios from "axios/index";
 class EditProfile extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             first_name: '',
             last_name: '',
@@ -16,7 +17,7 @@ class EditProfile extends Component {
             img_url:'',
             height: '',
             weight: '',
-            customInputsArray: [],
+            customStatsArray: [],
 
         };
 
@@ -32,6 +33,13 @@ class EditProfile extends Component {
             if (response.data.success) {
                 console.log("data for athlete profile server response: ", response);
 
+                const users = response.data.user;
+                const userStatsArray=[];
+                for(let userIndex=0; userIndex<users.length; userIndex++){
+                    const {stat_id, stat_name, stat_value} = users[userIndex];
+                    userStatsArray.push({stat_id, stat_name, stat_value});
+                }
+
                 this.setState({
                     first_name: response.data.user[0].first_name,
                     last_name: response.data.user[0].last_name,
@@ -40,7 +48,7 @@ class EditProfile extends Component {
                     img_url: response.data.user[0].img_url,
                     height: response.data.user[0].height,
                     weight: response.data.user[0].weight,
-                    // stats: {},
+                    customStatsArray: userStatsArray,
                 })
 
             } else {
@@ -54,16 +62,12 @@ class EditProfile extends Component {
 
         const newCustomInput={
             inputName:'inputName',
-            nameValue:'',
+            stat_name:'',
             valueName:'valueName',
-            inputValue:'',
+            stat_value:'',
         };
 
-        const {customInputsArray} = this.state;
-
-        customInputsArray.push(newCustomInput);
-
-        this.setState({customInputsArray});
+        this.setState({customStatsArray: [...this.state.customStatsArray, newCustomInput]});
     }
 
     handleInputChange(event) {
@@ -77,11 +81,12 @@ class EditProfile extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log('This is the handleSubmit: ', this.state);
+
         this.props.addAthlete(this.state);
     }
 
     render() {
-        const { first_name, last_name, age, height, bio, img_url, weight, customInputsArray } = this.state;
+        const { first_name, last_name, age, height, bio, img_url, weight, customStatsArray } = this.state;
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -94,11 +99,11 @@ class EditProfile extends Component {
                     <Field name="weight" label="Weight" type="number" value={weight} onChange={this.handleInputChange} />
                     <Field name="bio" label="Bio" type="text" value={bio} onChange={this.handleInputChange} />
                     {/* <button onClick={this.addNewInput.bind(this)}>Add</button> */}
-                    <AddNewInputs addNewInput={this.addNewInput} customInputsArray={customInputsArray}/>
+                    <AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray}/>
                     {/* <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange} />
                     <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange} /> */}
                     <Link to={`/athlete_profile`} className="loginButtons">
-                        <span className="btnLog">Create Profile</span>
+                        <span className="btnLog">Confirm Changes</span>
                     </Link>
                 </div>
                 <button className="btnLog">Submit</button>

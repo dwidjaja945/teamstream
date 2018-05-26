@@ -1,3 +1,5 @@
+const slashes = require('slashes');
+
 module.exports = function ( webserver , dataBase , mysql ) {
 
     // Pulling data from bulletin board for a particular user
@@ -30,9 +32,10 @@ module.exports = function ( webserver , dataBase , mysql ) {
         }
 
         // create checks for each variable - run through loop for each.
-        let user_id = req.session.user_id;
-        let athlete_id = req.session.athlete_id;
-        let athlete_info_id = req.session.athlete_info_id;
+        let { user_id , athlete_id , athlete_info_id } = req.session;
+        // let user_id = req.session.user_id;
+        // let athlete_id = req.session.athlete_id;
+        // let athlete_info_id = req.session.athlete_info_id;
         // team_id will need to be provided from front end in axios call.
         
         let team_id;
@@ -79,6 +82,9 @@ module.exports = function ( webserver , dataBase , mysql ) {
             if(!error) {
                 output.success = true;
                 output.data = data;
+                for ( let e = 0 ; e < data.length ; e++ ) {
+                    data[e].post_text = slashes.strip(data[e].post_text);
+                }
                 output.redirect = '/bulletin_board';
             } else {
                 output.errors = error;
@@ -131,6 +137,11 @@ module.exports = function ( webserver , dataBase , mysql ) {
             team_id,
             0,
         ];
+
+        // adding slashes to insert variables
+        for( let i = 0 ; i<inserts.length ; i++) {
+            inserts[i] = slashes.add(inserts[i]);
+        }
         // will be inserting post_text, athlete_id, team_id, pinned
 
         let sqlQuery = mysql.format(query, inserts);
@@ -141,6 +152,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
             if (!error) {
                 output.success = true;
                 output.data = data;
+                console.log(data)
 
             } else {
                 output.errors = error;

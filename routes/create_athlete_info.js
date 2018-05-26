@@ -55,6 +55,10 @@ module.exports = function ( webserver , dataBase , mysql ) {
         VALUES (NULL, ?, ?, ?, ?, '', ?, ?, ?)`;
 
         let inserts = [firstName, lastName, height, weight, age, athlete_bio, user_id];
+        
+        for( let i = 0 ; i < inserts.length ; i++ ) {
+            inserts[i] = slashes.add(inserts[i]);
+        }
 
         let mysqlQuery = mysql.format(query, inserts);
 

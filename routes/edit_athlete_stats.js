@@ -12,7 +12,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
      *   insertId
      */
     webserver.post( '/api/add_athlete_stats' , ( req , res ) => {
-        console.log("edit athlete stats body: ", req.body)
+        // console.log("edit athlete stats body: ", req.body)
 
         const output = {
             success: false,
@@ -46,18 +46,6 @@ module.exports = ( webserver , dataBase , mysql ) => {
             query += statIndex===req.body.length-1 ? '' : ',';
             inserts.push(stat_name, stat_value, athlete_id);
         }
-        // console.log('Edit Athlete Dynamic Query: ',query);
-        // console.log('inserts: ', inserts)
-
-        // let { stat_name , stat_value } = req.body;
-
-        // let query = `INSERT INTO stats
-        //     (
-        //         stat_name,
-        //         stat_value,
-        //         athlete_id
-        //     )
-        //     VALUES (?,?,?)`;
 
 
         let mysqlQuery = mysql.format( query , inserts );
@@ -74,7 +62,8 @@ module.exports = ( webserver , dataBase , mysql ) => {
             } else {
                 output.errors = err;
             }
-            res.json(data);
+            console.log('edit athlete output: ',output)
+            res.json(output);
         });
     });
 

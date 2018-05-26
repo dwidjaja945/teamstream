@@ -79,16 +79,54 @@ class EditProfile extends Component {
         });
     }
 
+    addAthleteInput(){
+        const {customStatsArray} = this.state;
+        const numOfStatsToUpdate = customStatsArray.length - this.initialNumberOfStats;
+
+        console.log('updating stat and profile information')
+        //Axios call here for edited info and stats
+
+
+        //axios call for new stats
+        if(numOfStatsToUpdate > 0){
+            console.log('Adding extra stats')
+            var statsToUpdate = customStatsArray.slice(this.initialNumberOfStats);
+
+            const path='/api/add_athlete_stats';
+            axios.post(`${path}`, statsToUpdate).then(response => {
+                console.log('adding new stats response: ', response)
+                if (response.data.success) {
+                    console.log("data for add-stat response: ", response);
+                    const {insertStart, rowsAffected} = response.data.insertIds;
+                    let count=0;
+                    for (let countIndex=insertStart; countIndex<rowsAffected+insertStart; countIndex++){
+                        statsToUpdate[count++].stat_id = countIndex;
+                    }
+                    debugger
+                    //double updating on submit
+                } else {
+                    //ERROR
+                    console.log(response.data.errors);
+                }
+            });
+        }
+
+
+        this.setState({
+            customStatsArray: [...this.state.customStatsArray, ...statsToUpdate],
+        });
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         console.log('This is the handleSubmit: ', this.state);
 
-        this.props.addAthlete(this.state, this.initialNumberOfStats);
+        this.addAthleteInput();
     }
 
     render() {
         const { first_name, last_name, age, height, bio, img_url, weight, customStatsArray } = this.state;
-
+        console.log("edit profile current state: ", this.state)
         return (
             <form onSubmit={this.handleSubmit}>
                 <div>

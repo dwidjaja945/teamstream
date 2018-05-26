@@ -1,3 +1,5 @@
+const slashes = require('slashes');
+
 module.exports = function (webserver, dataBase, mysql) {
 
     webserver.get('/api/athlete_profile', function (req , res ) {
@@ -24,6 +26,11 @@ module.exports = function (webserver, dataBase, mysql) {
         dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {
                 output.success = true;
+                for (let e = 0; e < data.length; e++) {
+                    for( let key in data[e]) {
+                        data[e][key] = slashes.strip(data[e][key]);
+                    }
+                }
                 output.user = data;
                 console.log("retrieved athlete info for user with id: ",athlete_id)
             } else {

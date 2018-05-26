@@ -81,10 +81,10 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
             if(!error) {
                 output.success = true;
-                output.data = data;
                 for ( let e = 0 ; e < data.length ; e++ ) {
                     data[e].post_text = slashes.strip(data[e].post_text);
                 }
+                output.data = data;
                 output.redirect = '/bulletin_board';
             } else {
                 output.errors = error;

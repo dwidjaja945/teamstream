@@ -69,7 +69,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
      * Returns:
      *   success: true
      */
-    webserver.post( '/update_athlete_stats' , ( req , res ) => {
+    webserver.post( '/api/update_athlete_stats' , ( req , res ) => {
         const output = {
             success: false,
             data: [],

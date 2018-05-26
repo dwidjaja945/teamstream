@@ -4,7 +4,7 @@ module.exports = function (webserver, dataBase, mysql) {
         let athlete_id = req.session.athlete_id;
 
         let query = "SELECT `ai`.`first_name`, `ai`.`last_name`, `ai`.`height`, `ai`.`weight`, `ai`.`img_url`, " +
-            "`ai`.`age`, `ai`.`bio`, `s`.`stat_name`, `s`.`stat_value` " +
+            "`ai`.`age`, `ai`.`bio`, `s`.`stat_name`, `s`.`stat_value`, `s`.`stat_id` " +
             "FROM `athletes` AS a " +
             "JOIN `athlete_info` AS ai " +
             "ON `a`.`athlete_info_id` = `ai`.`athlete_info_id` " +
@@ -26,7 +26,6 @@ module.exports = function (webserver, dataBase, mysql) {
                 output.success = true;
                 output.user = data;
                 console.log("retrieved athlete info for user with id: ",athlete_id)
-                console.log("athlete profile data: ", data)
             } else {
                 output.errors = error;
             }

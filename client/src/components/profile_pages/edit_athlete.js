@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import EditProfile from './edit_profile';
 // import ProfileData from './profile_data';
 
-class AddAthlete extends Component{
+class EditAthlete extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -16,9 +16,11 @@ class AddAthlete extends Component{
         this.setState({
             profileData: {...this.state.profileData, ...input},
         });
+        //Axios call here for stats and edit
+
     }
     render(){
-        console.log('add_Athlete state: ',this.state);
+        console.log('EditAthlete state: ',this.state);
         return(
             <div>
                 <EditProfile addAthlete={this.addAthleteInput}/>
@@ -27,4 +29,4 @@ class AddAthlete extends Component{
     }
 
 }
-export default AddAthlete;
+export default EditAthlete;

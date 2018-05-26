@@ -34,9 +34,9 @@ class AddNewInput extends Component{
         const {customStatsArray} = this.props;
 
         if(name==='inputName') {
-            customStatsArray[index]['nameValue'] = value;
+            customStatsArray[index]['stat_name'] = value;
         }else if(name==='valueName'){
-            customStatsArray[index]['inputValue'] = value;
+            customStatsArray[index]['stat_value'] = value;
         }
 
         this.setState({

@@ -18,9 +18,9 @@ class EditProfile extends Component {
             height: '',
             weight: '',
             customStatsArray: [],
-
         };
 
+        this.initialNumberOfStats=null;
         this.pullAthleteProfileData();
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,8 +49,9 @@ class EditProfile extends Component {
                     height: response.data.user[0].height,
                     weight: response.data.user[0].weight,
                     customStatsArray: userStatsArray,
-                })
+                });
 
+                this.initialNumberOfStats = response.data.user.length;
             } else {
                 //ERROR
                 console.log(response.data.errors);
@@ -82,7 +83,7 @@ class EditProfile extends Component {
         event.preventDefault();
         console.log('This is the handleSubmit: ', this.state);
 
-        this.props.addAthlete(this.state);
+        this.props.addAthlete(this.state, this.initialNumberOfStats);
     }
 
     render() {

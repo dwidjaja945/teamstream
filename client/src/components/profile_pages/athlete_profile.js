@@ -19,7 +19,7 @@ class AthleteProfile extends Component {
             img_url:'',
             height: '',
             weight: '',
-            stats: {}
+            stats: {},
         };
 
         this.pullAthleteProfileData();
@@ -87,7 +87,7 @@ class AthleteProfile extends Component {
                     </div>
                 </div>
                 <div className="profile profileFooter">
-                    <Link to={"/add_athlete"} className="profileEdit">
+                    <Link to={"/edit_athlete"} className="profileEdit">
                         Edit
                     </Link>
                 </div>

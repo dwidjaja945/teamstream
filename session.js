@@ -37,8 +37,8 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             res.end();
             return;
         } else {
-            email = req.body.email;
-            password = req.body.password;
+            email = slashes.add(req.body.email);
+            password = slashes.add(req.body.password);
         }
 
         console.log('email and pass', email, password)
@@ -65,15 +65,15 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                         athlete_info.first_name, 
                         athlete_info.last_name,
                         teams.team_code
-                    FROM users
-                    JOIN athlete_info
-                        ON users.user_id = athlete_info.user_id
-                    JOIN athletes
-                        ON athlete_info.athlete_info_id = athletes.athlete_info_id
-                    JOIN teams
-                        ON athletes.team_id = teams.team_id
-                    WHERE email = ? 
-                    AND password = ?`;
+                            FROM users
+                            JOIN athlete_info
+                                ON users.user_id = athlete_info.user_id
+                            JOIN athletes
+                                ON athlete_info.athlete_info_id = athletes.athlete_info_id
+                            JOIN teams
+                                ON athletes.team_id = teams.team_id
+                            WHERE email = ? 
+                            AND password = ?`;
 
                     let inserts = [email, password];
 

@@ -1,3 +1,5 @@
+const slashes = require("slashes");
+
 module.exports = function (webserver, dataBase, mysql, encrypt) {
     webserver.post("/api/login", (req, res) => {
         console.log("starting log-in process")

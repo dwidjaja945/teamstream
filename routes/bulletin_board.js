@@ -56,7 +56,8 @@ module.exports = function ( webserver , dataBase , mysql ) {
             \`post_text\`, 
             \`timestamp\`, 
             \`pinned\`, 
-            \`teams\`.\`team_name\`
+            \`teams\`.\`team_name\`,
+            \`teams\`.\`team_code\`
             FROM \`bulletin\`
             JOIN \`teams\`
                 ON \`bulletin\`.\`team_id\` = \`teams\`.\`team_id\`

@@ -19,9 +19,13 @@ class AddAthlete extends Component{
         });
 
         const path = '/api/create_athlete_info';
-        axios.post(path, input).then(resp => {
-            console.log("add athlete response from server: ", resp);
-            this.props.history.push(resp.data.redirect);
+        axios.post(path, input).then(response => {
+            if(response.data.success) {
+                console.log("add athlete response from server: ", response);
+                this.props.history.push(response.data.redirect);
+            }else{
+                console.log(response.data.error)
+            }
         });
 
     }

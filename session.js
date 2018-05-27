@@ -92,6 +92,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                             // providing data if user logged in
                             output.success = true;
                             output.data = data;
+                            console.log(data);
                             output.redirect = "/bulletin_board";
 
                             req.session.user_id = data[0].user_id;

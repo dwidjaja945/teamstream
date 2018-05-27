@@ -161,25 +161,14 @@
         }
 
         $("#update").click( () => {
-            let statsArray = [{ stat_name: '50m', stat_value: '23s' }, { stat_name: '2k', stat_value: '7:30' }];
+            let statsArray = [{ stat_name: '50m', stat_value: '23s' }, { stat_name: '2k', stat_value: '7:30' }]
             let dataToSend = {
                 first_name: $("#updateFirstName").val(),
                 last_name: $("#updateLastName").val(),
                 age: $("#updateAge").val(),
                 height: $("#updateHeight").val(),
                 weight: $("#updateWeight").val(),
-                statsArray : [{
-                    inputName: 'inputName',
-                    stat_name: 'just',
-                    valueName: 'valueName',
-                    stat_value: 'leave'
-                },
-                {
-                    inputName: 'inputName',
-                    stat_name: 'already',
-                    valueName: 'valueName',
-                    stat_value: 'christina'
-                }],
+                statsArray : JSON.stringify(statsArray),
                 athlete_info_id : 7,
                 athlete_id: 9
             };

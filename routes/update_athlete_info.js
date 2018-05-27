@@ -65,27 +65,33 @@ module.exports = ( webserver , dataBase , mysql ) => {
         // Cannot have client provide an array within an object. Can only do one or the other.
         // client do two calls to separate end points?
 
+        // Initial issue resolved.
+        // might be able to do insert and update within a single query call. working on prototype before implementation.
+
         dataBase.query( mysqlQuery , ( err, data, fields ) => {
             if (err) throw err;
             console.log( 'update athlete_info table data : ' , data);
 
             let statsInfo = "";
 
-            for (let statIndex = 0; statIndex < req.body.statsArray.length ; statIndex++ ) {
-                const { stat_name , stat_value } = req.body.statArray[ statIndex ];
+            let { statsArray } = req.body;
+            statsArray = JSON.parse(statsArray);
+
+            for (let statIndex = 0; statIndex < statsArray.length ; statIndex++ ) {
+                const { stat_name , stat_value } = statsArray[ statIndex ];
                 
-                if( statIndex !== req.body.statArray.length -1 ) {
-                    statsInfo = `${statInfo} stat_name = ${stat_name}, stat_value = ${stat_value},`
+                if (statIndex !== statsArray.length -1 ) {
+                    statsInfo = `${statsInfo} stat_name = ${stat_name}, stat_value = ${stat_value},`;
                 } else {
-                    statsInfo = `${statInfo} stat_name = ${stat_name}, stat_value = ${stat_value}`
+                    statsInfo = `${statsInfo} stat_name = ${stat_name}, stat_value = ${stat_value}`;
                 }
             }
 
-            let updateQuery = `UPDATE stats SET ${statsInfo}`;
+            let updateQuery = `UPDATE stats SET${statsInfo}`;
             
             let { athlete_id } = req.body;
 
-            let query = updateQuery + "WHERE athlete_id = " + athlete_id;
+            let query = updateQuery + " WHERE athlete_id = " + athlete_id;
 
             // query to update stats
             dataBase.query( query , ( err, data, fields ) => {

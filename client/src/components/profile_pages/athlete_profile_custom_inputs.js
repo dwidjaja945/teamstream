@@ -14,6 +14,8 @@ export default props => {
                            value={item.stat_name} onChange={(e) => {props.inputChange(e, index)}} />
                     <Field name={item.valueName} type="text"
                            value={item.stat_value} onChange={(e) => {props.inputChange(e, index)}} />
+                    <span>{item.stat_id}</span>
+
                 </div>
             )
         });

@@ -18,9 +18,9 @@ class EditProfile extends Component {
             height: '',
             weight: '',
             customStatsArray: [],
-
         };
 
+        this.initialNumberOfStats=null;
         this.pullAthleteProfileData();
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,8 +49,9 @@ class EditProfile extends Component {
                     height: response.data.user[0].height,
                     weight: response.data.user[0].weight,
                     customStatsArray: userStatsArray,
-                })
+                });
 
+                this.initialNumberOfStats = response.data.user.length;
             } else {
                 //ERROR
                 console.log(response.data.errors);
@@ -78,17 +79,58 @@ class EditProfile extends Component {
         });
     }
 
+    addAthleteInput(){
+        let redirect = '/athlete_profile';
+        const {customStatsArray} = this.state;
+        const numOfStatsToUpdate = customStatsArray.length - this.initialNumberOfStats;
+
+        console.log('updating stat and profile information')
+        //Axios call here for edited info and stats
+
+
+        let statsToUpdate = [];
+        //axios call for new stats
+        if(numOfStatsToUpdate > 0){
+            console.log('Adding extra stats')
+            statsToUpdate = customStatsArray.slice(this.initialNumberOfStats);
+
+            const path='/api/add_athlete_stats';
+            axios.post(`${path}`, statsToUpdate).then(response => {
+                console.log('adding new stats response: ', response)
+                if (response.data.success) {
+                    console.log("data for add-stat response: ", response);
+                    const {insertStart, rowsAffected} = response.data.insertIds;
+                    let count=0;
+                    for (let countIndex=insertStart; countIndex<rowsAffected+insertStart; countIndex++){
+                        statsToUpdate[count++].stat_id = countIndex;
+                    }
+                    redirect = response.data.redirect;
+                } else {
+                    //ERROR
+                    console.log(response.data.errors);
+                }
+            });
+        }
+
+
+        this.setState({
+            customStatsArray: [...this.state.customStatsArray, ...statsToUpdate],
+        });
+        this.props.history.push(redirect);
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         console.log('This is the handleSubmit: ', this.state);
 
-        this.props.addAthlete(this.state);
+        this.addAthleteInput();
     }
 
     render() {
         const { first_name, last_name, age, height, bio, img_url, weight, customStatsArray } = this.state;
-
+        console.log("edit profile current state: ", this.state)
         return (
+            <div>
             <form onSubmit={this.handleSubmit}>
                 <div>
                     <h1>This is where user creates their profile</h1>
@@ -108,6 +150,7 @@ class EditProfile extends Component {
                 </div>
                 <button className="btnLog">Submit</button>
             </form>
+            </div>
         )
     }
 }

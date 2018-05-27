@@ -12,7 +12,7 @@ import Roster from "./roster/roster";
 import UserIdPw from "./create_user_id_pw";
 import NavBar from "./navbar";
 import AddAthlete from "./profile_pages/add_athlete";
-import EditAthlete from "./profile_pages/edit_athlete";
+import EditAthlete from "./profile_pages/edit_profile";
 import Logout from './log_in/logout';
 
 class App extends Component {
@@ -64,7 +64,7 @@ class App extends Component {
 
 				<Route path="/add_athlete" component={AddAthlete} />
 
-				<Route path="/edit_athlete" component={EditAthlete} />
+				<Route path="/edit_profile" component={EditAthlete} />
 
 				<Route path="/logout" component={Logout} />
 			</div>

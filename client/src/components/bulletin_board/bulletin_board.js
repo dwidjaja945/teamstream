@@ -26,11 +26,14 @@ class BulletinBoard extends Component {
 		path = "/api/bulletin_board";
 		axios.get(path).then(response => {
 			console.log("BB GET response: ", response);
-
-			const messageArray = this.findPinnedMessage(response.data.data);
-			this.setState({
-				messageArray: messageArray
-			});
+			if(response.data.success) {
+                const messageArray = this.findPinnedMessage(response.data.data);
+                this.setState({
+                    messageArray: messageArray
+                });
+            }else{
+				this.props.history.push(response.data.redirect)
+			}
 		});
 	}
 

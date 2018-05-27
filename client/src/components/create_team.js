@@ -56,6 +56,7 @@ class CreateTeam extends Component {
 				this.setState({
 					errorHandle: response.data.errors
 				});
+				this.props.history.push(response.data.redirect)
 			}
 		});
 	}

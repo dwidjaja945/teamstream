@@ -25,6 +25,7 @@ class AddAthlete extends Component{
                 this.props.history.push(response.data.redirect);
             }else{
                 console.log(response.data.error)
+                this.props.history.push(response.data.redirect);
             }
         });
 

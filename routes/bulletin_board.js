@@ -52,8 +52,9 @@ module.exports = function ( webserver , dataBase , mysql ) {
             \`athlete_info\`.\`first_name\`, 
             \`athlete_info\`.\`last_name\`, 
             \`bulletin\`.\`athlete_id\`, 
-            \`bulletin\`.\`post_id\`, 
-            \`post_text\`, 
+            \`bulletin\`.\`post_id\`,
+            \`bulletin\`.\`post_text\`, 
+            \`bulletin\`.\`pinned\`
             \`timestamp\`, 
             \`pinned\`, 
             \`teams\`.\`team_name\`,

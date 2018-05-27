@@ -28,7 +28,8 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.2.0",
     "mysql": "^2.15.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "slashes": "^1.0.5"
   },
   "devDependencies": {
     "nodemon": "^1.17.4",

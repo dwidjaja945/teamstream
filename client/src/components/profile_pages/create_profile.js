@@ -11,7 +11,8 @@ class CreateProfile extends Component {
 			last_name: "silman",
 			age: "56",
 			height: "62",
-			weight: "99"
+			weight: "99",
+			bio:'',
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +31,7 @@ class CreateProfile extends Component {
 	}
 
 	render() {
-		const { first_name, last_name, age, height, weight } = this.state;
+		const { first_name, last_name, age, height, weight, bio } = this.state;
 		// const letters = /^[A-Za-z]{2,25}$/;
 		// const numbers = /^[0-9]/g;
 		// const numberLetters = /^[A-Za-z0-9]{2,36}$/;
@@ -62,6 +63,13 @@ class CreateProfile extends Component {
 						value={weight}
 						onChange={this.handleInputChange}
 					/>
+                    <Field
+                        name="bio"
+                        label="Bio"
+                        type="text"
+                        value={bio}
+                        onChange={this.handleInputChange}
+                    />
 					<Link to={`/athlete_profile`} className="loginButtons">
 						<span className="btnLog">Create Profile</span>
 					</Link>

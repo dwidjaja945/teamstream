@@ -6,6 +6,7 @@ import NavBar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
 import homeBtn from "../images/team-stream-logo.png";
 import axios from "axios/index";
+import ProfileStats from './profile_stats_display';
 
 class AthleteProfile extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class AthleteProfile extends Component {
             img_url:'',
             height: '',
             weight: '',
-            stats: {},
+            customStatsArray: [],
         };
 
         this.pullAthleteProfileData();
@@ -31,6 +32,13 @@ class AthleteProfile extends Component {
             if (response.data.success) {
                 console.log("data for athlete profile server response: ", response);
 
+                const users = response.data.user;
+                const userStatsArray=[];
+                for(let userIndex=0; userIndex<users.length; userIndex++){
+                    const {stat_id, stat_name, stat_value} = users[userIndex];
+                    userStatsArray.push({stat_id, stat_name, stat_value});
+                }
+
                 this.setState({
                     first_name: response.data.user[0].first_name,
                     last_name: response.data.user[0].last_name,
@@ -39,7 +47,7 @@ class AthleteProfile extends Component {
                     img_url: response.data.user[0].img_url,
                     height: response.data.user[0].height,
                     weight: response.data.user[0].weight,
-                    stats: {},
+                    customStatsArray: userStatsArray,
                 })
 
             } else {
@@ -50,7 +58,7 @@ class AthleteProfile extends Component {
     }
 
     render() {
-        const {first_name, last_name, weight, height, age, bio, img_url, stats} = this.state;
+        const {first_name, last_name, weight, height, age, bio, img_url, customStatsArray} = this.state;
 
         return (
             <div className="profileContainer">
@@ -82,12 +90,12 @@ class AthleteProfile extends Component {
                         <span className="profileStatsInfo">Weight: {weight}</span>
                         <span className="profileStatsInfo">Height: {height}</span>
                         <span className="profileStatsInfo">
-								{stats.input}: {stats.value}
+								<ProfileStats statsArray={customStatsArray}/>
 							</span>
                     </div>
                 </div>
                 <div className="profile profileFooter">
-                    <Link to={"/edit_athlete"} className="profileEdit">
+                    <Link to={"/edit_profile"} className="profileEdit">
                         Edit
                     </Link>
                 </div>

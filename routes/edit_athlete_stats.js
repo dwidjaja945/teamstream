@@ -12,6 +12,8 @@ module.exports = ( webserver , dataBase , mysql ) => {
      *   insertId
      */
     webserver.post( '/api/add_athlete_stats' , ( req , res ) => {
+        // console.log("edit athlete stats body: ", req.body)
+
         const output = {
             success: false,
             data: [],
@@ -27,34 +29,41 @@ module.exports = ( webserver , dataBase , mysql ) => {
             return;
         }
 
-        let { stat_name , stat_value , athlete_id } = req.body;
-
+        const {athlete_id} = req.session;
         let query = `INSERT INTO stats
             (
                 stat_name,
                 stat_value, 
                 athlete_id
             )
-            VALUES (
-                ?,
-                ?,
-                ?
-            )`;
+            VALUES`;
+        let inserts = [];
 
-        let inserts = [stat_name, stat_value, athlete_id];
+        for(let statIndex=0; statIndex<req.body.length; statIndex++){
+            const {stat_name, stat_value} = req.body[statIndex];
+
+            query += ' (?,?,?)';
+            query += statIndex===req.body.length-1 ? '' : ',';
+            inserts.push(stat_name, stat_value, athlete_id);
+        }
+
 
         let mysqlQuery = mysql.format( query , inserts );
 
         dataBase.query( mysqlQuery , ( err , data , fields ) => {
             if(!err) {
                 output.success = true;
-                output.data = data;
-                output.statId = data.insertId
+                // output.data = data;
+                output.insertIds={
+                    insertStart: data.insertId,
+                    rowsAffected: data.affectedRows,
+                }
                 output.redirect = '/athlete_profile'
             } else {
                 output.errors = err;
             }
-            res.json(data);
+            console.log('edit athlete output: ',output)
+            res.json(output);
         });
     });
 
@@ -69,7 +78,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
      * Returns:
      *   success: true
      */
-    webserver.post( '/update_athlete_stats' , ( req , res ) => {
+    webserver.post( '/api/update_athlete_stats' , ( req , res ) => {
         const output = {
             success: false,
             data: [],

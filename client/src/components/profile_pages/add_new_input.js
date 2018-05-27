@@ -4,9 +4,8 @@ import CustomInputs from './athlete_profile_custom_inputs';
 class AddNewInput extends Component{
     constructor(props){
         super(props);
-
         // this.state={
-        //     customInputsArray:[],
+        //     customStatsArray:this.props.customStatsArray,
         // };
 
         // this.addNewInput = this.addNewInput.bind(this);
@@ -23,34 +22,33 @@ class AddNewInput extends Component{
     //         inputValue:'',
     //     };
     //
-    //     const {customInputsArray} = this.state;
+    //     const {customStatsArray} = this.state;
     //
-    //     customInputsArray.push(newCustomInput);
+    //     customStatsArray.push(newCustomInput);
     //
-    //     this.setState({customInputsArray});
+    //     this.setState({customStatsArray});
     // }
 
     handleInputChange(event, index) {
         const { value, name } = event.target;
-        const {customInputsArray} = this.props;
+        const {customStatsArray} = this.props;
 
         if(name==='inputName') {
-            customInputsArray[index]['nameValue'] = value;
+            customStatsArray[index]['stat_name'] = value;
         }else if(name==='valueName'){
-            customInputsArray[index]['inputValue'] = value;
+            customStatsArray[index]['stat_value'] = value;
         }
 
         this.setState({
-            customInputsArray
+            customStatsArray
         });
     }
     render(){
-        const {customInputsArray} = this.props;
-
+        const {customStatsArray} = this.props;
         return(
             <div>
                 <button type='button' onClick={this.props.addNewInput}>+</button>
-                <CustomInputs inputChange={this.handleInputChange} customInputsArray={customInputsArray}/>
+                <CustomInputs inputChange={this.handleInputChange} customStatsArray={customStatsArray}/>
             </div>
         )
     }

@@ -47,15 +47,15 @@ class LogIn extends React.Component {
 				console.log("data from server response: ", response);
 				console.log("current props at this time: ", this.props);
 
-				//if success, log them in, take them to bulletin board
-				// this.props.history.push(response.data.redirect);
-				this.props.history.push("/athlete_profile");
-			} else {
-				//ERROR
-				console.log(response.data.errors);
-			}
-		});
-	}
+                //if success, log them in, take them to bulletin board
+                this.props.history.push(response.data.redirect);
+                // this.props.history.push("/edit_profile");
+            } else {
+                //ERROR
+                console.log(response.data.errors);
+            }
+        });
+    }
 
 	// checkPassword() {
 	// 	const { password } = this.state;

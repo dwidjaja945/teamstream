@@ -64,7 +64,7 @@ class App extends Component {
 
 				<Route path="/add_athlete" component={AddAthlete} />
 
-				<Route path="/edit_athlete" component={EditAthlete} />
+				<Route path="/edit_profile" component={EditAthlete} />
 
 				<Route path="/logout" component={Logout} />
 			</div>

@@ -32,7 +32,7 @@ class JoinTeam extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log("handleSubmit: ", this.state);
+		console.log("Join team state: ", this.state);
 		// this.addCodeInput(this.state);
 		this.joinTeamAxios();
 
@@ -47,6 +47,7 @@ class JoinTeam extends Component {
 	}
 
 	joinTeamAxios() {
+
 		const { code: team_code } = this.state;
 		const dataToSend = { team_code };
 		let path = "/api/join_team";

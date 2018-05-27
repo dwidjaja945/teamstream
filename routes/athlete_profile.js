@@ -1,14 +1,16 @@
+const slashes = require('slashes');
+
 module.exports = function (webserver, dataBase, mysql) {
 
     webserver.get('/api/athlete_profile', function (req , res ) {
         let athlete_id = req.session.athlete_id;
 
         let query = "SELECT `ai`.`first_name`, `ai`.`last_name`, `ai`.`height`, `ai`.`weight`, `ai`.`img_url`, " +
-            "`ai`.`age`, `ai`.`bio`, `s`.`stat_name`, `s`.`stat_value` " +
+            "`ai`.`age`, `ai`.`bio`, `s`.`stat_name`, `s`.`stat_value`, `s`.`stat_id` " +
             "FROM `athletes` AS a " +
             "JOIN `athlete_info` AS ai " +
             "ON `a`.`athlete_info_id` = `ai`.`athlete_info_id` " +
-            "JOIN `stats` as s " +
+            "LEFT JOIN `stats` as s " +
             "ON `a`.`athlete_id` = `s`.`athlete_id` " +
             "WHERE `a`.`athlete_id` = ?";
         let inserts = [athlete_id];
@@ -24,9 +26,13 @@ module.exports = function (webserver, dataBase, mysql) {
         dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {
                 output.success = true;
+                for (let e = 0; e < data.length; e++) {
+                    for( let key in data[e]) {
+                        data[e][key] = slashes.strip(data[e][key]);
+                    }
+                }
                 output.user = data;
-                console.log("retrieved athlete info for user with id: ",athlete_id)
-                console.log("athlete profile data: ", data)
+                console.log("retrieved athlete info with athlete_id of: ",athlete_id)
             } else {
                 output.errors = error;
             }

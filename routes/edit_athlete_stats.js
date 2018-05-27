@@ -39,6 +39,8 @@ module.exports = ( webserver , dataBase , mysql ) => {
             VALUES`;
         let inserts = [];
 
+        console.log('the request body: ', req.body)
+
         for(let statIndex=0; statIndex<req.body.length; statIndex++){
             const {stat_name, stat_value} = req.body[statIndex];
 

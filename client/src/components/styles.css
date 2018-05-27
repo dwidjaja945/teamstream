@@ -10,7 +10,7 @@ body {
 .menuBtn {
 	height: 33px;
 	width: 40px;
-	border: 2px solid #a3a3a3;
+	border: 2px solid #1171bb;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -21,7 +21,7 @@ body {
 	height: 3px;
 	width: 27px;
 	margin: 2px;
-	background-color: #a3a3a3;
+	background-color: #1171bb;
 }
 
 .hamburgerBtn {
@@ -48,7 +48,9 @@ body {
 	width: 100vw;
 	display: flex;
 	justify-content: space-around;
-	background-color: #010c48;
+	/* background-color: #010c48; */
+	/* background-color: #ffd200; */
+	background-color: #ffd200;
 }
 
 .mainBtn {
@@ -342,7 +344,7 @@ body {
 }
 
 .createTeamName {
-	height: 40%;
+	height: 10%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -350,16 +352,39 @@ body {
 }
 
 .teamName {
-	font-size: 50px;
+	font-size: 25px;
+	text-align: center;
 	padding: 15px;
 	background-color: #1171bb;
 	color: white;
 	border-radius: 5px;
 }
 
+.createTeamInfo {
+	height: 30%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+}
+
+.createTeamInfo textarea {
+	text-align: center;
+	font-size: 15px;
+}
+
+.cGContent {
+	height: 35%;
+	width: 100%;
+	flex-flow: column wrap;
+	display: flex;
+	align-items: center;
+}
+
 .cGNumberContainer {
-	height: 7%;
-	width: 50%;
+	height: 15%;
+	width: 40%;
 	border: 2px solid grey;
 	display: flex;
 	justify-content: center;
@@ -367,24 +392,17 @@ body {
 	margin: 10px;
 }
 
-.cGbtnContent {
-	height: 6%;
-	/*width: 30%;*/
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.cGbtn {
+	height: 10%;
+	width: 100%;
 	background-color: #1171bb;
 	color: white;
-	border-radius: 10px;
-	padding: 10%;
-	/*margin: 15%;*/
+	border-radius: 7px;
+	padding: 4%;
+	font-size: 15px;
 }
 
-.cGDoneBtn {
-	font-size: 20px;
-}
-
-.cGbtnContent:hover {
+.cGbtn:hover {
 	color: #000000;
 	background-color: #dadada;
 }
@@ -414,8 +432,8 @@ body {
 }
 
 .jTteamCode {
-	height: 10%;
-	width: 65%;
+	height: 9%;
+	width: 62%;
 	border-radius: 5px;
 	background-color: #1171bb;
 	display: flex;
@@ -436,7 +454,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-flow: column wrap;
-	margin: 60px;
+	margin: 50px;
 }
 
 .codeNum {
@@ -452,7 +470,7 @@ body {
 	width: 38%;
 	background-color: #1171bb;
 	color: white;
-	border-radius: 12px;
+	border-radius: 7px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -504,7 +522,8 @@ body {
 
 .userNameLine,
 .passwordLine {
-	font-size: 20px;
+	font-size: 22px;
+	padding: 8px;
 	color: grey;
 }
 
@@ -516,9 +535,9 @@ body {
 }
 
 .loginBtn {
-	height: 35%;
+	height: 30%;
 	width: 100%;
-	padding: 13px;
+	padding: 10px;
 	border-radius: 7px;
 	color: #dadada;
 	background-color: #1171bb;
@@ -531,11 +550,11 @@ body {
 	background-color: #dadada;
 }
 
-.loginForm input {
+/* .loginForm input {
 	border: 0;
 	border-bottom: 1px solid grey;
 	outline: 0;
-}
+} */
 
 /***********Create User ID and PW*************/
 .createLogo {
@@ -562,9 +581,10 @@ body {
 }
 
 .userSignUpContainer input {
-	border: 0;
+	/* border: 0;
 	outline: 0;
-	border-bottom: 1px solid grey;
+	border-bottom: 1px solid grey; */
+	padding: 8px;
 }
 
 .signUpInput {

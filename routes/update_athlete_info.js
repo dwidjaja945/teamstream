@@ -77,6 +77,18 @@ module.exports = ( webserver , dataBase , mysql ) => {
             let { statsArray } = req.body;
             statsArray = JSON.parse(statsArray);
 
+            // This sql query is to insert and update stats with a single query.
+            // It works when client side provides the stat id that goes with the associated stat they are trying to update.
+            // If they are not updating, but adding a stat instead, null is provided for stat_id
+            
+            // INSERT INTO stats(stat_id, stat_name, stat_value, athlete_id)
+            // VALUES(5, '2k', '7:00', 9),
+            //     (9, '10k', '38:00', 9),
+            //     (null, '5k', '18:00', 9)
+            // ON DUPLICATE KEY UPDATE
+            // stat_name = VALUES(stat_name),
+            //     stat_value = VALUES(stat_value)
+
             for (let statIndex = 0; statIndex < statsArray.length ; statIndex++ ) {
                 const { stat_name , stat_value } = statsArray[ statIndex ];
                 

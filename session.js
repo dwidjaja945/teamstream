@@ -64,7 +64,8 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                         athletes.athlete_id,
                         athlete_info.first_name, 
                         athlete_info.last_name,
-                        teams.team_code
+                        teams.team_code,
+                        teams.team_name
                             FROM users
                             JOIN athlete_info
                                 ON users.user_id = athlete_info.user_id

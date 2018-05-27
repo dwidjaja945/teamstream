@@ -34,6 +34,7 @@ class JoinTeam extends Component {
 		event.preventDefault();
 		console.log("handleSubmit: ", this.state);
 		// this.addCodeInput(this.state);
+		this.joinTeamAxios();
 
 		this.joinTeamAxios();
 		// this.reset();
@@ -46,26 +47,27 @@ class JoinTeam extends Component {
 	}
 
 	joinTeamAxios() {
-        const {code: team_code} = this.state;
-        const dataToSend = {team_code};
-        let path = "/api/join_team";
-        const teamCodeValidation = /^[A-Z0-9]{6}$/;
+		const { code: team_code } = this.state;
+		const dataToSend = { team_code };
+		let path = "/api/join_team";
+		const teamCodeValidation = /^[A-Z0-9]{6}$/;
 
-        if (teamCodeValidation.test(team_code)) {
-            axios.post(`${path}`, dataToSend).then(response => {
-                if (response.data.success) {
-                    console.log("Join Team Axios: ", response);
+		if (teamCodeValidation.test(team_code)) {
+			axios.post(`${path}`, dataToSend).then(response => {
+				if (response.data.success) {
+					console.log("Join Team Axios: ", response);
+					console.log("join team response.data: ", response.data);
 
-                    this.props.history.push(response.data.redirect);
-                    // this.props.history.push("/login");
-                } else {
-                    this.setState({
-                        errorHandle: response.data.errors
-                    });
-                }
-            });
-        }
-    }
+					this.props.history.push(response.data.redirect);
+					// this.props.history.push("/login");
+				} else {
+					this.setState({
+						errorHandle: response.data.errors
+					});
+				}
+			});
+		}
+	}
 
 	render() {
 		const { code, errorHandle } = this.state;
@@ -83,8 +85,9 @@ class JoinTeam extends Component {
 							type="text"
 							value={code}
 							onChange={this.handleInputChange.bind(this)}
-							className="codeNum"/>
-							<button className="codeBtn jTcodeBtn">Join!</button>
+							className="codeNum"
+						/>
+						<button className="codeBtn jTcodeBtn">Join!</button>
 						<div>{errorHandle}</div>
 					</form>
 				</div>

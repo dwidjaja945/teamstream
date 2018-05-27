@@ -13,13 +13,14 @@
     border-bottom: none;
     border-left: none;
     border-right: none;
+    border-bottom: rgba(0,10,75,1)
 
 }
 .userMessages{
     background-color: rgba(192, 192, 192, 0.451) ;
 }
 .pinned{
-    background-color: rgba(255, 192, 192, 0.451) ;
+    background-color: rgba(255,0,0,.4);
 
 }
 .input{
@@ -40,9 +41,7 @@ button{
     height: 20px;
     display: inline;
 }
-.pinDiv{
-    background-color: rgba(255,0,0,.4);
-}
+
 .deleteBulletinMessage{
     float: right;
     border-bottom: 1px solid black;

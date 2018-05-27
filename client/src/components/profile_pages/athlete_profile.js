@@ -6,19 +6,27 @@ import NavBar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
 import ProfileData from "./profile_data";
 import homeBtn from "../images/team-stream-logo.png";
+import axios from 'axios';
 
 class AthleteProfile extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
-			firstName: "",
-			lastName: "",
-			age: "",
-			bio: "",
-			stats: {}
-		};
+			userData: []
+		}
+
 	}
+	componentWillMount(){
+		this.getUserData();
+	}
+	getUserData() {
+		let path = "/api/athlete_profile";
+		axios.get(path).then(resp => {
+			console.log("Roster Response: ", resp);
+
+		});
+	}
+
 
 	render() {
 		const dataToAppend = ProfileData.map((item, index) => {

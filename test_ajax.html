@@ -114,6 +114,29 @@
 
     </div>
 
+
+
+    <div class="updateInfo">
+        <h1>Update Info</h1>
+        <label>first name</label>
+        <input id='updateFirstName' value='keith' type='text'>
+        <label>last name</label>
+        <input id='updateLastName' value='Silcock' type='text'>
+        <label>age</label>
+        <input id='updateAge' value='27' type='text'>
+        <label>height</label>
+        <input id='updateHeight' value='80' type='text'>
+        <label>weight</label>
+        <input type="text" id='updateWeight' value='100'>
+        <br>
+        <br>
+        <label>Stat Name</label>
+        <input id='updateStatName' value='2k' type='text'>
+        <label>Stat Value</label>
+        <input id='updateStatValue' value='7:00' type='text'>
+        <button id="update">update</button>
+    </div>
+
     <script>
 
         function makeAjaxCall(url, method, data) {
@@ -136,6 +159,34 @@
                 }
             })
         }
+
+        $("#update").click( () => {
+            let statsArray = [{ stat_name: '50m', stat_value: '23s' }, { stat_name: '2k', stat_value: '7:30' }];
+            let dataToSend = {
+                first_name: $("#updateFirstName").val(),
+                last_name: $("#updateLastName").val(),
+                age: $("#updateAge").val(),
+                height: $("#updateHeight").val(),
+                weight: $("#updateWeight").val(),
+                statsArray : [{
+                    inputName: 'inputName',
+                    stat_name: 'just',
+                    valueName: 'valueName',
+                    stat_value: 'leave'
+                },
+                {
+                    inputName: 'inputName',
+                    stat_name: 'already',
+                    valueName: 'valueName',
+                    stat_value: 'christina'
+                }],
+                athlete_info_id : 7,
+                athlete_id: 9
+            };
+
+            makeAjaxCall( '/api/update_athlete_info' , 'post' , dataToSend );
+
+        })
 
         $("#joinTeam").click( () => {
             let dataToSend = {

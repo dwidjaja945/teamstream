@@ -56,7 +56,8 @@ module.exports = function ( webserver , dataBase , mysql ) {
             \`post_text\`, 
             \`timestamp\`, 
             \`pinned\`, 
-            \`teams\`.\`team_name\`
+            \`teams\`.\`team_name\`,
+            \`teams\`.\`team_code\`
             FROM \`bulletin\`
             JOIN \`teams\`
                 ON \`bulletin\`.\`team_id\` = \`teams\`.\`team_id\`
@@ -81,10 +82,10 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
             if(!error) {
                 output.success = true;
-                output.data = data;
                 for ( let e = 0 ; e < data.length ; e++ ) {
                     data[e].post_text = slashes.strip(data[e].post_text);
                 }
+                output.data = data;
                 output.redirect = '/bulletin_board';
             } else {
                 output.errors = error;

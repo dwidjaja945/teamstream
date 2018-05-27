@@ -8,7 +8,7 @@ module.exports = function (webserver, dataBase, mysql) {
         };
 
         if (req.session.user_id === undefined) {
-            output.redirect = '/login';
+            output.redirect = '/login_page';
             output.errors = 'User not logged in';
             res.json(output);
             res.end();

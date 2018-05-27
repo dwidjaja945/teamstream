@@ -2,7 +2,8 @@
 module.exports = function ( webserver , dataBase , mysql ) {
 
     webserver.post('/api/create_athlete_info', (req , res ) => {
-        const errors = validationResult(req);
+        // const errors = validationResult(req);
+        const slashes=require('slashes');
         const output = {
             success: false,
             data: [],
@@ -11,7 +12,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
         };
         
         if (req.session.user_id === undefined) {
-            output.redirect = '/login';
+            output.redirect = '/login_page';
             output.errors = 'User not logged in';
             res.json(output);
             res.end();

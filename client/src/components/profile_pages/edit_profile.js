@@ -68,6 +68,7 @@ class EditProfile extends Component {
             } else {
                 //ERROR
                 console.log(response.data.errors);
+                this.props.history.push(response.data.redirect);
             }
         });
     }

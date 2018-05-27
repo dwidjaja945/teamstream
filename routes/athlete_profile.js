@@ -3,6 +3,20 @@ const slashes = require('slashes');
 module.exports = function (webserver, dataBase, mysql) {
 
     webserver.get('/api/athlete_profile', function (req , res ) {
+        const output = {
+            success: false,
+            user: null,
+            errors: []
+        };
+
+        if (req.session.user_id === undefined) {
+            output.redirect = '/login_page';
+            output.errors = 'User not logged in';
+            res.json(output);
+            res.end();
+            return;
+        }
+
         let athlete_id = req.session.athlete_id;
 
         let query = "SELECT `ai`.`first_name`, `ai`.`last_name`, `ai`.`height`, `ai`.`weight`, `ai`.`img_url`, " +
@@ -16,12 +30,7 @@ module.exports = function (webserver, dataBase, mysql) {
         let inserts = [athlete_id];
 
         let sqlQuery = mysql.format(query, inserts);
-
-        const output = {
-            success: false,
-            user: null,
-            errors: []
-        };
+        console.log('current athlete id', athlete_id)
 
         dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {

@@ -80,6 +80,7 @@ class EditProfile extends Component {
     }
 
     addAthleteInput(){
+        let redirect = '/athlete_profile';
         const {customStatsArray} = this.state;
         const numOfStatsToUpdate = customStatsArray.length - this.initialNumberOfStats;
 
@@ -87,10 +88,11 @@ class EditProfile extends Component {
         //Axios call here for edited info and stats
 
 
+        let statsToUpdate = [];
         //axios call for new stats
         if(numOfStatsToUpdate > 0){
             console.log('Adding extra stats')
-            var statsToUpdate = customStatsArray.slice(this.initialNumberOfStats);
+            statsToUpdate = customStatsArray.slice(this.initialNumberOfStats);
 
             const path='/api/add_athlete_stats';
             axios.post(`${path}`, statsToUpdate).then(response => {
@@ -102,8 +104,7 @@ class EditProfile extends Component {
                     for (let countIndex=insertStart; countIndex<rowsAffected+insertStart; countIndex++){
                         statsToUpdate[count++].stat_id = countIndex;
                     }
-                    debugger
-                    //double updating on submit
+                    redirect = response.data.redirect;
                 } else {
                     //ERROR
                     console.log(response.data.errors);
@@ -115,6 +116,7 @@ class EditProfile extends Component {
         this.setState({
             customStatsArray: [...this.state.customStatsArray, ...statsToUpdate],
         });
+        this.props.history.push(redirect);
     }
 
     handleSubmit(event) {
@@ -128,6 +130,7 @@ class EditProfile extends Component {
         const { first_name, last_name, age, height, bio, img_url, weight, customStatsArray } = this.state;
         console.log("edit profile current state: ", this.state)
         return (
+            <div>
             <form onSubmit={this.handleSubmit}>
                 <div>
                     <h1>This is where user creates their profile</h1>
@@ -147,6 +150,7 @@ class EditProfile extends Component {
                 </div>
                 <button className="btnLog">Submit</button>
             </form>
+            </div>
         )
     }
 }

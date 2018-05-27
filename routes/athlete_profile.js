@@ -8,7 +8,7 @@ module.exports = function (webserver, dataBase, mysql) {
             "FROM `athletes` AS a " +
             "JOIN `athlete_info` AS ai " +
             "ON `a`.`athlete_info_id` = `ai`.`athlete_info_id` " +
-            "JOIN `stats` as s " +
+            "LEFT JOIN `stats` as s " +
             "ON `a`.`athlete_id` = `s`.`athlete_id` " +
             "WHERE `a`.`athlete_id` = ?";
         let inserts = [athlete_id];
@@ -25,7 +25,7 @@ module.exports = function (webserver, dataBase, mysql) {
             if (!error) {
                 output.success = true;
                 output.user = data;
-                console.log("retrieved athlete info for user with id: ",athlete_id)
+                console.log("retrieved athlete info with athlete_id of: ",athlete_id)
             } else {
                 output.errors = error;
             }

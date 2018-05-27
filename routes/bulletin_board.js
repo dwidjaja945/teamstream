@@ -81,19 +81,43 @@ module.exports = function ( webserver , dataBase , mysql ) {
         dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
 
             if(!error) {
-                output.success = true;
-                for ( let e = 0 ; e < data.length ; e++ ) {
-                    data[e].post_text = slashes.strip(data[e].post_text);
-                }
+
                 output.data = data;
-                output.redirect = '/bulletin_board';
+
+                let query = `
+                    SELECT teams.team_name,
+                        teams.team_code,
+                        teams.team_id
+                    FROM teams
+                    JOIN athletes
+                        ON teams.team_id = athletes.team_id
+                    WHERE athlete_info_id = ?
+                `;
+
+                let inserts = [ athlete_info_id ];
+
+                let mysqlQuery = mysql.format( query , inserts );
+
+                dataBase.query( mysqlQuery , ( err , data , fields ) => {
+                    if (!err) {
+                        output.success = true;
+                        for (let e = 0; e < data.length; e++) {
+                            data[e].post_text = slashes.strip(data[e].post_text);
+                        }
+                        output.userTeams = data;
+                        output.redirect = '/bulletin_board';
+                    } else {
+                        output.errors = err;
+                    }
+
+                    res.json(output);
+
+                });
             } else {
                 output.errors = error;
+                res.json(output);
                 // try to include error logging
             }
-
-            res.json(output);
-
         });
     });
 

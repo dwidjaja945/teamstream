@@ -20,13 +20,17 @@ class Roster extends Component {
 	getTeamData() {
 		let path = "/api/roster";
 		axios.get(path).then(resp => {
-			console.log("Roster Response: ", resp);
+			if(resp.data.success) {
+                console.log("Roster Response: ", resp);
 
-			const { athletes } = resp.data;
+                const {athletes} = resp.data;
 
-			this.setState({
-				teamData: resp.data.athletes
-			});
+                this.setState({
+                    teamData: resp.data.athletes
+                });
+            }else{
+                this.props.history.push(resp.data.redirect);
+            }
 		});
 	}
 

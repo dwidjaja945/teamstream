@@ -32,10 +32,12 @@ class JoinTeam extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log("handleSubmit: ", this.state);
+		console.log("Join team state: ", this.state);
 		// this.addCodeInput(this.state);
+		this.joinTeamAxios();
 
-		this.reset();
+		this.joinTeamAxios();
+		// this.reset();
 	}
 
 	reset() {
@@ -45,22 +47,28 @@ class JoinTeam extends Component {
 	}
 
 	joinTeamAxios() {
+
 		const { code: team_code } = this.state;
 		const dataToSend = { team_code };
 		let path = "/api/join_team";
+		const teamCodeValidation = /^[A-Z0-9]{6}$/;
 
-		axios.post(`${path}`, dataToSend).then(response => {
-			if (response.data.success) {
-				console.log("Join Team Axios: ", response);
+		if (teamCodeValidation.test(team_code)) {
+			axios.post(`${path}`, dataToSend).then(response => {
+				if (response.data.success) {
+					console.log("Join Team Axios: ", response);
+					console.log("join team response.data: ", response.data);
 
-				this.props.history.push(response.data.redirect);
-				// this.props.history.push("/login");
-			} else {
-				this.setState({
-					errorHandle: response.data.errors
-				});
-			}
-		});
+					this.props.history.push(response.data.redirect);
+					// this.props.history.push("/login");
+				} else {
+					this.setState({
+						errorHandle: response.data.errors
+					});
+					this.props.history.push(response.data.redirect)
+				}
+			});
+		}
 	}
 
 	render() {
@@ -81,11 +89,7 @@ class JoinTeam extends Component {
 							onChange={this.handleInputChange.bind(this)}
 							className="codeNum"
 						/>
-						<Link to="/bulletin_board" className="jTcodeBtn">
-							<span className="codeBtn" onClick={this.joinTeamAxios.bind(this)}>
-								Join!
-							</span>
-						</Link>
+						<button className="codeBtn jTcodeBtn">Join!</button>
 						<div>{errorHandle}</div>
 					</form>
 				</div>

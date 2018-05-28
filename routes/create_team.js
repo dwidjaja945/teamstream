@@ -1,4 +1,4 @@
-const { check, validationResult } = require("express-validator/check");
+const slashes = require('slashes');
 
 module.exports = ( webserver , dataBase , mysql , check) => {
 
@@ -27,7 +27,7 @@ module.exports = ( webserver , dataBase , mysql , check) => {
         if(req.session.user_id !== undefined) {
             user_id = req.session.user_id;
         } else {
-            output.redirect = "/login";
+            output.redirect = "/login_page";
             output.errors = "User not logged in";
             res.json(output);
             res.end();
@@ -80,6 +80,10 @@ module.exports = ( webserver , dataBase , mysql , check) => {
             )`;
 
             let inserts = [team_name, sport_name, team_bio, new_team_code];
+
+            for( let i = 0; i < inserts.length ; i++) {
+                inserts[i] = slashes.add(inserts[i]);
+            }
 
             let mysqlQuery = mysql.format(query, inserts);
 

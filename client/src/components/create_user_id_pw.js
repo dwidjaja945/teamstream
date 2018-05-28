@@ -13,7 +13,7 @@ class UserIdPw extends Component {
 		super(props);
 
 		this.state = {
-			email: "testEmail"+Math.random().toFixed(2)*100+"@testEmail.com",
+			email: "testEmail" + Math.random().toFixed(2) * 100 + "@testEmail.com",
 			password: "Test123",
 			passwordCheck: "Test123"
 		};
@@ -35,8 +35,8 @@ class UserIdPw extends Component {
 		console.log("this handleSubmit: ", this.state);
 
 		if (this.checkPassword() && this.checkEmail()) {
-			const {email, password } = this.state;
-            const dataToSend = { email, password };
+			const { email, password } = this.state;
+			const dataToSend = { email, password };
 			let path = "/api/signup";
 
 			axios.post(`${path}`, dataToSend).then(response => {

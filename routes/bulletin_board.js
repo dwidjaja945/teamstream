@@ -1,3 +1,5 @@
+const slashes = require('slashes');
+
 module.exports = function ( webserver , dataBase , mysql ) {
 
     // Pulling data from bulletin board for a particular user
@@ -22,7 +24,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
         // };
 
         if (req.session.user_id === undefined) {
-            output.redirect = '/login';
+            output.redirect = '/login_page';
             output.errors = 'User not logged in';
             res.json(output);
             res.end();
@@ -30,9 +32,10 @@ module.exports = function ( webserver , dataBase , mysql ) {
         }
 
         // create checks for each variable - run through loop for each.
-        let user_id = req.session.user_id;
-        let athlete_id = req.session.athlete_id;
-        let athlete_info_id = req.session.athlete_info_id;
+        let { user_id , athlete_id , athlete_info_id } = req.session;
+        // let user_id = req.session.user_id;
+        // let athlete_id = req.session.athlete_id;
+        // let athlete_info_id = req.session.athlete_info_id;
         // team_id will need to be provided from front end in axios call.
         
         let team_id;
@@ -49,11 +52,13 @@ module.exports = function ( webserver , dataBase , mysql ) {
             \`athlete_info\`.\`first_name\`, 
             \`athlete_info\`.\`last_name\`, 
             \`bulletin\`.\`athlete_id\`, 
-            \`bulletin\`.\`post_id\`, 
-            \`post_text\`, 
+            \`bulletin\`.\`post_id\`,
+            \`bulletin\`.\`post_text\`, 
+            \`bulletin\`.\`pinned\`
             \`timestamp\`, 
             \`pinned\`, 
-            \`teams\`.\`team_name\`
+            \`teams\`.\`team_name\`,
+            \`teams\`.\`team_code\`
             FROM \`bulletin\`
             JOIN \`teams\`
                 ON \`bulletin\`.\`team_id\` = \`teams\`.\`team_id\`
@@ -77,16 +82,43 @@ module.exports = function ( webserver , dataBase , mysql ) {
         dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
 
             if(!error) {
-                output.success = true;
+
                 output.data = data;
-                output.redirect = '/bulletin_board';
+
+                let query = `
+                    SELECT teams.team_name,
+                        teams.team_code,
+                        teams.team_id
+                    FROM teams
+                    JOIN athletes
+                        ON teams.team_id = athletes.team_id
+                    WHERE athlete_info_id = ?
+                `;
+
+                let inserts = [ athlete_info_id ];
+
+                let mysqlQuery = mysql.format( query , inserts );
+
+                dataBase.query( mysqlQuery , ( err , data , fields ) => {
+                    if (!err) {
+                        output.success = true;
+                        for (let e = 0; e < data.length; e++) {
+                            data[e].post_text = slashes.strip(data[e].post_text);
+                        }
+                        output.userTeams = data;
+                        output.redirect = '/bulletin_board';
+                    } else {
+                        output.errors = err;
+                    }
+
+                    res.json(output);
+
+                });
             } else {
                 output.errors = error;
+                res.json(output);
                 // try to include error logging
             }
-
-            res.json(output);
-
         });
     });
 
@@ -131,6 +163,11 @@ module.exports = function ( webserver , dataBase , mysql ) {
             team_id,
             0,
         ];
+
+        // adding slashes to insert variables
+        for( let i = 0 ; i<inserts.length ; i++) {
+            inserts[i] = slashes.add(inserts[i]);
+        }
         // will be inserting post_text, athlete_id, team_id, pinned
 
         let sqlQuery = mysql.format(query, inserts);
@@ -141,6 +178,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
             if (!error) {
                 output.success = true;
                 output.data = data;
+                console.log(data)
 
             } else {
                 output.errors = error;

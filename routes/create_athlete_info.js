@@ -1,47 +1,35 @@
-const { check, validationResult } = require("express-validator/check");
 
 module.exports = function ( webserver , dataBase , mysql ) {
-    // [
-    //     check('first_name').isEmpty().matches(/^[a-zA-Z]*$/),
-    //     check('last_name').isEmpty().matches(/^[a-zA-Z]*$/),
-    //     check('age').matches(/^[0-9]{0,2}$/),
-    //     check('height').matches(/^[0-9]*$/),
-    //     check('weight').matches(/^[0-9]*$/)
-    // ]
 
     webserver.post('/api/create_athlete_info', (req , res ) => {
-        const errors = validationResult(req);
+        // const errors = validationResult(req);
+        const slashes=require('slashes');
         const output = {
             success: false,
             data: [],
             errors: [],
             redirect: ''
         };
-
-        if( !errors.isEmpty() ) {
-            console.log('there was an error in create_athlete_info')
-            console.log('errors', errors)
-            console.log('errors array', errors.array)
-            output.errors = errors.array;
-            res.json(output);
-            return;
-        }
         
         if (req.session.user_id === undefined) {
-            output.redirect = '/login';
+            output.redirect = '/login_page';
             output.errors = 'User not logged in';
             res.json(output);
             res.end();
             return;
         }
 
-        if (req.body) {
-            var firstName = req.body.first_name;
-            var lastName = req.body.last_name;
-            var age = req.body.age;
-            var weight = req.body.weight;
-            var height = req.body.height;
+        if(req.body) {
+            var { first_name , last_name , age , weight , height , bio } = req.body;
         }
+        // if (req.body) {
+        //     var firstName = req.body.first_name;
+        //     var lastName = req.body.last_name;
+        //     var age = req.body.age;
+        //     var weight = req.body.weight;
+        //     var height = req.body.height;
+        //     var athlete_bio = req.body.athlete_bio;
+        // }
 
         // console.log('Create Profile Request Body', req.body);
 
@@ -55,10 +43,16 @@ module.exports = function ( webserver , dataBase , mysql ) {
         \`weight\`, 
         \`img_url\`, 
         \`age\`, 
+        \`bio\`,
         \`user_id\`) 
-        VALUES (NULL, ?, ?, ?, ?, '', ?, ?)`;
+        VALUES (NULL, ?, ?, ?, ?, '', ?, ?, ?)`;
 
-        let inserts = [firstName, lastName, height, weight, age, user_id];
+        let inserts = [first_name, last_name, height, weight, age, bio, user_id];
+
+        for( let i = 0 ; i < inserts.length ; i++ ) {
+            inserts[i] = slashes.add(inserts[i]);
+        }
+
 
         let mysqlQuery = mysql.format(query, inserts);
 
@@ -93,7 +87,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
                     output.redirect = '/fork_nav';
                     console.log('create_athlete_info post-session: ', req.session)
                 } else {
-                    console.log('create athlete info error', err)
+                    console.log('create athlete info error', err);
                     output.errors = err;
                 }
 

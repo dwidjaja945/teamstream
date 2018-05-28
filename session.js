@@ -1,5 +1,8 @@
+const slashes = require("slashes");
+
 module.exports = function (webserver, dataBase, mysql, encrypt) {
     webserver.post("/api/login", (req, res) => {
+        console.log("starting log-in process")
         const output = {
             success: false,
             data: [],
@@ -34,8 +37,8 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             res.end();
             return;
         } else {
-            email = req.body.email;
-            password = req.body.password;
+            email = slashes.add(req.body.email);
+            password = slashes.add(req.body.password);
         }
 
         console.log('email and pass', email, password)
@@ -52,6 +55,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         dataBase.query(mysqlQuery, (err, data, fields) => {
             if (!err) {
                 encrypt.compare(password, data[0].password, (err, compareResponse) => {
+                    console.log("comparing password...")
                     password = data[0].password;
                     let query = `SELECT 
                         users.user_id, 
@@ -60,16 +64,17 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                         athletes.athlete_id,
                         athlete_info.first_name, 
                         athlete_info.last_name,
-                        teams.team_code
-                    FROM users
-                    JOIN athlete_info
-                        ON users.user_id = athlete_info.user_id
-                    JOIN athletes
-                        ON athlete_info.athlete_info_id = athletes.athlete_info_id
-                    JOIN teams
-                        ON athletes.team_id = teams.team_id
-                    WHERE email = ? 
-                    AND password = ?`;
+                        teams.team_code,
+                        teams.team_name
+                            FROM users
+                            JOIN athlete_info
+                                ON users.user_id = athlete_info.user_id
+                            JOIN athletes
+                                ON athlete_info.athlete_info_id = athletes.athlete_info_id
+                            JOIN teams
+                                ON athletes.team_id = teams.team_id
+                            WHERE email = ? 
+                            AND password = ?`;
 
                     let inserts = [email, password];
 
@@ -88,6 +93,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                             // providing data if user logged in
                             output.success = true;
                             output.data = data;
+                            console.log(data);
                             output.redirect = "/bulletin_board";
 
                             req.session.user_id = data[0].user_id;
@@ -95,7 +101,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                             req.session.team_code = data[0].team_code;
                             req.session.athlete_id = data[0].athlete_id;
                             req.session.athlete_info_id = data[0].athlete_info_id;
-
+                            console.log("User Logged in and session data has been stored")
                             // send back json data about path they should go to (bulletinboard) => browser history
                             res.json(output);
                         } else {

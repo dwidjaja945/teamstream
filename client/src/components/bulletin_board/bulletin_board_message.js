@@ -13,7 +13,6 @@ class BulletinBoardMessages extends Component {
 			const pinnedClass= pinned > 0 ? 'pinned' : '';
 			console.log("This is the props in bulletin: ",pinned)
 		
-				
 			return (
 				<div className={`userMessages spill ${pinnedClass}`} key={index} >
 					<img className="teamLogo" src={teamLogo} alt="" />

@@ -103,7 +103,7 @@ class BulletinBoard extends Component {
 				<div className="messageContainer">
 
 					<BulletinBoardMessages
-						pinCallBack={this.pinMessage}
+						pinMessage={this.pinMessage}
 						data={messageArray}
 						deleteBulletinPost={this.deleteMessage}
 					/>

@@ -24,8 +24,8 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
             // Inserting all potential stat entries into sql query
             for (let statIndex = 0; statIndex < req.body.customStatsArray.length; statIndex++) {
-                const stat_name = req.body.customStatsArray[statIndex].stat_name;
-                const stat_value = req.body.customStatsArray[statIndex].stat_value;
+                const stat_name = slashes.add(req.body.customStatsArray[statIndex].stat_name);
+                const stat_value = slashes.add(req.body.customStatsArray[statIndex].stat_value);
                 // const { stat_name, stat_value } = req.body.customStatsArray[statIndex];
                 let stat_id = req.body.customStatsArray[statIndex].stat_id;
                 // let { stat_id } = req.body.customStatsArray[ statIndex ];

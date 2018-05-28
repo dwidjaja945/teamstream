@@ -16,11 +16,14 @@ class BulletinBoard extends Component {
 			hasPinned: false
 		};
 
-		this.getDataFromServer();
 
 		this.pinMessage = this.pinMessage.bind(this);
 		this.deleteMessage = this.deleteMessage.bind(this);
 		this.getDataFromServer = this.getDataFromServer.bind(this);
+	}
+
+	componentDidMount() {
+		this.getDataFromServer();
 	}
 
 	getDataFromServer(path) {
@@ -72,6 +75,7 @@ class BulletinBoard extends Component {
 			this.getDataFromServer();
 		});
 	}
+
 	deleteMessage(post_id) {
 		const path = "/api/bulletin_board";
 		axios.delete(path, { params: { id: post_id } }).then(resp => {
@@ -81,6 +85,7 @@ class BulletinBoard extends Component {
 			}
 		});
 	}
+
 	render() {
 		const { messageArray } = this.state;
 		return (
@@ -93,11 +98,13 @@ class BulletinBoard extends Component {
 				/>
 				<div className="pinnedMessage" />
 				<div className="messageContainer">
+
 					<BulletinBoardMessages
 						pinCallBack={this.pinMessage}
 						data={messageArray}
 						deleteBulletinPost={this.deleteMessage}
 					/>
+
 				</div>
 				<AddBulletinMessages add={this.addMessage.bind(this)} />
 			</div>

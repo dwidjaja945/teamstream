@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
 import homeBtn from "../images/team-stream-logo.png";
+
 import axios from "axios/index";
 import ProfileStats from './profile_stats_display';
 

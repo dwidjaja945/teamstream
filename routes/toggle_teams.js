@@ -15,7 +15,8 @@ module.exports = ( webserver , dataBase , mysql ) => {
             res.end();
             return;
         }
-
+        console.log('Toggle Team, Current Team ID: ', req.session.team_id)
+        console.log('Toggle Team, Team ID to become: ', req.body.team_id)
         let { athlete_info_id } = req.session;
         let team_id = req.body.team_id;
         req.session.team_id = team_id;
@@ -37,7 +38,9 @@ module.exports = ( webserver , dataBase , mysql ) => {
                 output.success = true;
                 output.data = data;
                 // output.redirect = '/bulletin_board';
-                req.session.athlete_id = data.athlete_id;
+                req.session.athlete_id = data[0].athlete_id;
+                req.session.team_id = req.body.team_id;
+                console.log("toggle team data: ", data)
             } else {
                 output.errors = err;
             }

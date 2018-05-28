@@ -16,7 +16,7 @@ class EditAthlete extends Component{
         this.addAthleteInput= this.addAthleteInput.bind(this);
     }
 
-    // addAthleteInput(input, numberOfOriginalStats){
+    // submitAthleteInput(input, numberOfOriginalStats){
     //
     //     const numOfStatsToUpdate = input.customStatsArray.length - numberOfOriginalStats;
     //

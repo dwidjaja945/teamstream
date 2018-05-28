@@ -13,7 +13,8 @@ class BulletinBoard extends Component {
 
 		this.state = {
 			messageArray: [],
-			hasPinned: false
+			hasPinned: false,
+			teamCodes:[],
 		};
 
 		this.getDataFromServer();
@@ -30,7 +31,8 @@ class BulletinBoard extends Component {
 			if (response.data.success) {
 				const messageArray = this.findPinnedMessage(response.data.data);
 				this.setState({
-					messageArray: messageArray
+					messageArray: messageArray,
+					teamCodes:response.data.userTeams
 				});
 			} else {
 				this.props.history.push(response.data.redirect);
@@ -82,12 +84,13 @@ class BulletinBoard extends Component {
 		});
 	}
 	render() {
-		const { messageArray } = this.state;
+		const { messageArray, teamCodes } = this.state;
 		return (
 			<div>
 				<Navbar
 					refreshMessages={this.getDataFromServer}
 					toggleMenu={true}
+					teamCodes={teamCodes}
 					hamburgerMenu={true}
 					url="/bulletin_board"
 				/>

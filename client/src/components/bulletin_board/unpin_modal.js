@@ -8,7 +8,7 @@ class UnpinModal extends Component{
     render(){
         const modalClass = this.props.openModal ? 'modal show-modal' : 'modal';
         const { post_id, pin_level, pinMessage, openModal, modalCallBack } = this.props;
-    
+
         return(
             <div className={modalClass}>
                 <div className="modal-content">

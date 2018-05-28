@@ -30,11 +30,32 @@ body {
 
 .hamburgerBullets {
 	width: 40vw;
-	padding: 35px;
+	padding: 30px;
 	position: absolute;
 	z-index: 1;
 	top: 28px;
 	right: 0px;
+	background-color: #989696;
+	border: 2px solid #dadada;
+	border-radius: 15px;
+	list-style-type: none;
+}
+
+/***********Toggle Menu***************/
+.toggleMenuBtn {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+.toggleBullets {
+	height: 13vh;
+	width: 45vw;
+	padding: 35px;
+	position: absolute;
+	z-index: 1;
+	top: 32px;
+	left: 15px;
 	background-color: #989696;
 	border: 2px solid #dadada;
 	border-radius: 15px;
@@ -64,6 +85,16 @@ body {
 .mainBtnImg {
 	height: 35px;
 	padding-top: 4px;
+}
+
+.dropDownBtn {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.dropDownBtn img {
+	height: 95%;
 }
 
 .mainTsLogo {

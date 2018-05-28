@@ -3,8 +3,7 @@ import React from 'react';
 export default props => {
 
     const displayStats = props.statsArray.map( (item, index) => {
-
-        if(item.stat_name !== 'null') {
+        if(item.stat_name !== 'null' && item.stat_name) {
             return (
                 <div key={index}>
                     <span>{item.stat_name} : {item.stat_value}</span>

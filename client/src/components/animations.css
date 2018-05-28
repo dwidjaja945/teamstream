@@ -1,0 +1,16 @@
+.dropDownBtn img {
+    height: 95%;
+    transition: transform 1s;
+}
+
+
+.example{
+    background-color: #EEE;
+    color: #999;
+    padding: 10px;
+    transition: background-color .2s ease-in;
+}
+.example:hover{
+    background-color: #f53232;
+    color: #FFF;
+}

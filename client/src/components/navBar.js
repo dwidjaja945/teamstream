@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HamburgerMenu from "./hamburger_menu";
+import ToggleMenu from "./toggle_team";
 import { Link } from "react-router-dom";
 import teamStreamLogo from "./images/asset4.png";
 import "./styles.css";
@@ -13,9 +14,13 @@ class NavBar extends Component {
 		return (
 			<div className="mainNavBar">
 				<div className="mainBtn">
-					<Link to={this.props.url}>
-						<img className="mainBtnImg" src={this.props.icon} />
-					</Link>
+					{this.props.toggleMenu ? (
+						<ToggleMenu refreshMessages={this.props.refreshMessages} />
+					) : (
+						<Link to={this.props.url}>
+							<img className="mainBtnImg" src={this.props.icon} />
+						</Link>
+					)}
 				</div>
 				<div className="mainTsLogo">
 					<img className="mainNavLogo" src={teamStreamLogo} />

@@ -20,19 +20,20 @@ class BulletinBoard extends Component {
 
 		this.pinMessage = this.pinMessage.bind(this);
 		this.deleteMessage = this.deleteMessage.bind(this);
+		this.getDataFromServer = this.getDataFromServer.bind(this);
 	}
 
 	getDataFromServer(path) {
 		path = "/api/bulletin_board";
 		axios.get(path).then(response => {
 			console.log("BB GET response: ", response);
-			if(response.data.success) {
-                const messageArray = this.findPinnedMessage(response.data.data);
-                this.setState({
-                    messageArray: messageArray
-                });
-            }else{
-				this.props.history.push(response.data.redirect)
+			if (response.data.success) {
+				const messageArray = this.findPinnedMessage(response.data.data);
+				this.setState({
+					messageArray: messageArray
+				});
+			} else {
+				this.props.history.push(response.data.redirect);
 			}
 		});
 	}
@@ -63,20 +64,19 @@ class BulletinBoard extends Component {
 	}
 
 	pinMessage(post_id, pin_level) {
-		const path = pin_level > 0 ? '/api/unpin' : '/api/pinned';
+		const path = pin_level > 0 ? "/api/unpin" : "/api/pinned";
 
-        axios.post(path, {post_id}).then(resp => {
-            console.log("BB pinned post response: ", resp);
+		axios.post(path, { post_id }).then(resp => {
+			console.log("BB pinned post response: ", resp);
 
-            this.getDataFromServer();
-        });
-
+			this.getDataFromServer();
+		});
 	}
-	deleteMessage(post_id){
-		const path = '/api/bulletin_board';
-		axios.delete(path,{params: {'id': post_id}}).then(resp => {
+	deleteMessage(post_id) {
+		const path = "/api/bulletin_board";
+		axios.delete(path, { params: { id: post_id } }).then(resp => {
 			console.log("BB message to delete: ", resp);
-			if(resp.data.success){
+			if (resp.data.success) {
 				this.getDataFromServer();
 			}
 		});
@@ -85,10 +85,19 @@ class BulletinBoard extends Component {
 		const { messageArray } = this.state;
 		return (
 			<div>
-				<Navbar icon={dropDown} hamburgerMenu={true} url="/bulletin_board" />
+				<Navbar
+					refreshMessages={this.getDataFromServer}
+					toggleMenu={true}
+					hamburgerMenu={true}
+					url="/bulletin_board"
+				/>
 				<div className="pinnedMessage" />
 				<div className="messageContainer">
-					<BulletinBoardMessages pinCallBack={this.pinMessage} data={messageArray} deleteBulletinPost ={this.deleteMessage} />
+					<BulletinBoardMessages
+						pinCallBack={this.pinMessage}
+						data={messageArray}
+						deleteBulletinPost={this.deleteMessage}
+					/>
 				</div>
 				<AddBulletinMessages add={this.addMessage.bind(this)} />
 			</div>

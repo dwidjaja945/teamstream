@@ -22,7 +22,6 @@ module.exports = function ( webserver , dataBase , mysql ) {
         //         return;
         //     }    
         // };
-
         if (req.session.user_id === undefined) {
             output.redirect = '/login_page';
             output.errors = 'User not logged in';
@@ -37,7 +36,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
         // let athlete_id = req.session.athlete_id;
         // let athlete_info_id = req.session.athlete_info_id;
         // team_id will need to be provided from front end in axios call.
-        
+
         let team_id;
         // this check is if the user is switching teams boards.
         // maybe add check here to see if user is actually on team
@@ -54,9 +53,8 @@ module.exports = function ( webserver , dataBase , mysql ) {
             \`bulletin\`.\`athlete_id\`, 
             \`bulletin\`.\`post_id\`,
             \`bulletin\`.\`post_text\`, 
-            \`bulletin\`.\`pinned\`
-            \`timestamp\`, 
-            \`pinned\`, 
+            \`bulletin\`.\`pinned\`,
+            \`bulletin\`.\`timestamp\`,
             \`teams\`.\`team_name\`,
             \`teams\`.\`team_code\`
             FROM \`bulletin\`
@@ -69,11 +67,11 @@ module.exports = function ( webserver , dataBase , mysql ) {
             WHERE \`bulletin\`.\`team_id\` = ? 
             ORDER BY \`timestamp\` DESC `;
 
-            // do a separate request just for the athlete data, use as reference on webserver to tie back to message data.
+        // do a separate request just for the athlete data, use as reference on webserver to tie back to message data.
 
-            // where : ensure that you can only pull data from the teams user is on
-            //ex  "AND team_id IN (2, 5, 7, 12) "
-            // DESCRIBE  - tells what fields query is using
+        // where : ensure that you can only pull data from the teams user is on
+        //ex  "AND team_id IN (2, 5, 7, 12) "
+        // DESCRIBE  - tells what fields query is using
 
         let athlete_info_id_inserts = [team_id];
 
@@ -216,10 +214,10 @@ module.exports = function ( webserver , dataBase , mysql ) {
             }
         }
 
-        let query = "DELETE " + 
-        "FROM `bulletin` " + 
-        "WHERE `bulletin`.`post_id` = ? " + 
-        "AND `bulletin`.`athlete_id` = ?";
+        let query = "DELETE " +
+            "FROM `bulletin` " +
+            "WHERE `bulletin`.`post_id` = ? " +
+            "AND `bulletin`.`athlete_id` = ?";
         let inserts = [post_id, athlete_id];
         // insert post_id and athlete_id
 

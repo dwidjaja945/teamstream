@@ -36,6 +36,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
             if(!err) {
                 output.success = true;
                 output.data = data;
+                // output.redirect = '/bulletin_board';
                 req.session.athlete_id = data.athlete_id;
             } else {
                 output.errors = err;

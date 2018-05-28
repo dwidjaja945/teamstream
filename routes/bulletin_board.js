@@ -81,6 +81,9 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
             if(!error) {
 
+                for (let e = 0; e < data.length; e++) {
+                    data[e].post_text = slashes.strip(data[e].post_text);
+                }
                 output.data = data;
 
                 let query = `

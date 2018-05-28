@@ -32,6 +32,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
         const {athlete_id} = req.session;
         let query = `INSERT INTO stats
             (
+                stat_id
                 stat_name,
                 stat_value, 
                 athlete_id
@@ -43,29 +44,54 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
         for(let statIndex=0; statIndex<req.body.length; statIndex++){
             const {stat_name, stat_value} = req.body[statIndex];
+            let { stat_id } = req.body[ statIndex ];
 
-            query += ' (?,?,?)';
+            query += ' (?,?,?,?)';
             query += statIndex===req.body.length-1 ? '' : ',';
-            inserts.push(stat_name, stat_value, athlete_id);
+
+            // check to see if a stat_id has been provided or not.
+            if( isNaN( stat_id ) ) {
+                stat_id = null;
+            };
+
+            inserts.push(stat_id, stat_name, stat_value, athlete_id);
         }
+
+        query += `ON DUPLICATE KEY UPDATE 
+            stat_name = VALUES(stat_name),
+            stat_value = VALUES(stat_value)`;
 
 
         let mysqlQuery = mysql.format( query , inserts );
 
         dataBase.query( mysqlQuery , ( err , data , fields ) => {
             if(!err) {
-                output.success = true;
-                // output.data = data;
-                output.insertIds={
+                output.insertIds = {
                     insertStart: data.insertId,
                     rowsAffected: data.affectedRows,
                 }
-                output.redirect = '/athlete_profile'
+
+                let query = `
+                        DELETE FROM stats 
+                        WHERE (stat_name, stat_value) 
+                        IN (('', ''))`;
+
+                dataBase.query(query, (err, data, fields) => {
+                    if (!err) {
+                        output.success = true;
+                        output.redirect = "/athlete_profile";
+                    } else {
+                        output.errors = err;
+                    };
+                    console.log('edit athlete output: ', output);
+                    res.json(output);
+                })
+                // output.data = data;
             } else {
                 output.errors = err;
+                console.log('edit athlete output error: ' , output);
+                res.json(output);
             }
-            console.log('edit athlete output: ',output)
-            res.json(output);
         });
     });
 

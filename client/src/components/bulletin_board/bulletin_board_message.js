@@ -21,7 +21,7 @@ class BulletinBoardMessages extends Component {
 					{timestamp} 
 					<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} />
 					<div className="deleteBulletinMessage" onClick= {()=>{
-						props.deleteBulletinPost(post_id);
+						this.props.deleteBulletinPost(post_id);
 					}}
 					>
 						x

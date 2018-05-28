@@ -6,6 +6,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
     function updateAthleteStats() {
         return new Promise((resolve, reject) => {
             const { athlete_id } = req.session;
+
             let update_athlete_stats_query = `INSERT INTO stats
                 (
                     stat_id
@@ -117,6 +118,13 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
     /**
      * Takes : {
+     *    first_name,
+     *    last_name,
+     *    age,
+     *    height,
+     *    weight,
+     *    bio
+     *    stat_id
      *    stat_name
      *    stat_value
      *    athlete_id

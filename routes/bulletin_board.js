@@ -208,14 +208,13 @@ module.exports = function ( webserver , dataBase , mysql ) {
             errors: []
         };
 
-        if (req.body) {
-            if (req.body.post_id) {
-                var post_id = req.body.post_id;
+            if (req.query.post_id) {
+                var post_id = req.query.post_id;
             }
             if (req.session.athlete_id) {
                 var athlete_id = req.session.athlete_id;
             }
-        }
+
 
         let query = "DELETE " +
             "FROM `bulletin` " +
@@ -228,6 +227,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
         dataBase.query(sqlQuery, (error, data, fields) => {
             if (!error) {
+                console.log("deleting post with ID: ", req.query.post_id)
                 output.success = true;
                 output.data = data;
             } else {

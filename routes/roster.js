@@ -1,4 +1,8 @@
 module.exports = function (webserver, dataBase, mysql) {
+
+    // =========================================
+    // ======== Pulling data for Roster ========
+    // =========================================    
     webserver.get('/api/roster', function (req, res) {
         const output = {
             success: false,
@@ -23,7 +27,7 @@ module.exports = function (webserver, dataBase, mysql) {
             teamID = req.session.team_id;
         }
         console.log('roster team id: ', teamID);
-        // let query = 'SELECT * FROM ?? WHERE ?? = ?';
+
         let inserts = [teamID];
 
         let query = "SELECT athlete_info.first_name, athlete_info.last_name, athletes.team_id, athletes.user_level, athletes.athlete_id " +

@@ -2,8 +2,13 @@ const slashes = require('slashes');
 
 module.exports = ( webserver , dataBase , mysql ) => {
     
+    // ================================
+    // ==== Helper Functions Start ====
+    // ================================
+
+
     // ==============================
-    // ==== update athlete stats ====
+    // ==== Update Athlete Stats ====
     // ==============================
     function updateAthleteStats( req , res , output ) {
         return new Promise((resolve, reject) => {
@@ -24,6 +29,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
             // Inserting all potential stat entries into sql query
             for (let statIndex = 0; statIndex < req.body.customStatsArray.length; statIndex++) {
+                // Deconstruction didn't work here :(
                 const stat_name = slashes.add(req.body.customStatsArray[statIndex].stat_name);
                 const stat_value = slashes.add(req.body.customStatsArray[statIndex].stat_value);
                 let stat_id = req.body.customStatsArray[statIndex].stat_id;
@@ -76,7 +82,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
     };
 
     // ==============================
-    // ==== update athlete info =====
+    // ==== Update Athlete Info =====
     // ==============================
     function updateAthleteInfo( req , res , output ) {
         return new Promise((resolve, reject) => {
@@ -111,12 +117,14 @@ module.exports = ( webserver , dataBase , mysql ) => {
             });
         })
     };
+    // ==============================
+    // ==== Helper Functions End ====
+    // ==============================
 
-
+    
     // ==============================
     // ==== Endpoints Start here ====
     // ==============================
-
     /**
      * Takes : {
      *    first_name,

@@ -2,6 +2,25 @@ const slashes = require('slashes');
 
 module.exports = function (webserver, dataBase, mysql) {
 
+    // ===========================================
+    // == Pulling Athlete Info for Profile Page ==
+    // ===========================================
+    /**
+     *  Takes :
+     *      null
+     *  
+     *  returns:
+     *      first_name,
+     *      last_name,
+     *      height,
+     *      weight,
+     *      img_url,
+     *      age,
+     *      bio,
+     *      stat_name,
+     *      stat_value,
+     *      stat_id 
+     */
     webserver.get('/api/athlete_profile', function ( req , res ) {
         const output = {
             success: false,
@@ -36,6 +55,7 @@ module.exports = function (webserver, dataBase, mysql) {
         dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {
                 output.success = true;
+                // stripping all backslashes from the returned data
                 for (let e = 0; e < data.length; e++) {
                     for( let key in data[e]) {
                         data[e][key] = slashes.strip(data[e][key]);
@@ -51,6 +71,26 @@ module.exports = function (webserver, dataBase, mysql) {
         });
     });
 
+    // ======================================================
+    // == Pulling Athlete Info for Teammate's Profile Page ==
+    // ======================================================
+    /**
+     *  Takes:
+     *      athlete_id,
+     *      team_id
+     * 
+     *  returns:
+     *      first_name,
+     *      last_name,
+     *      height,
+     *      weight,
+     *      img_url,
+     *      age,
+     *      bio,
+     *      stat_name,
+     *      stat_value,
+     *      stat_id
+     */
     webserver.post('/api/teammate_profile', function ( req , res ) {
         const output = {
             success: false,
@@ -68,7 +108,7 @@ module.exports = function (webserver, dataBase, mysql) {
 
         let { athlete_id, team_id:teammate_team_id } = req.body;
 
-        //make sure user is allowed to see this profile
+        // make sure user is allowed to see this profile
         if(req.session.team_id !== teammate_team_id){
             output.redirect = '/login_page';
             output.errors = 'Wrong Team ID';
@@ -77,7 +117,7 @@ module.exports = function (webserver, dataBase, mysql) {
             return;
         }
 
-        //check if current user looking at own profile
+        // check if current user looking at own profile
         if(req.session.athlete_id === athlete_id){
             output.thisAthlete=true;
         }
@@ -100,6 +140,7 @@ module.exports = function (webserver, dataBase, mysql) {
         dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {
                 output.success = true;
+                // stripping all backslashes from the returned data
                 for (let e = 0; e < data.length; e++) {
                     for (let key in data[e]) {
                         data[e][key] = slashes.strip(data[e][key]);

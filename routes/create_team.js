@@ -2,6 +2,9 @@ const slashes = require('slashes');
 
 module.exports = ( webserver , dataBase , mysql , check) => {
 
+    // =============================
+    // ======== Create Team ======== 
+    // =============================
     /**
      * Takes:
      *      team_name: ''
@@ -14,7 +17,6 @@ module.exports = ( webserver , dataBase , mysql , check) => {
      *      redirect: ''
      *      team_ID: ####
      */
-
     webserver.post( '/api/create_team' , ( req , res ) => {
         const output = {
             success: false,
@@ -81,6 +83,7 @@ module.exports = ( webserver , dataBase , mysql , check) => {
 
             let inserts = [team_name, sport_name, team_bio, new_team_code];
 
+            // add slashes to inputs
             for( let i = 0; i < inserts.length ; i++) {
                 inserts[i] = slashes.add(inserts[i]);
             }
@@ -108,9 +111,10 @@ module.exports = ( webserver , dataBase , mysql , check) => {
                 (
                     \`athlete_id\`
                 )
-            VALUES (
-                ?
-            )`;
+            VALUES 
+                (
+                    ?
+                )`;
 
             let inserts = [req.session.athlete_id];
 
@@ -152,11 +156,13 @@ module.exports = ( webserver , dataBase , mysql , check) => {
                 }
 
                 res.json(output);
+
             })
         }
 
     } );
 
+    // Creates Randomized string for Team Code
     function codeGenerator() {
         let newCode = "";
 

@@ -56,6 +56,7 @@ class ToggleTeams extends Component {
 		const teams = teamCodes.map((code, index) => {
 			return (
 				<li
+					className="toggle-li"
 					key={index}
 					onClick={() => {
 						this.toggleAxios(code.team_id);

@@ -1,6 +1,29 @@
 const slashes = require("slashes");
 
 module.exports = function (webserver, dataBase, mysql, encrypt) {
+    // ============================
+    // ==== Already Logged In? ====
+    // ============================
+    webserver.get( '/api/' , ( req , res ) => {
+        console.log("checking if user already logged in...");
+        const output = {
+            redirect : '',
+            sessionID : null
+        };
+
+        if( req.session.user_id !== undefined ) {
+            output.redirect = '/bulletin_board';
+            res.json(output);
+        } else {
+            output.sessionID = req.session.user_id;
+            output.redirect = '/';
+            res.json(output);
+        }
+    });
+
+    // ====================
+    // ==== Logging In ====
+    // ====================
     webserver.post("/api/login", (req, res) => {
         console.log("starting log-in process")
         const output = {

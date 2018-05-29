@@ -82,18 +82,18 @@ class EditProfile extends Component {
 	submitAthleteInput() {
 		let redirect = "/athlete_profile";
 
-		const path = '/api/edit_athlete_stats';
-        axios.post(path, this.state).then(response => {
-                console.log("Updating profile response: ", response);
+		const path = "/api/edit_athlete_stats";
+		axios.post(path, this.state).then(response => {
+			console.log("Updating profile response: ", response);
 
-                if (response.data.success) {
-                    console.log("data for update-profile info response: ", response);
-                    // updateExistingStats();
-                } else {
-                    //ERROR
-                    console.log(response.data.errors);
-                }
-            });
+			if (response.data.success) {
+				console.log("data for update-profile info response: ", response);
+				// updateExistingStats();
+			} else {
+				//ERROR
+				console.log(response.data.errors);
+			}
+		});
 
 		this.props.history.push(redirect);
 	}
@@ -162,9 +162,8 @@ class EditProfile extends Component {
 								value={bio}
 								onChange={this.handleInputChange}
 							/>
-		
-							<AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray} />
 
+							<AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray} />
 						</div>
 					</div>
 					<div className="createAthleteBtn">

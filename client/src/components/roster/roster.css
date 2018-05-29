@@ -14,20 +14,18 @@
 	text-align: center;
 	font-size: 35px;
 	background-color: #dadada;
-	/* border: 2px solid red; */
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .theTeamRoster {
 	height: 75%;
 	width: 100%;
-	/* border: 2px solid blue; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .namesContainer {
-	/* border: 2px solid grey; */
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -35,14 +33,14 @@
 }
 
 .list-group {
-	width: 100%;
+	width: 90%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-flow: column wrap;
 	padding: 0;
-	margin: 0;
-	/* border: 2px solid purple; */
+	border-radius: 12px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .name {
@@ -61,37 +59,3 @@
 	text-align: center;
 	border: 2px solid blue;
 }
-
-/* .rosterContainer {
-	border: 1px solid black;
-	height: 95vh;
-}
-.name {
-	position: relative;
-	border-radius: 5%;
-	border: 5px solid rgba(192, 192, 192, 0.4);
-	width: 80%;
-	margin-top: 5%;
-	margin-bottom: 5%;
-	font-size: 1.3em;
-	color: black;
-	left: 5%;
-}
-.rosterHeader {
-	position: relative;
-	left: 36%;
-}
-.namesContainer {
-	border: 1px solid black;
-	height: 80vh;
-	width: 85vw;
-	margin-left: 17px;
-}
-.coach {
-	border-bottom: 2px solid black;
-	font-size: 1.5em;
-	border-radius: 5%;
-	position: relative;
-	right: 9%;
-	display: inline;
-} */

@@ -37,8 +37,8 @@ class Pin extends Component {
         const { modalOpen } = this.state;
 
         return (
-            <div>
-                <div className="pin" onClick={() => {
+            <div className="pin">
+                <div onClick={() => {
                     this.unpinWarning(pinned);
                 }}>
                     <img className="pin" src={pinIcon} alt="" />

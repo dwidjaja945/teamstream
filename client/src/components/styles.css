@@ -616,6 +616,7 @@ body {
 	outline: 0;
 	border-bottom: 1px solid grey; */
 	padding: 8px;
+	text-align: left;
 }
 
 .signUpInput {
@@ -635,4 +636,7 @@ body {
 .signUpButton:hover {
 	color: #000000;
 	background-color: #dadada;
+}
+input{
+	text-align: center;
 }

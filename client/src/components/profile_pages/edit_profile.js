@@ -114,6 +114,7 @@ class EditProfile extends Component {
 					<div>
 						<h1>This is where user creates their profile</h1>
 						<Field
+							className='input nameInput'
 							name="first_name"
 							label="First Name"
 							type="text"
@@ -121,14 +122,22 @@ class EditProfile extends Component {
 							onChange={this.handleInputChange}
 						/>
 						<Field
+                            className='input nameInput'
 							name="last_name"
 							label="Last Name"
 							type="text"
 							value={last_name}
 							onChange={this.handleInputChange}
 						/>
-						<Field name="age" label="Age" type="number" value={age} onChange={this.handleInputChange} />
 						<Field
+                            className='input ageInput'
+							name="age"
+							label="Age"
+							type="number"
+							value={age}
+							onChange={this.handleInputChange} />
+						<Field
+                            className='input heightInput'
 							name="height"
 							label="Height"
 							type="text"
@@ -136,22 +145,23 @@ class EditProfile extends Component {
 							onChange={this.handleInputChange}
 						/>
 						<Field
+                            className='input weightInput'
 							name="weight"
 							label="Weight"
 							type="number"
 							value={weight}
 							onChange={this.handleInputChange}
 						/>
-						<Field name="bio" label="Bio" type="text" value={bio} onChange={this.handleInputChange} />
-						{/* <button onClick={this.addNewInput.bind(this)}>Add</button> */}
+						<Field
+                            className='input bioInput'
+							name="bio"
+							label="Bio"
+							type="text"
+							value={bio}
+							onChange={this.handleInputChange} />
 						<AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray} />
-						{/* <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange} />
-                    <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange} /> */}
-						<Link to={`/athlete_profile`} className="loginButtons">
-							<span className="btnLog">Confirm Changes</span>
-						</Link>
 					</div>
-					<button className="btnLog">Submit</button>
+					<button className="btnLog loginButtons">Confirm Changes</button>
 				</form>
 			</div>
 		);

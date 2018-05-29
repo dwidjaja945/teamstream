@@ -16,15 +16,11 @@ class BulletinBoardMessages extends Component {
 			return (
 				<div className={`userMessages spill ${pinnedClass}`} key={index} >
 					<img className="teamLogo" src={teamLogo} alt="" />
-					<span>{first_name} {last_name} {timestamp} </span>
+					<span className='athleteInfo'>{first_name} {last_name} {timestamp} </span>
 					<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} />
-					<div className="deleteBulletinMessage" onClick= {()=>{
-						this.props.deleteBulletinPost(post_id);
-					}}
-					>
-						x
-					</div>
-					<p>{post_text}</p>
+					<div className="deleteBulletinMessage"
+						 onClick= {()=>{this.props.deleteBulletinPost(post_id);}}>x</div>
+					<p className='postText'>{post_text}</p>
 				</div>
 			);
 		});

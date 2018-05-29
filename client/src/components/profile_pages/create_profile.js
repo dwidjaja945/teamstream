@@ -39,42 +39,55 @@ class CreateProfile extends Component {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div>
-					<h1>This is where user creates their profile</h1>
-					<Field
-						name="first_name"
-						label="First Name"
-						type="text"
-						value={first_name}
-						onChange={this.handleInputChange}
-					/>
-					<Field
-						name="last_name"
-						label="Last Name"
-						type="text"
-						value={last_name}
-						onChange={this.handleInputChange}
-					/>
-					<Field name="age" label="Age" type="number" value={age} onChange={this.handleInputChange} />
-					<Field name="height" label="Height" type="text" value={height} onChange={this.handleInputChange} />
-					<Field
-						name="weight"
-						label="Weight"
-						type="number"
-						value={weight}
-						onChange={this.handleInputChange}
-					/>
+					<h1>Let your team know who you are!</h1>
                     <Field
+                        className='input nameInput'
+                        name="first_name"
+                        label="First Name"
+                        type="text"
+                        value={first_name}
+                        onChange={this.handleInputChange}
+                    />
+                    <Field
+                        className='input nameInput'
+                        name="last_name"
+                        label="Last Name"
+                        type="text"
+                        value={last_name}
+                        onChange={this.handleInputChange}
+                    />
+                    <Field
+                        className='input ageInput'
+                        name="age"
+                        label="Age"
+                        type="number"
+                        value={age}
+                        onChange={this.handleInputChange} />
+                    <Field
+                        className='input heightInput'
+                        name="height"
+                        label="Height"
+                        type="text"
+                        value={height}
+                        onChange={this.handleInputChange}
+                    />
+                    <Field
+                        className='input weightInput'
+                        name="weight"
+                        label="Weight"
+                        type="number"
+                        value={weight}
+                        onChange={this.handleInputChange}
+                    />
+                    <Field
+                        className='input bioInput'
                         name="bio"
                         label="Bio"
                         type="text"
                         value={bio}
-                        onChange={this.handleInputChange}
-                    />
-					<Link to={`/athlete_profile`} className="loginButtons">
-						<span className="btnLog">Create Profile</span>
-					</Link>
+                        onChange={this.handleInputChange} />
 				</div>
-				<button className="btnLog">Submit</button>
+				<button className="loginButtons btnLog">Create Profile</button>
 			</form>
 		);
 	}

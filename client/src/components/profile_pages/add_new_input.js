@@ -47,8 +47,7 @@ class AddNewInput extends Component{
         const {customStatsArray} = this.props;
         return(
             <div>
-                <button type='button' onClick={this.props.addNewInput}>+</button>
-                <CustomInputs inputChange={this.handleInputChange} customStatsArray={customStatsArray}/>
+                <CustomInputs addNewInput={this.props.addNewInput} inputChange={this.handleInputChange} customStatsArray={customStatsArray}/>
             </div>
         )
     }

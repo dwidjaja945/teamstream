@@ -22,9 +22,9 @@ class Bulletin extends Component {
 		const { message } = this.state;
 		return (
 			<form onSubmit={this.handleAddMessage}>
-				<div className="inputContainer">
+				<div className="inputContainer addMessage">
 					<input
-					className="input"
+					className="input addMessageInput"
 						value={message}
 						type="text"
 						placeholder="Enter Message"
@@ -34,7 +34,7 @@ class Bulletin extends Component {
 					/>
 				</div>
 				<div className="buttonContainer">
-					<button>Send</button>
+					<button className='addMessageButton'>Send</button>
 				</div>
 			</form>
 		);

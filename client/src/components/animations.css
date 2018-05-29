@@ -1,16 +1,15 @@
-.dropDownBtn img {
-    height: 95%;
-    transition: transform 1s;
+.toggleBullets {
+    animation: pullRight 1s none;
+}
+@keyframes pullRight {
+    0%   {left: -50vw;}
+    100% {left: 0;}
 }
 
-
-.example{
-    background-color: #EEE;
-    color: #999;
-    padding: 10px;
-    transition: background-color .2s ease-in;
+.hamburgerBullets {
+    animation: pullLeft 1s none;
 }
-.example:hover{
-    background-color: #f53232;
-    color: #FFF;
+@keyframes pullLeft {
+    0%   {right: -50vw;}
+    100% {right: -50%;}
 }

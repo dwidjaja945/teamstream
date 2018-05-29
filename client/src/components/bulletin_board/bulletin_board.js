@@ -22,11 +22,13 @@ class BulletinBoard extends Component {
 		this.pinMessage = this.pinMessage.bind(this);
 		this.deleteMessage = this.deleteMessage.bind(this);
 		this.getDataFromServer = this.getDataFromServer.bind(this);
-	}
 
-	componentDidMount() {
-		this.getDataFromServer();
-	}
+        this.getDataFromServer();
+    }
+
+	// componentDidMount() {
+	// 	this.getDataFromServer();
+	// }
 
 	axiosToTeammateProfile(athlete_id, team_id) {
 		console.log("this.props : ", this.props);

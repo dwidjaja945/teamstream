@@ -17,9 +17,9 @@ class hamburgerMenu extends Component {
 
 		const button = (
 			<div className="menuBtn" onClick={() => this.setState({ show: !show })}>
-				<span />
-				<span />
-				<span />
+				<span className={show ? "menuTop" : ""} />
+				<span className={show ? "menuMiddle" : ""} />
+				<span className={show ? "menuButtom" : ""} />
 			</div>
 		);
 
@@ -31,10 +31,10 @@ class hamburgerMenu extends Component {
 						<li className="hamburger-li">
 							<Link to="/bulletin_board">Bulletin</Link>
 						</li>
-						<li>
+						<li className="hamburger-li">
 							<Link to="/roster">Roster</Link>
 						</li>
-						<li>
+						<li className="hamburger-li">
 							<Link to="/athlete_profile">Profile</Link>
 						</li>
 						{/* <li>
@@ -52,7 +52,7 @@ class hamburgerMenu extends Component {
 						<li>
 							<Link to="">Other Team Accounts</Link>
 						</li> */}
-						<li>
+						<li className="hamburger-li">
 							<Link to="/logout">Log Out</Link>
 						</li>
 					</ul>

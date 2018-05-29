@@ -56,7 +56,7 @@ class CreateTeam extends Component {
 				this.setState({
 					errorHandle: response.data.errors
 				});
-				this.props.history.push(response.data.redirect)
+				this.props.history.push(response.data.redirect);
 			}
 		});
 	}
@@ -70,7 +70,7 @@ class CreateTeam extends Component {
 		if (generatedCode) {
 			return (
 				<button type="button" onClick={this.login.bind(this)} className="cGbtnContent">
-					Log In
+					Login
 				</button>
 			);
 		} else {

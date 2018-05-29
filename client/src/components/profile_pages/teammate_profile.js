@@ -17,7 +17,9 @@ class TeammateProfile extends Component {
     }
 
     render() {
-        const {first_name, last_name, weight, height, age, bio, img_url, customStatsArray} = this.state;
+        const {thisAthlete, first_name, last_name, weight, height, age, bio, img_url, customStatsArray} = this.state;
+
+        const displayEdit= thisAthlete ? <Link to={"/edit_profile"} className="profileEdit">Edit</Link> : <p></p>;
 
         return (
             <div className="profileContainer">
@@ -54,9 +56,7 @@ class TeammateProfile extends Component {
                     </div>
                 </div>
                 <div className="profile profileFooter">
-                    <Link to={"/edit_profile"} className="profileEdit">
-                        Edit
-                    </Link>
+                    {displayEdit}
                 </div>
             </div>
         );

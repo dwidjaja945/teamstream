@@ -6,7 +6,8 @@ module.exports = function (webserver, dataBase, mysql) {
         const output = {
             success: false,
             user: null,
-            errors: []
+            errors: [],
+            thisAthlete:false,
         };
 
         if (req.session.user_id === undefined) {
@@ -74,6 +75,11 @@ module.exports = function (webserver, dataBase, mysql) {
             res.json(output);
             res.end();
             return;
+        }
+
+        //check if current user looking at own profile
+        if(req.session.athlete_id === athlete_id){
+            output.thisAthlete=true;
         }
 
         console.log(`pulling teammate info with id: ${athlete_id} from team: ${teammate_team_id}`);

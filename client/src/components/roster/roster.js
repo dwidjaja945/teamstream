@@ -47,12 +47,13 @@ class Roster extends Component {
                 console.log("Roster Viewing teammate profile: ", resp);
 
                 //Combine all stats into one array
-				const customStatsArray = []
+				const customStatsArray = [];
 				for(let statIndex=0; statIndex<resp.data.user.length; statIndex++){
 					const {stat_id, stat_value, stat_name} = resp.data.user[statIndex];
 					customStatsArray.push({stat_id, stat_value, stat_name})
 				}
 				resp.data.user[0].customStatsArray = customStatsArray;
+				resp.data.user[0].thisAthlete=resp.data.thisAthlete
                 this.props.history.push('/teammate_profile', resp.data.user[0]);
 
             }else{

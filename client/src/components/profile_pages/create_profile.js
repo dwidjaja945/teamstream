@@ -89,9 +89,6 @@ class CreateProfile extends Component {
 							value={bio}
 							onChange={this.handleInputChange}
 						/>
-						{/* <Link to={`/athlete_profile`} className="loginButtons">
-						<span className="btnLog">Create Profile</span>
-					</Link> */}
 					</div>
 				</div>
 				<div className="createAthleteBtn">

@@ -57,38 +57,6 @@ class LogIn extends React.Component {
         });
     }
 
-	// checkPassword() {
-	// 	const { password } = this.state;
-	//
-	// 	//Must be between 6 and 32 characters long
-	// 	//Must have at least one capital letter
-	// 	//Must have at least one lower -case letter
-	// 	//Must have at least one number
-	// 	//Must start with a letter(lower -case or upper -case)
-	// 	// const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]+|[A-Z]+)(?=.*\d)[a-zA-Z\d]{6,32}$/;
-	//
-	// 	if (passwordValidation.test(password)) {
-	// 		console.log("Password Validated!");
-	// 		return true;
-	// 	} else {
-	// 		//throw error about passwords
-	// 		return false;
-	// 	}
-	// }
-
-	// checkEmail() {
-	// 	const { email } = this.state;
-	//
-	// 	const emailValidification = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	//
-	// 	if (emailValidification.test(email)) {
-	// 		console.log("email validated!");
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
-
 	render() {
 		const { email, password } = this.state;
 

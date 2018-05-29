@@ -15,11 +15,17 @@ export default props => {
             if(item.stat_value==='null'){
                 item.stat_value='';
             }
+
+            const newInput = index===customStatsArray.length-1 ?
+                <button className="addStatsButton" type='button' onClick={props.addNewInput}>+</button> : '';
+
+
             return(
                 <div key={index} className="customAthInputs">
-                    <Field name={'inputName'} type="text"
+                    <Field className='input statNameInput' name={'inputName'} type="text"
+
                            value={item.stat_name} onChange={(e) => {props.inputChange(e, index)}} />
-                    <Field name={'valueName'} type="text"
+                    <Field className='input statValueInput' name={'valueName'} type="text" addMoreButton={newInput}
                            value={item.stat_value} onChange={(e) => {props.inputChange(e, index)}} />
                 </div>
             )

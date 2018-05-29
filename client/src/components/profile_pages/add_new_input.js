@@ -39,20 +39,19 @@ class AddNewInput extends Component {
 			customStatsArray[index]["stat_value"] = value;
 		}
 
-		this.setState({
-			customStatsArray
-		});
-	}
-	render() {
-		const { customStatsArray } = this.props;
-		return (
-			<div className="addNewInputs">
-				<button type="button" onClick={this.props.addNewInput}>
-					+
-				</button>
-				<CustomInputs inputChange={this.handleInputChange} customStatsArray={customStatsArray} />
-			</div>
-		);
-	}
+
+        this.setState({
+            customStatsArray
+        });
+    }
+    render(){
+        const {customStatsArray} = this.props;
+        return(
+            <div>
+                <CustomInputs addNewInput={this.props.addNewInput} inputChange={this.handleInputChange} customStatsArray={customStatsArray}/>
+            </div>
+        )
+    }
+
 }
 export default AddNewInput;

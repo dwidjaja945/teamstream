@@ -162,15 +162,10 @@ class EditProfile extends Component {
 								value={bio}
 								onChange={this.handleInputChange}
 							/>
-							{/* <button onClick={this.addNewInput.bind(this)}>Add</button> */}
+		
 							<AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray} />
-							{/* <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange} />
-                    <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange} /> */}
-						</div>
 
-						{/* <Link to={`/athlete_profile`} className="loginButtons">
-							<span className="btnLog">Confirm Changes</span>
-						</Link> */}
+						</div>
 					</div>
 					<div className="createAthleteBtn">
 						<button className="createAthleteBtnSub">Submit</button>

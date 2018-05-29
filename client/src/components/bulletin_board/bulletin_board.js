@@ -28,6 +28,22 @@ class BulletinBoard extends Component {
 		this.getDataFromServer();
 	}
 
+	axiosToTeammateProfile(athlete_id, team_id) {
+		console.log("this.props : ", this.props);
+		const path = "/api/teammate_profile";
+		const dataToSend = {athlete_id: athlete_id, team_id : team_id};
+		axios.post(path, dataToSend).then(resp => {
+		const customStatsArray = [];
+		for (let statIndex = 0; statIndex < resp.data.user.length; statIndex++) {
+			const { stat_id, stat_value, stat_name } = resp.data.user[statIndex];
+			customStatsArray.push({ stat_id, stat_value, stat_name });
+		}
+		resp.data.user[0].customStatsArray = customStatsArray;
+		resp.data.user[0].thisAthlete = resp.data.thisAthlete;
+		this.props.history.push("/teammate_profile", resp.data.user[0]);
+    });
+	}
+
 	getDataFromServer(path) {
 		path = "/api/bulletin_board";
 		axios.get(path).then(response => {
@@ -106,6 +122,7 @@ class BulletinBoard extends Component {
 					<img className="bulletin-background" src={teamLogo} alt="" />
 
 					<BulletinBoardMessages
+						toTeammateProfile={this.axiosToTeammateProfile.bind(this)}
 						pinMessage={this.pinMessage}
 						data={messageArray}
 						deleteBulletinPost={this.deleteMessage}

@@ -115,10 +115,9 @@ body {
 	height: 100%;
 	width: 100%;
 	text-align: center;
-}
-
-.dropDownBtn img {
-	height: 95%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .mainTsLogo {
@@ -140,6 +139,36 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+/***********Drop Down Arrow**************/
+
+.topLeftArrow {
+	height: 50%;
+	transform: rotate(120deg) translate(-1px, 7px);
+	background-color: #1171bb;
+	padding: 2px;
+}
+
+.topRightArrow {
+	height: 50%;
+	transform: rotate(-120deg) translate(1px, 7px);
+	background-color: #1171bb;
+	padding: 2px;
+}
+
+.bottomLeftArrow {
+	height: 50%;
+	transform: rotate(120deg) translate(11px, 10px);
+	background-color: #1171bb;
+	padding: 2px;
+}
+
+.bottomRightArrow {
+	height: 50%;
+	transform: rotate(-120deg) translate(-3px, -4px);
+	background-color: #1171bb;
+	padding: 2px;
 }
 /***********Login***************/
 .loginContainer {

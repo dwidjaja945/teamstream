@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import dropDown from "./images/double-down.png";
 
 class ToggleTeams extends Component {
 	constructor(props) {
@@ -49,7 +48,10 @@ class ToggleTeams extends Component {
 		const { teamCodes } = this.props;
 		const button = (
 			<div className="dropDownBtn" onClick={() => this.setState({ show: !show })}>
-				<img src={dropDown} />
+				<span className="topLeftArrow" />
+				<span className="topRightArrow" />
+				<span className="bottomLeftArrow" />
+				<span className="bottomRightArrow" />
 			</div>
 		);
 

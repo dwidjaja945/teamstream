@@ -8,14 +8,17 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         console.log("checking if user already logged in...");
         const output = {
             redirect : '',
-            sessionID : null
+            success: false,
+            // sessionID : null
         };
 
         if( req.session.user_id !== undefined ) {
+            console.log("User is already logged in")
             output.redirect = '/bulletin_board';
+            output.success=true;
             res.json(output);
         } else {
-            output.sessionID = req.session.user_id;
+            // output.sessionID = req.session.user_id;
             output.redirect = '/';
             res.json(output);
         }
@@ -48,7 +51,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             res.end();
             return;
         }
-        
+
 
 
         let email;

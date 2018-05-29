@@ -35,8 +35,6 @@ class JoinTeam extends Component {
 		console.log("Join team state: ", this.state);
 		// this.addCodeInput(this.state);
 		this.joinTeamAxios();
-
-		this.joinTeamAxios();
 		// this.reset();
 	}
 

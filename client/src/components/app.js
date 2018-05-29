@@ -14,6 +14,7 @@ import NavBar from "./navbar";
 import AddAthlete from "./profile_pages/add_athlete";
 import EditAthlete from "./profile_pages/edit_profile";
 import Logout from './log_in/logout';
+import TeammateProfile from './profile_pages/teammate_profile';
 
 class App extends Component {
 	constructor(props) {
@@ -53,6 +54,8 @@ class App extends Component {
 				<Route path="/bulletin_board" component={BulletinBoard} />
 
 				<Route path="/athlete_profile" component={AthleteProfile} />
+
+				<Route path="/teammate_profile" component={TeammateProfile} />
 
 				<Route path="/roster" component={Roster} />
 

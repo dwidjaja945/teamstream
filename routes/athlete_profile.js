@@ -2,7 +2,7 @@ const slashes = require('slashes');
 
 module.exports = function (webserver, dataBase, mysql) {
 
-    webserver.get('/api/athlete_profile', function (req , res ) {
+    webserver.get('/api/athlete_profile', function ( req , res ) {
         const output = {
             success: false,
             user: null,
@@ -45,6 +45,54 @@ module.exports = function (webserver, dataBase, mysql) {
             } else {
                 output.errors = error;
             }
+
+            res.json(output);
+        });
+    });
+
+    webserver.get('/api/teammate_profile', function ( req , res ) {
+        const output = {
+            success: false,
+            user: null,
+            errors: []
+        };
+
+        if (req.session.user_id === undefined) {
+            output.redirect = '/login_page';
+            output.errors = 'User not logged in';
+            res.json(output);
+            res.end();
+            return;
+        }
+
+        let { athlete_id } = req.body;
+
+        let query = "SELECT `ai`.`first_name`, `ai`.`last_name`, `ai`.`height`, `ai`.`weight`, `ai`.`img_url`, " +
+            "`ai`.`age`, `ai`.`bio`, `s`.`stat_name`, `s`.`stat_value`, `s`.`stat_id` " +
+            "FROM `athletes` AS a " +
+            "JOIN `athlete_info` AS ai " +
+            "ON `a`.`athlete_info_id` = `ai`.`athlete_info_id` " +
+            "LEFT JOIN `stats` as s " +
+            "ON `a`.`athlete_id` = `s`.`athlete_id` " +
+            "WHERE `a`.`athlete_id` = ?";
+        let inserts = [ athlete_id ];
+
+        let sqlQuery = mysql.format(query, inserts);
+        console.log('current athlete id', athlete_id)
+
+        dataBase.query(sqlQuery, function (error, data, fields) {
+            if (!error) {
+                output.success = true;
+                for (let e = 0; e < data.length; e++) {
+                    for (let key in data[e]) {
+                        data[e][key] = slashes.strip(data[e][key]);
+                    }
+                };
+                output.user = data;
+                console.log("retrieved athlete info with athlete_id of: ", athlete_id);
+            } else {
+                output.errors = error;
+            };
 
             res.json(output);
         });

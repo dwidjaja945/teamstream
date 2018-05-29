@@ -26,7 +26,7 @@ module.exports = function (webserver, dataBase, mysql) {
         // let query = 'SELECT * FROM ?? WHERE ?? = ?';
         let inserts = [teamID];
 
-        let query = "SELECT athlete_info.first_name, athlete_info.last_name, athletes.team_id, athletes.user_level " +
+        let query = "SELECT athlete_info.first_name, athlete_info.last_name, athletes.team_id, athletes.user_level, athletes.athlete_id " +
             "FROM athlete_info " +
             "JOIN athletes " +
             "ON athlete_info.athlete_info_id = athletes.athlete_info_id " +

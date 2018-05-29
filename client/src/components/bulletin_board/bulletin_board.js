@@ -6,6 +6,7 @@ import Navbar from "../navbar";
 import dropDown from "../images/double-down.png";
 import axios from "axios";
 import hamburgerMenu from "../hamburger_menu";
+import teamLogo from '../images/team-stream-logo.png';
 
 class BulletinBoard extends Component {
 	constructor(props) {
@@ -14,7 +15,7 @@ class BulletinBoard extends Component {
 		this.state = {
 			messageArray: [],
 			hasPinned: false,
-			teamCodes:[],
+			teamCodes: [],
 		};
 
 
@@ -35,7 +36,7 @@ class BulletinBoard extends Component {
 				const messageArray = this.findPinnedMessage(response.data.data);
 				this.setState({
 					messageArray: messageArray,
-					teamCodes:response.data.userTeams
+					teamCodes: response.data.userTeams
 				});
 			} else {
 				this.props.history.push(response.data.redirect);
@@ -81,7 +82,7 @@ class BulletinBoard extends Component {
 	deleteMessage(post_id) {
 
 		const path = "/api/bulletin_board";
-		axios.delete(path, { params: {post_id} }).then(resp => {
+		axios.delete(path, { params: { post_id } }).then(resp => {
 			console.log("BB message to delete: ", resp);
 			if (resp.data.success) {
 				this.getDataFromServer();
@@ -102,6 +103,7 @@ class BulletinBoard extends Component {
 				/>
 				<div className="pinnedMessage" />
 				<div className="messageContainer">
+					<img className="bulletin-background" src={teamLogo} alt="" />
 
 					<BulletinBoardMessages
 						pinMessage={this.pinMessage}

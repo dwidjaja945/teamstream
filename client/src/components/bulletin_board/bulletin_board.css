@@ -3,23 +3,24 @@
 	height: 30px;
 	position: relative;
 }
+.messageContainer{
 
-.messageContainer {
-	width: 100vw;
-	height: 80vh;
-	border: 2px solid black;
-	position: relative;
-	overflow: auto;
-	border-bottom: none;
-	border-left: none;
-	border-right: none;
-	border-bottom: rgba(0, 10, 75, 1);
+    width:100vw;
+    height: 80vh;
+    border: 2px solid black;
+    position: relative;
+    overflow: auto;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: rgba(0,10,75,1)
+
 }
-.userMessages {
-	background-color: rgba(192, 192, 192, 0.451);
+.userMessages{
+    background-color: rgba(192, 192, 192, 0.6) ;
 }
-.pinned {
-	background-color: rgba(255, 0, 0, 0.4);
+.pinned{
+    background-color: rgba(25,111,193,.6);
 }
 /* .input{
     height: 5vh;
@@ -33,18 +34,18 @@ button {
 	background-color: rgba(192, 192, 192, 0.4);
 	font-family: "Noto Sans", sans-serif;
 }
-.pin {
-	width: 20px;
-	height: 20px;
-	display: inline;
-}
 
-.deleteBulletinMessage {
-	float: right;
-	border-bottom: 1px solid black;
-	border-right: 1px solid black;
-	width: 15px;
+.pin{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
 }
+.deleteBulletinMessage{
+    float: right;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    width:15px;
+  }
 .inputContainer {
 	height: 5vh;
 	font-size: 1em;
@@ -91,8 +92,22 @@ button {
 	background-color: darkgray;
 }
 .show-modal {
-	opacity: 1;
-	visibility: visible;
-	transform: scale(1);
-	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-header{
+    margin-bottom: 0;
+}
+.modal-body{
+    margin-top: 2%;
+}
+.bulletin-background{
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .3;
+    position: absolute;
+    z-index: -1;
+    margin: 50% 20%;
 }

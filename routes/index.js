@@ -13,10 +13,8 @@ module.exports = function(webserver, dataBase, mysql) {
 
 	require("./toggle_teams")(webserver, dataBase, mysql);
 
-	// endpoint for roster
 	require("./roster")(webserver, dataBase, mysql);
 
-	// endpoint for bulletin board
 	require("./bulletin_board")(webserver, dataBase, mysql);
 
 	require("./pinned")(webserver, dataBase, mysql);

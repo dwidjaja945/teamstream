@@ -7,13 +7,23 @@ class BulletinBoardMessages extends Component {
 
 	generateMessages() {
 		console.log("This is the props in bulletin at the top: ", this.props.data);
+		// const deleteBoxDisplay = this.props.data.map((item, index)=>{
+		// 	const {first_name, last_name, post_text, timestamp, team_name, pinned, post_id, athlete_id} = item;
+		// 	if(){
+		// 		return(
+		// 			<div key={index} className="deleteBulletinMessage"
+		// 			onClick= {()=>{this.props.deleteBulletinPost(post_id);}}>x</div>
+		// 		)
+		// 	}
+
+		// });
 
 		const bulletinMessages = this.props.data.map((item, index) => {
 			const {first_name, last_name, post_text, timestamp, team_name, pinned, post_id, athlete_id} = item;
 			const pinnedClass= pinned > 0 ? 'pinned' : '';
 			var time = new Date(timestamp).toLocaleTimeString();
 			var date = new Date(timestamp).toLocaleDateString();
-			console.log("This is the props in bulletin: ",pinned)
+			console.log("This is the props in bulletin: ",athlete_id);
 
 			return (
 				<div className={`userMessages spill ${pinnedClass}`} key={index} >
@@ -22,6 +32,7 @@ class BulletinBoardMessages extends Component {
 					<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} />
 					<div className="deleteBulletinMessage"
 						 onClick= {()=>{this.props.deleteBulletinPost(post_id);}}>x</div>
+						 {/* {deleteBoxDisplay} */}
 					<p className='postText'>{post_text}</p>
 				</div>
 			);

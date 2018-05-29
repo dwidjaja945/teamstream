@@ -12,13 +12,11 @@ class BulletinBoardMessages extends Component {
 			const {first_name, last_name, post_text, timestamp, team_name, pinned, post_id, athlete_id} = item;
 			const pinnedClass= pinned > 0 ? 'pinned' : '';
 			console.log("This is the props in bulletin: ",pinned)
-		
+
 			return (
 				<div className={`userMessages spill ${pinnedClass}`} key={index} >
 					<img className="teamLogo" src={teamLogo} alt="" />
-					{first_name} 
-					{last_name} 
-					{timestamp} 
+					<span>{first_name} {last_name} {timestamp} </span>
 					<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} />
 					<div className="deleteBulletinMessage" onClick= {()=>{
 						this.props.deleteBulletinPost(post_id);

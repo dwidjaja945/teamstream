@@ -79,8 +79,9 @@ class BulletinBoard extends Component {
 	}
 
 	deleteMessage(post_id) {
+
 		const path = "/api/bulletin_board";
-		axios.delete(path, { params: { id: post_id } }).then(resp => {
+		axios.delete(path, { params: {post_id} }).then(resp => {
 			console.log("BB message to delete: ", resp);
 			if (resp.data.success) {
 				this.getDataFromServer();

@@ -1,15 +1,17 @@
+const slashes = require('slashes');
+
 module.exports = ( webserver , dataBase , mysql ) => {
     
     // ==============================
     // ==== update athlete stats ====
     // ==============================
-    function updateAthleteStats() {
+    function updateAthleteStats( req , res , output ) {
         return new Promise((resolve, reject) => {
             const { athlete_id } = req.session;
 
             let update_athlete_stats_query = `INSERT INTO stats
                 (
-                    stat_id
+                    stat_id,
                     stat_name,
                     stat_value, 
                     athlete_id
@@ -21,12 +23,13 @@ module.exports = ( webserver , dataBase , mysql ) => {
             console.log('the request body: ', req.body)
 
             // Inserting all potential stat entries into sql query
-            for (let statIndex = 0; statIndex < req.body.length; statIndex++) {
-                const { stat_name, stat_value } = req.body[statIndex];
-                let { stat_id } = req.body[statIndex ];
+            for (let statIndex = 0; statIndex < req.body.customStatsArray.length; statIndex++) {
+                const stat_name = slashes.add(req.body.customStatsArray[statIndex].stat_name);
+                const stat_value = slashes.add(req.body.customStatsArray[statIndex].stat_value);
+                let stat_id = req.body.customStatsArray[statIndex].stat_id;
 
                 update_athlete_stats_query += " (?,?,?,?)";
-                update_athlete_stats_query += statIndex === req.body.length - 1 ? "" : ",";
+                update_athlete_stats_query += statIndex === req.body.customStatsArray.length - 1 ? "" : ",";
 
                 // check to see if a stat_id has been provided or not.
                 if (isNaN(stat_id)) {
@@ -36,7 +39,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
             };
 
             // Adding the ON DUPLICATE KEY UPDATE part of query
-            update_athlete_stats_query += `ON DUPLICATE KEY UPDATE 
+            update_athlete_stats_query += ` ON DUPLICATE KEY UPDATE 
                 stat_name = VALUES(stat_name),
                 stat_value = VALUES(stat_value)`;
 
@@ -58,19 +61,16 @@ module.exports = ( webserver , dataBase , mysql ) => {
                     dataBase.query(deleteAthleteStatsQuery, (err, data, fields) => {
                         if (!err) {
                             output.updateAthleteStatsData = data;
-                            return resolve(output);
-                            // output.success = true;
-                            // output.redirect = "/athlete_profile";
+                            return resolve(data);
                         } else {
                             output.updateAthleteStatsErrors = err;
-                            return reject(output);
+                            return reject(data);
                         };
-                    })
-                    // output.data = data;
+                    });
                 } else {
                     output.errors = err;
-                    return reject(output);
-                }
+                    return reject(err);
+                };
             });
         });
     };
@@ -78,9 +78,10 @@ module.exports = ( webserver , dataBase , mysql ) => {
     // ==============================
     // ==== update athlete info =====
     // ==============================
-    function updateAthleteInfo() {
+    function updateAthleteInfo( req , res , output ) {
         return new Promise((resolve, reject) => {
-            let { first_name, last_name, age, height, weight, bio, athlete_info_id } = req.body;
+            let { first_name, last_name, age, height, weight, bio } = req.body;
+            let { athlete_info_id } = req.session;
 
             let update_athlete_info_query = `UPDATE athlete_info
                 SET first_name = ?,
@@ -102,10 +103,10 @@ module.exports = ( webserver , dataBase , mysql ) => {
             dataBase.query(update_athlete_info_mysqlQuery, (err, data, fields) => {
                 if (!err) {
                     output.updateAthleteInfoData = data
-                    return resolve(output);
+                    return resolve(data);
                 } else {
                     output.updateAthleteInfoErrors = err
-                    return reject(output);
+                    return reject(err);
                 };
             });
         })
@@ -113,7 +114,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
 
     // ==============================
-    // ==== Start Endpoints here ====
+    // ==== Endpoints Start here ====
     // ==============================
 
     /**
@@ -151,7 +152,20 @@ module.exports = ( webserver , dataBase , mysql ) => {
             return;
         };
 
-        Promise.all([ updateAthleteInfo() , updateAthleteStats() ] ).then( data => {res.json(data)} ).catch( errors => {res.json(errors)} );
+        function handleSuccess(data , output ) {
+            output.success = true;
+            output.data = data;
+            output.redirect = '/athlete_profile';
+            console.log('handleSuccess output: ' , output);
+            res.json(output);
+        };
+
+        function handleError(errors , output ) {
+            output.errors = errors;
+            console.log("handleError output: ", output);
+            res.json(output);
+        }
+        Promise.all([updateAthleteInfo( req , res , output ), updateAthleteStats( req , res , output )]).then( data => { handleSuccess(data, output) } ).catch( errors => { handleError(errors, output) } );
 
     });
 

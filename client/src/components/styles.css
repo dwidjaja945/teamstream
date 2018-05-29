@@ -461,7 +461,15 @@ body {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.cGbtnContent .cGbtn {
+.cGbtnContent {
+	height: 28%;
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cGbtnCode {
 	height: 10%;
 	width: 100%;
 	background-color: #1171bb;
@@ -472,18 +480,20 @@ body {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.cGbtnContent button {
-	height: 10%;
-	width: 100%;
+.cGbtnLog {
+	/* height: 55%; */
+	height: 65%;
+	width: 70%;
 	background-color: #1171bb;
 	color: white;
 	border-radius: 7px;
-	padding: 20%;
+	padding: 10%;
 	font-size: 15px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.cGbtn:hover {
+.cGbtnCode:hover,
+.cGbtnLog:hover {
 	color: #000000;
 	background-color: #dadada;
 }
@@ -557,7 +567,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 60px;
+	margin: 50px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -584,7 +594,7 @@ body {
 .teamLogoImg {
 	height: 40%;
 	width: 100%;
-	margin: 16px;
+	/* margin: 16px; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -595,13 +605,13 @@ body {
 }
 
 .loginForm {
-	height: 32%;
+	height: 55%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-flow: column wrap;
-	margin-bottom: 154px;
+	/* margin-bottom: 154px; */
 }
 
 .userNameLine,
@@ -626,7 +636,7 @@ body {
 }
 
 .loginBtn {
-	height: 30%;
+	height: 20%;
 	width: 100%;
 	padding: 10px;
 	border-radius: 7px;

@@ -69,7 +69,7 @@ class CreateTeam extends Component {
 
 		if (generatedCode) {
 			return (
-				<button type="button" onClick={this.login.bind(this)} className="cGbtnContent">
+				<button type="button" onClick={this.login.bind(this)} className="cGbtnLog">
 					Login
 				</button>
 			);
@@ -77,7 +77,7 @@ class CreateTeam extends Component {
 			return (
 				<div>
 					<div style={style}>{errorHandle}</div>
-					<button type="button" onClick={this.handleSubmit.bind(this)} className="cGbtn">
+					<button type="button" onClick={this.handleSubmit.bind(this)} className="cGbtnCode">
 						Generate Code
 					</button>
 				</div>

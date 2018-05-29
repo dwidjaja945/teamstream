@@ -50,7 +50,7 @@ module.exports = function (webserver, dataBase, mysql) {
         });
     });
 
-    webserver.get('/api/teammate_profile', function ( req , res ) {
+    webserver.post('/api/teammate_profile', function ( req , res ) {
         const output = {
             success: false,
             user: null,
@@ -65,7 +65,18 @@ module.exports = function (webserver, dataBase, mysql) {
             return;
         }
 
-        let { athlete_id } = req.body;
+        let { athlete_id, team_id:teammate_team_id } = req.body;
+
+        //make sure user is allowed to see this profile
+        if(req.session.team_id !== teammate_team_id){
+            output.redirect = '/login_page';
+            output.errors = 'Wrong Team ID';
+            res.json(output);
+            res.end();
+            return;
+        }
+
+        console.log(`pulling teammate info with id: ${athlete_id} from team: ${teammate_team_id}`);
 
         let query = "SELECT `ai`.`first_name`, `ai`.`last_name`, `ai`.`height`, `ai`.`weight`, `ai`.`img_url`, " +
             "`ai`.`age`, `ai`.`bio`, `s`.`stat_name`, `s`.`stat_value`, `s`.`stat_id` " +

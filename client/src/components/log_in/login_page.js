@@ -49,7 +49,7 @@ class LogIn extends React.Component {
 
                 //if success, log them in, take them to bulletin board
                 // this.props.history.push(response.data.redirect);
-                this.props.history.push("/edit_profile");
+                this.props.history.push("/roster");
             } else {
                 //ERROR
                 console.log(response.data.errors);

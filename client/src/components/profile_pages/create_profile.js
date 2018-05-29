@@ -12,7 +12,7 @@ class CreateProfile extends Component {
 			age: "56",
 			height: "62",
 			weight: "99",
-			bio:'',
+			bio: ""
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,56 +38,62 @@ class CreateProfile extends Component {
 
 		return (
 			<form onSubmit={this.handleSubmit}>
-				<div>
-					<h1>Let your team know who you are!</h1>
-                    <Field
-                        className='input nameInput'
-                        name="first_name"
-                        label="First Name"
-                        type="text"
-                        value={first_name}
-                        onChange={this.handleInputChange}
-                    />
-                    <Field
-                        className='input nameInput'
-                        name="last_name"
-                        label="Last Name"
-                        type="text"
-                        value={last_name}
-                        onChange={this.handleInputChange}
-                    />
-                    <Field
-                        className='input ageInput'
-                        name="age"
-                        label="Age"
-                        type="number"
-                        value={age}
-                        onChange={this.handleInputChange} />
-                    <Field
-                        className='input heightInput'
-                        name="height"
-                        label="Height"
-                        type="text"
-                        value={height}
-                        onChange={this.handleInputChange}
-                    />
-                    <Field
-                        className='input weightInput'
-                        name="weight"
-                        label="Weight"
-                        type="number"
-                        value={weight}
-                        onChange={this.handleInputChange}
-                    />
-                    <Field
-                        className='input bioInput'
-                        name="bio"
-                        label="Bio"
-                        type="text"
-                        value={bio}
-                        onChange={this.handleInputChange} />
+				<div className="createAth">
+					<h1 className="createAthHeader">Create Athlete Profile</h1>
+					<div className="createFieldsDepth">
+						<Field
+							className="createFields"
+							name="first_name"
+							label="First Name:"
+							type="text"
+							value={first_name}
+							onChange={this.handleInputChange}
+						/>
+						<Field
+							className="createFields"
+							name="last_name"
+							label="Last Name:"
+							type="text"
+							value={last_name}
+							onChange={this.handleInputChange}
+						/>
+						<Field
+							className="createFields"
+							name="age"
+							label="Age:"
+							type="number"
+							value={age}
+							onChange={this.handleInputChange}
+						/>
+						<Field
+							className="createFields"
+							name="height"
+							label="Height:"
+							type="text"
+							value={height}
+							onChange={this.handleInputChange}
+						/>
+						<Field
+							className="createFields"
+							name="weight"
+							label="Weight:"
+							type="number"
+							value={weight}
+							onChange={this.handleInputChange}
+						/>
+						<Field
+							className="createFields"
+							name="bio"
+							label="Bio:"
+							type="text"
+							value={bio}
+							onChange={this.handleInputChange}
+						/>
+					</div>
 				</div>
-				<button className="loginButtons btnLog">Create Profile</button>
+				<div className="createAthleteBtn">
+					<button className="createAthleteBtnSub">Submit</button>
+				</div>
 			</form>
 		);
 	}

@@ -105,9 +105,9 @@ module.exports = ( webserver , dataBase , mysql , check) => {
         function addCoach(){
             let query = `
             INSERT INTO \`coaches\`
-            (
-                \`athlete_id\`
-            )
+                (
+                    \`athlete_id\`
+                )
             VALUES (
                 ?
             )`;

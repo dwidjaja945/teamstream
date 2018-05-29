@@ -76,10 +76,10 @@ module.exports = (webserver, dataBase, mysql) => {
             function addAthleteToTable(athleteInfoId, teamId, output) {
                 let query = `
                 INSERT INTO athletes
-                (
-                    athlete_info_id,
-                    team_id
-                )
+                    (
+                        athlete_info_id,
+                        team_id
+                    )
                 VALUES (
                     ?,
                     ?
@@ -93,17 +93,17 @@ module.exports = (webserver, dataBase, mysql) => {
                 dataBase.query(mysqlQuery, (err, data, fields) => {
                     if (!err) {
                     	console.log(`Created Athlete: ${data.insertId} in team ${teamId}`)
-                      req.session.athlete_id = data.insertId;  
-                      output.success = true;
+                        req.session.athlete_id = data.insertId;  
+                        output.success = true;
                         output.data = data;
                         output.redirect = "/bulletin_board";
                     } else {
                         output.errors = err;
-                    }
+                    };
 
                     res.json(output);
                 });
-            }
+            };
         });
     });
 

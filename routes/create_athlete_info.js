@@ -2,7 +2,6 @@
 module.exports = function ( webserver , dataBase , mysql ) {
 
     webserver.post('/api/create_athlete_info', (req , res ) => {
-        // const errors = validationResult(req);
         const slashes=require('slashes');
         const output = {
             success: false,
@@ -22,16 +21,6 @@ module.exports = function ( webserver , dataBase , mysql ) {
         if(req.body) {
             var { first_name , last_name , age , weight , height , bio } = req.body;
         }
-        // if (req.body) {
-        //     var firstName = req.body.first_name;
-        //     var lastName = req.body.last_name;
-        //     var age = req.body.age;
-        //     var weight = req.body.weight;
-        //     var height = req.body.height;
-        //     var athlete_bio = req.body.athlete_bio;
-        // }
-
-        // console.log('Create Profile Request Body', req.body);
 
         let user_id = req.session.user_id;
 

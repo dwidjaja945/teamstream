@@ -47,7 +47,6 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
                         if (!error) {
                             console.log(`Creating ${email} with userId: ${data.insertId}`);
                             output.success = true;
-                            // output.data = data;
                             req.session.user_id = data.insertId;
                             output.redirect = "/add_athlete";
                             console.log('signup post-session: ', req.session)

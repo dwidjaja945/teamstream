@@ -18,7 +18,10 @@
 
 }
 .userMessages{
-    background-color: rgba(192, 192, 192, 0.6) ;
+    /* background-color: rgba(192, 192, 192, 0.6) ; */
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    border-style: double;
 }
 .pinned{
     background-color: rgba(25,111,193,.6);
@@ -111,7 +114,7 @@ button{
 .bulletin-background{
     background-repeat: no-repeat;
     background-position: center;
-    opacity: .3;
+    opacity: .1;
     position: absolute;
     z-index: -1;
     margin: 50% 20%;

@@ -19,7 +19,7 @@ module.exports = (webserver, dataBase, mysql) => {
         };
         req.session.destroy((err) => {
             if(!err) {
-                output.redirect = '/login_page';
+                output.redirect = '/';
                 output.success = true;
                 res.json(output);
             } else {

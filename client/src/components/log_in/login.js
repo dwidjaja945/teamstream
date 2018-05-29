@@ -8,22 +8,16 @@ import axios from "axios/index";
 
 export default props => {
 
-    // function checkIfLoggedIn() {
-
     const path='/api/';
     axios.get(path).then( (response) => {
         console.log('This is the response from checking if the user is logged in: ', response);
         if(response.data.success){
-            //data was properly sent to server.
             props.history.push(response.data.redirect);
         }else{
             //user not logged in
         }
 
     });
-    // }
-
-    // checkIfLoggedIn();
 
     return (
         <div className="loginContainer">

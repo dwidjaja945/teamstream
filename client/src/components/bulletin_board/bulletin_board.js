@@ -22,11 +22,13 @@ class BulletinBoard extends Component {
 		this.pinMessage = this.pinMessage.bind(this);
 		this.deleteMessage = this.deleteMessage.bind(this);
 		this.getDataFromServer = this.getDataFromServer.bind(this);
-	}
 
-	componentDidMount() {
-		this.getDataFromServer();
-	}
+        this.getDataFromServer();
+    }
+
+	// componentDidMount() {
+	// 	this.getDataFromServer();
+	// }
 
 	getDataFromServer(path) {
 		path = "/api/bulletin_board";

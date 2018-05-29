@@ -1,6 +1,23 @@
 
 module.exports = function ( webserver , dataBase , mysql ) {
 
+    // =================================
+    // ====== Create Athlete Info ======
+    // =================================
+    /**
+     *  Takes:
+     *      first_name,
+     *      last_name,
+     *      age,
+     *      weight,
+     *      height,
+     *      bio
+     * 
+     *  returns:
+     *      success: true
+     *      insertID: #
+     *      redirect: ''
+     */
     webserver.post('/api/create_athlete_info', (req , res ) => {
         const slashes=require('slashes');
         const output = {
@@ -38,10 +55,10 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
         let inserts = [first_name, last_name, height, weight, age, bio, user_id];
 
+        // adding slashes for all the inputs
         for( let i = 0 ; i < inserts.length ; i++ ) {
             inserts[i] = slashes.add(inserts[i]);
         }
-
 
         let mysqlQuery = mysql.format(query, inserts);
 
@@ -78,11 +95,12 @@ module.exports = function ( webserver , dataBase , mysql ) {
                 } else {
                     console.log('create athlete info error', err);
                     output.errors = err;
-                }
+                };
 
                 res.json(output);
-            })
-        }
 
-    })
+            });
+        };
+
+    });
 };

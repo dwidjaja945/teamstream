@@ -8,6 +8,9 @@ module.exports = (webserver, dataBase, mysql) => {
      *      team_id: ####
      */
 
+    // ================================
+    // ======== Joining a Team ========
+    // ================================
     webserver.post("/api/join_team", (req, res) => {
         const output = {
             success: false,
@@ -35,10 +38,11 @@ module.exports = (webserver, dataBase, mysql) => {
         console.log("Join team body team code", team_code);
         console.log("Join team athlete info id", athlete_info_id);
 
-        // select team_id via team_code from teams
-        // add athlete in athletes
-        // return team_id to front end
-
+        // =================================================
+        // ==== select team_id via team_code from teams ====
+        // ============ add athlete in athletes ============
+        // ========== return team_id to front end ==========
+        // =================================================
         let query = `
             SELECT team_id
             FROM teams

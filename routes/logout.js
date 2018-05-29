@@ -1,5 +1,4 @@
 module.exports = (webserver, dataBase, mysql) => {
-
     /**
      * Takes:
      *  null
@@ -10,7 +9,6 @@ module.exports = (webserver, dataBase, mysql) => {
      *  //
      *  error: ''
      */
-
     webserver.get('/api/logout', (req, res) => {
         const output = {
             success: false,

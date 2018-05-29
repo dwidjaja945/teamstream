@@ -33,6 +33,28 @@
 	font-family: "Noto Sans", sans-serif;
 }
 
+.messageContainer{
+
+    width:100vw;
+    height: 80vh;
+    border: 2px solid black;
+    position: relative;
+    overflow: auto;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: rgba(0,10,75,1)
+
+}
+.userMessages{
+    /* background-color: rgba(192, 192, 192, 0.6) ; */
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    border-style: double;
+}
+.pinned{
+    background-color: rgba(25,111,193,.6);
+}
 .pin {
 	width: 20px;
 	height: 20px;
@@ -90,22 +112,23 @@
 	background-color: darkgray;
 }
 .show-modal {
-	opacity: 1;
-	visibility: visible;
-	transform: scale(1);
-	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
-.modal-header {
-	margin-bottom: 0;
+.modal-header{
+    margin-bottom: 0;
 }
-.modal-body {
-	margin-top: 2%;
+.modal-body{
+    margin-top: 2%;
 }
-.bulletin-background {
-	background-repeat: no-repeat;
-	background-position: center;
-	opacity: 0.3;
-	position: absolute;
-	z-index: -1;
-	margin: 50% 20%;
+.bulletin-background{
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .1;
+    position: absolute;
+    z-index: -1;
+    margin: 50% 20%;
 }
+

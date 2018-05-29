@@ -44,30 +44,11 @@ webserver.get('/test', (req, res) => {
     res.sendFile(__dirname + '/test_ajax.html');
 });
 
-// maybe create middleware to check if user is logged in?
-
 require("./routes/signup")(webserver, dataBase, mysql, encrypt);
 
 require("./session.js")(webserver, dataBase, mysql, encrypt);
 
 require("./routes")(webserver, dataBase, mysql );
-// require("./routes/create_team")(webserver, dataBase, mysql);
-
-// require("./routes/join_team")(webserver, dataBase, mysql);
-
-// require('./routes/create_athlete_info')(webserver, dataBase, mysql);
-
-require('./routes/athlete_profile')(webserver, dataBase, mysql);
-
-// // endpoint for roster
-// require('./routes/roster')(webserver, dataBase, mysql);
-
-// // endpoint for bulletin board
-// require('./routes/bulletin_board')(webserver, dataBase, mysql);
-
-// require("./routes/pinned")(webserver, dataBase, mysql);
-
-// require('./routes/logout')(webserver, dataBase, mysql);
 
 webserver.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));

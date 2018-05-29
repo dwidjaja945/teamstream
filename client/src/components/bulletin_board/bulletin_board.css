@@ -1,103 +1,98 @@
-.teamLogo{
-    width: 30px;
-    height: 30px;
-    position: relative;
+.teamLogo {
+	width: 30px;
+	height: 30px;
+	position: relative;
 }
 
-.messageContainer{
-    width:100vw;
-    height: 80vh;
-    border: 2px solid black;
-    position: relative;
-    overflow: auto;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: rgba(0,10,75,1)
-
+.messageContainer {
+	width: 100vw;
+	height: 80vh;
+	border: 2px solid black;
+	position: relative;
+	overflow: auto;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: rgba(0, 10, 75, 1);
 }
-.userMessages{
-    background-color: rgba(192, 192, 192, 0.451) ;
+.userMessages {
+	background-color: rgba(192, 192, 192, 0.451);
 }
-.pinned{
-    background-color: rgba(255,0,0,.4);
-
+.pinned {
+	background-color: rgba(255, 0, 0, 0.4);
 }
-.input{
+/* .input{
     height: 5vh;
     font-size: 1em;
     width: 100vw;
     border-top: 1px solid rgba(192,192,192,.4);
+} */
+button {
+	height: 3vh;
+	border: 1px solid black;
+	background-color: rgba(192, 192, 192, 0.4);
+	font-family: "Noto Sans", sans-serif;
 }
-button{
-    height: 3vh;
-    border: 1px solid black;
-    background-color: rgba(192,192,192,.4);
-    font-family: 'Noto Sans', sans-serif;
+.pin {
+	width: 20px;
+	height: 20px;
+	display: inline;
+}
 
+.deleteBulletinMessage {
+	float: right;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	width: 15px;
 }
-.pin{
-    width: 20px;
-    height: 20px;
-    display: inline;
+.inputContainer {
+	height: 5vh;
+	font-size: 1em;
+	width: 80%;
 }
-
-.deleteBulletinMessage{
-    float: right;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    width:15px;
-
+.buttonContainer {
+	margin-top: 6%;
 }
-.inputContainer{
-    height: 5vh;
-    font-size: 1em;
-    width: 80%;
-}
-.buttonContainer{
-    margin-top: 6%;
-
-}
-.spill{
-    word-wrap:break-word;
+.spill {
+	word-wrap: break-word;
 }
 .modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	visibility: hidden;
+	transform: scale(1.1);
+	transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 .modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem 1.5rem;
-    width: 24rem;
-    border-radius: 0.5rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 1rem 1.5rem;
+	width: 24rem;
+	border-radius: 0.5rem;
 }
 .close-button {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
+	float: right;
+	width: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	background-color: lightgray;
 }
 .close-button:hover {
-    background-color: darkgray;
+	background-color: darkgray;
 }
 .show-modal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
+	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }

@@ -4,6 +4,7 @@ body {
 
 * {
 	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
 }
 /*************Hamburger Menu***************/
 
@@ -82,6 +83,7 @@ body {
 	/* background-color: #010c48; */
 	/* background-color: #ffd200; */
 	background-color: #ffd200;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .mainBtn {
@@ -165,15 +167,16 @@ body {
 .loginButtons {
 	height: 14%;
 	width: 24%;
-	margin: 5px;
-	border-radius: 14px;
+	margin: 10px;
+	border-radius: 8px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #1171bb;
 	color: white;
 	text-decoration: none;
-	font-size: 15px;
+	font-size: 17px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .loginButtons:hover {
@@ -204,6 +207,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profileTitleHeader {
@@ -258,6 +262,7 @@ body {
 	background-color: #dadada;
 	border-radius: 5px;
 	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profileBioTitle {
@@ -270,6 +275,8 @@ body {
 .profileBioInfo {
 	height: 70%;
 	width: 100%;
+	padding: 10px;
+	font-size: 20px;
 }
 
 .profileStats {
@@ -286,6 +293,7 @@ body {
 	background-color: #dadada;
 	border-radius: 5px;
 	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profileStatsTitle {
@@ -298,6 +306,8 @@ body {
 .profileStatsInfo {
 	height: 15%;
 	width: 100%;
+	padding: 10px;
+	font-size: 20px;
 }
 
 .profileFooter {
@@ -315,6 +325,7 @@ body {
 	background-color: #1171bb;
 	color: white;
 	transform: translate(-50%, 0);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profileEdit:hover {
@@ -343,14 +354,15 @@ body {
 
 .forkButtons {
 	height: 7%;
-	width: 85%;
+	width: 80%;
 	margin: 18px;
-	border-radius: 15px;
+	border-radius: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #1171bb;
 	color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .forkButtons:hover {
@@ -397,6 +409,7 @@ body {
 	background-color: #1171bb;
 	color: white;
 	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .createTeamInfo {
@@ -429,6 +442,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .cGbtn {
@@ -439,6 +453,7 @@ body {
 	border-radius: 7px;
 	padding: 4%;
 	font-size: 15px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .cGbtn:hover {
@@ -479,6 +494,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin: 30px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .teamCodeTitle {
@@ -502,6 +518,7 @@ body {
 	text-align: center;
 	margin: 15px;
 	padding: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .jTcodeBtn {
@@ -514,6 +531,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin: 60px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .jTcodeBtn:hover {
@@ -566,6 +584,13 @@ body {
 	color: grey;
 }
 
+.userNameLine input,
+.passwordLine input {
+	font-size: 16px;
+	padding: 8px;
+	background-color: rgba(205, 205, 218, 0.3);
+}
+
 .loginBtnContainer {
 	height: 55%;
 	display: flex;
@@ -578,22 +603,17 @@ body {
 	width: 100%;
 	padding: 10px;
 	border-radius: 7px;
-	color: #dadada;
+	color: white;
 	background-color: #1171bb;
 	font-size: 15px;
 	font-weight: bold;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .loginBtn:hover {
 	color: #000000;
 	background-color: #dadada;
 }
-
-/* .loginForm input {
-	border: 0;
-	border-bottom: 1px solid grey;
-	outline: 0;
-} */
 
 /***********Create User ID and PW*************/
 .createLogo {
@@ -620,11 +640,10 @@ body {
 }
 
 .userSignUpContainer input {
-	/* border: 0;
-	outline: 0;
-	border-bottom: 1px solid grey; */
 	padding: 8px;
+	font-size: 16px;
 	text-align: left;
+	background-color: rgba(205, 205, 218, 0.3);
 }
 
 .signUpInput {
@@ -637,8 +656,9 @@ body {
 	border-radius: 7px;
 	font-size: 15px;
 	background-color: #1171bb;
-	color: #dadada;
+	color: white;
 	margin-top: 25px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .signUpButton:hover {
@@ -667,7 +687,7 @@ body {
 .createFieldsDepth {
 	width: 90%;
 	margin-left: 19px;
-	border-radius: 7px;
+	border-radius: 12px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -695,8 +715,9 @@ body {
 	width: 18%;
 	border-radius: 7px;
 	background-color: #1171bb;
-	color: #dadada;
+	color: white;
 	font-size: 14px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .signUpButton:hover {
@@ -706,27 +727,32 @@ body {
 
 /********Edit Profile (ADD NEW INPUTS COMPONENT)************/
 
-.addNewInputs {
-	margin-left: 18px;
+.customAthInputs {
+	height: 5vh;
+	width: 90vw;
+	display: flex;
 }
 
-.addNewInputs button {
+.statNameInput {
+	width: 85%;
+	color: grey;
+	font-size: 20px;
+}
+
+.statValueInput {
+	width: 65%;
+	font-size: 15px;
+}
+
+.addStatsButton {
 	border-radius: 7px;
 	background-color: #1171bb;
-	color: #dadada;
+	color: white;
 	font-weight: bold;
 	font-size: 15px;
 }
 
-.addNewInputs button:hover {
+.addStatsButton:hover {
 	color: #000000;
 	background-color: #dadada;
-}
-
-.customAthInputs input {
-	font-size: 14px;
-}
-
-.customAthInputs span {
-	margin-left: 21px;
 }

@@ -1,9 +1,8 @@
-.teamLogo{
-    width: 30px;
-    height: 30px;
-    position: relative;
+.teamLogo {
+	width: 30px;
+	height: 30px;
+	position: relative;
 }
-
 .messageContainer{
 
     width:100vw;
@@ -22,79 +21,75 @@
 }
 .pinned{
     background-color: rgba(25,111,193,.6);
-
 }
-.input{
+/* .input{
     height: 5vh;
     font-size: 1em;
     width: 100vw;
     border-top: 1px solid rgba(192,192,192,.4);
+} */
+button {
+	height: 3vh;
+	border: 1px solid black;
+	background-color: rgba(192, 192, 192, 0.4);
+	font-family: "Noto Sans", sans-serif;
 }
-button{
-    height: 3vh;
-    border: 1px solid black;
-    background-color: rgba(192,192,192,.4);
-    font-family: 'Noto Sans', sans-serif;
 
-}
 .pin{
     width: 20px;
     height: 20px;
     display: inline-block;
 }
-
 .deleteBulletinMessage{
     float: right;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     width:15px;
-
+  }
+.inputContainer {
+	height: 5vh;
+	font-size: 1em;
+	width: 80%;
 }
-.inputContainer{
-    height: 5vh;
-    font-size: 1em;
-    width: 80%;
+.buttonContainer {
+	margin-top: 6%;
 }
-.buttonContainer{
-    margin-top: 6%;
-
-}
-.spill{
-    word-wrap:break-word;
+.spill {
+	word-wrap: break-word;
 }
 .modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	visibility: hidden;
+	transform: scale(1.1);
+	transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 .modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem 1.5rem;
-    width: 24rem;
-    border-radius: 0.5rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 1rem 1.5rem;
+	width: 24rem;
+	border-radius: 0.5rem;
 }
 .close-button {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
+	float: right;
+	width: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	background-color: lightgray;
 }
 .close-button:hover {
-    background-color: darkgray;
+	background-color: darkgray;
 }
 .show-modal {
     opacity: 1;

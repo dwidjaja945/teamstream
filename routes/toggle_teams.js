@@ -37,7 +37,6 @@ module.exports = ( webserver , dataBase , mysql ) => {
             if(!err) {
                 output.success = true;
                 output.data = data;
-                // output.redirect = '/bulletin_board';
                 req.session.athlete_id = data[0].athlete_id;
                 req.session.team_id = req.body.team_id;
                 console.log("toggle team data: ", data)

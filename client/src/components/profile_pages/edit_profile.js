@@ -111,47 +111,70 @@ class EditProfile extends Component {
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
-					<div>
-						<h1>This is where user creates their profile</h1>
-						<Field
-							name="first_name"
-							label="First Name"
-							type="text"
-							value={first_name}
-							onChange={this.handleInputChange}
-						/>
-						<Field
-							name="last_name"
-							label="Last Name"
-							type="text"
-							value={last_name}
-							onChange={this.handleInputChange}
-						/>
-						<Field name="age" label="Age" type="number" value={age} onChange={this.handleInputChange} />
-						<Field
-							name="height"
-							label="Height"
-							type="text"
-							value={height}
-							onChange={this.handleInputChange}
-						/>
-						<Field
-							name="weight"
-							label="Weight"
-							type="number"
-							value={weight}
-							onChange={this.handleInputChange}
-						/>
-						<Field name="bio" label="Bio" type="text" value={bio} onChange={this.handleInputChange} />
-						{/* <button onClick={this.addNewInput.bind(this)}>Add</button> */}
-						<AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray} />
-						{/* <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange} />
+					<div className="createAth">
+						<h1 className="createAthHeader">Edit Athlete Profile</h1>
+						<div className="createFieldsDepth">
+							<Field
+								className="createFields"
+								name="first_name"
+								label="First Name:"
+								type="text"
+								value={first_name}
+								onChange={this.handleInputChange}
+							/>
+							<Field
+								className="createFields"
+								name="last_name"
+								label="Last Name:"
+								type="text"
+								value={last_name}
+								onChange={this.handleInputChange}
+							/>
+							<Field
+								className="createFields"
+								name="age"
+								label="Age:"
+								type="number"
+								value={age}
+								onChange={this.handleInputChange}
+							/>
+							<Field
+								className="createFields"
+								name="height"
+								label="Height:"
+								type="text"
+								value={height}
+								onChange={this.handleInputChange}
+							/>
+							<Field
+								className="createFields"
+								name="weight"
+								label="Weight:"
+								type="number"
+								value={weight}
+								onChange={this.handleInputChange}
+							/>
+							<Field
+								className="createFields"
+								name="bio"
+								label="Bio:"
+								type="text"
+								value={bio}
+								onChange={this.handleInputChange}
+							/>
+							{/* <button onClick={this.addNewInput.bind(this)}>Add</button> */}
+							<AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray} />
+							{/* <Field name="statInput" type="text" value={statInput} onChange={this.handleInputChange} />
                     <Field name="statValue" type="text" value={statValue} onChange={this.handleInputChange} /> */}
-						<Link to={`/athlete_profile`} className="loginButtons">
+						</div>
+
+						{/* <Link to={`/athlete_profile`} className="loginButtons">
 							<span className="btnLog">Confirm Changes</span>
-						</Link>
+						</Link> */}
 					</div>
-					<button className="btnLog">Submit</button>
+					<div className="createAthleteBtn">
+						<button className="createAthleteBtnSub">Submit</button>
+					</div>
 				</form>
 			</div>
 		);

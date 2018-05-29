@@ -28,7 +28,7 @@ class hamburgerMenu extends Component {
 				<div className="hamburgerBtn">
 					{button}
 					<ul className="hamburgerBullets">
-						<li>
+						<li className="hamburger-li">
 							<Link to="/bulletin_board">Bulletin</Link>
 						</li>
 						<li>

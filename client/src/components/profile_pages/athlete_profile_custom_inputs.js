@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import Field from './profile_fields';
-
+import React, { Component } from "react";
+import Field from "./profile_fields";
 
 export default props => {
+	function renderCustomInputs() {
+		const { customStatsArray } = props;
 
     function renderCustomInputs(){
         const {customStatsArray} = props;
@@ -15,7 +16,7 @@ export default props => {
                 item.stat_value='';
             }
             return(
-                <div key={index}>
+                <div key={index} className="customAthInputs">
                     <Field name={'inputName'} type="text"
                            value={item.stat_name} onChange={(e) => {props.inputChange(e, index)}} />
                     <Field name={'valueName'} type="text"
@@ -27,3 +28,4 @@ export default props => {
     }
     return renderCustomInputs();
 }
+

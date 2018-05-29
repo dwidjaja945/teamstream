@@ -5,6 +5,7 @@
 }
 
 .messageContainer{
+
     width:100vw;
     height: 80vh;
     border: 2px solid black;
@@ -17,10 +18,10 @@
 
 }
 .userMessages{
-    background-color: rgba(192, 192, 192, 0.451) ;
+    background-color: rgba(192, 192, 192, 0.6) ;
 }
 .pinned{
-    background-color: rgba(255,0,0,.4);
+    background-color: rgba(25,111,193,.6);
 
 }
 .input{
@@ -39,7 +40,7 @@ button{
 .pin{
     width: 20px;
     height: 20px;
-    display: inline;
+    display: inline-block;
 }
 
 .deleteBulletinMessage{
@@ -100,4 +101,18 @@ button{
     visibility: visible;
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-header{
+    margin-bottom: 0;
+}
+.modal-body{
+    margin-top: 2%;
+}
+.bulletin-background{
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .3;
+    position: absolute;
+    z-index: -1;
+    margin: 50% 20%;
 }

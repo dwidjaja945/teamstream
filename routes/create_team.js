@@ -131,11 +131,11 @@ module.exports = ( webserver , dataBase , mysql , check) => {
         }
 
         function addAthleteToAthletesTable() {
-            let query = `UPDATE \`athletes\` 
-                SET \`team_id\`= ?
-                WHERE \`athletes\`.\`athlete_info_id\` = ?`;
+            let query = `UPDATE \`athletes\`
+            SET \`team_id\`= ?, \`user_level\`='1'
+            WHERE \`athletes\`.\`athlete_id\` = ?`;
 
-            let inserts = [req.session.team_id, req.session.athlete_info_id];
+            let inserts = [req.session.team_id, req.session.athlete_id];
 
             let mysqlQuery = mysql.format(query, inserts);
 

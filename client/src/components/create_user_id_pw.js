@@ -4,7 +4,7 @@ import Field from "./field_inputs";
 import backArrow from "./images/blue-chevron-left.png";
 import Navbar from "./navbar";
 import hamburgerMenu from "./hamburger_menu";
-import teamStream from "./images/team-stream-type-name.png";
+import teamStream from "./images/asset_4_3x.png";
 import "./styles.css";
 import axios from "axios/index";
 

@@ -18,6 +18,7 @@ class BulletinBoard extends Component {
             teamCodes: [],
             currentTeam_code:null,
             currentTeam_name:null,
+            userLoggedIn: []
         };
 
 
@@ -57,7 +58,8 @@ class BulletinBoard extends Component {
                 const messageArray = this.findPinnedMessage(response.data.data);
                 this.setState({
                     messageArray: messageArray,
-                    teamCodes: response.data.userTeams
+                    teamCodes: response.data.userTeams,
+                    userLoggedIn: response.data.currentUserId
                 });
 
                 if(this.state.currentTeam_code === null){
@@ -136,7 +138,8 @@ class BulletinBoard extends Component {
     }
 
     render() {
-        const { messageArray, teamCodes, currentTeam_code, currentTeam_name } = this.state;
+        debugger;
+        const { messageArray, teamCodes, currentTeam_code, currentTeam_name, userLoggedIn } = this.state;
 
         return (
             <div>
@@ -159,6 +162,7 @@ class BulletinBoard extends Component {
                         pinMessage={this.pinMessage}
                         data={messageArray}
                         deleteBulletinPost={this.deleteMessage}
+                        userId={userLoggedIn}
                     />
 
                 </div>

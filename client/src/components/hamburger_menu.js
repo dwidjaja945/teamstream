@@ -8,26 +8,50 @@ class hamburgerMenu extends Component {
 		super(props);
 
 		this.state = {
-			show: false
+			show: false,
+			display: {
+                display: 'none',
+            },
 		};
 	}
+    closePullOut(e){
+        this.setState({
+            show: false,
+        })
+        setTimeout( ()=> {
+            this.setState({
+                display: {
+                    display: 'none',
+                },
+            })
+        }, 500);
+    }
+
 
 	render() {
 		const { show } = this.state;
+        const pullOutClass = show ? 'hamburgerBulletsAnim' : 'closeHamburgersAnim';
+        const pullOutDiv = show ?
+			<div className="toggleCloseHamburgerDiv" onClick={this.closePullOut.bind(this)}></div> : <span></span>
 
-		const button = (
-			<div className="menuBtn" onClick={() => this.setState({ show: !show })}>
+
+        const button = (
+			<div className="menuBtn" onClick={() => this.setState({
+				show: !show,
+                display: {
+                    display: 'block',
+                },
+			})}>
 				<span className={show ? "menuTop" : ""} />
 				<span className={show ? "menuMiddle" : ""} />
 				<span className={show ? "menuButtom" : ""} />
 			</div>
 		);
 
-		if (show) {
 			return (
 				<div className="hamburgerBtn">
 					{button}
-					<ul className="hamburgerBullets">
+					<ul className={`hamburgerBullets ${pullOutClass}`} style={this.state.display}>
 						<li className="hamburger-li">
 							<Link to="/bulletin_board">Bulletin</Link>
 						</li>
@@ -56,10 +80,10 @@ class hamburgerMenu extends Component {
 							<Link to="/logout">Log Out</Link>
 						</li>
 					</ul>
+					{pullOutDiv}
 				</div>
 			);
-		}
-		return <div>{button}</div>;
+		// return <div>{button}</div>;
 	}
 }
 

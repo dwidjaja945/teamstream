@@ -77,6 +77,14 @@ body {
 	color: #1171bb;
 	cursor: pointer;
 }
+.toggleCloseHamburgerDiv{
+	position: absolute;
+	width: 110vw;
+	height:100vh;
+	z-index: 1;
+	left:-90vw;
+	top:-1vh;
+}
 
 /***********Toggle Menu***************/
 .toggleMenuBtn {
@@ -90,7 +98,7 @@ body {
 	width: 45vw;
 	padding: 0;
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	/*top: 32px;*/
 	/*left: 15px;*/
 	margin:0;
@@ -118,6 +126,13 @@ body {
 
 .toggle-li:hover {
 	cursor: pointer;
+}
+.toggleClosePulloutDiv{
+	position: absolute;
+	width: 110vw;
+	height:100vh;
+	z-index: 1;
+	top:-1vh;
 }
 
 /**************Nav Bar***************/

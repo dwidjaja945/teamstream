@@ -741,6 +741,13 @@ body {
 	font-size: 18px;
 }
 
+.userSignUpContainer > div {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+}
+
 .userSignUpContainer input {
 	padding: 8px;
 	font-size: 16px;

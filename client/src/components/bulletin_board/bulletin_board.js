@@ -28,6 +28,7 @@ class BulletinBoard extends Component {
         this.getDataFromServer();
     }
 
+
     // componentDidMount() {
     // 	this.getDataFromServer();
     // }

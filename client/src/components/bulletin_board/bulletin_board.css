@@ -34,6 +34,9 @@
 .teamNameDisplay{
 	text-align: center;
 }
+.teamNameText{
+	margin:5px;
+}
 
 .messageContainer{
 
@@ -74,7 +77,8 @@
 	width: 80%;
 }
 .buttonContainer {
-	margin-top: 6%;
+	margin-top: 1%;
+	/*text-align: center;*/
 }
 .spill {
 	word-wrap: break-word;

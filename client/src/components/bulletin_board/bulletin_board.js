@@ -140,7 +140,6 @@ class BulletinBoard extends Component {
         return (
             <div>
                 <Navbar
-                    // refreshMessages={this.getDataFromServer}
                     toggleMenu={true}
                     teamCodes={teamCodes}
                     hamburgerMenu={true}

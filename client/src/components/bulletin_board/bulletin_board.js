@@ -16,6 +16,7 @@ class BulletinBoard extends Component {
 			messageArray: [],
 			hasPinned: false,
 			teamCodes: [],
+			userLoggedIn:[]
 		};
 
 
@@ -54,7 +55,8 @@ class BulletinBoard extends Component {
 				const messageArray = this.findPinnedMessage(response.data.data);
 				this.setState({
 					messageArray: messageArray,
-					teamCodes: response.data.userTeams
+					teamCodes: response.data.userTeams,
+					userLoggedIn: response.data.currentUserId
 				});
 			} else {
 				this.props.history.push(response.data.redirect);
@@ -109,7 +111,7 @@ class BulletinBoard extends Component {
 	}
 
 	render() {
-		const { messageArray, teamCodes } = this.state;
+		const { messageArray, teamCodes, userLoggedIn } = this.state;
 		return (
 			<div>
 				<Navbar
@@ -128,6 +130,7 @@ class BulletinBoard extends Component {
 						pinMessage={this.pinMessage}
 						data={messageArray}
 						deleteBulletinPost={this.deleteMessage}
+						userId={userLoggedIn}
 					/>
 
 				</div>

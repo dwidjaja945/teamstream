@@ -30,18 +30,18 @@ class ToggleTeams extends Component {
 	//     });
 	// }
 
-	toggleAxios(id) {
-		const path = "/api/toggle_teams";
-
-		const dataToSend = { team_id: id };
-		axios.post(path, dataToSend).then(response => {
-			console.log("toggleAxios: ", response.data.userTeams);
-			this.props.refreshMessages();
-			this.setState({
-				show: false
-			});
-		});
-	}
+	// toggleAxios(id) {
+	// 	const path = "/api/toggle_teams";
+    //
+	// 	const dataToSend = { team_id: id };
+	// 	axios.post(path, dataToSend).then(response => {
+	// 		console.log("toggleAxios: ", response.data.userTeams);
+	// 		this.props.refreshMessages();
+	// 		this.setState({
+	// 			show: false
+	// 		});
+	// 	});
+	// }
 
 	render() {
 		const { show } = this.state;
@@ -61,7 +61,10 @@ class ToggleTeams extends Component {
 					className="toggle-li"
 					key={index}
 					onClick={() => {
-						this.toggleAxios(code.team_id);
+						this.props.toggleAxios(code.team_id, code.team_name, code.team_code);
+						this.setState({
+                            show: false
+                        })
 					}}
 				>
 					{code.team_name}

@@ -50,7 +50,7 @@ body {
 	z-index: 1;
 	/*top: 28px;*/
 	right: -50%;
-	background-color: #989696;
+	background-color: #E5E8E8;
 	border: 2px solid #dadada;
 	border-radius: 15px 0 0 15px;
 	list-style-type: none;
@@ -59,8 +59,9 @@ body {
 
 .hamburger-li{
 	text-align: center;
-	border: 1px solid black;
+	border: 1px solid #dadada;
 	height: 5vh;
+	line-height: 5vh;
 	font-size: 1.5em;
 	width: 45vw;
 }
@@ -93,7 +94,7 @@ body {
 	/*top: 32px;*/
 	/*left: 15px;*/
 	margin:0;
-	background-color: #989696;
+	background-color: #E5E8E8;
 	border: 2px solid #dadada;
 	color: #1171bb;
 	border-radius: 0 15px 15px 0;
@@ -102,9 +103,11 @@ body {
 
 .toggle-li{
 	text-align: center;
-	border: 1px solid black;
-	height: 5vh;
+	border: 1px solid #dadada;
+	height: 7vh;
+	line-height: 7vh;
 	font-size: 1.5em;
+
 }
 .toggle-li:first-child {
 	border-radius: 0 15px 0 0;
@@ -116,31 +119,6 @@ body {
 .toggle-li:hover {
 	cursor: pointer;
 }
-
-/*.toggleMenuBtn {*/
-	/*height: 100%;*/
-	/*width: 100%;*/
-	/*position: relative;*/
-/*}*/
-
-/*.toggleBullets {*/
-	/*height: 13vh;*/
-	/*width: 45vw;*/
-	/*padding: 35px;*/
-	/*position: absolute;*/
-	/*z-index: 1;*/
-	/*top: 32px;*/
-	/*left: 15px;*/
-	/*background-color: #989696;*/
-	/*border: 2px solid #dadada;*/
-	/*color: #1171bb;*/
-	/*border-radius: 15px;*/
-	/*list-style-type: none;*/
-/*}*/
-
-/*.toggle-li:hover {*/
-	/*cursor: pointer;*/
-/*}*/
 
 /**************Nav Bar***************/
 

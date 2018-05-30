@@ -681,6 +681,9 @@ body {
 	font-size: 22px;
 	padding: 8px;
 	color: grey;
+	width: 80vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 .userNameLine input,

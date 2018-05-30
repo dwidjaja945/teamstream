@@ -35,7 +35,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
         let athlete_info_id_query = `SELECT 
             \`athlete_info\`.\`first_name\`, 
             \`athlete_info\`.\`last_name\`, 
-            \`athlete_info\`.\`img_url\`
+            \`athlete_info\`.\`img_url\`,
             \`bulletin\`.\`athlete_id\`, 
             \`bulletin\`.\`post_id\`,
             \`bulletin\`.\`post_text\`, 

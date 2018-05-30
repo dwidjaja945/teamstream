@@ -76,7 +76,7 @@ class LogIn extends React.Component {
 					<div className="passwordContainer">
 						<div className="passwordLine">
 							<label>Password:</label>
-							<input value={password} onChange={this.handleChange} name="password" type="text" />
+							<input value={password} onChange={this.handleChange} name="password" type="password" />
 						</div>
 					</div>
 					<div className="loginBtnContainer">

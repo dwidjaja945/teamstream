@@ -31,6 +31,10 @@
 	font-family: "Noto Sans", sans-serif;
 }
 
+.teamNameDisplay{
+	text-align: center;
+}
+
 .messageContainer{
 
     width:100vw;

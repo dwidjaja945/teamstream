@@ -1,5 +1,5 @@
 .toggleBullets {
-    animation: pullRight 1s none;
+    animation: pullRight 0.5s none;
 }
 @keyframes pullRight {
     0%   {left: -50vw;}
@@ -7,7 +7,7 @@
 }
 
 .hamburgerBullets {
-    animation: pullLeft 1s none;
+    animation: pullLeft 0.5s none;
 }
 @keyframes pullLeft {
     0%   {right: -50vw;}

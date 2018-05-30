@@ -86,7 +86,7 @@ body {
 
 .toggleBullets {
 	/*height: 13%;*/
-	width: 45vw;
+	width: 52vw;
 	padding: 0;
 	position: absolute;
 	z-index: 1;
@@ -201,7 +201,10 @@ body {
 	background-color: #1171bb;
 	padding: 2px;
 }
+
 /***********Login***************/
+
+/* @media screen and (max-width: ) */
 .loginContainer {
 	height: 100vh;
 	width: 100vw;
@@ -239,7 +242,7 @@ body {
 .loginButtons {
 	height: 14%;
 	width: 24%;
-	margin: 10px;
+	margin: 17px;
 	border-radius: 8px;
 	display: flex;
 	justify-content: center;
@@ -289,7 +292,7 @@ body {
 }
 
 .profilePic {
-	height: 40%;
+	height: 30%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -301,7 +304,7 @@ body {
 }
 
 .profileInfo {
-	height: 40%;
+	height: 50%;
 	display: flex;
 	flex-flow: column wrap;
 }
@@ -350,6 +353,7 @@ body {
 	width: 100%;
 	padding: 10px;
 	font-size: 20px;
+	overflow: auto;
 }
 
 .profileStats {
@@ -377,8 +381,18 @@ body {
 	top: 3px;
 }
 
+.statsContained {
+	height: 85%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+	overflow: auto;
+}
+
 .profileStatsInfo {
-	height: 15%;
+	height: 23%;
 	width: 100%;
 	padding: 10px;
 	font-size: 20px;
@@ -706,7 +720,7 @@ body {
 	color: white;
 	background-color: #1171bb;
 	font-size: 15px;
-	font-weight: bold;
+	/* font-weight: bold; */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -820,7 +834,29 @@ body {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.signUpButton:hover {
+.createAthleteBtnSubmit {
+	height: 20%;
+	width: 18%;
+	border-radius: 7px;
+	background-color: #10a05f;
+	color: white;
+	font-size: 14px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.createAthleteBtnCancel {
+	height: 20%;
+	width: 18%;
+	border-radius: 7px;
+	background-color: #bb113f;
+	color: white;
+	font-size: 14px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.createAthleteBtnSub:hover,
+.createAthleteBtnSubmit:hover,
+.createAthleteBtnCancel:hover {
 	color: #000000;
 	background-color: #dadada;
 }

@@ -9,7 +9,7 @@ class BulletinBoardMessages extends Component {
 		super(props);
 	}
 	deleteBoxDisplay(athlete_id, post_id) {
-
+		debugger;
 		const { userId } = this.props;
 		if (userId === athlete_id) {
 			return (

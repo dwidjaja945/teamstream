@@ -96,13 +96,44 @@ module.exports = ( webserver , dataBase , mysql , check) => {
                     output.data = data;
                     output.team_code = new_team_code;
                     output.redirect = "/bulletin_board";
+                    req.session.team_id = data.insertId;
                     console.log("User created the team: ", team_name);
-                    addCoach(data.insertId);
+
+                    if(req.body.userExists) {
+                        createNewAthleteID();
+                    }else{
+                        addCoach(data.insertId);
+                    }
                 } else {
 
                     output.errors = err;
                 }
             });
+        }
+
+        function createNewAthleteID() {
+            let query = `INSERT INTO \`athletes\` 
+                (\`athlete_info_id\`, \`team_id\`, \`user_level\`)
+                VALUES (?, ?, '1')`;
+
+            let inserts = [req.session.athlete_info_id, req.session.team_id];
+
+            let mysqlQuery = mysql.format(query, inserts);
+
+            dataBase.query( mysqlQuery , (err, data, fields) => {
+                if(!err) {
+                    output.success = true;
+                    output.data = data;
+                    req.session.athlete_id = data.insertId;
+                    output.redirect = '/bulletin_board';
+                    console.log(`created new athleteID ${data.insertId}`)
+                } else {
+                    console.log('create athlete info error', err);
+                    output.errors = err;
+                };
+
+                res.json(output);
+            })
         }
 
         function addCoach(){
@@ -125,8 +156,7 @@ module.exports = ( webserver , dataBase , mysql , check) => {
                     output.success = true;
                     output.data = data;
                     output.redirect = "/bulletin_board";
-                    req.session.team_id = data.insertId;
-                    console.log(`Added athlete: ${req.session.athlete_id} as coach to: ${data.insertId} `);
+                    console.log(`Added athlete: ${req.session.athlete_id} with coach_id: ${data.insertId} `);
                     addAthleteToAthletesTable();
                 } else {
                     output.errors = err;
@@ -145,10 +175,10 @@ module.exports = ( webserver , dataBase , mysql , check) => {
 
             dataBase.query( mysqlQuery , (err, data, fields) => {
                 if(!err) {
-                    console.log(`Added athlete_info_id ${req.session.athlete_info_id} to athlete table with id: ${data.insertId}`);
+                    console.log(`Updated athlete table with athlete_id: ${req.session.athlete_id} with team_id: ${req.session.team_id}`);
                     output.success = true;
                     output.data = data;
-                    output.redirect = '/fork_nav';
+                    // output.redirect = '/fork_nav';
                     console.log('create_team post-session: ', req.session)
                 } else {
                     console.log('create athlete info error', err)

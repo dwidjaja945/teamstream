@@ -824,6 +824,11 @@ body {
 	background-color: #dadada;
 }
 
+.createJoinTeamButtons{
+	text-align: center;
+}
+
+
 /********Edit Profile (ADD NEW INPUTS COMPONENT)************/
 
 .customAthInputs {

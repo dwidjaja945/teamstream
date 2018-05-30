@@ -1,15 +1,31 @@
-.toggleBullets {
+.toggleBulletsAnim {
     animation: pullRight 0.5s none;
 }
 @keyframes pullRight {
     0%   {left: -50vw;}
     100% {left: 0;}
 }
+.closeToggleBulletsAnim{
+    animation: closeToggleBullets 0.5s forwards;
+}
+@keyframes closeToggleBullets {
+    0% {left: 0;}
+    100%   {left: -50vw;}
+}
 
-.hamburgerBullets {
+
+.hamburgerBulletsAnim {
     animation: pullLeft 0.5s none;
 }
 @keyframes pullLeft {
     0%   {right: -50vw;}
     100% {right: -50%;}
+}
+.closeHamburgersAnim{
+    animation: closeHamburger 0.5s forwards;
+}
+@keyframes closeHamburger {
+    0% {right: -50%;}
+    100%   {right: -50vw;}
+
 }

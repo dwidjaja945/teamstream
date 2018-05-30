@@ -6,7 +6,10 @@ class ToggleTeams extends Component {
 		super(props);
 
 		this.state = {
-			show: false
+			show: false,
+            display: {
+                display: 'none',
+            },
 		};
 	}
 
@@ -43,11 +46,34 @@ class ToggleTeams extends Component {
 	// 	});
 	// }
 
+	closePullOut(e){
+        this.setState({
+			show: false,
+        })
+		setTimeout( ()=> {
+			this.setState({
+                display: {
+                    display: 'none',
+                },
+			})
+		}, 500);
+	}
+
 	render() {
 		const { show } = this.state;
 		const { teamCodes } = this.props;
-		const button = (
-			<div className="dropDownBtn" onClick={() => this.setState({ show: !show })}>
+		const pullOutClass = show ? 'toggleBulletsAnim' : 'closeToggleBulletsAnim';
+        const pullOutDiv = show ?
+            <div className="toggleClosePulloutDiv" onClick={this.closePullOut.bind(this)}></div> : <span></span>
+
+
+        const button = (
+			<div className="dropDownBtn" onClick={() => this.setState({
+				show: !show,
+                display: {
+                    display: 'block',
+                },
+			})}>
 				<span className="topLeftArrow" />
 				<span className="topRightArrow" />
 				<span className="bottomLeftArrow" />
@@ -72,15 +98,20 @@ class ToggleTeams extends Component {
 			);
 		});
 
-		if (show) {
+		// if (show) {
 			return (
 				<div className="toggleMenuBtn">
 					{button}
-					<ul className="toggleBullets">{teams}</ul>
+					<ul className={`toggleBullets ${pullOutClass}`} style={this.state.display}>{teams}</ul>
+					{pullOutDiv}
 				</div>
 			);
-		}
-		return button;
+		// }else{
+            // {setTimeout( () => {
+            //     return button;
+            // }, 500)}
+		// }
+		// return button;
 	}
 }
 

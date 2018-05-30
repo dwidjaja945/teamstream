@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+// import dropDownBtn from "./images/chevron_shadow_silver.svg";
+import dropDownBtn from "./images/chevron3.svg";
 
 class ToggleTeams extends Component {
 	constructor(props) {
@@ -7,9 +9,9 @@ class ToggleTeams extends Component {
 
 		this.state = {
 			show: false,
-            display: {
-                display: 'none',
-            },
+			display: {
+				display: "none"
+			}
 		};
 	}
 
@@ -35,7 +37,7 @@ class ToggleTeams extends Component {
 
 	// toggleAxios(id) {
 	// 	const path = "/api/toggle_teams";
-    //
+	//
 	// 	const dataToSend = { team_id: id };
 	// 	axios.post(path, dataToSend).then(response => {
 	// 		console.log("toggleAxios: ", response.data.userTeams);
@@ -46,38 +48,46 @@ class ToggleTeams extends Component {
 	// 	});
 	// }
 
-	closePullOut(e){
-        this.setState({
-			show: false,
-        })
-		setTimeout( ()=> {
+	closePullOut(e) {
+		this.setState({
+			show: false
+		});
+		setTimeout(() => {
 			this.setState({
-                display: {
-                    display: 'none',
-                },
-			})
+				display: {
+					display: "none"
+				}
+			});
 		}, 500);
 	}
 
 	render() {
 		const { show } = this.state;
 		const { teamCodes } = this.props;
-		const pullOutClass = show ? 'toggleBulletsAnim' : 'closeToggleBulletsAnim';
-        const pullOutDiv = show ?
-            <div className="toggleClosePulloutDiv" onClick={this.closePullOut.bind(this)}></div> : <span></span>
+		const pullOutClass = show ? "toggleBulletsAnim" : "closeToggleBulletsAnim";
+		const pullOutDiv = show ? (
+			<div className="toggleClosePulloutDiv" onClick={this.closePullOut.bind(this)} />
+		) : (
+			<span />
+		);
 
-
-        const button = (
-			<div className="dropDownBtn" onClick={() => this.setState({
-				show: !show,
-                display: {
-                    display: 'block',
-                },
-			})}>
-				<span className="topLeftArrow" />
+		const button = (
+			<div
+				className="dropDownBtn"
+				onClick={() =>
+					this.setState({
+						show: !show,
+						display: {
+							display: "block"
+						}
+					})
+				}
+			>
+				<img src={dropDownBtn} />
+				{/* <span className="topLeftArrow" />
 				<span className="topRightArrow" />
 				<span className="bottomLeftArrow" />
-				<span className="bottomRightArrow" />
+				<span className="bottomRightArrow" /> */}
 			</div>
 		);
 
@@ -89,8 +99,8 @@ class ToggleTeams extends Component {
 					onClick={() => {
 						this.props.toggleAxios(code.team_id, code.team_name, code.team_code);
 						this.setState({
-                            show: false
-                        })
+							show: false
+						});
 					}}
 				>
 					{code.team_name}
@@ -99,17 +109,19 @@ class ToggleTeams extends Component {
 		});
 
 		// if (show) {
-			return (
-				<div className="toggleMenuBtn">
-					{button}
-					<ul className={`toggleBullets ${pullOutClass}`} style={this.state.display}>{teams}</ul>
-					{pullOutDiv}
-				</div>
-			);
+		return (
+			<div className="toggleMenuBtn">
+				{button}
+				<ul className={`toggleBullets ${pullOutClass}`} style={this.state.display}>
+					{teams}
+				</ul>
+				{pullOutDiv}
+			</div>
+		);
 		// }else{
-            // {setTimeout( () => {
-            //     return button;
-            // }, 500)}
+		// {setTimeout( () => {
+		//     return button;
+		// }, 500)}
 		// }
 		// return button;
 	}

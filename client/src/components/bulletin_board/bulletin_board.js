@@ -138,7 +138,6 @@ class BulletinBoard extends Component {
     }
 
     render() {
-        debugger;
         const { messageArray, teamCodes, currentTeam_code, currentTeam_name, userLoggedIn } = this.state;
 
         return (

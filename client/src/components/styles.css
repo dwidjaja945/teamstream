@@ -47,7 +47,7 @@ body {
 	margin: 0;
 	padding: 0;
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	/*top: 28px;*/
 	right: -50%;
 	background-color: #e5e8e8;
@@ -57,6 +57,7 @@ body {
 }
 
 .hamburger-li {
+	z-index: 3;
 	text-align: center;
 	border: 1px solid #dadada;
 	height: 5vh;
@@ -93,11 +94,11 @@ body {
 }
 
 .toggleBullets {
+	z-index: 2;
 	/*height: 13%;*/
 	width: 52vw;
 	padding: 0;
 	position: absolute;
-	z-index: 2;
 	/*top: 32px;*/
 	/*left: 15px;*/
 	margin: 0;
@@ -109,6 +110,7 @@ body {
 }
 
 .toggle-li {
+	z-index: 3;
 	text-align: center;
 	border: 1px solid #dadada;
 	height: 7vh;

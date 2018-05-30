@@ -1,3 +1,4 @@
+const slashes = require('slashes');
 module.exports = (webserver, dataBase, mysql) => {
     /**
      * Takes:
@@ -46,8 +47,9 @@ module.exports = (webserver, dataBase, mysql) => {
         let query = `
             SELECT team_id
             FROM teams
-            WHERE team_code = ?
-        `;
+            WHERE team_code = ?`;
+
+        team_code = slashes.add(team_code);
 
         let inserts = [team_code];
 

@@ -35,6 +35,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
         let athlete_info_id_query = `SELECT 
             \`athlete_info\`.\`first_name\`, 
             \`athlete_info\`.\`last_name\`, 
+            \`athlete_info\`.\`img_url\`
             \`bulletin\`.\`athlete_id\`, 
             \`bulletin\`.\`post_id\`,
             \`bulletin\`.\`post_text\`, 
@@ -116,6 +117,11 @@ module.exports = function ( webserver , dataBase , mysql ) {
             }
             if (req.body.post_text) {
                 var post_text = req.body.post_text;
+            } else {
+                output.errors = "No text in post";
+                res.json(output);
+                res.end();
+                return;
             }
             if (req.session.team_id) {
                 var team_id = req.session.team_id;

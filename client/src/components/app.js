@@ -15,6 +15,7 @@ import AddAthlete from "./profile_pages/add_athlete";
 import EditAthlete from "./profile_pages/edit_profile";
 import Logout from './log_in/logout';
 import TeammateProfile from './profile_pages/teammate_profile';
+import './animations.css';
 
 class App extends Component {
 	constructor(props) {

@@ -43,16 +43,32 @@ body {
 }
 
 .hamburgerBullets {
-	width: 40vw;
-	padding: 30px;
+	/*width: 40vw;*/
+	margin: 0;
+	padding: 0;
 	position: absolute;
 	z-index: 1;
-	top: 28px;
-	right: 0px;
-	background-color: #989696;
+	/*top: 28px;*/
+	right: -50%;
+	background-color: #e5e8e8;
 	border: 2px solid #dadada;
-	border-radius: 15px;
+	border-radius: 15px 0 0 15px;
 	list-style-type: none;
+}
+
+.hamburger-li {
+	text-align: center;
+	border: 1px solid #dadada;
+	height: 5vh;
+	line-height: 5vh;
+	font-size: 1.5em;
+	width: 45vw;
+}
+.hamburger-li:first-child {
+	border-radius: 15px 0 0 0;
+}
+.hamburger-li:last-child {
+	border-radius: 0 0 0 15px;
 }
 
 .hamburger-li a {
@@ -69,18 +85,33 @@ body {
 }
 
 .toggleBullets {
-	height: 13vh;
+	/*height: 13%;*/
 	width: 45vw;
-	padding: 35px;
+	padding: 0;
 	position: absolute;
 	z-index: 1;
-	top: 32px;
-	left: 15px;
-	background-color: #989696;
+	/*top: 32px;*/
+	/*left: 15px;*/
+	margin: 0;
+	background-color: #e5e8e8;
 	border: 2px solid #dadada;
 	color: #1171bb;
-	border-radius: 15px;
+	border-radius: 0 15px 15px 0;
 	list-style-type: none;
+}
+
+.toggle-li {
+	text-align: center;
+	border: 1px solid #dadada;
+	height: 7vh;
+	line-height: 7vh;
+	font-size: 1.5em;
+}
+.toggle-li:first-child {
+	border-radius: 0 15px 0 0;
+}
+.toggle-li:last-child {
+	border-radius: 0 0 15px 0;
 }
 
 .toggle-li:hover {
@@ -115,10 +146,9 @@ body {
 	height: 100%;
 	width: 100%;
 	text-align: center;
-}
-
-.dropDownBtn img {
-	height: 95%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .mainTsLogo {
@@ -140,6 +170,36 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+/***********Drop Down Arrow**************/
+
+.topLeftArrow {
+	height: 50%;
+	transform: rotate(120deg) translate(-1px, 7px);
+	background-color: #1171bb;
+	padding: 2px;
+}
+
+.topRightArrow {
+	height: 50%;
+	transform: rotate(-120deg) translate(1px, 7px);
+	background-color: #1171bb;
+	padding: 2px;
+}
+
+.bottomLeftArrow {
+	height: 50%;
+	transform: rotate(120deg) translate(11px, 10px);
+	background-color: #1171bb;
+	padding: 2px;
+}
+
+.bottomRightArrow {
+	height: 50%;
+	transform: rotate(-120deg) translate(-3px, -4px);
+	background-color: #1171bb;
+	padding: 2px;
 }
 /***********Login***************/
 .loginContainer {
@@ -619,6 +679,9 @@ body {
 	font-size: 22px;
 	padding: 8px;
 	color: grey;
+	width: 80vw;
+	display: flex;
+	justify-content: space-between;
 }
 
 .userNameLine input,
@@ -760,6 +823,10 @@ body {
 .signUpButton:hover {
 	color: #000000;
 	background-color: #dadada;
+}
+
+.createJoinTeamButtons {
+	text-align: center;
 }
 
 /********Edit Profile (ADD NEW INPUTS COMPONENT)************/

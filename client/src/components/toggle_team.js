@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import dropDown from "./images/double-down.png";
 
 class ToggleTeams extends Component {
 	constructor(props) {
@@ -31,25 +30,28 @@ class ToggleTeams extends Component {
 	//     });
 	// }
 
-	toggleAxios(id) {
-		const path = "/api/toggle_teams";
-
-		const dataToSend = { team_id: id };
-		axios.post(path, dataToSend).then(response => {
-			console.log("toggleAxios: ", response.data.userTeams);
-			this.props.refreshMessages();
-			this.setState({
-				show: false
-			});
-		});
-	}
+	// toggleAxios(id) {
+	// 	const path = "/api/toggle_teams";
+    //
+	// 	const dataToSend = { team_id: id };
+	// 	axios.post(path, dataToSend).then(response => {
+	// 		console.log("toggleAxios: ", response.data.userTeams);
+	// 		this.props.refreshMessages();
+	// 		this.setState({
+	// 			show: false
+	// 		});
+	// 	});
+	// }
 
 	render() {
 		const { show } = this.state;
 		const { teamCodes } = this.props;
 		const button = (
 			<div className="dropDownBtn" onClick={() => this.setState({ show: !show })}>
-				<img src={dropDown} />
+				<span className="topLeftArrow" />
+				<span className="topRightArrow" />
+				<span className="bottomLeftArrow" />
+				<span className="bottomRightArrow" />
 			</div>
 		);
 
@@ -59,7 +61,10 @@ class ToggleTeams extends Component {
 					className="toggle-li"
 					key={index}
 					onClick={() => {
-						this.toggleAxios(code.team_id);
+						this.props.toggleAxios(code.team_id, code.team_name, code.team_code);
+						this.setState({
+                            show: false
+                        })
 					}}
 				>
 					{code.team_name}

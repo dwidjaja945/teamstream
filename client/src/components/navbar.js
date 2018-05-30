@@ -15,7 +15,7 @@ class NavBar extends Component {
 			<div className="mainNavBar">
 				<div className="mainBtn">
 					{this.props.toggleMenu ? (
-						<ToggleMenu teamCodes={this.props.teamCodes} refreshMessages={this.props.refreshMessages} />
+						<ToggleMenu teamCodes={this.props.teamCodes} toggleAxios={this.props.toggleAxios} />
 					) : (
 						<Link to={this.props.url}>
 							<img className="mainBtnImg" src={this.props.icon} />

@@ -13,37 +13,24 @@ const style = {
 class CreateTeam extends Component {
 	constructor(props) {
 		super(props);
+		let userExists = false;
+		if(typeof props.location.state !== 'undefined'){
+            userExists = true;
+        }
 		this.state = {
 			team_name: "ROWMASTERS",
 			sport_name: "Rowing",
 			team_bio: "A bunch of cool people doing awesome rowing",
 			generatedCode: "",
-			errorHandle: ""
+			errorHandle: "",
+			userExists:userExists,
 		};
 	}
-	// codeGenerator() {
-	// 	let newCode = "";
-	//
-	// 	for (let i = 0; i < 6; i++) {
-	// 		let codeChoice = Math.floor(Math.random() * 2 + 1);
-	// 		let code;
-	//
-	// 		if (codeChoice === 1) {
-	// 			let randomLetters = Math.floor(Math.random() * 26 + 65);
-	//
-	// 			code = String.fromCharCode(randomLetters);
-	// 		} else {
-	// 			code = Math.floor(Math.random() * 9);
-	// 		}
-	// 		newCode += code;
-	// 	}
-	// 	return newCode;
-	// }
 
 	handleSubmit() {
 		//perform axios call to return code, then show login
-		const { team_name, sport_name, team_bio } = this.state;
-		const dataToSend = { team_name, sport_name, team_bio };
+		const { team_name, sport_name, team_bio, userExists } = this.state;
+		const dataToSend = { team_name, sport_name, team_bio, userExists };
 		const path = "/api/create_team";
 		axios.post(`${path}`, dataToSend).then(response => {
 			if (response.data.success) {

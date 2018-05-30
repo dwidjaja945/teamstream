@@ -31,6 +31,14 @@
 	font-family: "Noto Sans", sans-serif;
 }
 
+.teamNameDisplay{
+	text-align: center;
+}
+.teamNameText{
+	margin:5px;
+	font-size: 1.5em;
+}
+
 .messageContainer{
 
     width:100vw;
@@ -70,7 +78,8 @@
 	width: 80%;
 }
 .buttonContainer {
-	margin-top: 6%;
+	margin-top: 1%;
+	/*text-align: center;*/
 }
 .spill {
 	word-wrap: break-word;

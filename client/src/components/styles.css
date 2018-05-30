@@ -50,14 +50,13 @@ body {
 	z-index: 1;
 	/*top: 28px;*/
 	right: -50%;
-	background-color: #E5E8E8;
+	background-color: #e5e8e8;
 	border: 2px solid #dadada;
 	border-radius: 15px 0 0 15px;
 	list-style-type: none;
 }
 
-
-.hamburger-li{
+.hamburger-li {
 	text-align: center;
 	border: 1px solid #dadada;
 	height: 5vh;
@@ -68,7 +67,7 @@ body {
 .hamburger-li:first-child {
 	border-radius: 15px 0 0 0;
 }
-.hamburger-li:last-child{
+.hamburger-li:last-child {
 	border-radius: 0 0 0 15px;
 }
 
@@ -93,26 +92,25 @@ body {
 	z-index: 1;
 	/*top: 32px;*/
 	/*left: 15px;*/
-	margin:0;
-	background-color: #E5E8E8;
+	margin: 0;
+	background-color: #e5e8e8;
 	border: 2px solid #dadada;
 	color: #1171bb;
 	border-radius: 0 15px 15px 0;
 	list-style-type: none;
 }
 
-.toggle-li{
+.toggle-li {
 	text-align: center;
 	border: 1px solid #dadada;
 	height: 7vh;
 	line-height: 7vh;
 	font-size: 1.5em;
-
 }
 .toggle-li:first-child {
 	border-radius: 0 15px 0 0;
 }
-.toggle-li:last-child{
+.toggle-li:last-child {
 	border-radius: 0 0 15px 0;
 }
 
@@ -682,8 +680,8 @@ body {
 	padding: 8px;
 	color: grey;
 	width: 80vw;
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .userNameLine input,
@@ -827,10 +825,9 @@ body {
 	background-color: #dadada;
 }
 
-.createJoinTeamButtons{
+.createJoinTeamButtons {
 	text-align: center;
 }
-
 
 /********Edit Profile (ADD NEW INPUTS COMPONENT)************/
 

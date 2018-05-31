@@ -1,14 +1,14 @@
-html {
-	overflow: hidden;
+html{
+    overflow: hidden;
 }
-body {
-	height: 100vh;
-	width: 100vw;
+body{
+    height: 100vh;
+    width: 100vw;
 }
 .teamLogo {
 	width: 8%;
-	position: relative;
-	left: 2%;
+    position: relative;
+    left: 2%
 }
 
 .pinned {
@@ -16,55 +16,55 @@ body {
 }
 
 .addMessageButton {
-	height: 8vh;
-	position: absolute;
-	color: white;
-	top: 0%;
-	right: 0%;
-	padding: 5.3%;
-	border-radius: 1%;
-	background-color: #1171bb;
+    height: 8vh;
+    position: absolute;
+    color: white;
+    top:0%;
+    right:0%;
+    padding: 5.3%;
+    border-radius: 1%;
+    background-color: #1171bb;
 	border: 1px solid black;
-	font-size: 0.8em;
-	font-family: "Noto Sans", sans-serif;
+    font-size: 0.8em;
+    font-family: "Noto Sans", sans-serif;
 }
 
-.teamNameDisplay {
-	text-align: center;
-	margin: 2.5%;
+.teamNameDisplay{
+    text-align: center;
+    margin: 2.5%;
 }
-.teamNameText {
-	margin: 5px;
+.teamNameText{
+	margin:5px;
 	font-size: 1.5em;
 }
 
-.messageContainer {
-	width: 100vw;
-	height: 82vh;
-	border: 2px solid black;
-	position: relative;
-	overflow: auto;
-	border-bottom: none;
-	border-left: none;
-	border-right: none;
-	border-bottom: rgba(0, 10, 75, 1);
+.messageContainer{
+    width:100vw;
+    height: 88vh;
+    border: 2px solid black;
+    position: relative;
+    overflow: auto;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: rgba(0,10,75,1)
 }
 .userPostHeader {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .athleteInfo {
-	padding-left: 5%;
+    padding-left: 5%;
 }
-.userMessages {
-	/* background-color: rgba(238, 233, 233) ; */
-	padding: 1%;
-	border-bottom: 1px solid black;
+.userMessages{
+    /* background-color: rgba(238, 233, 233) ; */
+    padding: 1%;
+    border-bottom: 1px solid black;
 	border-style: double;
 }
-.pinned {
-	background-color: rgba(25, 111, 193, 0.6);
+.pinned{
+    background-color: rgba(25,111,193,.6);
 }
 .pin {
 	width: 20px;
@@ -85,25 +85,26 @@ body {
 	font-size: 1em;
 	width: 90%;
 }
-.sendMessageForm {
-	width: 100%;
-	height: 8%;
-	position: fixed;
-	bottom: 0%;
-	border-top: 3px solid black;
-	background-color: #ffff;
+.sendMessageForm{
+
+    width: 100%;
+    height: 8%;
+    position: fixed;
+    bottom: 0%;
+    border-top: 3px solid black;
+    background-color: #ffff;
 }
 .addMessageInput {
-	overflow: auto;
+    overflow: auto;
 	height: 8vh;
 	font-size: 0.9em;
 	width: 90%;
 	border-top: 1px solid rgba(192, 192, 192, 0.4);
 }
 .buttonContainer {
-	margin-top: 1%;
-	float: right;
-	margin-bottom: 0%;
+    margin-top: 1%;
+    float: right;
+    margin-bottom: 0%;
 }
 .spill {
 	word-wrap: break-word;
@@ -143,23 +144,24 @@ body {
 	background-color: darkgray;
 }
 .show-modal {
-	opacity: 1;
+    opacity: 1;
 	z-index: 5;
-	visibility: visible;
-	transform: scale(1);
-	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
-.modal-header {
-	margin-bottom: 0;
+.modal-header{
+    margin-bottom: 0;
 }
-.modal-body {
-	margin-top: 2%;
+.modal-body{
+    margin-top: 2%;
 }
-.bulletin-background {
-	background-repeat: no-repeat;
-	background-position: center;
-	opacity: 0.06;
-	position: absolute;
-	z-index: -1;
-	margin: 50% 20%;
+.bulletin-background{
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .06;
+    position: absolute;
+    z-index: -1;
+    margin: 50% 20%;
 }
+

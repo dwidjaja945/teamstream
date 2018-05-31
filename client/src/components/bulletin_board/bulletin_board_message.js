@@ -4,6 +4,7 @@ import teamLogo from "../images/team-logo.png";
 import axios from "axios";
 import Pin from './pin';
 
+
 class BulletinBoardMessages extends Component {
 	constructor(props) {
 		super(props);
@@ -17,6 +18,7 @@ class BulletinBoardMessages extends Component {
 			)
 		}
 	}
+
 	generateMessages() {
 		const {hasPinned}=this.props;
 		const bulletinMessages = this.props.data.map((item, index) => {

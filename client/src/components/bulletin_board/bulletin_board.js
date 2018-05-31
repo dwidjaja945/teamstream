@@ -7,6 +7,8 @@ import dropDown from "../images/double-down.png";
 import axios from "axios";
 import hamburgerMenu from "../hamburger_menu";
 import teamLogo from '../images/team-stream-logo.png';
+import Loader from '../screen_loader/screen_loader';
+
 
 class BulletinBoard extends Component {
     constructor(props) {
@@ -18,7 +20,8 @@ class BulletinBoard extends Component {
             teamCodes: [],
             currentTeam_code:null,
             currentTeam_name:null,
-            userLoggedIn: []
+            userLoggedIn: [],
+            showLoader: true
         };
 
 
@@ -54,13 +57,19 @@ class BulletinBoard extends Component {
         path = "/api/bulletin_board";
         axios.get(path).then(response => {
             console.log("BB GET response: ", response);
+
+
             if (response.data.success) {
                 const messageArray = this.findPinnedMessage(response.data.data);
+                this.setState({
+                    showLoader:false
+                })
                 this.setState({
                     messageArray: messageArray,
                     teamCodes: response.data.userTeams,
                     userLoggedIn: response.data.currentUserId
                 });
+                
 
                 if(this.state.currentTeam_code === null){
                     this.setState({
@@ -70,6 +79,7 @@ class BulletinBoard extends Component {
                 }
 
             } else {
+
                 this.props.history.push(response.data.redirect);
             }
         });
@@ -144,10 +154,15 @@ class BulletinBoard extends Component {
         });
     }
 
-    render() {
-        const { messageArray, teamCodes, currentTeam_code, currentTeam_name, userLoggedIn, hasPinned } = this.state;
 
+    render() {
+        const { messageArray, teamCodes, currentTeam_code, currentTeam_name, userLoggedIn, hasPinned, showLoader} = this.state;
+        console.log("this is the loader props: ", this.props.showLoader);
+        if(showLoader){
+            return <Loader/>
+        }
         return (
+
             <div>
                 <Navbar
                     toggleMenu={true}

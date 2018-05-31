@@ -5,6 +5,7 @@ import backArrow from "./images/blue-chevron-left.png";
 import Navbar from "./navbar";
 import hamburgerMenu from "./hamburger_menu";
 import Field from "./field_inputs";
+import teamStreamLogo from './images/team_stream_logo3x.png';
 
 class JoinTeam extends Component {
 	constructor(props) {
@@ -17,7 +18,9 @@ class JoinTeam extends Component {
 	}
 
 	handleInputChange(event) {
-		const { value, name } = event.target;
+		const { name } = event.target;
+		let { value} = event.target;
+		value = value.toUpperCase();
 
 		this.setState({
 			[name]: value
@@ -81,6 +84,7 @@ class JoinTeam extends Component {
 					</div>
 					<form className="jTcodeNum" onSubmit={this.handleSubmit.bind(this)}>
 						<Field
+							maxLength={6}
 							name="code"
 							type="text"
 							value={code}

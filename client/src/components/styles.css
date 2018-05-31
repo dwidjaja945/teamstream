@@ -654,8 +654,10 @@ body {
 }
 
 .jTteamCode {
-	height: 9%;
-	width: 62%;
+	height: 11%;
+	width: 78%;
+	position: relative;
+	top: 10%;
 	border-radius: 5px;
 	background-color: #1171bb;
 	display: flex;
@@ -671,7 +673,7 @@ body {
 }
 
 .jTcodeNum {
-	height: 30%;
+	height: 60%;
 	width: 60%;
 	display: flex;
 	justify-content: center;
@@ -682,6 +684,9 @@ body {
 
 .codeNum {
 	border: 2px solid grey;
+	height: 20%;
+	font-size: 1.5em;
+	text-transform: uppercase;
 	border-radius: 5px;
 	text-align: center;
 	margin: 15px;
@@ -690,8 +695,8 @@ body {
 }
 
 .jTcodeBtn {
-	height: 17%;
-	width: 38%;
+	height: 19%;
+	width: 46%;
 	background-color: #1171bb;
 	color: white;
 	border-radius: 7px;
@@ -845,6 +850,7 @@ body {
 }
 
 /********Create & Edit Profile**********/
+
 .createAth {
 	height: 70vh;
 	width: 100vw;
@@ -946,6 +952,10 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.joinTeamLogo{
+	width: 100px;
+	height: 100px;
 }
 
 @media only screen and (max-width: 375px) {

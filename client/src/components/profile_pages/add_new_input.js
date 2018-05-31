@@ -46,7 +46,7 @@ class AddNewInput extends Component {
 	render() {
 		const { customStatsArray } = this.props;
 		return (
-			<div>
+			<div className="statsBox">
 				<CustomInputs
 					addNewInput={this.props.addNewInput}
 					inputChange={this.handleInputChange}

@@ -31,7 +31,7 @@ class EditProfile extends Component {
 		let path = "/api/athlete_profile";
 		axios.get(`${path}`).then(response => {
 			if (response.data.success) {
-				console.log("data for athlete profile server response: ", response);
+				// console.log("data for athlete profile server response: ", response);
 
 				const users = response.data.user;
 				const userStatsArray = [];
@@ -54,7 +54,7 @@ class EditProfile extends Component {
 				this.initialNumberOfStats = response.data.user.length;
 			} else {
 				//ERROR
-				console.log(response.data.errors);
+				// console.log(response.data.errors);
 				this.props.history.push(response.data.redirect);
 			}
 		});
@@ -84,14 +84,14 @@ class EditProfile extends Component {
 
 		const path = "/api/edit_athlete_stats";
 		axios.post(path, this.state).then(response => {
-			console.log("Updating profile response: ", response);
+			// console.log("Updating profile response: ", response);
 
 			if (response.data.success) {
-				console.log("data for update-profile info response: ", response);
+				// console.log("data for update-profile info response: ", response);
 				// updateExistingStats();
 			} else {
 				//ERROR
-				console.log(response.data.errors);
+				// console.log(response.data.errors);
 			}
 		});
 
@@ -100,7 +100,7 @@ class EditProfile extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log("This is the handleSubmit: ", this.state);
+		// console.log("This is the handleSubmit: ", this.state);
 
 		this.submitAthleteInput();
 	}
@@ -122,7 +122,7 @@ class EditProfile extends Component {
 
 	render() {
 		const { first_name, last_name, age, height, bio, img_url, weight, customStatsArray } = this.state;
-		console.log("edit profile current state: ", this.state);
+		// console.log("edit profile current state: ", this.state);
 
 		return (
 			<div>

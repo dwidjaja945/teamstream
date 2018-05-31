@@ -25,7 +25,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
             let update_athlete_stats_inserts = [];
 
-            console.log('the request body: ', req.body)
+            // console.log('the request body: ', req.body)
 
             // Inserting all potential stat entries into sql query
             for (let statIndex = 0; statIndex < req.body.customStatsArray.length; statIndex++) {
@@ -163,13 +163,13 @@ module.exports = ( webserver , dataBase , mysql ) => {
             output.success = true;
             output.data = data;
             output.redirect = '/athlete_profile';
-            console.log('handleSuccess output: ' , output);
+            // console.log('handleSuccess output: ' , output);
             res.json(output);
         };
 
         function handleError(errors , output ) {
             output.errors = errors;
-            console.log("handleError output: ", output);
+            // console.log("handleError output: ", output);
             res.json(output);
         }
         Promise.all([updateAthleteInfo( req , res , output ), updateAthleteStats( req , res , output )]).then( data => { handleSuccess(data, output) } ).catch( errors => { handleError(errors, output) } );

@@ -68,7 +68,7 @@ class UserIdPw extends Component {
 		const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]+|[A-Z]+)(?=.*\d)[a-zA-Z\d](?=.*?[#?!@$%^&*-]).{6,32}$/;
 
 		if (password === passwordCheck && passwordValidation.test(password)) {
-			console.log("passwords match and password validated!");
+			// console.log("passwords match and password validated!");
 			return true;
 		} else {
 			//throw error about passwords
@@ -82,7 +82,7 @@ class UserIdPw extends Component {
 		const emailValidification = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 		if (emailValidification.test(email)) {
-			console.log("email validated!");
+			// console.log("email validated!");
 			return true;
 		} else {
 			return false;

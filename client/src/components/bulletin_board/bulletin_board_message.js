@@ -26,7 +26,7 @@ class BulletinBoardMessages extends Component {
 			const pinnedClass = pinned > 0 ? 'pinned' : '';
 			var time = new Date(timestamp).toLocaleTimeString();
 			var date = new Date(timestamp).toLocaleDateString();
-			console.log("This is the props in bulletin: ", this.props);
+			// console.log("This is the props in bulletin: ", this.props);
 
 			return (
 				<div className={`userMessages spill ${pinnedClass}`} key={index} >

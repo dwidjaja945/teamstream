@@ -38,7 +38,7 @@ class BulletinBoard extends Component {
     // }
 
     axiosToTeammateProfile(athlete_id, team_id) {
-        console.log("this.props : ", this.props);
+        // console.log("this.props : ", this.props);
         const path = "/api/teammate_profile";
         const dataToSend = {athlete_id: athlete_id, team_id : team_id};
         axios.post(path, dataToSend).then(resp => {
@@ -56,7 +56,7 @@ class BulletinBoard extends Component {
     getDataFromServer(path) {
         path = "/api/bulletin_board";
         axios.get(path).then(response => {
-            console.log("BB GET response: ", response);
+            // console.log("BB GET response: ", response);
 
 
             if (response.data.success) {
@@ -110,8 +110,8 @@ class BulletinBoard extends Component {
         };
 
         axios.post(path, dataToSend).then(resp => {
-            console.log("BB POST response: ", resp);
-            console.log("BB Message insert ID: ", resp.data.data.insertId);
+            // console.log("BB POST response: ", resp);
+            // console.log("BB Message insert ID: ", resp.data.data.insertId);
 
             this.getDataFromServer();
         });
@@ -121,7 +121,7 @@ class BulletinBoard extends Component {
         const path = pin_level > 0 ? "/api/unpin" : "/api/pinned";
 
         axios.post(path, { post_id }).then(resp => {
-            console.log("BB pinned post response: ", resp);
+            // console.log("BB pinned post response: ", resp);
 
             this.getDataFromServer();
         });
@@ -131,7 +131,7 @@ class BulletinBoard extends Component {
 
         const path = "/api/bulletin_board";
         axios.delete(path, { params: { post_id } }).then(resp => {
-            console.log("BB message to delete: ", resp);
+            // console.log("BB message to delete: ", resp);
             if (resp.data.success) {
                 this.getDataFromServer();
             }
@@ -144,7 +144,7 @@ class BulletinBoard extends Component {
         const dataToSend = { team_id: id };
         axios.post(path, dataToSend).then(response => {
             if(response.data.success) {
-                console.log("toggleAxios: ", response.data.userTeams);
+                // console.log("toggleAxios: ", response.data.userTeams);
                 this.getDataFromServer();
                 this.setState({
                     currentTeam_code:code,
@@ -157,7 +157,7 @@ class BulletinBoard extends Component {
 
     render() {
         const { messageArray, teamCodes, currentTeam_code, currentTeam_name, userLoggedIn, hasPinned, showLoader} = this.state;
-        console.log("this is the loader props: ", this.props.showLoader);
+        // console.log("this is the loader props: ", this.props.showLoader);
         if(showLoader){
             return <Loader/>
         }

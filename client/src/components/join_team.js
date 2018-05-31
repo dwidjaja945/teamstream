@@ -32,7 +32,7 @@ class JoinTeam extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log("Join team state: ", this.state);
+		// console.log("Join team state: ", this.state);
 		// this.addCodeInput(this.state);
 		this.joinTeamAxios();
 		// this.reset();
@@ -54,8 +54,8 @@ class JoinTeam extends Component {
 		if (teamCodeValidation.test(team_code)) {
 			axios.post(`${path}`, dataToSend).then(response => {
 				if (response.data.success) {
-					console.log("Join Team Axios: ", response);
-					console.log("join team response.data: ", response.data);
+					// console.log("Join Team Axios: ", response);
+					// console.log("join team response.data: ", response.data);
 
 					this.props.history.push(response.data.redirect);
 					// this.props.history.push("/login");

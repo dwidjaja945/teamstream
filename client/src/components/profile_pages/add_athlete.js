@@ -21,17 +21,17 @@ class AddAthlete extends Component{
         const path = '/api/create_athlete_info';
         axios.post(path, input).then(response => {
             if(response.data.success) {
-                console.log("add athlete response from server: ", response);
+                // console.log("add athlete response from server: ", response);
                 this.props.history.push(response.data.redirect);
             }else{
-                console.log(response.data.error)
+                // console.log(response.data.error)
                 this.props.history.push(response.data.redirect);
             }
         });
 
     }
     render(){
-        console.log('add_Athlete state: ',this.state);
+        // console.log('add_Athlete state: ',this.state);
         return(
             <div>
                 <CreateProfile addAthlete={this.addAthleteInput}/>

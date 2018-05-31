@@ -39,7 +39,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
                 // check to see if a stat_id has been provided or not.
                 if (isNaN(stat_id)) {
-                    stat_id = 'null';
+                    stat_id = 'NULL';
                 };
                 update_athlete_stats_inserts.push(stat_id, stat_name, stat_value, athlete_id);
             };

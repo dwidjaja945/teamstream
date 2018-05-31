@@ -53,7 +53,7 @@ class hamburgerMenu extends Component {
 					{button}
 					<ul className={`hamburgerBullets ${pullOutClass}`} style={this.state.display}>
 						<li className="hamburger-li">
-							<Link to="/bulletin_board">Bulletin</Link>
+							<Link to="/bulletin_board" onClick={this.closePullOut.bind(this)}>Bulletin</Link>
 						</li>
 						<li className="hamburger-li">
 							<Link to="/roster">Roster</Link>

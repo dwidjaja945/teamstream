@@ -872,6 +872,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-flow: row wrap;
 }
 
 .createAth label {
@@ -883,9 +884,6 @@ body {
 .createFields {
 	margin: 8px;
 	font-size: 15px;
-}
-
-.createFields {
 	background-color: #dadada47;
 }
 

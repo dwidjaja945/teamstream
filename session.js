@@ -5,7 +5,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
     // ==== Already Logged In? ====
     // ============================
     webserver.get( '/api/' , ( req , res ) => {
-        console.log("checking if user already logged in...");
+        // console.log("checking if user already logged in...");
         const output = {
             redirect : '',
             success: false,
@@ -13,7 +13,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         };
 
         if( req.session.user_id !== undefined ) {
-            console.log("User is already logged in")
+            // console.log("User is already logged in")
             output.redirect = '/bulletin_board';
             output.success=true;
             res.json(output);
@@ -28,7 +28,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
     // ==== Logging In ====
     // ====================
     webserver.post("/api/login", (req, res) => {
-        console.log("starting log-in process")
+        // console.log("starting log-in process")
         const output = {
             success: false,
             data: [],
@@ -44,7 +44,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         const validationErrors = req.validationErrors();
 
         if( validationErrors ) {
-            console.log('login error');
+            // console.log('login error');
             output.redirect = '/login';
             output.errors = 'invalid login credentials';
             res.json(output);
@@ -67,7 +67,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             password = slashes.add(req.body.password);
         }
 
-        console.log('email and pass', email, password)
+        // console.log('email and pass', email, password)
         // Pull email data to compare to password
 
         let query = `SELECT users.password
@@ -81,7 +81,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         dataBase.query(mysqlQuery, (err, data, fields) => {
             if (!err) {
                 encrypt.compare(password, data[0].password, (err, compareResponse) => {
-                    console.log("comparing password...")
+                    // console.log("comparing password...")
                     password = data[0].password;
                     let query = `SELECT 
                         users.user_id, 
@@ -119,7 +119,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                             // providing data if user logged in
                             output.success = true;
                             output.data = data;
-                            console.log(data);
+                            // console.log(data);
                             output.redirect = "/bulletin_board";
 
                             req.session.user_id = data[0].user_id;
@@ -127,7 +127,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                             req.session.team_code = data[0].team_code;
                             req.session.athlete_id = data[0].athlete_id;
                             req.session.athlete_info_id = data[0].athlete_info_id;
-                            console.log("User Logged in and session data has been stored")
+                            // console.log("User Logged in and session data has been stored")
                             // send back json data about path they should go to (bulletinboard) => browser history
                             res.json(output);
                         } else {

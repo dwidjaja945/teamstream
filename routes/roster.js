@@ -26,7 +26,7 @@ module.exports = function (webserver, dataBase, mysql) {
         else{
             teamID = req.session.team_id;
         }
-        console.log('roster team id: ', teamID);
+        // console.log('roster team id: ', teamID);
 
         let inserts = [teamID];
 

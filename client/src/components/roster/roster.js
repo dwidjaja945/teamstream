@@ -23,7 +23,7 @@ class Roster extends Component {
 		let path = "/api/roster";
 		axios.get(path).then(resp => {
 			if(resp.data.success) {
-                console.log("Roster Response: ", resp);
+                // console.log("Roster Response: ", resp);
 
 				this.setState({
 					showLoader: false
@@ -50,7 +50,7 @@ class Roster extends Component {
         axios.post(path, dataToSend).then(resp => {
 
             if(resp.data.success) {
-                console.log("Roster Viewing teammate profile: ", resp);
+                // console.log("Roster Viewing teammate profile: ", resp);
 
                 //Combine all stats into one array
 				const customStatsArray = [];
@@ -63,7 +63,7 @@ class Roster extends Component {
                 this.props.history.push('/teammate_profile', resp.data.user[0]);
 
             }else{
-                console.log("Display team Error: ", resp.data.error)
+                // console.log("Display team Error: ", resp.data.error)
                 this.props.history.push(resp.data.redirect);
             }
         });
@@ -71,7 +71,7 @@ class Roster extends Component {
 
 	render() {
 		const { teamData, showLoader } = this.state;
-		console.log("Team roster data: ", this.state);
+		// console.log("Team roster data: ", this.state);
 		if(showLoader){
 			return <Loader/>
 		}

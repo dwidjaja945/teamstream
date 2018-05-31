@@ -50,7 +50,7 @@ module.exports = function (webserver, dataBase, mysql) {
         let inserts = [athlete_id];
 
         let sqlQuery = mysql.format(query, inserts);
-        console.log('current athlete id', athlete_id)
+        // console.log('current athlete id', athlete_id)
 
         dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {
@@ -62,7 +62,7 @@ module.exports = function (webserver, dataBase, mysql) {
                     }
                 }
                 output.user = data;
-                console.log("retrieved athlete info with athlete_id of: ",athlete_id)
+                // console.log("retrieved athlete info with athlete_id of: ",athlete_id)
             } else {
                 output.errors = error;
             }
@@ -122,7 +122,7 @@ module.exports = function (webserver, dataBase, mysql) {
             output.thisAthlete=true;
         }
 
-        console.log(`pulling teammate info with id: ${athlete_id} from team: ${teammate_team_id}`);
+        // console.log(`pulling teammate info with id: ${athlete_id} from team: ${teammate_team_id}`);
 
         let query = "SELECT `ai`.`first_name`, `ai`.`last_name`, `ai`.`height`, `ai`.`weight`, `ai`.`img_url`, " +
             "`ai`.`age`, `ai`.`bio`, `s`.`stat_name`, `s`.`stat_value`, `s`.`stat_id` " +
@@ -135,7 +135,7 @@ module.exports = function (webserver, dataBase, mysql) {
         let inserts = [ athlete_id ];
 
         let sqlQuery = mysql.format(query, inserts);
-        console.log('current athlete id', athlete_id)
+        // console.log('current athlete id', athlete_id)
 
         dataBase.query(sqlQuery, function (error, data, fields) {
             if (!error) {
@@ -147,7 +147,7 @@ module.exports = function (webserver, dataBase, mysql) {
                     }
                 };
                 output.user = data;
-                console.log("retrieved athlete info with athlete_id of: ", athlete_id);
+                // console.log("retrieved athlete info with athlete_id of: ", athlete_id);
             } else {
                 output.errors = error;
             };

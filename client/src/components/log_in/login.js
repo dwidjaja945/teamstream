@@ -9,7 +9,7 @@ import axios from "axios/index";
 export default props => {
 	const path = "/api/";
 	axios.get(path).then(response => {
-		console.log("This is the response from checking if the user is logged in: ", response);
+		// console.log("This is the response from checking if the user is logged in: ", response);
 		if (response.data.success) {
 			props.history.push(response.data.redirect);
 		} else {

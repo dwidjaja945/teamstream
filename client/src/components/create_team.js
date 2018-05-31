@@ -34,8 +34,8 @@ class CreateTeam extends Component {
 		const path = "/api/create_team";
 		axios.post(`${path}`, dataToSend).then(response => {
 			if (response.data.success) {
-				console.log("Create team data from server response: ", response);
-				console.log("error message to handle: ", response.data.errors);
+				// console.log("Create team data from server response: ", response);
+				// console.log("error message to handle: ", response.data.errors);
 				this.setState({
 					generatedCode: response.data.team_code
 				});
@@ -73,7 +73,7 @@ class CreateTeam extends Component {
 	}
 
 	render() {
-		console.log("Error Message: ", this.state.errorHandle);
+		// console.log("Error Message: ", this.state.errorHandle);
 		const { team_name, sport_name, team_bio, generatedCode } = this.state;
 
 		const hashCode = generatedCode ? generatedCode : "Generate your code";

@@ -22,7 +22,7 @@ class Bulletin extends Component {
 	}
 	render() {
 		const { message } = this.state;
-		console.log(this.state);
+		// console.log(this.state);
 		return (
 			<form onSubmit={this.handleAddMessage}>
 				<div className="sendMessageForm">

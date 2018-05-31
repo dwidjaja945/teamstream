@@ -25,6 +25,7 @@ export default props => {
 			return (
 				<div key={index} className="customAthInputs">
 					<Field
+						placeholder='Stat Name'
 						className="input statNameInput"
 						name={"inputName"}
 						type="text"
@@ -34,7 +35,8 @@ export default props => {
 						}}
 					/>
 					<Field
-						className="input statValueInput"
+                        placeholder='Stat Value'
+                        className="input statValueInput"
 						name={"valueName"}
 						type="text"
 						addmorebutton={newInput}

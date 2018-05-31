@@ -4,7 +4,7 @@ import axios from "axios";
 import backArrow from "../images/blue-chevron-left.png";
 import Navbar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
-import teamLogo from "../images/team-stream-type-name.png";
+import teamLogo from "../images/asset_4_3x.png";
 import "../styles.css";
 
 class LogIn extends React.Component {
@@ -47,15 +47,15 @@ class LogIn extends React.Component {
 				console.log("data from server response: ", response);
 				console.log("current props at this time: ", this.props);
 
-                //if success, log them in, take them to bulletin board
-                this.props.history.push(response.data.redirect);
-                // this.props.history.push("/edit_profile");
-            } else {
-                //ERROR
-                console.log(response.data.errors);
-            }
-        });
-    }
+				//if success, log them in, take them to bulletin board
+				this.props.history.push(response.data.redirect);
+				// this.props.history.push("/edit_profile");
+			} else {
+				//ERROR
+				console.log(response.data.errors);
+			}
+		});
+	}
 
 	render() {
 		const { email, password } = this.state;

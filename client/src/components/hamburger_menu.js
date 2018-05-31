@@ -13,6 +13,7 @@ class hamburgerMenu extends Component {
                 display: 'none',
             },
 		};
+        this.closePullOut = this.closePullOut.bind(this);
 	}
     closePullOut(e){
         this.setState({
@@ -53,13 +54,13 @@ class hamburgerMenu extends Component {
 					{button}
 					<ul className={`hamburgerBullets ${pullOutClass}`} style={this.state.display}>
 						<li className="hamburger-li">
-							<Link to="/bulletin_board" onClick={this.closePullOut.bind(this)}>Bulletin</Link>
+							<Link to="/bulletin_board" onClick={this.closePullOut}>Bulletin</Link>
 						</li>
 						<li className="hamburger-li">
-							<Link to="/roster">Roster</Link>
+							<Link to="/roster" onClick={this.closePullOut}>Roster</Link>
 						</li>
 						<li className="hamburger-li">
-							<Link to="/athlete_profile">Profile</Link>
+							<Link to="/athlete_profile" onClick={this.closePullOut}>Profile</Link>
 						</li>
 						{/* <li>
 							<Link to="/create_profile">Create Profile</Link>

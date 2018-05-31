@@ -4,6 +4,7 @@ import athleteRosterData from "./athlete_roster_data";
 import homeBtn from "../images/team-stream-logo.png";
 import Navbar from "../navbar";
 import DisplayTeam from "./displayTeam";
+import Loader from '../screen_loader/screen_loader';
 import "./roster.css";
 
 class Roster extends Component {
@@ -11,7 +12,8 @@ class Roster extends Component {
 		super(props);
 
 		this.state = {
-			teamData: []
+			teamData: [],
+			showLoader: true
 		};
 	}
 	componentWillMount() {
@@ -22,6 +24,10 @@ class Roster extends Component {
 		axios.get(path).then(resp => {
 			if(resp.data.success) {
                 console.log("Roster Response: ", resp);
+
+				this.setState({
+					showLoader: false
+				});
 
                 const {athletes} = resp.data;
 
@@ -64,8 +70,11 @@ class Roster extends Component {
     }
 
 	render() {
-		const { teamData } = this.state;
+		const { teamData, showLoader } = this.state;
 		console.log("Team roster data: ", this.state);
+		if(showLoader){
+			return <Loader/>
+		}
 		return (
 			<div className="rosterContainer">
 				<Navbar icon={homeBtn} hamburgerMenu={true} url="/bulletin_board" />

@@ -34,7 +34,7 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
 
             dataBase.query(selectSqlQuery, (error, data, fields) => {
                 // console.log('data: ' , data);
-                if (!data) {
+                if (data.length === 0) {
                     // console.log("User does not exist, continuing");
                     query = `INSERT INTO users (user_id, email, password, 
 					google_id, facebook_id, status) VALUES (NULL, ?, ?, '', '', 'active')`;

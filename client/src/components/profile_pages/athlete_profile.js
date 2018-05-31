@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
 import homeBtn from "../images/team-stream-logo.png";
-
+import Loader from '../screen_loader/screen_loader';
 import axios from "axios/index";
 import ProfileStats from "./profile_stats_display";
 
@@ -21,7 +21,8 @@ class AthleteProfile extends Component {
 			img_url: "",
 			height: "",
 			weight: "",
-			customStatsArray: []
+			customStatsArray: [],
+			showLoader: true
 		};
 
 		this.pullAthleteProfileData();
@@ -32,7 +33,9 @@ class AthleteProfile extends Component {
 		axios.get(`${path}`).then(response => {
 			if (response.data.success) {
 				console.log("data for athlete profile server response: ", response);
-
+				this.setState({
+					showLoader: false
+				})
 				const users = response.data.user;
 				const userStatsArray = [];
 				for (let userIndex = 0; userIndex < users.length; userIndex++) {
@@ -48,7 +51,7 @@ class AthleteProfile extends Component {
 					img_url: response.data.user[0].img_url,
 					height: response.data.user[0].height,
 					weight: response.data.user[0].weight,
-					customStatsArray: userStatsArray
+					customStatsArray: userStatsArray,
 				});
 			} else {
 				//ERROR
@@ -59,7 +62,7 @@ class AthleteProfile extends Component {
 	}
 
 	render() {
-		const { first_name, last_name, weight, height, age, bio, img_url, customStatsArray } = this.state;
+		const { first_name, last_name, weight, height, age, bio, img_url, customStatsArray, showLoader } = this.state;
 
 		return (
 			<div className="profileContainer">

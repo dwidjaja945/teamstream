@@ -27,9 +27,11 @@ class BulletinBoardMessages extends Component {
 
 			return (
 				<div className={`userMessages spill ${pinnedClass}`} key={index} >
-					<img className="teamLogo" src={img_url} alt="" />
-					<span onClick={() => { this.props.toTeammateProfile(athlete_id, team_id) }} className='athleteInfo'>{first_name} {last_name} {time} {date} </span>
+					<div className='userPostHeader'>
+						<img className="teamLogo" src={img_url} alt="" />
+						<span onClick={() => { this.props.toTeammateProfile(athlete_id, team_id) }} className='athleteInfo'>{first_name} {last_name} {time} {date} </span>
 					<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} />
+					</div>
 					{/* <div className="deleteBulletinMessage"
 						 onClick= {()=>{this.props.deleteBulletinPost(post_id);}}>x</div> */}
 						 {this.deleteBoxDisplay(athlete_id, post_id)}

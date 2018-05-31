@@ -37,7 +37,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
         }
 
         if(req.body) {
-            var { first_name , last_name , age , weight , height, img_url, bio } = req.body;
+            var { first_name , last_name , age , weight , height, url, bio } = req.body;
         }
 
         let user_id = req.session.user_id;
@@ -54,7 +54,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
         \`user_id\`) 
         VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-        let inserts = [first_name, last_name, height, weight, img_url, age, bio, user_id];
+        let inserts = [first_name, last_name, height, weight, url, age, bio, user_id];
 
         // adding slashes for all the inputs
         for( let i = 0 ; i < inserts.length ; i++ ) {

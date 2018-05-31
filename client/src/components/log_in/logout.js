@@ -5,11 +5,11 @@ import axios from "axios/index";
 export default props => {
 
     function logout(){
-        console.log('clicked loggout');
+        // console.log('clicked loggout');
 
         const path = '/api/logout';
         axios.get(path).then( (response) => {
-            console.log('This is the response from logging out: ', response);
+            // console.log('This is the response from logging out: ', response);
 
             if(response.data.success){
                 //data was properly sent to server.

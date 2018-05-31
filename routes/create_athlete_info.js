@@ -71,15 +71,15 @@ module.exports = function ( webserver , dataBase , mysql ) {
                 req.session.athlete_info_id = data.insertId;
                 addAthleteToAthletesTable();
             } else {
-                console.log('create athlete info error', err)
+                // console.log('create athlete info error', err)
                 output.errors = err;
             }
         });
 
         function addAthleteToAthletesTable() {
             let query = `INSERT INTO \`athletes\` 
-                (\`athlete_info_id\`)
-                VALUES (?)`;
+                (\`athlete_info_id\` , \`team_id\`)
+                VALUES (? , NULL)`;
 
             let inserts = [req.session.athlete_info_id];
 
@@ -87,14 +87,14 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
             dataBase.query( mysqlQuery , (err, data, fields) => {
                 if(!err) {
-                    console.log(`Added athlete_info_id ${req.session.athlete_info_id} to athlete table with id: ${data.insertId}`);
+                    // console.log(`Added athlete_info_id ${req.session.athlete_info_id} to athlete table with id: ${data.insertId}`);
                     output.success = true;
                     output.data = data;
                     req.session.athlete_id = data.insertId;
                     output.redirect = '/fork_nav';
-                    console.log('create_athlete_info post-session: ', req.session)
+                    // console.log('create_athlete_info post-session: ', req.session)
                 } else {
-                    console.log('create athlete info error', err);
+                    // console.log('create athlete info error', err);
                     output.errors = err;
                 };
 

@@ -22,7 +22,7 @@ module.exports = (webserver, dataBase, mysql) => {
 
         let user_id;
         if (req.session.user_id === undefined) {
-            console.log('undefined user... Kicking')
+            // console.log('undefined user... Kicking')
             output.redirect = "/login_page";
             output.errors = "User not logged in";
             res.json(output);
@@ -36,8 +36,8 @@ module.exports = (webserver, dataBase, mysql) => {
 
         let athlete_info_id = req.session.athlete_info_id;
 
-        console.log("Join team body team code", team_code);
-        console.log("Join team athlete info id", athlete_info_id);
+        // console.log("Join team body team code", team_code);
+        // console.log("Join team athlete info id", athlete_info_id);
 
         // =================================================
         // ==== select team_id via team_code from teams ====
@@ -58,7 +58,7 @@ module.exports = (webserver, dataBase, mysql) => {
         dataBase.query(mysqlQuery, (err, data, fields) => {
             let team_id;
 
-            console.log("join team 1st query data: ", data);
+            // console.log("join team 1st query data: ", data);
 
             if(data.length === 0) {
                 output.errors = 'team code does not exist';
@@ -69,7 +69,7 @@ module.exports = (webserver, dataBase, mysql) => {
             }
 
             if (!err) {
-            	console.log(`Found Team ${data[0].team_id}`)
+            	// console.log(`Found Team ${data[0].team_id}`)
                 output.success = true;
                 output.data = data;
                 req.session.team_id=data[0].team_id;
@@ -98,7 +98,7 @@ module.exports = (webserver, dataBase, mysql) => {
 
                 dataBase.query(mysqlQuery, (err, data, fields) => {
                     if (!err) {
-                    	console.log(`Created Athlete: ${data.insertId} in team ${teamId}`)
+                    	// console.log(`Created Athlete: ${data.insertId} in team ${teamId}`)
                         req.session.athlete_id = data.insertId;  
                         output.success = true;
                         output.data = data;

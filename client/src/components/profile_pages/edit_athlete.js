@@ -54,7 +54,7 @@ class EditAthlete extends Component{
     //     });
     // }
     render(){
-        console.log('EditAthlete state: ',this.state);
+        // console.log('EditAthlete state: ',this.state);
         return(
             <div>
                 <EditProfile addAthlete={this.addAthleteInput}/>

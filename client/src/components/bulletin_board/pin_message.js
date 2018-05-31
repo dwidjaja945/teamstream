@@ -5,7 +5,7 @@ import pinIcon from '../images/pin-icon.png';
 export default props =>{
     const timeStamp = new Date().toLocaleTimeString();
 
-    console.log("this is props from bulletinBoardMessage Component: ", props);
+    // console.log("this is props from bulletinBoardMessage Component: ", props);
     const pinnedMessage = props.pin.map((item, index)=>{
         return(
             <div className="pinned userMessages" key={index}>

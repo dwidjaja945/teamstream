@@ -25,7 +25,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
             let update_athlete_stats_inserts = [];
 
-            console.log('the request body: ', req.body)
+            // console.log('the request body: ', req.body)
 
             // Inserting all potential stat entries into sql query
             for (let statIndex = 0; statIndex < req.body.customStatsArray.length; statIndex++) {
@@ -39,7 +39,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
                 // check to see if a stat_id has been provided or not.
                 if (isNaN(stat_id)) {
-                    stat_id = 'null';
+                    stat_id = null;
                 };
                 update_athlete_stats_inserts.push(stat_id, stat_name, stat_value, athlete_id);
             };
@@ -144,7 +144,6 @@ module.exports = ( webserver , dataBase , mysql ) => {
      *   insertId
      */
     webserver.post( '/api/edit_athlete_stats' , ( req , res ) => {
-        // console.log("edit athlete stats body: ", req.body)
         const output = {
             success: false,
             data: [],
@@ -164,13 +163,13 @@ module.exports = ( webserver , dataBase , mysql ) => {
             output.success = true;
             output.data = data;
             output.redirect = '/athlete_profile';
-            console.log('handleSuccess output: ' , output);
+            // console.log('handleSuccess output: ' , output);
             res.json(output);
         };
 
         function handleError(errors , output ) {
             output.errors = errors;
-            console.log("handleError output: ", output);
+            // console.log("handleError output: ", output);
             res.json(output);
         }
         Promise.all([updateAthleteInfo( req , res , output ), updateAthleteStats( req , res , output )]).then( data => { handleSuccess(data, output) } ).catch( errors => { handleError(errors, output) } );

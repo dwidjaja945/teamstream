@@ -44,15 +44,15 @@ class LogIn extends React.Component {
 		axios.post(`${path}`, dataToSend).then(response => {
 			//here is where we redirect
 			if (response.data.success) {
-				console.log("data from server response: ", response);
-				console.log("current props at this time: ", this.props);
+				// console.log("data from server response: ", response);
+				// console.log("current props at this time: ", this.props);
 
 				//if success, log them in, take them to bulletin board
 				this.props.history.push(response.data.redirect);
 				// this.props.history.push("/edit_profile");
 			} else {
 				//ERROR
-				console.log(response.data.errors);
+				// console.log(response.data.errors);
 			}
 		});
 	}
@@ -70,7 +70,7 @@ class LogIn extends React.Component {
 					<div className="userNameContainer">
 						<div className="userNameLine">
 							<label>Email:</label>
-							<input value={email} onChange={this.handleChange} name="email" type="text" />
+							<input value={email} onChange={this.handleChange} name="email" type="email" />
 						</div>
 					</div>
 					<div className="passwordContainer">

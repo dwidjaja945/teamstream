@@ -5,7 +5,7 @@ export default props => {
 	const { teamData } = props;
 
 	function getCoach() {
-		console.log("This is dummy data", teamData);
+		// console.log("This is dummy data", teamData);
 		for (var rosterIndex = 0; rosterIndex < teamData.length; rosterIndex++) {
 			if (teamData[rosterIndex].user_level >= 1) {
 				var updatedRoster = teamData.splice(rosterIndex, 1);

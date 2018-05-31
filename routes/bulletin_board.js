@@ -149,19 +149,19 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
         let sqlQuery = mysql.format(query, inserts);
 
-        console.log('sql query', sqlQuery)
+        // console.log('sql query', sqlQuery)
 
         dataBase.query(sqlQuery, function(error, data, fields) {
             if (!error) {
                 output.success = true;
                 output.data = data;
-                console.log(data)
+                // console.log(data)
 
             } else {
                 output.errors = error;
             }
 
-            console.log('BB insert data: ', data);
+            // console.log('BB insert data: ', data);
 
             res.json(output);
 
@@ -203,7 +203,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
         dataBase.query(sqlQuery, (error, data, fields) => {
             if (!error) {
-                console.log("deleting post with ID: ", req.query.post_id)
+                // console.log("deleting post with ID: ", req.query.post_id)
                 output.success = true;
                 output.data = data;
             } else {

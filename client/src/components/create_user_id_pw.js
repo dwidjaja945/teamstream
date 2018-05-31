@@ -64,7 +64,8 @@ class UserIdPw extends Component {
 		//Must have at least one lower -case letter
 		//Must have at least one number
 		//Must start with a letter(lower -case or upper -case)
-		const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]+|[A-Z]+)(?=.*\d)[a-zA-Z\d]{6,32}$/;
+		//Must have at least one special character
+		const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]+|[A-Z]+)(?=.*\d)[a-zA-Z\d](?=.*?[#?!@$%^&*-]).{6,32}$/;
 
 		if (password === passwordCheck && passwordValidation.test(password)) {
 			console.log("passwords match and password validated!");

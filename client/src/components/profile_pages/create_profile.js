@@ -9,7 +9,7 @@ class CreateProfile extends Component {
 		this.state = {
 			first_name: "",
 			last_name: "",
-			url:'',
+			url:'https://komarketing.com/images/2014/08/linkedin-default.png',
 			age: "",
 			height: "",
 			weight: "",

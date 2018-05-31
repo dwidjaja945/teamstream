@@ -6,6 +6,7 @@ import Navbar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
 import teamLogo from "../images/asset_4_3x.png";
 import "../styles.css";
+import ErrorModal from '../error_modal';
 
 class LogIn extends React.Component {
 	constructor(props) {
@@ -17,7 +18,9 @@ class LogIn extends React.Component {
 
 		this.state = {
 			email: email,
-			password: ""
+			password: "",
+            errors:'',
+            onCloseModal:null,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmitForm = this.handleSubmitForm.bind(this);
@@ -47,24 +50,32 @@ class LogIn extends React.Component {
 		axios.post(`${path}`, dataToSend).then(response => {
 			//here is where we redirect
 			if (response.data.success) {
-				// console.log("data from server response: ", response);
-				// console.log("current props at this time: ", this.props);
-
-				//if success, log them in, take them to bulletin board
 				this.props.history.push(response.data.redirect);
-				// this.props.history.push("/edit_profile");
 			} else {
-				//ERROR
-				// console.log(response.data.errors);
+				this.setState({
+					errors: "Email or password are incorrect, please try again",
+				})
+
 			}
 		});
 	}
 
+    closeModal(){
+        this.setState({
+            errors:'',
+        })
+    }
+
 	render() {
-		const { email, password } = this.state;
+		const { email, password, onCloseModal, errors } = this.state;
+        let openModal = false;
+        if(errors){
+            openModal=true;
+        }
 
 		return (
 			<div className="loginInfoContainer">
+                <ErrorModal onCloseModal={onCloseModal} errors={errors} openModal={openModal} closeModal={this.closeModal.bind(this)}/>
 				<Navbar icon={backArrow} hamburgerMenu={false} url="/" />
 				<div className="teamLogoImg">
 					<img className="logoImg" src={teamLogo} />

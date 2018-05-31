@@ -32,8 +32,6 @@ class UserIdPw extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log("this handleSubmit: ", this.state);
-
 		if (this.checkPassword() && this.checkEmail()) {
 			const { email, password } = this.state;
 			const dataToSend = { email, password };
@@ -50,7 +48,7 @@ class UserIdPw extends Component {
 					// this.props.history.push("/add_athlete");
 				} else {
 					//ERROR
-					console.log("Sign-up err: ", response.data.errors);
+					// console.log("Sign-up err: ", response.data.errors);
 				}
 			});
 		}

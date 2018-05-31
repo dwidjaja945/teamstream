@@ -187,14 +187,14 @@ class EditProfile extends Component {
 
 							<AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray} />
 						</div>
-						<div className="createJoinTeamButtons">
+					</div>
+					<div className="createJoinTeamButtons">
 							<button className="createAthleteBtnSub" onClick={this.joinTeam.bind(this)}>
 								Join Team
 							</button>
 							<button className="createAthleteBtnSub" onClick={this.createTeam.bind(this)}>
 								Create Team
 							</button>
-						</div>
 					</div>
 					<div className="createAthleteBtn">
 						<button className="createAthleteBtnSubmit">Submit</button>

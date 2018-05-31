@@ -949,14 +949,48 @@ body {
 }
 
 @media only screen and (max-width: 375px) {
-	.createFields {
-		font-size: 0.8em;
+	.createAth {
+		height: 70vh;
+		width: 100vw;
+	}
+
+	.createAthHeader {
+		padding: 10px;
+	}
+
+	.createFieldsDepth {
+		height: 75%;
+		width: 90%;
+		font-size: 14px;
+	}
+
+	.statsBox {
+		width: 80vw;
+	}
+
+	.createAthleteBtnSub {
+		height: 40%;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.createAthHeader {
+		padding: 2px;
+	}
+
+	.createFieldsDepth {
+		height: 79%;
+		font-size: 12px;
+	}
+
+	.createAthleteBtnSub {
+		height: 42%;
 	}
 }
 
 /********Edit Profile (ADD NEW INPUTS COMPONENT)************/
 .statsBox {
-	height: 15vh;
+	height: 10vh;
 	width: 90vw;
 	overflow: auto;
 }

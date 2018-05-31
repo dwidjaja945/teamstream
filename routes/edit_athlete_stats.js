@@ -144,7 +144,6 @@ module.exports = ( webserver , dataBase , mysql ) => {
      *   insertId
      */
     webserver.post( '/api/edit_athlete_stats' , ( req , res ) => {
-        // console.log("edit athlete stats body: ", req.body)
         const output = {
             success: false,
             data: [],

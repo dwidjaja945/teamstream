@@ -57,6 +57,7 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
                         } else {
                             output.errors = error;
                         }
+                        console.log(output);
                         res.json(output);
                     });
                 } else {

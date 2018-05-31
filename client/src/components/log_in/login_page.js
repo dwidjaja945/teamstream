@@ -10,12 +10,15 @@ import "../styles.css";
 class LogIn extends React.Component {
 	constructor(props) {
 		super(props);
+		let email='';
+		if(typeof props.location.state === 'object'){
+			email=props.location.state.email;
+		}
 
 		this.state = {
-			email: "",
+			email: email,
 			password: ""
 		};
-
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmitForm = this.handleSubmitForm.bind(this);
 	}

@@ -45,7 +45,7 @@ module.exports = (webserver, dataBase, mysql) => {
         // ========== return team_id to front end ==========
         // =================================================
         let query = `
-            SELECT team_id
+            SELECT team_id, team_name
             FROM teams
             WHERE team_code = ?`;
 
@@ -70,9 +70,12 @@ module.exports = (webserver, dataBase, mysql) => {
 
             if (!err) {
             	// console.log(`Found Team ${data[0].team_id}`)
+                console.log('join team data: ', data)
                 output.success = true;
                 output.data = data;
                 req.session.team_id=data[0].team_id;
+                req.session.team_code= team_code;
+                req.session.team_name = data[0].team_name;
                 team_id = data[0].team_id;
                 addAthleteToTable(athlete_info_id, team_id, output);
             } else {

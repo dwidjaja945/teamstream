@@ -11,14 +11,14 @@ import ErrorModal from '../error_modal';
 class LogIn extends React.Component {
 	constructor(props) {
 		super(props);
-		let email='';
+		let email='keith@keith.com';
 		if(typeof props.location.state === 'object'){
 			email=props.location.state.email;
 		}
 
 		this.state = {
 			email: email,
-			password: "",
+			password: "Test123!",
             errors:'',
             onCloseModal:null,
 		};

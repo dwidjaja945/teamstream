@@ -70,7 +70,7 @@ class LogIn extends React.Component {
 					<div className="userNameContainer">
 						<div className="userNameLine">
 							<label>Email:</label>
-							<input value={email} onChange={this.handleChange} name="email" type="text" />
+							<input value={email} onChange={this.handleChange} name="email" type="email" />
 						</div>
 					</div>
 					<div className="passwordContainer">

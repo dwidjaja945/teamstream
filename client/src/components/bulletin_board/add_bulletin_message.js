@@ -31,7 +31,7 @@ class Bulletin extends Component {
 							className="addMessageInput"
 							value={message}
 							type="text"
-							placeholder="Enter Message"
+							placeholder="Enter A Message"
 							onChange={event => {
 								this.setState({ message: event.target.value });
 							}}

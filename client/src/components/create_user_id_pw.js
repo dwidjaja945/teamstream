@@ -32,8 +32,6 @@ class UserIdPw extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log("this handleSubmit: ", this.state);
-
 		if (this.checkPassword() && this.checkEmail()) {
 			const { email, password } = this.state;
 			const dataToSend = { email, password };
@@ -50,7 +48,7 @@ class UserIdPw extends Component {
 					// this.props.history.push("/add_athlete");
 				} else {
 					//ERROR
-					console.log("Sign-up err: ", response.data.errors);
+					// console.log("Sign-up err: ", response.data.errors);
 				}
 			});
 		}
@@ -66,7 +64,8 @@ class UserIdPw extends Component {
 		//Must have at least one lower -case letter
 		//Must have at least one number
 		//Must start with a letter(lower -case or upper -case)
-		const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]+|[A-Z]+)(?=.*\d)[a-zA-Z\d]{6,32}$/;
+		//Must have at least one special character
+		const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]+|[A-Z]+)(?=.*\d)[a-zA-Z\d](?=.*?[#?!@$%^&*-]).{6,32}$/;
 
 		if (password === passwordCheck && passwordValidation.test(password)) {
 			console.log("passwords match and password validated!");

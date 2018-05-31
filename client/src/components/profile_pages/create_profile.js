@@ -43,7 +43,8 @@ class CreateProfile extends Component {
 					<h1 className="createAthHeader">Create Athlete Profile</h1>
 					<div className="createFieldsDepth">
 						<Field
-							className="createFields"
+                            placeholder='First Name'
+                            className="createFields"
 							name="first_name"
 							label="First Name:"
 							type="text"
@@ -51,7 +52,8 @@ class CreateProfile extends Component {
 							onChange={this.handleInputChange}
 						/>
 						<Field
-							className="createFields"
+                            placeholder='Last Name'
+                            className="createFields"
 							name="last_name"
 							label="Last Name:"
 							type="text"
@@ -59,7 +61,8 @@ class CreateProfile extends Component {
 							onChange={this.handleInputChange}
 						/>
 						<Field
-							className="createFields"
+                            placeholder='Age'
+                            className="createFields"
 							name="age"
 							label="Age:"
 							type="number"
@@ -67,7 +70,8 @@ class CreateProfile extends Component {
 							onChange={this.handleInputChange}
 						/>
 						<Field
-							className="createFields"
+                            placeholder='Height'
+                            className="createFields"
 							name="height"
 							label="Height:"
 							type="text"
@@ -75,7 +79,8 @@ class CreateProfile extends Component {
 							onChange={this.handleInputChange}
 						/>
 						<Field
-							className="createFields"
+                            placeholder='Weight'
+                            className="createFields"
 							name="weight"
 							label="Weight:"
 							type="number"
@@ -83,6 +88,7 @@ class CreateProfile extends Component {
 							onChange={this.handleInputChange}
 						/>
                         <Field
+                            placeholder='Image URL'
                             className="createFields"
                             name="url"
                             label="Image Url:"
@@ -91,7 +97,8 @@ class CreateProfile extends Component {
                             onChange={this.handleInputChange}
                         />
 						<Field
-							className="createFields"
+                            placeholder='Your Bio'
+                            className="createFields"
 							name="bio"
 							label="Bio:"
 							type="text"

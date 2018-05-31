@@ -1,6 +1,5 @@
 const express = require('express');
 const mysql = require('mysql');
-const cors = require('cors');
 const session = require("express-session");
 const expressValidator = require("express-validator");
 const cookieParser = require('cookie-parser');
@@ -17,8 +16,6 @@ const bodyParser = require('body-parser');
 webserver.use(bodyParser.urlencoded({ extended: false }));
 webserver.use(bodyParser.json());
 webserver.use(cookieParser());
-
-webserver.use(cors());
 
 webserver.use(express.static(path.join(__dirname, 'client', 'dist')));
 

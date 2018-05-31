@@ -655,7 +655,7 @@ body {
 
 .jTteamCode {
 	height: 11%;
-	width: 78%;
+	width: 72%;
 	position: relative;
 	top: 10%;
 	border-radius: 5px;
@@ -695,8 +695,8 @@ body {
 }
 
 .jTcodeBtn {
-	height: 19%;
-	width: 46%;
+	height: 12%;
+	width: 40%;
 	background-color: #1171bb;
 	color: white;
 	border-radius: 7px;
@@ -849,6 +849,16 @@ body {
 	background-color: #dadada;
 }
 
+@media only screen and (max-width: 375px) {
+	.createLogo {
+		height: 40vh;
+	}
+
+	.userSignUpContainer {
+		height: 45vh;
+	}
+}
+
 /********Create & Edit Profile**********/
 
 .createAth {
@@ -876,6 +886,7 @@ body {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	padding-top: 5%;
 	padding-bottom: 5%;
+	overflow-y: scroll;
 }
 
 .createFieldsDepth > div {
@@ -953,7 +964,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-.joinTeamLogo{
+.joinTeamLogo {
 	width: 100px;
 	height: 100px;
 }
@@ -1002,7 +1013,6 @@ body {
 .statsBox {
 	height: 10vh;
 	width: 90vw;
-	overflow: auto;
 }
 
 .customAthInputs {

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 class Bulletin extends Component {
-	constructor(props) {
-		super(props);
+    constructor(props) {
+        super(props);
 
 
 
@@ -14,9 +14,8 @@ class Bulletin extends Component {
 	handleAddMessage(event) {
 		event.preventDefault();
 
-		this.props.add(this.state.message);
-		debugger;
 
+		this.props.add(this.state.message);
 		this.setState({
 			message: ""
 		});

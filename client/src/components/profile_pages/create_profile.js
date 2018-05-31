@@ -9,6 +9,7 @@ class CreateProfile extends Component {
 		this.state = {
 			first_name: "ketih",
 			last_name: "silman",
+			url:'https://komarketing.com/images/2014/08/linkedin-default.png',
 			age: "56",
 			height: "62",
 			weight: "99",
@@ -31,7 +32,7 @@ class CreateProfile extends Component {
 	}
 
 	render() {
-		const { first_name, last_name, age, height, weight, bio } = this.state;
+		const { first_name, last_name, age, height, weight, bio, url, } = this.state;
 		// const letters = /^[A-Za-z]{2,25}$/;
 		// const numbers = /^[0-9]/g;
 		// const numberLetters = /^[A-Za-z0-9]{2,36}$/;
@@ -81,6 +82,14 @@ class CreateProfile extends Component {
 							value={weight}
 							onChange={this.handleInputChange}
 						/>
+                        <Field
+                            className="createFields"
+                            name="url"
+                            label="Image Url:"
+                            type="text"
+                            value={url}
+                            onChange={this.handleInputChange}
+                        />
 						<Field
 							className="createFields"
 							name="bio"

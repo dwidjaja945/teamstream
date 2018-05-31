@@ -19,7 +19,7 @@ class BulletinBoardMessages extends Component {
 	}
 	generateMessages() {
 		const bulletinMessages = this.props.data.map((item, index) => {
-			const { first_name, last_name, post_text, timestamp, team_name, team_id, pinned, post_id, athlete_id } = item;
+			const { first_name, last_name, post_text, timestamp, team_name, img_url, team_id, pinned, post_id, athlete_id } = item;
 			const pinnedClass = pinned > 0 ? 'pinned' : '';
 			var time = new Date(timestamp).toLocaleTimeString();
 			var date = new Date(timestamp).toLocaleDateString();
@@ -27,7 +27,7 @@ class BulletinBoardMessages extends Component {
 
 			return (
 				<div className={`userMessages spill ${pinnedClass}`} key={index} >
-					<img className="teamLogo" src={teamLogo} alt="" />
+					<img className="teamLogo" src={img_url} alt="" />
 					<span onClick={() => { this.props.toTeammateProfile(athlete_id, team_id) }} className='athleteInfo'>{first_name} {last_name} {time} {date} </span>
 					<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} />
 					{/* <div className="deleteBulletinMessage"

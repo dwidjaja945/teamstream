@@ -44,7 +44,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         const validationErrors = req.validationErrors();
 
         if( validationErrors ) {
-            // console.log('login error');
+            console.log('login error');
             output.redirect = '/login';
             output.errors = 'invalid login credentials';
             res.json(output);
@@ -58,7 +58,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
         let password;
 
         if (req.body.email === "" || req.body.password === "") {
-            output.redirect("/login");
+            output.redirect ="/login";
             res.send("Please provide login credentials");
             res.end();
             return;
@@ -80,10 +80,11 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
 
         dataBase.query(mysqlQuery, (err, data, fields) => {
             if (!err) {
-                encrypt.compare(password, data[0].password, (err, compareResponse) => {
-                    // console.log("comparing password...")
-                    password = data[0].password;
-                    let query = `SELECT 
+                if(data.length > 0){
+                    encrypt.compare(password, data[0].password, (err, compareResponse) => {
+                        // console.log("comparing password...")
+                        password = data[0].password;
+                        let query = `SELECT 
                         users.user_id, 
                         athlete_info.athlete_info_id, 
                         athletes.team_id,
@@ -102,39 +103,43 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                             WHERE email = ? 
                             AND password = ?`;
 
-                    let inserts = [email, password];
+                        let inserts = [email, password];
 
-                    let sqlQuery = mysql.format(query, inserts);
+                        let sqlQuery = mysql.format(query, inserts);
 
-                    dataBase.query(sqlQuery, (error, data, fields) => {
-                        if (!error) {
-                            // tried to go to page without logging in
-                            if (data.length === 0) {
-                                output.redirect = "/login";
-                                output.errors = "Invalid Login Credentials";
+                        dataBase.query(sqlQuery, (error, data, fields) => {
+                            if (!error) {
+                                // tried to go to page without logging in
+                                if (data.length === 0) {
+                                    output.redirect = "/login";
+                                    output.errors = "Invalid Login Credentials";
+                                    res.json(output);
+                                    return;
+                                }
+
+                                // providing data if user logged in
+                                output.success = true;
+                                output.data = data;
+                                // console.log(data);
+                                output.redirect = "/bulletin_board";
+
+                                req.session.user_id = data[0].user_id;
+                                req.session.team_id = data[0].team_id;
+                                req.session.team_code = data[0].team_code;
+                                req.session.athlete_id = data[0].athlete_id;
+                                req.session.athlete_info_id = data[0].athlete_info_id;
+                                // console.log("User Logged in and session data has been stored")
+                                // send back json data about path they should go to (bulletinboard) => browser history
                                 res.json(output);
-                                return;
+                            } else {
+                                output.errors = error;
                             }
-
-                            // providing data if user logged in
-                            output.success = true;
-                            output.data = data;
-                            // console.log(data);
-                            output.redirect = "/bulletin_board";
-
-                            req.session.user_id = data[0].user_id;
-                            req.session.team_id = data[0].team_id;
-                            req.session.team_code = data[0].team_code;
-                            req.session.athlete_id = data[0].athlete_id;
-                            req.session.athlete_info_id = data[0].athlete_info_id;
-                            // console.log("User Logged in and session data has been stored")
-                            // send back json data about path they should go to (bulletinboard) => browser history
-                            res.json(output);
-                        } else {
-                            output.errors = error;
-                        }
+                        });
                     });
-                });
+                }else{
+                    output.redirect = "/login";
+                    res.json(output)
+                }
             }
         });
     });

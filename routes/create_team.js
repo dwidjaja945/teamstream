@@ -97,6 +97,8 @@ module.exports = ( webserver , dataBase , mysql , check) => {
                     output.team_code = new_team_code;
                     output.redirect = "/bulletin_board";
                     req.session.team_id = data.insertId;
+                    req.session.team_code= new_team_code;
+                    req.session.team_name = team_name;
                     // console.log("User created the team: ", team_name);
 
                     if(req.body.userExists) {

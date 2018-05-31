@@ -89,6 +89,9 @@ module.exports = function ( webserver , dataBase , mysql ) {
                         }
                         output.userTeams = data;
                         output.currentUserId=req.session.athlete_id;
+                        console.log('bulliten board session: ',req.session)
+                        output.current_team_code = req.session.team_code;
+                        output.current_team_name = req.session.team_name;
                         output.redirect = '/bulletin_board';
                     } else {
                         output.errors = err;

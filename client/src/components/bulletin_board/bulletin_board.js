@@ -58,7 +58,6 @@ class BulletinBoard extends Component {
         axios.get(path).then(response => {
             // console.log("BB GET response: ", response);
 
-
             if (response.data.success) {
                 const messageArray = this.findPinnedMessage(response.data.data);
                 this.setState({
@@ -69,13 +68,22 @@ class BulletinBoard extends Component {
                     teamCodes: response.data.userTeams,
                     userLoggedIn: response.data.currentUserId
                 });
-                
+
 
                 if(this.state.currentTeam_code === null){
-                    this.setState({
-                        currentTeam_code:response.data.userTeams["0"].team_code,
-                        currentTeam_name:response.data.userTeams["0"].team_name,
-                    });
+                    if(response.data.current_team_name){
+                        if(this.state.currentTeam_code === null){
+                            this.setState({
+                                currentTeam_code:response.data.current_team_code,
+                                currentTeam_name:response.data.current_team_name,
+                            });
+                        }
+                    }else {
+                        this.setState({
+                            currentTeam_code: response.data.userTeams["0"].team_code,
+                            currentTeam_name: response.data.userTeams["0"].team_name,
+                        });
+                    }
                 }
 
             } else {

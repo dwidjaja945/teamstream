@@ -169,7 +169,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
         function handleError(errors , output ) {
             output.errors = errors;
-            // console.log("handleError output: ", output);
+            console.log("handleError output: ", output);
             res.json(output);
         }
         Promise.all([updateAthleteInfo( req , res , output ), updateAthleteStats( req , res , output )]).then( data => { handleSuccess(data, output) } ).catch( errors => { handleError(errors, output) } );

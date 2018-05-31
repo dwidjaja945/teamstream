@@ -78,8 +78,8 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
         function addAthleteToAthletesTable() {
             let query = `INSERT INTO \`athletes\` 
-                (\`athlete_info_id\`)
-                VALUES (?)`;
+                (\`athlete_info_id\` , \`team_id\`)
+                VALUES (? , NULL)`;
 
             let inserts = [req.session.athlete_info_id];
 

@@ -163,7 +163,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
             output.success = true;
             output.data = data;
             output.redirect = '/athlete_profile';
-            // console.log('handleSuccess output: ' , output);
+            console.log('handleSuccess output: ' , output);
             res.json(output);
         };
 

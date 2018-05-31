@@ -15,8 +15,13 @@ class Pin extends Component {
     }
 
     unpinWarning(pin_level) {
-        console.log("unpin warning method fired!");
-        this.state;
+        const {pinMessage, post_id, hasPinned } = this.props;
+
+        if(!hasPinned){
+            pinMessage(post_id, pin_level);
+            this.removeModal();
+            return;
+        }
 
         if (pin_level >= 0) {
             this.setState({
@@ -26,14 +31,13 @@ class Pin extends Component {
     }
 
     removeModal() {
-        this.state;
         this.setState({
             modalOpen: false
         });
     }
 
     render() {
-        const { pinMessage, pinned, post_id } = this.props;
+        const { pinMessage, pinned, post_id, hasPinned } = this.props;
         const { modalOpen } = this.state;
 
         return (
@@ -44,7 +48,7 @@ class Pin extends Component {
                     <img className="pin" src={pinIcon} alt="" />
 
                 </div>
-                <UnpinModal modalCallBack={this.removeModal}
+                <UnpinModal modalCallBack={this.removeModal} hasPinned={hasPinned}
                     openModal={modalOpen} post_id={post_id}
                     pin_level={pinned} pinMessage={pinMessage} />
             </div>

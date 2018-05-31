@@ -76,10 +76,17 @@ class BulletinBoard extends Component {
     }
 
     findPinnedMessage(dataArray) {
+        this.setState({
+            hasPinned:false,
+        });
+
         for (let arrayIndex = 0; arrayIndex < dataArray.length; arrayIndex++) {
             if (dataArray[arrayIndex].pinned > 0) {
                 const removedItem = dataArray.splice(arrayIndex, 1);
                 dataArray.splice(0, 0, removedItem[0]);
+                this.setState({
+                    hasPinned:true,
+                })
             }
         }
         return dataArray;
@@ -138,7 +145,7 @@ class BulletinBoard extends Component {
     }
 
     render() {
-        const { messageArray, teamCodes, currentTeam_code, currentTeam_name, userLoggedIn } = this.state;
+        const { messageArray, teamCodes, currentTeam_code, currentTeam_name, userLoggedIn, hasPinned } = this.state;
 
         return (
             <div>
@@ -157,6 +164,7 @@ class BulletinBoard extends Component {
                     <img className="bulletin-background" src={teamLogo} alt="" />
 
                     <BulletinBoardMessages
+                        hasPinned={hasPinned}
                         toTeammateProfile={this.axiosToTeammateProfile.bind(this)}
                         pinMessage={this.pinMessage}
                         data={messageArray}

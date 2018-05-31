@@ -18,6 +18,7 @@ class BulletinBoardMessages extends Component {
 		}
 	}
 	generateMessages() {
+		const {hasPinned}=this.props;
 		const bulletinMessages = this.props.data.map((item, index) => {
 			const { first_name, last_name, post_text, timestamp, team_name, img_url, team_id, pinned, post_id, athlete_id } = item;
 			const pinnedClass = pinned > 0 ? 'pinned' : '';
@@ -27,11 +28,9 @@ class BulletinBoardMessages extends Component {
 
 			return (
 				<div className={`userMessages spill ${pinnedClass}`} key={index} >
-					<div className='userPostHeader'>
-						<img className="teamLogo" src={img_url} alt="" />
-						<span onClick={() => { this.props.toTeammateProfile(athlete_id, team_id) }} className='athleteInfo'>{first_name} {last_name} {time} {date} </span>
-					<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} />
-					</div>
+					<img className="teamLogo" src={img_url} alt="" />
+					<span onClick={() => { this.props.toTeammateProfile(athlete_id, team_id) }} className='athleteInfo'>{first_name} {last_name} {time} {date} </span>
+					<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} hasPinned={hasPinned} />
 					{/* <div className="deleteBulletinMessage"
 						 onClick= {()=>{this.props.deleteBulletinPost(post_id);}}>x</div> */}
 						 {this.deleteBoxDisplay(athlete_id, post_id)}

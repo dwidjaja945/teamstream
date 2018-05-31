@@ -1,4 +1,4 @@
 node_modules/
-config/mysqlCredentials.js
-mysqlCredentials.js
+config/mysqlcredentials.js
+mysqlcredentials.js
 .vscode/

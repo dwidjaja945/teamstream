@@ -70,7 +70,6 @@ module.exports = (webserver, dataBase, mysql) => {
 
             if (!err) {
             	// console.log(`Found Team ${data[0].team_id}`)
-                console.log('join team data: ', data)
                 output.success = true;
                 output.data = data;
                 req.session.team_id=data[0].team_id;

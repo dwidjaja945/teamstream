@@ -56,8 +56,9 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
                         res.json(output);
                     });
                 } else {
-                    // console.log("user already exists");
-                    res.send("User already exists");
+                    output.errors = 'User already exists';
+                    output.redirect = '/login_page';
+                    res.json(output);
                 }
             });
         });

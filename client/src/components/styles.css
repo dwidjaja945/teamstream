@@ -969,3 +969,17 @@ body {
 	color: #000000;
 	background-color: #dadada;
 }
+
+
+.error-header{
+	color:red;
+	text-align: center;
+}
+.error-body, .error-cancel{
+	text-align: center;
+}
+.error-cancel{
+	position: relative;
+	left: 50%;
+	transform: translate(-75%, 0);
+}

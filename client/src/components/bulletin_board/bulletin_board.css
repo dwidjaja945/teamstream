@@ -6,9 +6,9 @@ body{
     width: 100vw;
 }
 .teamLogo {
-	width: 30px;
-	height: 30px;
-	position: relative;
+	width: 8%;
+    position: relative;
+    left: 2%
 }
 
 .pinned {
@@ -27,7 +27,6 @@ body{
 	border: 1px solid black;
     font-size: 0.8em;
     font-family: "Noto Sans", sans-serif;
-    
 }
 
 .teamNameDisplay{
@@ -49,7 +48,14 @@ body{
     border-left: none;
     border-right: none;
     border-bottom: rgba(0,10,75,1)
+}
+.userPostHeader {
+    display: flex;
+    align-items: center;
+}
 
+.athleteInfo {
+    padding-left: 5%;
 }
 .userMessages{
     /* background-color: rgba(238, 233, 233) ; */
@@ -89,7 +95,6 @@ body{
     background-color: #ffff;
 }
 .addMessageInput {
-    
     overflow: auto;
 	height: 8vh;
 	font-size: 0.9em;

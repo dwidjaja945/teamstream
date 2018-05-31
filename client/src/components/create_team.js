@@ -18,9 +18,9 @@ class CreateTeam extends Component {
             userExists = true;
         }
 		this.state = {
-			team_name: "ROWMASTERS",
-			sport_name: "Rowing",
-			team_bio: "A bunch of cool people doing awesome rowing",
+			team_name: "",
+			sport_name: "",
+			team_bio: "",
 			generatedCode: "",
 			errorHandle: "",
 			userExists:userExists,

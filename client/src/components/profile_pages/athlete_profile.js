@@ -63,7 +63,9 @@ class AthleteProfile extends Component {
 
 	render() {
 		const { first_name, last_name, weight, height, age, bio, img_url, customStatsArray, showLoader } = this.state;
-
+		if(showLoader){
+			return <Loader/>
+		}
 		return (
 			<div className="profileContainer">
 				<NavBar icon={homeBtn} hamburgerMenu={true} url="/bulletin_board" />

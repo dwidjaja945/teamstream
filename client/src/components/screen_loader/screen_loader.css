@@ -10,8 +10,8 @@
 }
 .loader {
 
-  color: black;
-  opacity: .5;
+  color: #1171bb;
+  opacity: .8;
   font-size: 10px;
   margin: 60% auto;
   position: relative;

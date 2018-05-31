@@ -1,38 +1,38 @@
+html{
+    overflow: hidden;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+}
 .teamLogo {
 	width: 30px;
 	height: 30px;
 	position: relative;
 }
-.messageContainer {
-	width: 100vw;
-	height: 80vh;
-	border: 2px solid black;
-	position: relative;
-	overflow: auto;
-	border-bottom: none;
-	border-left: none;
-	border-right: none;
-	border-bottom: rgba(0, 10, 75, 1);
-}
 
 .pinned {
 	background-color: rgba(25, 111, 193, 0.6);
 }
-.addMessageInput {
-	height: 5vh;
-	font-size: 1em;
-	width: 100vw;
-	border-top: 1px solid rgba(192, 192, 192, 0.4);
-}
+
 .addMessageButton {
-	height: 3vh;
+    height: 8vh;
+    position: absolute;
+    color: white;
+    top:0%;
+    right:0%;
+    padding: 5.3%;
+    border-radius: 1%;
+    background-color: #1171bb;
 	border: 1px solid black;
-	background-color: rgba(192, 192, 192, 0.4);
-	font-family: "Noto Sans", sans-serif;
+    font-size: 0.8em;
+    font-family: "Noto Sans", sans-serif;
+    
 }
 
 .teamNameDisplay{
-	text-align: center;
+    text-align: center;
+    margin: 2.5%;
 }
 .teamNameText{
 	margin:5px;
@@ -40,9 +40,8 @@
 }
 
 .messageContainer{
-
     width:100vw;
-    height: 80vh;
+    height: 88vh;
     border: 2px solid black;
     position: relative;
     overflow: auto;
@@ -73,13 +72,31 @@
 	width: 15px;
 }
 .inputContainer {
-	height: 5vh;
+	height: 8vh;
 	font-size: 1em;
-	width: 80%;
+	width: 90%;
+}
+.sendMessageForm{
+
+    width: 100%;
+    height: 8%;
+    position: fixed;
+    bottom: 0%;
+    border-top: 3px solid black;
+    background-color: #ffff;
+}
+.addMessageInput {
+    
+    overflow: auto;
+	height: 8vh;
+	font-size: 0.9em;
+	width: 90%;
+	border-top: 1px solid rgba(192, 192, 192, 0.4);
 }
 .buttonContainer {
-	margin-top: 1%;
-	/*text-align: center;*/
+    margin-top: 1%;
+    float: right;
+    margin-bottom: 0%;
 }
 .spill {
 	word-wrap: break-word;

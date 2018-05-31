@@ -913,6 +913,7 @@ body {
 .createAthleteBtnSubmit {
 	height: 35%;
 	width: 20%;
+	margin: 4%;
 	border-radius: 7px;
 	background-color: #10a05f;
 	color: white;
@@ -923,6 +924,7 @@ body {
 .createAthleteBtnCancel {
 	height: 35%;
 	width: 20%;
+	margin: 4%;
 	border-radius: 7px;
 	background-color: #bb113f;
 	color: white;

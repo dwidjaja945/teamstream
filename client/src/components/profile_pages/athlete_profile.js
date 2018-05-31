@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../navbar";
 import hamburgerMenu from "../hamburger_menu";
 import homeBtn from "../images/team-stream-logo.png";
-import Loader from '../screen_loader/screen_loader';
+import Loader from "../screen_loader/screen_loader";
 import axios from "axios/index";
 import ProfileStats from "./profile_stats_display";
 
@@ -35,7 +35,7 @@ class AthleteProfile extends Component {
 				console.log("data for athlete profile server response: ", response);
 				this.setState({
 					showLoader: false
-				})
+				});
 				const users = response.data.user;
 				const userStatsArray = [];
 				for (let userIndex = 0; userIndex < users.length; userIndex++) {
@@ -51,7 +51,7 @@ class AthleteProfile extends Component {
 					img_url: response.data.user[0].img_url,
 					height: response.data.user[0].height,
 					weight: response.data.user[0].weight,
-					customStatsArray: userStatsArray,
+					customStatsArray: userStatsArray
 				});
 			} else {
 				//ERROR
@@ -63,8 +63,8 @@ class AthleteProfile extends Component {
 
 	render() {
 		const { first_name, last_name, weight, height, age, bio, img_url, customStatsArray, showLoader } = this.state;
-		if(showLoader){
-			return <Loader/>
+		if (showLoader) {
+			return <Loader />;
 		}
 		return (
 			<div className="profileContainer">
@@ -78,7 +78,7 @@ class AthleteProfile extends Component {
 				<div className="profile profileInfo">
 					<div className="profileName">
 						<span className="athleteName">
-							Name: {first_name} {last_name}
+							{first_name} {last_name}
 						</span>
 					</div>
 					<div className="profileBio">

@@ -7,12 +7,12 @@ class CreateProfile extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			first_name: "ketih",
-			last_name: "silman",
-			url:'https://komarketing.com/images/2014/08/linkedin-default.png',
-			age: "56",
-			height: "62",
-			weight: "99",
+			first_name: "",
+			last_name: "",
+			url:'',
+			age: "",
+			height: "",
+			weight: "",
 			bio: ""
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);

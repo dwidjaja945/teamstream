@@ -131,8 +131,8 @@ class EditProfile extends Component {
 						<h1 className="createAthHeader">Edit Athlete Profile</h1>
 						<div className="createFieldsDepth">
 							<Field
-                                placeholder='First Name'
-                                className="createFields"
+								placeholder="First Name"
+								className="createFields"
 								name="first_name"
 								label="First Name:"
 								type="text"
@@ -140,8 +140,8 @@ class EditProfile extends Component {
 								onChange={this.handleInputChange}
 							/>
 							<Field
-                                placeholder='Last Name'
-                                className="createFields"
+								placeholder="Last Name"
+								className="createFields"
 								name="last_name"
 								label="Last Name:"
 								type="text"
@@ -149,7 +149,7 @@ class EditProfile extends Component {
 								onChange={this.handleInputChange}
 							/>
 							<Field
-                                placeholder='Age'
+								placeholder="Age"
 								className="createFields"
 								name="age"
 								label="Age:"
@@ -158,7 +158,7 @@ class EditProfile extends Component {
 								onChange={this.handleInputChange}
 							/>
 							<Field
-                                placeholder='Height'
+								placeholder="Height"
 								className="createFields"
 								name="height"
 								label="Height:"
@@ -167,7 +167,7 @@ class EditProfile extends Component {
 								onChange={this.handleInputChange}
 							/>
 							<Field
-                                placeholder='Weight'
+								placeholder="Weight"
 								className="createFields"
 								name="weight"
 								label="Weight:"
@@ -176,7 +176,7 @@ class EditProfile extends Component {
 								onChange={this.handleInputChange}
 							/>
 							<Field
-                                placeholder='Your Bio'
+								placeholder="Your Bio"
 								className="createFields"
 								name="bio"
 								label="Bio:"
@@ -184,17 +184,16 @@ class EditProfile extends Component {
 								value={bio}
 								onChange={this.handleInputChange}
 							/>
-
 							<AddNewInputs addNewInput={this.addNewInput} customStatsArray={customStatsArray} />
 						</div>
 					</div>
 					<div className="createJoinTeamButtons">
-							<button className="createAthleteBtnSub" onClick={this.joinTeam.bind(this)}>
-								Join Team
-							</button>
-							<button className="createAthleteBtnSub" onClick={this.createTeam.bind(this)}>
-								Create Team
-							</button>
+						<button className="createAthleteBtnSub" onClick={this.joinTeam.bind(this)}>
+							Join Team
+						</button>
+						<button className="createAthleteBtnSub" onClick={this.createTeam.bind(this)}>
+							Create Team
+						</button>
 					</div>
 					<div className="createAthleteBtn">
 						<button className="createAthleteBtnSubmit">Submit</button>

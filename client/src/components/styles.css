@@ -555,8 +555,8 @@ body {
 	border-radius: 5px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.teamName::placeholder{
-	color:white;
+.teamName::placeholder {
+	color: white;
 }
 
 .createTeamInfo {
@@ -851,7 +851,6 @@ body {
 	display: flex;
 	flex-flow: column wrap;
 	position: relative;
-
 }
 
 .createAthHeader {
@@ -890,7 +889,6 @@ body {
 	margin: 8px;
 	font-size: 1.3em;
 	background-color: #dadada47;
-
 }
 
 .createAthleteBtn {
@@ -899,13 +897,12 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 }
 
 .createAthleteBtnSub {
 	height: 35%;
-    width: 26%;
-    margin: 7%;
+	width: 26%;
+	margin: 7%;
 	border-radius: 7px;
 	background-color: #1171bb;
 	color: white;
@@ -950,12 +947,17 @@ body {
 }
 
 @media only screen and (max-width: 375px) {
-.createFields {
-	font-size: .80em;	
-}
+	.createFields {
+		font-size: 0.8em;
+	}
 }
 
 /********Edit Profile (ADD NEW INPUTS COMPONENT)************/
+.statsBox {
+	height: 15vh;
+	width: 90vw;
+	overflow: auto;
+}
 
 .customAthInputs {
 	height: 5vh;
@@ -987,15 +989,16 @@ body {
 	background-color: #dadada;
 }
 
-
-.error-header{
-	color:red;
+/*************Error handling for sign-up*************/
+.error-header {
+	color: red;
 	text-align: center;
 }
-.error-body, .error-cancel{
+.error-body,
+.error-cancel {
 	text-align: center;
 }
-.error-cancel{
+.error-cancel {
 	position: relative;
 	left: 50%;
 	transform: translate(-75%, 0);

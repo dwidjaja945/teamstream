@@ -33,6 +33,7 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
             let selectSqlQuery = mysql.format(query, inserts);
 
             dataBase.query(selectSqlQuery, (error, data, fields) => {
+                console.log('data: ' , data);
                 if (data.length === 0) {
                     console.log("User does not exist, continuing");
                     console.log('here');

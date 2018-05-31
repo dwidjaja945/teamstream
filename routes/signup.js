@@ -35,15 +35,19 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
             dataBase.query(selectSqlQuery, (error, data, fields) => {
                 if (data.length === 0) {
                     console.log("User does not exist, continuing");
-
+                    console.log('here');
                     query = `INSERT INTO users (user_id, email, password, 
 					google_id, facebook_id, status) VALUES (NULL, ?, ?, '', '', 'active')`;
 
+                    console.log( 'query :  ', query);
                     inserts = [email, password];
 
+                    console.log("inserts :  ", inserts);
                     let sqlQuery = mysql.format(query, inserts);
 
+                    console.log( 'sqlquery: ' , sqlQuery );
                     dataBase.query(sqlQuery, (error, data, fields) => {
+                        console.log('database connection');
                         if (!error) {
                             console.log(`Creating ${email} with userId: ${data.insertId}`);
                             output.success = true;

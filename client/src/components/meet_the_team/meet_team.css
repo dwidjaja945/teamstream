@@ -1,0 +1,41 @@
+.meetTeam{
+    height: 95vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    overflow-y: scroll; 
+}
+
+.teamDev{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5%;
+    border-style: double;
+}
+
+.teamPic {
+    height: 100%;
+}
+.teamBody{
+    margin-left: 5%;
+    margin-bottom: 20%;
+}
+.teamBody h2{
+    text-decoration: underline;
+    margin-bottom: 1%;
+}
+.teamBody h3{
+    color: #1171BB;
+    margin-top: 0;
+}
+.teamBody p{
+    color: red;
+}
+.meetTeam h1{
+    color: goldenrod;
+}

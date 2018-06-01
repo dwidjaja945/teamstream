@@ -62,6 +62,9 @@ class hamburgerMenu extends Component {
 						<li className="hamburger-li">
 							<Link to="/athlete_profile" onClick={this.closePullOut}>Profile</Link>
 						</li>
+						<li className="hamburger-li">
+							<Link to="/meet_the_team" onClick={this.closePullOut}>Meet the Team</Link>
+						</li>
 						{/* <li>
 							<Link to="/create_profile">Create Profile</Link>
 						</li>

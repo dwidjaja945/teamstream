@@ -1,0 +1,64 @@
+.meetTeam{
+    height: 95vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    overflow-y: scroll; 
+
+}
+
+.teamDev{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5%;
+    border-style: double;
+    padding: 2%;
+}
+
+.teamPic {
+    height: 100%;
+}
+.teamBody{
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+.teamBody h3{
+    text-decoration: underline;
+    margin-bottom: 1%;
+}
+.teamBody h4{
+    color: #1171BB;
+    margin-top: 0;
+    margin-bottom: 5%;
+}
+.teamBody p{
+    color: red;
+    margin: 0;
+}
+.meetTeam h1{
+    color: goldenrod;
+}
+.github{
+    width: 50px;
+    height: 50px;
+}
+.teamBody :nth-child(4){
+    color: black;
+    font-style: italic;
+    margin: 0;
+}
+.teamLogo{
+    background-repeat: no-repeat;
+    background-position: center; 
+    opacity: .1;
+    z-index: -1;
+    width: 95%;
+    top: 30%;
+    position: absolute;
+    
+}

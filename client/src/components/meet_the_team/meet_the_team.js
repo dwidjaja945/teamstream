@@ -40,7 +40,7 @@ class MeetTheTeam extends Component {
                 <NavBar icon={homeBtn} hamburgerMenu={true} url="/bulletin_board" />
                 <div className="meetTeam">
                 <h1>Team TeamStream</h1>
-                <img  className="teamLogo" src={teamLogo} alt=""/>
+                <img  className="logoForTeam" src={teamLogo} alt=""/>
                     {team}
                 </div>
             </div>

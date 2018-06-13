@@ -69,16 +69,24 @@ body{
 .pin {
 	width: 20px;
 	height: 20px;
-	display: inline-block;
+    display: inline-block;
 }
 .postText {
 	padding: 0 3% 0 3%;
 }
 .deleteBulletinMessage {
-	float: right;
-	border-bottom: 1px solid black;
-	border-right: 1px solid black;
-	width: 15px;
+    float: right;
+    height: 7%;
+    width: 6%;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #be131a;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 .inputContainer {
 	height: 8vh;
@@ -165,3 +173,37 @@ body{
     margin: 50% 20%;
 }
 
+.dropdownBtn {
+    padding: 10px;
+    font-size: 10px;
+    border: none;
+}
+
+.dropdown {
+    float:right;
+}
+
+.dropdownList {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownContent {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdownList {
+    display: block;
+}
+
+.dropdown:hover .dropdownBtn {
+    background-color: #1d70bc;
+}

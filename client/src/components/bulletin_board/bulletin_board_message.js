@@ -10,6 +10,10 @@ class BulletinBoardMessages extends Component {
 	constructor(props) {
 		super(props);
 
+		this.state={
+			showDropdown: false
+		};
+
 		this.deleteBoxDisplay = this.deleteBoxDisplay.bind(this);
 	}
 	deleteBoxDisplay(athlete_id, post_id) {
@@ -32,7 +36,7 @@ class BulletinBoardMessages extends Component {
 			// console.log("This is the props in bulletin: ", this.props);
 
 			return (
-				<div className={`userMessages spill ${pinnedClass}`} key={index} >
+				<div className={`userMessages ${pinnedClass}`} key={index} >
 					<img className="teamLogo" src={img_url} alt="" />
 					<span onClick={() => { this.props.toTeammateProfile(athlete_id, team_id) }} className='athleteInfo'>{first_name} {last_name} {time} {date} </span>
 						 <DropDownMenu delete={this.deleteBoxDisplay(athlete_id, post_id)} pinDrop={<Pin pinMessage={this.props.pinMessage} post_id={post_id} pinned={pinned} hasPinned={hasPinned} />

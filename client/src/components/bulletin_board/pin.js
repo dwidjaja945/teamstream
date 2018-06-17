@@ -39,6 +39,9 @@ class Pin extends Component {
     render() {
         const { pinMessage, pinned, post_id, hasPinned } = this.props;
         const { modalOpen } = this.state;
+        console.log("PPPPPPPPPPPPPP",pinned);
+        const pinDropDownText = pinned ? 'Un-Pin Message' : "Pin Message";
+
 
         return (
             <div className="pin">
@@ -46,7 +49,8 @@ class Pin extends Component {
                     this.unpinWarning(pinned);
                 }}>
                     {/* <img className="pin" src={pinIcon} alt="" /> */}
-                    Pin Message
+                    {pinDropDownText}
+                    
 
                 </div>
                 <UnpinModal modalCallBack={this.removeModal} hasPinned={hasPinned}

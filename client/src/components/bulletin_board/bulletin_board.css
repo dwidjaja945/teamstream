@@ -1,18 +1,16 @@
 html{
     overflow: hidden;
 }
+
 body{
     height: 100vh;
     width: 100vw;
 }
+
 .teamLogo {
 	width: 8%;
     position: relative;
     left: 2%
-}
-
-.pinned {
-	background-color: rgba(25, 111, 193, 0.6);
 }
 
 .addMessageButton {
@@ -32,23 +30,26 @@ body{
 .teamNameDisplay{
     text-align: center;
     margin: 2.5%;
+    height: 5vh;
 }
+
 .teamNameText{
 	margin:5px;
 	font-size: 1.5em;
 }
 
 .messageContainer{
-    width:100vw;
-    height: 86vh;
+    width:100%;
+    height: 77.5vh;
     border: 2px solid black;
     position: relative;
-    overflow: auto;
+    overflow-y: auto;
     border-bottom: none;
     border-left: none;
     border-right: none;
     border-bottom: rgba(0,10,75,1)
 }
+
 .userPostHeader {
     display: flex;
     align-items: center;
@@ -58,28 +59,19 @@ body{
     padding-left: 5%;
 }
 .userMessages{
-    /* background-color: rgba(238, 233, 233) ; */
-    padding: 1%;
+    padding: 2%;
     border-bottom: 1px solid black;
-	border-style: double;
+    border-style: double;
+    word-wrap: break-word;
+
 }
 .pinned{
     background-color: rgba(25,111,193,.6);
 }
-.pin {
-	width: 20px;
-	height: 20px;
-	display: inline-block;
-}
 .postText {
 	padding: 0 3% 0 3%;
 }
-.deleteBulletinMessage {
-	float: right;
-	border-bottom: 1px solid black;
-	border-right: 1px solid black;
-	width: 15px;
-}
+
 .inputContainer {
 	height: 8vh;
 	font-size: 1em;
@@ -88,7 +80,7 @@ body{
 .sendMessageForm{
 
     width: 100%;
-    height: 8%;
+    height: 8vh;
     position: fixed;
     bottom: 0%;
     border-top: 3px solid black;
@@ -105,9 +97,6 @@ body{
     margin-top: 1%;
     float: right;
     margin-bottom: 0%;
-}
-.spill {
-	word-wrap: break-word;
 }
 .modal {
 	position: fixed;
@@ -131,13 +120,27 @@ body{
 	width: 24rem;
 	border-radius: 0.5rem;
 }
+.modal-content button{
+    padding: 3%;
+    margin: 5%;
+    border: 1px solid black;
+}
+.confirm{
+    background-color: #1d70bc;
+    color: white;
+}
+.cancel{
+    background-color: red;
+    color: white;
+}
 .close-button {
 	float: right;
 	width: 1.5rem;
 	line-height: 1.5rem;
 	text-align: center;
 	cursor: pointer;
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
+    color: white;
 	background-color: lightgray;
 }
 .close-button:hover {
@@ -145,23 +148,62 @@ body{
 }
 .show-modal {
     opacity: 1;
-	z-index: 5;
+	z-index: 1;
     visibility: visible;
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 .modal-header{
     margin-bottom: 0;
+    color: black;
 }
 .modal-body{
     margin-top: 2%;
+    color: black;
 }
 .bulletin-background{
     background-repeat: no-repeat;
     background-position: center;
-    opacity: .06;
+    opacity: .07;
     position: absolute;
     z-index: -1;
     margin: 50% 20%;
+}
+
+.dropdownIcon {
+    width: 10px;
+    height: 15px;
+}
+
+.dropdown {
+    float:right;
+    text-align: center;
+}
+
+.dropdownList {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownContent {
+    color:#1d70bc;
+    border: 1px solid black;
+    background-color: #e5e8e8;
+    padding: 1em;
+    text-decoration: none;
+    display: block;
+
+}
+
+.dropdown:hover .dropdownList {
+    display: block;
+}
+
+.dropdown:hover .dropdownBtn {
+    background-color: #1d70bc;
 }
 

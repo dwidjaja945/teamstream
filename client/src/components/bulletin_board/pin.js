@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import pinIcon from "../images/pin-icon.png";
+import pinIcon from "../images/pin_icon2.png";
 import UnpinModal from "./unpin_modal";
 
 class Pin extends Component {
@@ -39,13 +39,18 @@ class Pin extends Component {
     render() {
         const { pinMessage, pinned, post_id, hasPinned } = this.props;
         const { modalOpen } = this.state;
+        console.log("PPPPPPPPPPPPPP",pinned);
+        const pinDropDownText = pinned ? 'Un-Pin Message' : "Pin Message";
+
 
         return (
             <div className="pin">
                 <div onClick={() => {
                     this.unpinWarning(pinned);
                 }}>
-                    <img className="pin" src={pinIcon} alt="" />
+                    {/* <img className="pin" src={pinIcon} alt="" /> */}
+                    {pinDropDownText}
+                    
 
                 </div>
                 <UnpinModal modalCallBack={this.removeModal} hasPinned={hasPinned}

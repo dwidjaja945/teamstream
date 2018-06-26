@@ -25,11 +25,6 @@ body {
 	transition-duration: 0.5s;
 }
 
-/* .menuBtn span {
-	background-image: linear-gradient(to right, #1171bb, #dadada);
-	background-image: linear-gradient(to right, #dadada, #dadada 15%, #1171bb 15%, #1171bb 85%, #dadada 85%);
-} */
-
 .menuTop {
 	transform: rotate(225deg) translate(-8px, -5px);
 }
@@ -53,7 +48,6 @@ body {
 	padding: 0;
 	position: absolute;
 	z-index: 2;
-	/*top: 28px;*/
 	right: -50%;
 	background-color: #e5e8e8;
 	border: 2px solid #dadada;
@@ -100,12 +94,9 @@ body {
 
 .toggleBullets {
 	z-index: 2;
-	/*height: 13%;*/
 	width: 52vw;
 	padding: 0;
 	position: absolute;
-	/*top: 32px;*/
-	/*left: 15px;*/
 	margin: 0;
 	background-color: #e5e8e8;
 	border: 2px solid #dadada;
@@ -142,6 +133,16 @@ body {
 
 /**************Nav Bar***************/
 
+.mainBtn,
+.dropDownBtn,
+.mainTsLogo,
+.burgerMenuContainer,
+.burgerMenu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .mainNavBar {
 	height: 5vh;
 	width: 100vw;
@@ -154,9 +155,6 @@ body {
 .mainBtn {
 	height: 100%;
 	width: 20%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .mainBtnImg {
@@ -168,9 +166,6 @@ body {
 	height: 100%;
 	width: 100%;
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .dropDownBtn img {
@@ -180,9 +175,6 @@ body {
 .mainTsLogo {
 	height: 100%;
 	width: 60%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .mainNavLogo {
@@ -193,58 +185,31 @@ body {
 .burgerMenu {
 	height: 100%;
 	width: 20%;
+}
+
+/***********Login***************/
+.loginContainer,
+.loginLogoContent,
+.loginButtonContent,
+.loginButtons {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-/***********Drop Down Arrow**************/
-
-/* .topLeftArrow {
-	height: 50%;
-	transform: rotate(120deg) translate(-1px, 7px);
-	background-color: #1171bb;
-	padding: 2px;
+.loginContainer,
+.loginButtonContent {
+	flex-flow: column wrap;
 }
-
-.topRightArrow {
-	height: 50%;
-	transform: rotate(-120deg) translate(1px, 7px);
-	background-color: #1171bb;
-	padding: 2px;
-}
-
-.bottomLeftArrow {
-	height: 50%;
-	transform: rotate(120deg) translate(11px, 10px);
-	background-color: #1171bb;
-	padding: 2px;
-}
-
-.bottomRightArrow {
-	height: 50%;
-	transform: rotate(-120deg) translate(-3px, -4px);
-	background-color: #1171bb;
-	padding: 2px;
-} */
-
-/***********Login***************/
 
 .loginContainer {
 	height: 100vh;
 	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 }
 
 .loginLogoContent {
 	height: 50%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	margin: 0;
 	padding-top: 40%;
 }
@@ -257,10 +222,6 @@ body {
 	height: 50%;
 	width: 100%;
 	margin: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 	padding-bottom: 16%;
 }
 
@@ -269,9 +230,6 @@ body {
 	width: 24%;
 	margin: 17px;
 	border-radius: 8px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	background-color: #1171bb;
 	color: white;
 	text-decoration: none;
@@ -314,12 +272,26 @@ body {
 }
 
 /********User Profile**********/
-.profileContainer {
-	height: 100vh;
-	width: 100vw;
+.profileContainer,
+.profileTitleContent,
+.profilePic,
+.profileName,
+.statsContained {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.profileTitleContent,
+.bioTitleContainer,
+.statsTitleContainer,
+.profileEdit {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profileContainer {
+	height: 100vh;
+	width: 100vw;
 	flex-flow: column wrap;
 }
 
@@ -333,10 +305,6 @@ body {
 	position: relative;
 	background-color: #dadada;
 	border-radius: 5px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profileTitleHeader {
@@ -347,9 +315,6 @@ body {
 
 .profilePic {
 	height: 30%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .athPic {
@@ -366,9 +331,6 @@ body {
 .profileName {
 	height: 10%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	background-color: #1171bb;
 	border-radius: 2px;
 }
@@ -391,7 +353,6 @@ body {
 	background-color: #dadada;
 	border-radius: 5px;
 	position: relative;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profileBioTitle {
@@ -424,7 +385,6 @@ body {
 	background-color: #dadada;
 	border-radius: 5px;
 	position: relative;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profileStatsTitle {
@@ -438,9 +398,6 @@ body {
 .statsContained {
 	height: 72%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-flow: column wrap;
 	overflow: auto;
 }
@@ -468,12 +425,44 @@ body {
 	color: white;
 	transform: translate(-50%, 0);
 	text-decoration: none;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profileEdit:hover {
 	background-color: #dadada;
 	color: #000000;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	.mainBtnImg {
+		height: 27px;
+		padding-top: 5px;
+	}
+
+	.profileTitleHeader {
+		font-size: 35px;
+	}
+
+	.athleteName,
+	.profileBioTitle,
+	.profileStatsTitle {
+		font-size: 1.5em;
+	}
+
+	.profileBioInfo,
+	.profileStatsInfo {
+		font-size: 1em;
+	}
+
+	.hamburger-li,
+	.toggle-li {
+		font-size: 1em;
+	}
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+	.profileContainer {
+		flex-flow: row wrap;
+	}
 }
 
 /**********fork Nav************/
@@ -519,41 +508,58 @@ body {
 }
 
 /***********Create Team***********/
+.createTeamContainer,
+.cTCodeGenerator,
+.createTeamName,
+.createTeamInfo,
+.cGNumberContainer,
+.cGbtnContent {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.createTeamContainer,
+.cTCodeGenerator,
+.createTeamInfo,
+.cGContent {
+	flex-flow: column wrap;
+}
+
+.teamName,
+.cGNumberContainer,
+.cGbtnCode,
+.cGbtnLog {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.teamName,
+.cGbtnCode,
+.cGbtnLog {
+	background-color: #1171bb;
+	color: white;
+}
 
 .createTeamContainer {
 	height: 100vh;
 	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 }
 
 .cTCodeGenerator {
 	height: 95%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 }
 
 .createTeamName {
 	height: 10%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .teamName {
 	font-size: 25px;
 	text-align: center;
 	padding: 15px;
-	background-color: #1171bb;
-	color: white;
 	border-radius: 5px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .teamName::placeholder {
 	color: white;
@@ -562,10 +568,6 @@ body {
 .createTeamInfo {
 	height: 30%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 }
 
 .createTeamInfo textarea {
@@ -576,7 +578,6 @@ body {
 .cGContent {
 	height: 35%;
 	width: 100%;
-	flex-flow: column wrap;
 	display: flex;
 	align-items: center;
 }
@@ -585,42 +586,28 @@ body {
 	height: 15%;
 	width: 40%;
 	border: 2px solid grey;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	margin: 10px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .cGbtnContent {
 	height: 28%;
 	width: 30%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .cGbtnCode {
 	height: 10%;
 	width: 100%;
-	background-color: #1171bb;
-	color: white;
 	border-radius: 7px;
 	padding: 4%;
 	font-size: 15px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .cGbtnLog {
-	/* height: 55%; */
 	height: 65%;
 	width: 70%;
-	background-color: #1171bb;
-	color: white;
 	border-radius: 7px;
 	padding: 10%;
 	font-size: 15px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .cGbtnCode:hover,
@@ -630,14 +617,31 @@ body {
 }
 
 /**********Join Team*************/
+.joinTeamPage,
+.joinTeamContainer,
+.jTteamCode,
+.jTcodeNum,
+.jTcodeBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.jTteamCode,
+.codeNum,
+.jTcodeBtn {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.joinTeamPage,
+.joinTeamContainer,
+.jTcodeNum {
+	flex-flow: column wrap;
+}
 
 .joinTeamPage {
 	height: 100vh;
 	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 }
 
 .navBackArrow {
@@ -647,10 +651,6 @@ body {
 .joinTeamContainer {
 	height: 95%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 }
 
 .jTteamCode {
@@ -660,11 +660,7 @@ body {
 	top: 10%;
 	border-radius: 5px;
 	background-color: #1171bb;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	margin: 30px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .teamCodeTitle {
@@ -675,10 +671,6 @@ body {
 .jTcodeNum {
 	height: 60%;
 	width: 60%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 	margin: 50px;
 }
 
@@ -691,7 +683,6 @@ body {
 	text-align: center;
 	margin: 15px;
 	padding: 10px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .jTcodeBtn {
@@ -700,11 +691,7 @@ body {
 	background-color: #1171bb;
 	color: white;
 	border-radius: 7px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	margin: 50px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .jTcodeBtn:hover {
@@ -717,23 +704,29 @@ body {
 }
 
 /***********login_page***********/
-.loginInfoContainer {
-	height: 100vh;
-	width: 100vw;
+.loginInfoContainer,
+.teamLogoImg,
+.loginForm,
+.loginBtnContainer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.loginInfoContainer,
+.loginForm {
 	flex-flow: column wrap;
+}
+
+.loginInfoContainer {
+	height: 100vh;
+	width: 100vw;
 	margin: 0px;
 }
 
 .teamLogoImg {
 	height: 40%;
 	width: 100%;
-	/* margin: 16px; */
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .logoImg {
@@ -743,11 +736,6 @@ body {
 .loginForm {
 	height: 55%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
-	/* margin-bottom: 154px; */
 }
 
 .userNameLine,
@@ -769,9 +757,6 @@ body {
 
 .loginBtnContainer {
 	height: 55%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .loginBtn {
@@ -782,7 +767,6 @@ body {
 	color: white;
 	background-color: #1171bb;
 	font-size: 15px;
-	/* font-weight: bold; */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -860,6 +844,20 @@ body {
 }
 
 /********Create & Edit Profile**********/
+.createAthleteBtn,
+.createJoinTeamButtons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.createAthHeader,
+.createFieldsDepth,
+.createAthleteBtnSub,
+.createAthleteBtnSubmit,
+.createAthleteBtnCancel {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 .createAth {
 	height: 70vh;
@@ -876,14 +874,12 @@ body {
 	text-align: center;
 	background-color: #ffd200;
 	border-radius: 7px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .createFieldsDepth {
 	width: 90%;
 	margin-left: 19px;
 	border-radius: 12px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	padding-top: 5%;
 	padding-bottom: 5%;
 	overflow-y: scroll;
@@ -911,9 +907,6 @@ body {
 .createAthleteBtn {
 	height: 15vh;
 	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .createAthleteBtnSub {
@@ -924,7 +917,6 @@ body {
 	background-color: #1171bb;
 	color: white;
 	font-size: 14px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .createAthleteBtnSubmit {
@@ -935,7 +927,6 @@ body {
 	background-color: #10a05f;
 	color: white;
 	font-size: 14px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .createAthleteBtnCancel {
@@ -946,7 +937,6 @@ body {
 	background-color: #bb113f;
 	color: white;
 	font-size: 14px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .createAthleteBtnSub:hover,
@@ -960,9 +950,6 @@ body {
 	height: 15vh;
 	width: 100vw;
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 .joinTeamLogo {
 	width: 100px;

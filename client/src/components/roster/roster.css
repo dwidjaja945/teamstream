@@ -1,11 +1,29 @@
-.rosterContainer {
-	/* border: 1px solid black; */
-	height: 100vh;
-	width: 100vw;
+.rosterContainer,
+.theTeamRoster,
+.namesContainer,
+.list-group,
+.coachContainer,
+.coachName {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.rosterHeader,
+.list-group,
+.coachName {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rosterContainer,
+.theTeamRoster,
+.coachName {
 	flex-flow: column wrap;
+}
+
+.rosterContainer {
+	height: 100vh;
+	width: 100vw;
 }
 
 .rosterHeader {
@@ -15,36 +33,23 @@
 	text-align: center;
 	font-size: 35px;
 	background-color: #dadada;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .theTeamRoster {
 	height: 89%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 }
 
 .namesContainer {
 	width: 100%;
-	/* height: 90%; */
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .list-group {
 	width: 90%;
 	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-flow: row wrap;
 	padding: 0;
 	border-radius: 12px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	overflow-y: scroll;
 }
 
@@ -60,22 +65,14 @@
 .coachContainer {
 	height: 10%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .coachName {
 	height: 60%;
 	width: 90%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: column wrap;
 	padding: 0;
 	margin-top: 8%;
 	border-radius: 12px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .coach {

@@ -1,72 +1,71 @@
-html{
-    overflow: hidden;
+html {
+	overflow: hidden;
 }
 
-body{
-    height: 100vh;
-    width: 100vw;
+body {
+	height: 100vh;
+	width: 100vw;
 }
 
 .teamLogo {
 	width: 8%;
-    position: relative;
-    left: 2%
+	position: relative;
+	left: 2%;
 }
 
 .addMessageButton {
-    height: 8vh;
-    position: absolute;
-    color: white;
-    top:0%;
-    right:0%;
-    padding: 5.3%;
-    border-radius: 1%;
-    background-color: #1171bb;
+	height: 8vh;
+	position: absolute;
+	color: white;
+	top: 0%;
+	right: 0%;
+	padding: 5.3%;
+	border-radius: 1%;
+	background-color: #1171bb;
 	border: 1px solid black;
-    font-size: 0.8em;
-    font-family: "Noto Sans", sans-serif;
+	font-size: 0.8em;
+	font-family: "Noto Sans", sans-serif;
 }
 
-.teamNameDisplay{
-    text-align: center;
-    margin: 2.5%;
-    height: 5vh;
+.teamNameDisplay {
+	text-align: center;
+	margin: 2.5%;
+	height: 5vh;
 }
 
-.teamNameText{
-	margin:5px;
+.teamNameText {
+	margin: 5px;
 	font-size: 1.5em;
 }
 
-.messageContainer{
-    width:100%;
-    height: 77.5vh;
-    border: 2px solid black;
-    position: relative;
-    overflow-y: auto;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: rgba(0,10,75,1)
+.messageContainer {
+	width: 100%;
+	height: 79.5vh;
+	border: 2px solid black;
+	position: relative;
+	overflow-y: auto;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: rgba(0, 10, 75, 1);
 }
 
 .userPostHeader {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .athleteInfo {
-    padding-left: 5%;
+	padding-left: 5%;
 }
-.userMessages{
-    padding: 2%;
-    border-bottom: 1px solid black;
-    border-style: double;
-    word-wrap: break-word;
-
+.userMessages {
+	padding: 2%;
+	border-bottom: 1px solid black;
+	border-style: double;
+	word-wrap: break-word;
 }
-.pinned{
-    background-color: rgba(25,111,193,.6);
+.pinned {
+	background-color: rgba(25, 111, 193, 0.6);
 }
 .postText {
 	padding: 0 3% 0 3%;
@@ -77,26 +76,25 @@ body{
 	font-size: 1em;
 	width: 90%;
 }
-.sendMessageForm{
-
-    width: 100%;
-    height: 8vh;
-    position: fixed;
-    bottom: 0%;
-    border-top: 3px solid black;
-    background-color: #ffff;
+.sendMessageForm {
+	width: 100%;
+	height: 8vh;
+	position: fixed;
+	bottom: 0%;
+	border-top: 3px solid black;
+	background-color: #ffff;
 }
 .addMessageInput {
-    overflow: auto;
+	overflow: auto;
 	height: 8vh;
 	font-size: 0.9em;
-	width: 90%;
+	width: 91%;
 	border-top: 1px solid rgba(192, 192, 192, 0.4);
 }
 .buttonContainer {
-    margin-top: 1%;
-    float: right;
-    margin-bottom: 0%;
+	margin-top: 1%;
+	float: right;
+	margin-bottom: 0%;
 }
 .modal {
 	position: fixed;
@@ -120,18 +118,18 @@ body{
 	width: 24rem;
 	border-radius: 0.5rem;
 }
-.modal-content button{
-    padding: 3%;
-    margin: 5%;
-    border: 1px solid black;
+.modal-content button {
+	padding: 3%;
+	margin: 5%;
+	border: 1px solid black;
 }
-.confirm{
-    background-color: #1d70bc;
-    color: white;
+.confirm {
+	background-color: #1d70bc;
+	color: white;
 }
-.cancel{
-    background-color: red;
-    color: white;
+.cancel {
+	background-color: red;
+	color: white;
 }
 .close-button {
 	float: right;
@@ -139,71 +137,69 @@ body{
 	line-height: 1.5rem;
 	text-align: center;
 	cursor: pointer;
-    border-radius: 0.25rem;
-    color: white;
+	border-radius: 0.25rem;
+	color: white;
 	background-color: lightgray;
 }
 .close-button:hover {
 	background-color: darkgray;
 }
 .show-modal {
-    opacity: 1;
+	opacity: 1;
 	z-index: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+	visibility: visible;
+	transform: scale(1);
+	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
-.modal-header{
-    margin-bottom: 0;
-    color: black;
+.modal-header {
+	margin-bottom: 0;
+	color: black;
 }
-.modal-body{
-    margin-top: 2%;
-    color: black;
+.modal-body {
+	margin-top: 2%;
+	color: black;
 }
-.bulletin-background{
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: .07;
-    position: absolute;
-    z-index: -1;
-    margin: 50% 20%;
+.bulletin-background {
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: 0.07;
+	position: absolute;
+	z-index: -1;
+	margin: 50% 20%;
 }
 
 .dropdownIcon {
-    width: 10px;
-    height: 15px;
+	width: 10px;
+	height: 15px;
 }
 
 .dropdown {
-    float:right;
-    text-align: center;
+	float: right;
+	text-align: center;
 }
 
 .dropdownList {
-    right: 0;
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+	right: 0;
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 }
 
 .dropdownContent {
-    color:#1d70bc;
-    border: 1px solid black;
-    background-color: #e5e8e8;
-    padding: 1em;
-    text-decoration: none;
-    display: block;
-
+	color: #1d70bc;
+	border: 1px solid black;
+	background-color: #e5e8e8;
+	padding: 1em;
+	text-decoration: none;
+	display: block;
 }
 
 .dropdown:hover .dropdownList {
-    display: block;
+	display: block;
 }
 
 .dropdown:hover .dropdownBtn {
-    background-color: #1d70bc;
+	background-color: #1d70bc;
 }
-

@@ -1,28 +1,37 @@
 const slashes = require("slashes");
+const asyncMiddleware = require("./middleware/async");
+const winston = require("winston");
+require('express-async-errors');
+
+winston.add(new winston.transports.File({
+    filename: 'logfile.log',
+    handleExceptions: true
+}));
 
 module.exports = function (webserver, dataBase, mysql, encrypt) {
     // ============================
     // ==== Already Logged In? ====
     // ============================
-    webserver.get( '/api/' , ( req , res ) => {
-        // console.log("checking if user already logged in...");
+    webserver.get( '/api/' , asyncMiddleware(( req , res ) => {
         const output = {
-            redirect : '',
+            redirect: '',
             success: false,
             // sessionID : null
         };
 
-        if( req.session.user_id !== undefined ) {
+        if (req.session.user_id !== undefined) {
             // console.log("User is already logged in")
             output.redirect = '/bulletin_board';
-            output.success=true;
+            output.success = true;
             res.json(output);
         } else {
             // output.sessionID = req.session.user_id;
             output.redirect = '/';
             res.json(output);
         }
-    });
+        // console.log("checking if user already logged in...");
+        
+    }));
 
     // ====================
     // ==== Logging In ====

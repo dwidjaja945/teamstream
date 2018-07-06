@@ -1,19 +1,12 @@
 const slashes = require("slashes");
 const asyncMiddleware = require("./middleware/async");
-const winston = require("winston");
 require('express-async-errors');
-
-winston.add(new winston.transports.File({
-    filename: 'logfile.log',
-    handleExceptions: true
-}));
 
 module.exports = function (webserver, dataBase, mysql, encrypt) {
     // ============================
     // ==== Already Logged In? ====
     // ============================
     webserver.get( '/api/' , asyncMiddleware(( req , res ) => {
-        throw new Error("did not work");
         const output = {
             redirect: '',
             success: false,
@@ -37,7 +30,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
     // ====================
     // ==== Logging In ====
     // ====================
-    webserver.post("/api/login", (req, res) => {
+    webserver.post("/api/login", asyncMiddleware((req, res) => {
         // console.log("starting log-in process")
         const output = {
             success: false,
@@ -92,7 +85,10 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
             if (!err) {
                 if(data.length > 0){
                     encrypt.compare(password, data[0].password, (err, compareResponse) => {
-                        // console.log("comparing password...")
+                        // If there's an error with checking password, likely an issue with the encrypt
+                        if (compareResponse) {
+                            throw new Error("Error in encryption check");
+                        };
                         password = data[0].password;
                         let query = `SELECT 
                         users.user_id, 
@@ -130,16 +126,16 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                                 // providing data if user logged in
                                 output.success = true;
                                 output.data = data;
-                                // console.log(data);
                                 output.redirect = "/bulletin_board";
 
+                                // Setting Session Data
                                 req.session.user_id = data[0].user_id;
                                 req.session.team_id = data[0].team_id;
                                 req.session.team_code = data[0].team_code;
                                 req.session.athlete_id = data[0].athlete_id;
                                 req.session.athlete_info_id = data[0].athlete_info_id;
                                 // console.log("User Logged in and session data has been stored")
-                                // send back json data about path they should go to (bulletinboard) => browser history
+
                                 res.json(output);
                             } else {
                                 output.errors = error;
@@ -152,5 +148,5 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                 }
             }
         });
-    });
+    }));
 };

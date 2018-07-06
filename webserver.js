@@ -5,6 +5,7 @@ const expressValidator = require("express-validator");
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const { body } = require('express-validator/check');
+const error = require('./middleware/error');
 
 const webserver = express();
 
@@ -46,6 +47,8 @@ require("./routes/signup")(webserver, dataBase, mysql, encrypt);
 require("./session.js")(webserver, dataBase, mysql, encrypt);
 
 require("./routes")(webserver, dataBase, mysql );
+
+webserver.use(error);
 
 webserver.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));

@@ -6,6 +6,14 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const { body } = require('express-validator/check');
 const error = require('./middleware/error');
+const winston = require("winston");
+
+winston.add(
+  new winston.transports.File({
+    filename: "logfile.log",
+    handleExceptions: true
+  })
+);
 
 const webserver = express();
 

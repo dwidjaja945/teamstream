@@ -13,6 +13,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
     // ==== Already Logged In? ====
     // ============================
     webserver.get( '/api/' , asyncMiddleware(( req , res ) => {
+        throw new Error("did not work");
         const output = {
             redirect: '',
             success: false,

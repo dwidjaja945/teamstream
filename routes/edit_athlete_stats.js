@@ -1,4 +1,5 @@
 const slashes = require('slashes');
+const asyncMiddleware = require("../middleware/async");
 
 module.exports = ( webserver , dataBase , mysql ) => {
     
@@ -52,7 +53,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
             let mysqlQuery = mysql.format(update_athlete_stats_query, update_athlete_stats_inserts);
 
-            dataBase.query(mysqlQuery, (err, data, fields) => {
+            dataBase.query(mysqlQuery, asyncMiddleware((err, data, fields) => {
                 if (!err) {
                     output.insertIds = {
                         insertStart: data.insertId,
@@ -77,7 +78,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
                     output.errors = err;
                     return reject(err);
                 };
-            });
+            }));
         });
     };
 
@@ -106,7 +107,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
             let update_athlete_info_mysqlQuery = mysql.format(update_athlete_info_query, update_athlete_info_inserts);
 
-            dataBase.query(update_athlete_info_mysqlQuery, (err, data, fields) => {
+            dataBase.query(update_athlete_info_mysqlQuery, asyncMiddleware((err, data, fields) => {
                 if (!err) {
                     output.updateAthleteInfoData = data
                     return resolve(data);
@@ -114,7 +115,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
                     output.updateAthleteInfoErrors = err
                     return reject(err);
                 };
-            });
+            }));
         })
     };
     // ==============================
@@ -143,7 +144,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
      *   success: true
      *   insertId
      */
-    webserver.post( '/api/edit_athlete_stats' , ( req , res ) => {
+    webserver.post('/api/edit_athlete_stats', asyncMiddleware(( req , res ) => {
         const output = {
             success: false,
             data: [],
@@ -174,9 +175,9 @@ module.exports = ( webserver , dataBase , mysql ) => {
         }
         Promise.all([updateAthleteInfo( req , res , output ), updateAthleteStats( req , res , output )]).then( data => { handleSuccess(data, output) } ).catch( errors => { handleError(errors, output) } );
 
-    });
+    }));
 
-    webserver.delete('/api/delete_athlete_stat', (req, res) => {
+    webserver.delete('/api/delete_athlete_stat', asyncMiddleware((req, res) => {
         const output = {
             success: false,
             data: [],
@@ -213,7 +214,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
             }
             res.json(data);
         });
-    });
+    }));
 
     //==========================
     //====End module.exports====

@@ -1,9 +1,10 @@
 const slashes = require('slashes');
+const asyncMiddleware = require('../middleware/async');
 
 module.exports = function ( webserver , dataBase , mysql ) {
 
     // Pulling data from bulletin board for a particular user
-    webserver.get("/api/bulletin_board", function(req, res) {
+    webserver.get("/api/bulletin_board", asyncMiddleware(function(req, res) {
         const output = {
             success: false,
             data: [],
@@ -58,7 +59,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
         let athlete_info_id_sqlQuery = mysql.format(athlete_info_id_query, athlete_info_id_inserts);
 
-        dataBase.query(athlete_info_id_sqlQuery, function(error, data, fields) {
+        dataBase.query(athlete_info_id_sqlQuery, asyncMiddleware(function(error, data, fields) {
 
             if(!error) {
 
@@ -104,10 +105,10 @@ module.exports = function ( webserver , dataBase , mysql ) {
                 output.errors = error;
                 res.json(output);
             }
-        });
-    });
+        }));
+    }));
 
-    webserver.post("/api/bulletin_board", (req, res) => {
+    webserver.post("/api/bulletin_board", asyncMiddleware((req, res) => {
         const output = {
             success: false,
             data: [],
@@ -169,7 +170,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
             res.json(output);
 
         });
-    });
+    }));
 
     /**
      * Takes:
@@ -180,7 +181,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
      *      removed_id: 0
      */
 
-    webserver.delete("/api/bulletin_board", (req, res) => {
+    webserver.delete("/api/bulletin_board", asyncMiddleware((req, res) => {
         const output = {
             success: false,
             data: [],
@@ -215,5 +216,5 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
             res.json(output);
         });
-    });
+    }));
 }

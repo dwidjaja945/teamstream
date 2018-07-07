@@ -1,3 +1,5 @@
+const asyncMiddleware = require("../middleware/async");
+
 module.exports = (webserver, dataBase, mysql, encrypt ) => {
     /**
      * Takes: {
@@ -9,7 +11,7 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
      * Returns:
      *  success: true
      */
-    webserver.post("/api/signup", (req, res) => {
+    webserver.post("/api/signup", asyncMiddleware((req, res) => {
         // console.log('started signup process');
         const output = { success: false, data: [], errors: [], redirect: "" };
 
@@ -32,7 +34,7 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
 
             let selectSqlQuery = mysql.format(query, inserts);
 
-            dataBase.query(selectSqlQuery, (error, data, fields) => {
+            dataBase.query(selectSqlQuery, asyncMiddleware((error, data, fields) => {
                 // console.log('data: ' , data);
                 if (!data) {
                     // console.log("User does not exist, continuing");
@@ -43,7 +45,7 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
 
                     let sqlQuery = mysql.format(query, inserts);
 
-                    dataBase.query(sqlQuery, (error, data, fields) => {
+                    dataBase.query(sqlQuery, asyncMiddleware((error, data, fields) => {
                         if (!error) {
                             // console.log(`Creating ${email} with userId: ${data.insertId}`);
                             output.success = true;
@@ -54,13 +56,13 @@ module.exports = (webserver, dataBase, mysql, encrypt ) => {
                             output.errors = error;
                         }
                         res.json(output);
-                    });
+                    }));
                 } else {
                     output.errors = 'User already exists';
                     output.redirect = '/login_page';
                     res.json(output);
                 }
-            });
+            }));
         });
-    });
+    }));
 };

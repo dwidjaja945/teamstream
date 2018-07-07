@@ -1,9 +1,11 @@
+const asyncMiddleware = require("../middleware/async");
+
 module.exports = function (webserver, dataBase, mysql) {
 
     // =========================================
     // ======== Pulling data for Roster ========
     // =========================================    
-    webserver.get('/api/roster', function (req, res) {
+    webserver.get('/api/roster', asyncMiddleware(function (req, res) {
         const output = {
             success: false,
             athletes: [],
@@ -50,5 +52,5 @@ module.exports = function (webserver, dataBase, mysql) {
             }
             res.json(output);
         });
-    });
+    }));
 };

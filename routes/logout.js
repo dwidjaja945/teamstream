@@ -1,3 +1,5 @@
+const asyncMiddleware = require('../middleware/async');
+
 module.exports = (webserver, dataBase, mysql) => {
     /**
      * Takes:
@@ -9,7 +11,7 @@ module.exports = (webserver, dataBase, mysql) => {
      *  //
      *  error: ''
      */
-    webserver.get('/api/logout', (req, res) => {
+    webserver.get('/api/logout', asyncMiddleware((req, res) => {
         const output = {
             success: false,
             redirect: '',
@@ -25,5 +27,5 @@ module.exports = (webserver, dataBase, mysql) => {
                 res.json(output);
             }
         });
-    })
+    }))
 };

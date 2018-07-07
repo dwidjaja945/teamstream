@@ -1,6 +1,8 @@
+const asyncMiddleware = require("../middleware/async");
+
 module.exports = ( webserver , dataBase , mysql ) => {
     
-    webserver.post( '/api/toggle_teams' , ( req , res ) => {
+    webserver.post( '/api/toggle_teams' , asyncMiddleware(( req , res ) => {
         const output = {
             success: false,
             data: [],
@@ -48,5 +50,5 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
         });
 
-    })
+    }))
 }

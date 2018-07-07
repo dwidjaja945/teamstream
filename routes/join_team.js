@@ -1,4 +1,5 @@
 const slashes = require('slashes');
+const asyncMiddleware = require("../middleware/async");
 module.exports = (webserver, dataBase, mysql) => {
     /**
      * Takes:
@@ -12,7 +13,7 @@ module.exports = (webserver, dataBase, mysql) => {
     // ================================
     // ======== Joining a Team ========
     // ================================
-    webserver.post("/api/join_team", (req, res) => {
+    webserver.post("/api/join_team", asyncMiddleware((req, res) => {
         const output = {
             success: false,
             data: [],
@@ -55,7 +56,7 @@ module.exports = (webserver, dataBase, mysql) => {
 
         let mysqlQuery = mysql.format(query, inserts);
 
-        dataBase.query(mysqlQuery, (err, data, fields) => {
+        dataBase.query(mysqlQuery, asyncMiddleware((err, data, fields) => {
             let team_id;
 
             // console.log("join team 1st query data: ", data);
@@ -112,7 +113,7 @@ module.exports = (webserver, dataBase, mysql) => {
                     res.json(output);
                 });
             };
-        });
-    });
+        }));
+    }));
 
 };

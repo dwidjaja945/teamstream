@@ -1,9 +1,11 @@
+const asyncMiddleware = require("../middleware/async");
+
 module.exports = (webserver , dataBase , mysql ) => {
     
     // =================================================================
     // ======== endpoint to overwrite a previously pinned post. ========
     // =================================================================
-    webserver.post( '/api/pinned' , ( req , res ) => {
+    webserver.post( '/api/pinned' , asyncMiddleware(( req , res ) => {
         const output = {
             success: false,
             data: [],
@@ -34,7 +36,7 @@ module.exports = (webserver , dataBase , mysql ) => {
         let mysqlQuery = mysql.format(query, inserts);
 
         // first: unpinning pinned post
-        dataBase.query( mysqlQuery , ( err, data, fields ) => {
+        dataBase.query( mysqlQuery , asyncMiddleware(( err, data, fields ) => {
             if(!err) {
                 output.success = true;
                 output.data = data;
@@ -68,14 +70,14 @@ module.exports = (webserver , dataBase , mysql ) => {
 
             });
 
-        });
+        }));
 
-    })
+    }));
 
     // =======================================
     // ==== endpoint to just unpin a post ====
     // =======================================
-    webserver.post( '/api/unpin' , ( req , res ) => {
+    webserver.post( '/api/unpin' , asyncMiddleware(( req , res ) => {
 
         if (req.session.user_id === undefined) {
             output.redirect = '/login_page';
@@ -105,7 +107,7 @@ module.exports = (webserver , dataBase , mysql ) => {
 
         let mysqlQuery = mysql.format(query , inserts);
 
-        dataBase.query( mysqlQuery , ( err, data , fields) => {
+        dataBase.query( mysqlQuery , asyncMiddleware(( err, data , fields) => {
             if(!err) {
                 output.success = true;
                 output.data = data;
@@ -115,7 +117,7 @@ module.exports = (webserver , dataBase , mysql ) => {
             };
 
             res.json(output);
-        } )
+        } ));
 
-    } )
+    } ));
 };

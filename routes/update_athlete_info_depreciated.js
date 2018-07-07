@@ -1,4 +1,5 @@
 const slashes = require("slashes");
+const asyncMiddleware = require("../middleware/async");
 
 module.exports = ( webserver , dataBase , mysql ) => {
 
@@ -19,7 +20,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
      *      redirect: ''
      */
 
-    webserver.post( '/api/update_athlete_info' , ( req , res ) => {
+    webserver.post( '/api/update_athlete_info' , asyncMiddleware(( req , res ) => {
         console.log('Updating athlete info of athlete', req.session.athlete_id);
         const output = {
             success: false,
@@ -57,7 +58,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
 
         let mysqlQuery = mysql.format(query, inserts);
 
-        dataBase.query( mysqlQuery , ( err , data , fields ) => {
+        dataBase.query( mysqlQuery , asyncMiddleware(( err , data , fields ) => {
             if(!err) {
                 output.success = true;
                 // output.data = data;
@@ -67,7 +68,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
             }
             console.log('edit athlete output: ',output)
             res.json(output);
-        });
+        }));
 
             // This query will update the athlete_info table.
             // within it, there will be another query to update the stats table.
@@ -135,7 +136,7 @@ module.exports = ( webserver , dataBase , mysql ) => {
             //
             // })
 
-    });
+    }));
 
     function addSlashes( insertArray ) {
         for (let i = 0; i < insertArray.length; i++) {

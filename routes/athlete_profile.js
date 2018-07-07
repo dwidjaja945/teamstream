@@ -1,4 +1,5 @@
 const slashes = require('slashes');
+const asyncMiddleware = require('../middleware/async');
 
 module.exports = function (webserver, dataBase, mysql) {
 
@@ -21,7 +22,7 @@ module.exports = function (webserver, dataBase, mysql) {
      *      stat_value,
      *      stat_id 
      */
-    webserver.get('/api/athlete_profile', function ( req , res ) {
+    webserver.get('/api/athlete_profile', asyncMiddleware(function ( req , res ) {
         const output = {
             success: false,
             user: null,
@@ -69,7 +70,7 @@ module.exports = function (webserver, dataBase, mysql) {
 
             res.json(output);
         });
-    });
+    }));
 
     // ======================================================
     // == Pulling Athlete Info for Teammate's Profile Page ==
@@ -91,7 +92,7 @@ module.exports = function (webserver, dataBase, mysql) {
      *      stat_value,
      *      stat_id
      */
-    webserver.post('/api/teammate_profile', function ( req , res ) {
+    webserver.post('/api/teammate_profile', asyncMiddleware(function ( req , res ) {
         const output = {
             success: false,
             user: null,
@@ -154,7 +155,7 @@ module.exports = function (webserver, dataBase, mysql) {
 
             res.json(output);
         });
-    });
+    }));
 
     // webserver.post('/api/athlete_profile', function (req , res ) {
     //     //need to get max number of athletes to create new num

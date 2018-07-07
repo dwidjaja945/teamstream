@@ -1,4 +1,5 @@
 const slashes = require('slashes');
+const asyncMiddleware = require("../middleware/async");
 
 module.exports = ( webserver , dataBase , mysql , check) => {
 
@@ -17,7 +18,7 @@ module.exports = ( webserver , dataBase , mysql , check) => {
      *      redirect: ''
      *      team_ID: ####
      */
-    webserver.post( '/api/create_team' , ( req , res ) => {
+    webserver.post('/api/create_team', asyncMiddleware(( req , res ) => {
         const output = {
             success: false,
             data: [],
@@ -90,7 +91,7 @@ module.exports = ( webserver , dataBase , mysql , check) => {
 
             let mysqlQuery = mysql.format(query, inserts);
 
-            dataBase.query(mysqlQuery, (err, data, fields) => {
+            dataBase.query(mysqlQuery, asyncMiddleware((err, data, fields) => {
                 if (!err) {
                     output.success = true;
                     output.data = data;
@@ -110,7 +111,7 @@ module.exports = ( webserver , dataBase , mysql , check) => {
 
                     output.errors = err;
                 }
-            });
+            }));
         }
 
         function createNewAthleteID() {
@@ -175,7 +176,7 @@ module.exports = ( webserver , dataBase , mysql , check) => {
 
             let mysqlQuery = mysql.format(query, inserts);
 
-            dataBase.query( mysqlQuery , (err, data, fields) => {
+            dataBase.query(mysqlQuery, asyncMiddleware((err, data, fields) => {
                 if(!err) {
                     // console.log(`Updated athlete table with athlete_id: ${req.session.athlete_id} with team_id: ${req.session.team_id}`);
                     output.success = true;
@@ -189,10 +190,10 @@ module.exports = ( webserver , dataBase , mysql , check) => {
 
                 res.json(output);
 
-            })
+            }));
         }
 
-    } );
+    } ));
 
     // Creates Randomized string for Team Code
     function codeGenerator() {

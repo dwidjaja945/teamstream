@@ -1,3 +1,4 @@
+const asyncMiddleware = require("../middleware/async");
 
 module.exports = function ( webserver , dataBase , mysql ) {
 
@@ -19,7 +20,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
      *      insertID: #
      *      redirect: ''
      */
-    webserver.post('/api/create_athlete_info', (req , res ) => {
+    webserver.post('/api/create_athlete_info', asyncMiddleware((req , res ) => {
         const slashes=require('slashes');
         const output = {
             success: false,
@@ -85,7 +86,7 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
             let mysqlQuery = mysql.format(query, inserts);
 
-            dataBase.query( mysqlQuery , (err, data, fields) => {
+            dataBase.query(mysqlQuery, asyncMiddleware((err, data, fields) => {
                 if(!err) {
                     // console.log(`Added athlete_info_id ${req.session.athlete_info_id} to athlete table with id: ${data.insertId}`);
                     output.success = true;
@@ -100,8 +101,8 @@ module.exports = function ( webserver , dataBase , mysql ) {
 
                 res.json(output);
 
-            });
+            }));
         };
 
-    });
+    }));
 };

@@ -42,7 +42,7 @@ webserver.use(session({
 }));
 
 dataBase.connect(error => {
-    if (error) throw error;
+    if (error) throw new Error("Could not connect to Database. " + error);
     console.log("Created connection to database");
 });
 

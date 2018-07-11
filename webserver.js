@@ -66,4 +66,5 @@ webserver.listen(9000, () => {
     console.log("Server listening on 9000");
 }).on('error', (error) => {
     console.log('Server Error: ', error.message);
+    throw new Error(" Server Error: " + error );
 });

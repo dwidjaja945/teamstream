@@ -86,7 +86,7 @@ module.exports = function (webserver, dataBase, mysql, encrypt) {
                 if(data.length > 0){
                     encrypt.compare(password, data[0].password, (err, compareResponse) => {
                         // If there's an error with checking password, likely an issue with the encrypt
-                        if (compareResponse) {
+                        if (!compareResponse) {
                             throw new Error("Error in encryption check");
                         };
                         password = data[0].password;

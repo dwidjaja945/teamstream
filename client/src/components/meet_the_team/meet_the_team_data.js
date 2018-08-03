@@ -28,7 +28,7 @@ export default [
     {
         firstName: 'Daniel',
         lastName: 'Donjuan',
-        title: 'Badass',
+        title: 'Developer',
         position: 'Front-End Developer',
         quote: '"That\'s that she said"',
         pic: danny,
@@ -37,7 +37,7 @@ export default [
     {
         firstName: 'Keith',
         lastName: 'Silcock',
-        title: 'Sensei',
+        title: 'Developer',
         position: 'Full-Stack Developer',
         quote: '"What up fam!"',
         pic: keith,

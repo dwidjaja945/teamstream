@@ -13,10 +13,10 @@ import UserIdPw from "./create_user_id_pw";
 import NavBar from "./navbar";
 import AddAthlete from "./profile_pages/add_athlete";
 import EditAthlete from "./profile_pages/edit_profile";
-import Logout from './log_in/logout';
-import TeammateProfile from './profile_pages/teammate_profile';
-import meetTheTeam from './meet_the_team/meet_the_team';
-import './animations.css';
+import Logout from "./log_in/logout";
+import TeammateProfile from "./profile_pages/teammate_profile";
+import meetTheTeam from "./meet_the_team/meet_the_team";
+import "./animations.css";
 
 class App extends Component {
 	constructor(props) {
@@ -71,7 +71,7 @@ class App extends Component {
 
 				<Route path="/edit_profile" component={EditAthlete} />
 
-				<Route path="/meet_the_team" component={meetTheTeam}/>
+				<Route path="/meet_the_team" component={meetTheTeam} />
 
 				<Route path="/logout" component={Logout} />
 			</div>

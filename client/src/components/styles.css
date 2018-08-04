@@ -432,14 +432,18 @@ body {
 	color: #000000;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+@media only screen and (max-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
 	.mainBtnImg {
-		height: 27px;
+		height: 29px;
 		padding-top: 5px;
 	}
 
+	.hamburger-li {
+		font-size: 1em;
+	}
+
 	.profileTitleHeader {
-		font-size: 35px;
+		font-size: 36px;
 	}
 
 	.athleteName,
@@ -447,23 +451,91 @@ body {
 	.profileStatsTitle {
 		font-size: 1.5em;
 	}
+}
 
-	.profileBioInfo,
-	.profileStatsInfo {
-		font-size: 1em;
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+	.mainBtnImg {
+		height: 40px;
+	}
+
+	.menuBtn span {
+		height: 4px;
+		width: 40px;
+	}
+
+	.hamburgerBullets {
+		width: 36vw;
 	}
 
 	.hamburger-li,
 	.toggle-li {
-		font-size: 1em;
+		font-size: 2em;
+	}
+
+	.profileTitleHeader {
+		font-size: 55px;
+	}
+
+	.athleteName,
+	.profileBioTitle,
+	.profileStatsTitle,
+	.profileBioInfo,
+	.profileStatsInfo {
+		font-size: 2em;
+	}
+
+	.profileEdit {
+		padding: 20px;
+		font-size: 25px;
+	}
+}
+/* @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+	.profileContainer {
+		overflow-y: scroll;
+	}
+
+	.mainNavBar {
+		height: 10vh;
+	}
+
+	.profileTitleContent {
+		height: 12%;
+	}
+
+	.profilePic {
+		display: none;
+	}
+
+	.profileInfo {
+		height: 73%;
+	}
+
+	.profileName {
+		height: 14%;
+	}
+
+	.profileBioInfo {
+		height: 50%;
+	}
+
+	.bioTitleContainer {
+		height: 40%;
+	}
+
+	.profileStats {
+		height: 50%;
+	}
+
+	.statsTitleContainer {
+		height: 24%;
 	}
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-	.profileContainer {
-		flex-flow: row wrap;
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+	.profilePic {
+		display: none;
 	}
-}
+} */
 
 /**********fork Nav************/
 .forkContainer {

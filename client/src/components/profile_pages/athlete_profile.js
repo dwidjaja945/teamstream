@@ -101,6 +101,7 @@ class AthleteProfile extends Component {
 						</div>
 					</div>
 				</div>
+
 				<div className="profile profileFooter">
 					<Link to={"/edit_profile"} className="profileEdit">
 						Edit

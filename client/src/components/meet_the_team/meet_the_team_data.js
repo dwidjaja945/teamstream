@@ -30,7 +30,7 @@ export default [
         lastName: 'Donjuan',
         title: 'Developer',
         position: 'Front-End Developer',
-        quote: '"That\'s that she said"',
+        quote: '"That\'s what she said"',
         pic: danny,
         bio: 'https://github.com/ddonjuan'
     },

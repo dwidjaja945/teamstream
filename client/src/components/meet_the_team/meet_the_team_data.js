@@ -8,7 +8,7 @@ import danny from '../images/danny.jpeg';
 
 export default [
     {
-        firstName: 'Dylon',
+        firstName: 'Dylan',
         lastName: 'Widjaja',
         title: 'Team Leader',
         position: 'Back-End Developer',

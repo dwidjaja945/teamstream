@@ -1,29 +1,45 @@
 .toggleBulletsAnim {
-    animation: pullRight 0.5s none;
+	animation: pullRight 0.5s none;
 }
 @keyframes pullRight {
-    0%   {left: -52vw;}
-    100% {left: 0;}
+	0% {
+		left: -52vw;
+	}
+	100% {
+		left: 0;
+	}
 }
-.closeToggleBulletsAnim{
-    animation: closeToggleBullets 0.5s forwards;
+.closeToggleBulletsAnim {
+	animation: closeToggleBullets 0.5s forwards;
 }
 @keyframes closeToggleBullets {
-    0% {left: 0;}
-    100%   {left: -52vw;}
+	0% {
+		left: 0;
+	}
+	100% {
+		left: -52vw;
+	}
 }
 
 .hamburgerBulletsAnim {
-    animation: pullLeft 0.5s none;
+	animation: pullLeft 0.5s none;
 }
 @keyframes pullLeft {
-    0%   {right: -50vw;}
-    100% {right: -50%;}
+	0% {
+		right: -50vw;
+	}
+	100% {
+		right: -50%;
+	}
 }
-.closeHamburgersAnim{
-    animation: closeHamburger 0.5s forwards;
+.closeHamburgersAnim {
+	animation: closeHamburger 0.5s forwards;
 }
 @keyframes closeHamburger {
-    0% {right: -50%;}
-    100%   {right: -50vw;}
+	0% {
+		right: -50%;
+	}
+	100% {
+		right: -50vw;
+	}
 }

@@ -11,7 +11,7 @@ import ErrorModal from '../error_modal';
 class LogIn extends React.Component {
 	constructor(props) {
 		super(props);
-		let email='guest@guest.com';
+		let email='guest@gmail.com';
 		if(typeof props.location.state === 'object'){
 			email=props.location.state.email;
 		}

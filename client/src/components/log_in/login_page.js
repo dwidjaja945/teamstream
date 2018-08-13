@@ -37,11 +37,6 @@ class LogIn extends React.Component {
 		event.preventDefault();
 		const { email, password } = this.state;
 		this.loginAxiosCall(email, password);
-
-		// this.setState({
-		//     email: "",
-		//     password: ""
-		// });
 	}
 
 	loginAxiosCall(email, password) {

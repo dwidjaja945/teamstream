@@ -70,7 +70,21 @@ class UserIdPw extends Component {
         //Must have at least one number
         //Must start with a letter(lower -case or upper -case)
         //Must have at least one special character
-        const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]+|[A-Z]+)(?=.*\d)[a-zA-Z\d](?=.*?[#?!@$%^&*-]).{6,32}$/;
+        const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])([a-z]*|[A-Z]*)(?=.*[0-9])[a-zA-Z0-9].{6,}$/;
+
+        const errors = (
+            <div>    
+                <p>Password is incorrect: </p>
+                <ul className="password_errors">
+    					<li>Must be between 6 and 32 characters long </li>
+    					<li>Must have at least one capital letter </li>
+    					<li>Must have at least one lower -case letter </li>
+    					<li>Must have at least one number </li>
+    					<li>Must start with a letter(lower -case or upper -case)</li>
+    					<li>Must have at least one special character</li>
+                </ul>
+            </div>
+        );
 
         if (password === passwordCheck) {
             if(passwordValidation.test(password)) {
@@ -80,13 +94,7 @@ class UserIdPw extends Component {
                 this.setState({
                     password: "",
                     passwordCheck: "",
-                    errors: `Password is incorrect: 
-					Must be between 6 and 32 characters long 
-					Must have at least one capital letter 
-					Must have at least one lower -case letter 
-					Must have at least one number 
-					Must start with a letter(lower -case or upper -case) 
-					Must have at least one special character`,
+                    errors: errors
                 })
                 return false;
             }
